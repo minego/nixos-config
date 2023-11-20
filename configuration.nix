@@ -130,6 +130,7 @@ in
     pkgs.zsh-syntax-highlighting
     pkgs.zsh-vi-mode
     pkgs.git
+	pkgs.gnumake
     pkgs.neovim
     pkgs.go
     pkgs.curl
