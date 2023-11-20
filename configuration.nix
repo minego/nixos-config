@@ -139,6 +139,7 @@ in
     pkgs.wayland
     pkgs.gbar
     pkgs.hyprpaper
+	dwl-source
   ];
 
   fonts.packages = with pkgs; [
