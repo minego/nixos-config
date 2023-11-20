@@ -1,18 +1,17 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, ... }:
+{ config, pkgs, dwl-source, ... }:
 
 let
-  mackeysPkg	= import ./mackeys.nix;
-  swapmodsPkg	= import ./swapmods.nix;
+	mackeysPkg	= import ./mackeys.nix;
+	swapmodsPkg	= import ./swapmods.nix;
 
 in
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+	imports = [
+		# Include the results of the hardware scan.
+		./hardware-configuration.nix
+
+		# dwl
+		./programs/dwl.nix
     ];
 
   # Automatic Upgrades
@@ -54,6 +53,14 @@ in
     LC_TELEPHONE = "en_US.UTF-8";
     LC_TIME = "en_US.UTF-8";
   };
+
+	dwl = {
+		enable = true;
+		patches = [
+		];
+		cmd = {
+		};
+	};
 
 
   # Enable CUPS to print documents.

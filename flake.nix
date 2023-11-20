@@ -7,7 +7,10 @@
 	inputs = {
 		nixpkgs.url		= "github:NixOS/nixpkgs/nixos-unstable";
 
-		dwl-source.url	= "github:minego/dwl/master";
+		dwl-source = {
+			url			= "github:minego/dwl/master";
+			flake		= false;
+		};
 	};
 
 	outputs = inputs@{ nixpkgs, ... }: {

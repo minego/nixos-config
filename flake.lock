@@ -1,5 +1,22 @@
 {
   "nodes": {
+    "dwl-source": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1700246543,
+        "narHash": "sha256-EPQFOsPDpbSJFizGenDTNTE9qY3JjcsEHlfGMId1d4Q=",
+        "owner": "minego",
+        "repo": "dwl",
+        "rev": "216a7fc25a97979bbde25bbb50d2f84751e9d244",
+        "type": "github"
+      },
+      "original": {
+        "owner": "minego",
+        "ref": "master",
+        "repo": "dwl",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1700390070,
@@ -18,6 +35,7 @@
     },
     "root": {
       "inputs": {
+        "dwl-source": "dwl-source",
         "nixpkgs": "nixpkgs"
       }
     }
