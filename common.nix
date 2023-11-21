@@ -1,4 +1,4 @@
-{ dwl, swapmods, mackeys, ... }:
+{ swapmods, mackeys, ... }:
 { config, pkgs, lib, inputs, ... }:
 
 let
@@ -109,33 +109,12 @@ in
 		pkgs.git
 		pkgs.gnumake
 		pkgs.neovim
+		pkgs.dtach
+		pkgs.gcc
 		pkgs.go
 		pkgs.curl
 		pkgs.stow
-		pkgs.xdg-utils
-		pkgs.wayland
-		pkgs.gbar
-		pkgs.hyprpaper
-		dwl.packages.${pkgs.system}.default
 	];
-
-	fonts.packages = with pkgs; [
-		nerdfonts
-		noto-fonts
-		noto-fonts-cjk
-		noto-fonts-emoji
-		liberation_ttf
-		fira-code
-		fira-code-symbols
-		mplus-outline-fonts.githubRelease
-		dina-font
-		proggyfonts
-	];
-
-	# Make wayland behave
-	environment.sessionVariables.NIXOS_OZONE_WL = "1";
-
-	xdg.portal.wlr.enable = true;
 
 	# Interception-Tools
 	services.interception-tools = {
