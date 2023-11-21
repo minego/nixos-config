@@ -19,6 +19,25 @@
         "type": "github"
       }
     },
+    "mackeys": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_2"
+      },
+      "locked": {
+        "lastModified": 1700527540,
+        "narHash": "sha256-eKjlK5decabLKBCDPMfSVxOBFPVU+ejxLt1doPvF4G4=",
+        "owner": "minego",
+        "repo": "mackeys",
+        "rev": "9e55b1bd4bd9b02c80383abe8a2b83bcd6e6f8ce",
+        "type": "github"
+      },
+      "original": {
+        "owner": "minego",
+        "ref": "main",
+        "repo": "mackeys",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1700390070,
@@ -51,10 +70,63 @@
         "type": "github"
       }
     },
+    "nixpkgs_3": {
+      "locked": {
+        "lastModified": 1700390070,
+        "narHash": "sha256-de9KYi8rSJpqvBfNwscWdalIJXPo8NjdIZcEJum1mH0=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "e4ad989506ec7d71f7302cc3067abd82730a4beb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_4": {
+      "locked": {
+        "lastModified": 1700390070,
+        "narHash": "sha256-de9KYi8rSJpqvBfNwscWdalIJXPo8NjdIZcEJum1mH0=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "e4ad989506ec7d71f7302cc3067abd82730a4beb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "dwl": "dwl",
-        "nixpkgs": "nixpkgs_2"
+        "mackeys": "mackeys",
+        "nixpkgs": "nixpkgs_3",
+        "swapmods": "swapmods"
+      }
+    },
+    "swapmods": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_4"
+      },
+      "locked": {
+        "lastModified": 1700527439,
+        "narHash": "sha256-NX2Fs3BiEHszmAjFjdFU9rLG7zEBpa3xakZiuCwJ458=",
+        "owner": "minego",
+        "repo": "swapmods",
+        "rev": "b71ef5f4300622edf41cc43771d87ab2bd24cd3d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "minego",
+        "ref": "main",
+        "repo": "swapmods",
+        "type": "github"
       }
     }
   },
