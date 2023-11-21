@@ -52,7 +52,7 @@ in
 		pkgs.fzf
 		pkgs.wayland
 		pkgs.swayidle
-		pkgs.swaylock
+		pkgs.swaylock-effects
 		pkgs.waybar
 		pkgs.wob
 		pkgs.swaynotificationcenter
@@ -93,6 +93,12 @@ in
 		pkgs.terminus_font
 		monaspaceFont
 		sparkLinesFont
+	];
+
+	# This is needed for swaylock to work properly
+	security.pam.services.swaylock = {};
+	security.pam.loginLimits = [
+		{ domain = "@users"; item = "rtprio"; type = "-"; value = 1; }
 	];
 
 	# Make wayland applications behave
