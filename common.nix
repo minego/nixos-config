@@ -7,11 +7,6 @@ let
 	swapmodsPkg	= swapmods.packages.${pkgs.system}.default;
 in
 {
-	imports = [
-		# Include the results of the hardware scan.
-		./hardware-configuration.nix
-    ];
-
 	# Enable the nix command and flakes
 	nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -28,20 +23,9 @@ in
 	boot.loader.systemd-boot.enable = true;
 	boot.loader.efi.canTouchEfiVariables = true;
 
-	boot.initrd.luks.devices."luks-7c93fd91-b48e-49bb-9de9-28832248b424".device = "/dev/disk/by-uuid/7c93fd91-b48e-49bb-9de9-28832248b424";
-	networking.hostName = "lord"; # Define your hostname.
-	# networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-	# Configure network proxy if necessary
-	# networking.proxy.default = "http://user:password@proxy:port/";
-	# networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
 	# Enable networking
 	networking.networkmanager.enable = true;
 	programs.nm-applet.enable = true;
-
-	# Set your time zone.
-	time.timeZone = "America/Denver";
 
 	# Select internationalisation properties.
 	i18n.defaultLocale = "en_US.UTF-8";
