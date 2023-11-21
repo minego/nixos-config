@@ -42,6 +42,10 @@ in
 		LC_TIME				= "en_US.UTF-8";
 	};
 
+	# Enable bluetooth
+	hardware.bluetooth.enable = true;
+	hardware.bluetooth.powerOnBoot = true;
+	services.blueman.enable = true;
 
 	# Enable CUPS to print documents.
 	services.printing.enable = true;
@@ -57,6 +61,13 @@ in
 		pulse.enable			= true;
 
 		# jack.enable			= true;
+	};
+
+	systemd.user.services.mpris-proxy = {
+		description = "Mpris proxy";
+		after = [ "network.target" "sound.target" ];
+		wantedBy = [ "default.target" ];
+		serviceConfig.ExecStart = "${pkgs.bluez}/bin/mpris-proxy";
 	};
 
 	programs.zsh = {
@@ -75,7 +86,6 @@ in
 
 		packages = with pkgs; [
 			zsh
-			firefox-wayland
 			tridactyl-native
 			thunderbird
 			kitty
@@ -87,11 +97,6 @@ in
 			ripgrep
 			eza
 			unzip
-			bemenu
-			wdisplays
-			slack
-			bitwarden
-			steam
 		];
 	};
 
@@ -115,6 +120,10 @@ in
 		pkgs.go
 		pkgs.curl
 		pkgs.stow
+		pkgs.inotify-tools
+		pkgs.polkit
+		pkgs.polkit_gnome
+		pkgs.bluez
 	];
 
 	# Interception-Tools
