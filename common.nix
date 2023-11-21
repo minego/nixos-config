@@ -143,7 +143,10 @@ in
 		pkgs.polkit
 		pkgs.polkit_gnome
 		pkgs.bluez
+		pkgs.man-pages
+		pkgs.man-pages-posix
 	];
+	documentation.dev.enable = true;
 
 	# Interception-Tools
 	services.interception-tools = {
