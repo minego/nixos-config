@@ -118,5 +118,6 @@ in
 	};
 
 	programs.dconf.enable = true;
+	programs.light.enable = true;
 }
 

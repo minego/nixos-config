@@ -97,7 +97,7 @@ in
 		isNormalUser	= true;
 		shell			= pkgs.zsh;
 		description		= "Micah N Gorrell";
-		extraGroups		= [ "networkmanager" "wheel" ];
+		extraGroups		= [ "networkmanager" "wheel" "video" ];
 
 		packages = with pkgs; [
 			zsh
@@ -133,6 +133,8 @@ in
 		pkgs.fzf
 		pkgs.dtach
 		pkgs.gcc
+		pkgs.clang
+		pkgs.clang-tools
 		pkgs.gdb
 		pkgs.go
 		pkgs.curl
@@ -162,7 +164,11 @@ in
 	};
 
 	# Enable the OpenSSH daemon.
-	services.openssh.enable = true;
+	services.openssh = {
+		enable = true;
+		settings.PasswordAuthentication = false;
+		settings.KbdInteractiveAuthentication = false;
+	};
 
 	# Open ports in the firewall.
 	# networking.firewall.allowedTCPPorts = [ ... ];
