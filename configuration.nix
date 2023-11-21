@@ -1,4 +1,4 @@
-{ config, pkgs, dwl-source, ... }:
+{ config, pkgs, lib, inputs, dwl, ... }:
 
 let
 	mackeysPkg	= import ./mackeys.nix;
@@ -9,9 +9,7 @@ in
 	imports = [
 		# Include the results of the hardware scan.
 		./hardware-configuration.nix
-
-		# dwl
-		./programs/dwl.nix
+		dwl
     ];
 
   # Automatic Upgrades
@@ -53,14 +51,6 @@ in
     LC_TELEPHONE = "en_US.UTF-8";
     LC_TIME = "en_US.UTF-8";
   };
-
-	dwl = {
-		enable = true;
-		patches = [
-		];
-		cmd = {
-		};
-	};
 
 
   # Enable CUPS to print documents.
@@ -146,7 +136,7 @@ in
     pkgs.wayland
     pkgs.gbar
     pkgs.hyprpaper
-	dwl-source
+	dwl.packages.${pkgs.system}.dwl-minego
   ];
 
   fonts.packages = with pkgs; [

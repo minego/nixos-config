@@ -6,19 +6,16 @@
 
 	inputs = {
 		nixpkgs.url		= "github:NixOS/nixpkgs/nixos-unstable";
-
-		dwl-source = {
-			url			= "github:minego/dwl/master";
-			flake		= false;
-		};
+		dwl.url			= "github:minego/dwl/master";
 	};
 
-	outputs = inputs@{ nixpkgs, ... }: {
+	outputs = { self, nixpkgs, ... }@inputs:
+	{
 		nixosConfigurations = {
 			"lord" = nixpkgs.lib.nixosSystem {
 				system = "x86_64-linux";
 
-				specialArgs = inputs;
+				specialArgs.inputs = inputs;
 				modules = [
 					./configuration.nix
 				];
