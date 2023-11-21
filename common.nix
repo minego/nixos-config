@@ -111,6 +111,7 @@ in
 		pkgs.neovim
 		pkgs.dtach
 		pkgs.gcc
+		pkgs.gdb
 		pkgs.go
 		pkgs.curl
 		pkgs.stow
