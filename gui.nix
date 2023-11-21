@@ -38,14 +38,6 @@ let
 		};
 in
 {
-	services.xserver = {
-		enable = true;
-
-		displayManager.sddm = {
-			enable = true;
-		};
-	};
-
 	environment.systemPackages = [
 		# My customized build of the DWL wayland compositor
 		dwl.packages.${pkgs.system}.default
@@ -57,8 +49,10 @@ in
 		pkgs.xdg-utils
 
 		# Tools used by my DWL/wayland setup
+		pkgs.fzf
 		pkgs.wayland
 		pkgs.swayidle
+		pkgs.swaylock-effects
 		pkgs.waybar
 		pkgs.wob
 		pkgs.swaynotificationcenter
@@ -80,6 +74,8 @@ in
 		pkgs.wdisplays
 		pkgs.slack
 		pkgs.bitwarden
+		pkgs.pavucontrol
+		pkgs.pamixer
 		pkgs.steam
 	];
 
@@ -97,6 +93,12 @@ in
 		pkgs.terminus_font
 		monaspaceFont
 		sparkLinesFont
+	];
+
+	# This is needed for swaylock to work properly
+	security.pam.services.swaylock = {};
+	security.pam.loginLimits = [
+		{ domain = "@users"; item = "rtprio"; type = "-"; value = 1; }
 	];
 
 	# Make wayland applications behave
@@ -122,5 +124,6 @@ in
 	};
 
 	programs.dconf.enable = true;
+	programs.light.enable = true;
 }
 
