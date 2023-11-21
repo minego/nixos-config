@@ -42,6 +42,9 @@ in
 		LC_TIME				= "en_US.UTF-8";
 	};
 
+	# GPU
+	hardware.opengl.enable = true;
+
 	# Enable bluetooth
 	hardware.bluetooth.enable = true;
 	hardware.bluetooth.powerOnBoot = true;
@@ -61,6 +64,18 @@ in
 		pulse.enable			= true;
 
 		# jack.enable			= true;
+	};
+
+	# Enable additional bluetooth codecs
+	environment.etc = {
+		"wireplumber/bluetooth.lua.d/51-bluez-config.lua".text = ''
+			bluez_monitor.properties = {
+				["bluez5.enable-sbc-xq"] = true,
+				["bluez5.enable-msbc"] = true,
+				["bluez5.enable-hw-volume"] = true,
+				["bluez5.headset-roles"] = "[ hsp_hs hsp_ag hfp_hf hfp_ag ]"
+			}
+		'';
 	};
 
 	systemd.user.services.mpris-proxy = {
@@ -109,11 +124,13 @@ in
 	environment.systemPackages = [
 		pkgs.zsh
 		pkgs.psmisc
+		pkgs.file
 		pkgs.zsh-syntax-highlighting
 		pkgs.zsh-vi-mode
 		pkgs.git
 		pkgs.gnumake
 		pkgs.neovim
+		pkgs.fzf
 		pkgs.dtach
 		pkgs.gcc
 		pkgs.gdb

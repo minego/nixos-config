@@ -38,14 +38,6 @@ let
 		};
 in
 {
-	services.xserver = {
-		enable = true;
-
-		displayManager.sddm = {
-			enable = true;
-		};
-	};
-
 	environment.systemPackages = [
 		# My customized build of the DWL wayland compositor
 		dwl.packages.${pkgs.system}.default
@@ -57,8 +49,10 @@ in
 		pkgs.xdg-utils
 
 		# Tools used by my DWL/wayland setup
+		pkgs.fzf
 		pkgs.wayland
 		pkgs.swayidle
+		pkgs.swaylock
 		pkgs.waybar
 		pkgs.wob
 		pkgs.swaynotificationcenter
@@ -80,6 +74,8 @@ in
 		pkgs.wdisplays
 		pkgs.slack
 		pkgs.bitwarden
+		pkgs.pavucontrol
+		pkgs.pamixer
 		pkgs.steam
 	];
 
