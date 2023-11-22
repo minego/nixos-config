@@ -146,6 +146,11 @@ in
 	];
 	documentation.dev.enable = true;
 
+	programs.git = {
+		enable = true;
+		lfs.enable = true;
+	};
+
 	# Interception-Tools
 	services.interception-tools = {
 		enable = true;
