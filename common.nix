@@ -119,6 +119,7 @@ in
 	environment.systemPackages = [
 		pkgs.zsh
 		pkgs.psmisc
+		pkgs.usbutils
 		pkgs.file
 		pkgs.zsh-syntax-highlighting
 		pkgs.zsh-vi-mode
