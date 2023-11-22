@@ -40,6 +40,7 @@
 				modules = [
 					(import ./common.nix					inputs)
 					(import ./gui.nix						inputs)
+					(import ./user-m.nix					inputs)
 					(import ./hosts/lord/configuration.nix	inputs)
 				];
 
