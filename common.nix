@@ -42,9 +42,6 @@ in
 		LC_TIME				= "en_US.UTF-8";
 	};
 
-	# GPU
-	hardware.opengl.enable = true;
-
 	# Enable bluetooth
 	hardware.bluetooth.enable = true;
 	hardware.bluetooth.powerOnBoot = true;
@@ -134,6 +131,7 @@ in
 		pkgs.clang
 		pkgs.clang-tools
 		pkgs.gdb
+		pkgs.direnv
 		pkgs.go
 		pkgs.curl
 		pkgs.stow

@@ -38,6 +38,13 @@ let
 		};
 in
 {
+	# GPU
+	hardware.opengl = {
+		enable = true;
+		driSupport = true;
+		driSupport32Bit = true;
+	};
+
 	environment.systemPackages = [
 		# My customized build of the DWL wayland compositor
 		dwl.packages.${pkgs.system}.default
