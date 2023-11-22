@@ -70,13 +70,16 @@ in
 
 		# Applications
 		pkgs.spotify
-		pkgs.firefox-wayland
 		pkgs.wdisplays
 		pkgs.slack
 		pkgs.bitwarden
 		pkgs.pavucontrol
 		pkgs.pamixer
 		pkgs.steam
+		pkgs.tridactyl-native
+		pkgs.firefox-wayland
+		pkgs.thunderbird
+		pkgs.kitty
 	];
 
 	fonts.packages = [
@@ -94,6 +97,10 @@ in
 		monaspaceFont
 		sparkLinesFont
 	];
+	fonts.fontconfig.defaultFonts = {
+		serif = [ "Noto Serif" ];
+		sansSerif = [ "Monaspace Neon Light" "Noto Sans" ];
+	};
 
 	# This is needed for swaylock to work properly
 	security.pam.services.swaylock = {};
@@ -110,11 +117,11 @@ in
 		enable = true;
 		wlr.enable = true;
 
-		xdgOpenUsePortal = true;
+		# xdgOpenUsePortal = true;
 
 		extraPortals = with pkgs; [
 			xdg-desktop-portal-wlr
-			xdg-desktop-portal-gtk
+			# xdg-desktop-portal-gtk
 		];
 
 	};

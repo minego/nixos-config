@@ -101,9 +101,6 @@ in
 
 		packages = with pkgs; [
 			zsh
-			tridactyl-native
-			thunderbird
-			kitty
 			neofetch
 			acpi
 			starship
@@ -112,6 +109,7 @@ in
 			ripgrep
 			eza
 			unzip
+			jq
 		];
 	};
 
