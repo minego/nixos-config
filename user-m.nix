@@ -1,11 +1,16 @@
 { ... }:
-{ pkgs, ... }:
+{ config, pkgs, lib, ... }:
 {
 	users.users.m = {
 		isNormalUser	= true;
 		shell			= pkgs.zsh;
 		description		= "Micah N Gorrell";
-		extraGroups		= [ "networkmanager" "wheel" "video" ];
+		extraGroups		= [
+			"networkmanager"
+			"wheel"
+			"video"
+			"libvirtd"
+		];
 
 		packages = with pkgs; [
 			zsh

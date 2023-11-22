@@ -38,10 +38,12 @@
 				system = "x86_64-linux";
 
 				modules = [
-					(import ./common.nix					inputs)
-					(import ./gui.nix						inputs)
-					(import ./user-m.nix					inputs)
 					(import ./hosts/lord/configuration.nix	inputs)
+					(import ./common.nix					inputs)
+					(import ./laptop.nix					inputs)
+					(import ./gui.nix						inputs)
+					(import ./libvirt.nix					inputs)
+					(import ./user-m.nix					inputs)
 				];
 
 				specialArgs = { inherit inputs; };
