@@ -150,6 +150,9 @@ in
 		lfs.enable = true;
 	};
 
+	# Firmware Updater
+	services.fwupd.enable = true;
+
 	# Interception-Tools
 	services.interception-tools = {
 		enable = true;
