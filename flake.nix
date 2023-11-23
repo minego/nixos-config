@@ -36,7 +36,7 @@
 				modules = [
 					./hosts/dent/configuration.nix
 					./modules/common.nix
-					./modules/laptop.nix
+					./modules/8bitdo.nix
 					./modules/libvirt.nix
 					./modules/gui.nix
 					./modules/interception-tools.nix
