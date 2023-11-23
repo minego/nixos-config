@@ -87,6 +87,7 @@ in
 		pkgs.firefox-wayland
 		pkgs.thunderbird
 		pkgs.kitty
+		pkgs.linuxConsoleTools # jstest
 	];
 
 	fonts.packages = [
