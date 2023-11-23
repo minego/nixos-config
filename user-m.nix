@@ -9,7 +9,6 @@
 			"networkmanager"
 			"wheel"
 			"video"
-			"libvirtd"
 		];
 
 		packages = with pkgs; [
