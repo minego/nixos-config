@@ -1,52 +1,32 @@
 {
-	description = "Micah N Gorrell's NixOS Flake";
-
-	# Inputs
-	# https://nixos.org/manual/nix/unstable/command-ref/new-cli/nix3-flake.html#flake-inputs
+	description = "Micah N Gorrell's NixOS Configuration";
 
 	inputs = {
 		nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-
-		dwl = {
-			url = "github:minego/dwl/master";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
-
-		mackeys = {
-			url = "github:minego/mackeys/main";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
-
-		swapmods = {
-			url = "github:minego/swapmods/main";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
 	};
 
 	outputs = {
 		self,
 		nixpkgs,
-
-		dwl,
-		mackeys,
-		swapmods,
 		... 
 	}@inputs:
-	{
+	let
+		inherit (self) outputs;
+	in {
 		nixosConfigurations = {
 			lord = inputs.nixpkgs.lib.nixosSystem {
 				system = "x86_64-linux";
+				specialArgs = {inherit inputs outputs;};
 
 				modules = [
-					(import ./hosts/lord/configuration.nix	inputs)
-					(import ./common.nix					inputs)
-					(import ./laptop.nix					inputs)
-					(import ./gui.nix						inputs)
-					(import ./libvirt.nix					inputs)
-					(import ./user-m.nix					inputs)
+					./hosts/lord/configuration.nix
+					./common.nix
+					./laptop.nix
+					./libvirt.nix
+					./user-m.nix
+					./gui.nix
+					./interception-tools.nix
 				];
-
-				specialArgs = { inherit inputs; };
 			};
 		};
 	};

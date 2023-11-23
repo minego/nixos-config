@@ -1,11 +1,5 @@
-{ swapmods, mackeys, ... }:
 { config, pkgs, lib, inputs, ... }:
 
-let
-	caps2escPkg	= pkgs.interception-tools-plugins.caps2esc;
-	mackeysPkg	= mackeys.packages.${pkgs.system}.default;
-	swapmodsPkg	= swapmods.packages.${pkgs.system}.default;
-in
 {
 	# Enable the nix command and flakes
 	nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -131,24 +125,6 @@ in
 
 	# Firmware Updater
 	services.fwupd.enable = true;
-
-	# Interception-Tools
-	services.interception-tools = {
-		enable = true;
-		plugins = [
-			caps2escPkg
-			mackeysPkg
-			swapmodsPkg
-		];
-		udevmonConfig = ''
-- JOB: "${pkgs.interception-tools}/bin/intercept -g $DEVNODE | ${swapmodsPkg}/bin/swapmods | ${mackeysPkg}/bin/mackeys | ${caps2escPkg}/bin/caps2esc -m 1 | ${pkgs.interception-tools}/bin/uinput -d $DEVNODE"
-  DEVICE:
-    NAME: AT Translated Set 2 keyboard
-- JOB: "${pkgs.interception-tools}/bin/intercept -g $DEVNODE | ${mackeysPkg}/bin/mackeys | ${caps2escPkg}/bin/caps2esc -m 1 | ${pkgs.interception-tools}/bin/uinput -d $DEVNODE"
-  DEVICE:
-    NAME: ".*((k|K)(eyboard|EYBOARD)).*"
-		'';
-	};
 
 	# Enable the OpenSSH daemon.
 	services.openssh = {

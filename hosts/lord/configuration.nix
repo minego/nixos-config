@@ -1,4 +1,3 @@
-{ dwl, swapmods, mackeys, ... }:
 { config, pkgs, lib, inputs, ... }:
 
 {

@@ -1,41 +1,82 @@
-{ dwl, ... }:
-{ config, pkgs, stdenv, lib, fetchzip, ... }:
+{ config, pkgs, lib, fetchzip, ... }:
 
 let
-	monaspaceFont = 
-		pkgs.stdenv.mkDerivation {
-			name	= "monaspace";
-			version	= "1.000";
+	dwl-minego = pkgs.stdenv.mkDerivation {
+		name = "dwl-minego";
+		src = pkgs.fetchFromGitHub {
+			owner	= "minego";
+			repo	= "dwl";
+			rev		= "f871b4214bf309ffbd9d10b01a9ab131c666e719";
+			sha256	= "sha256-MJA5Lz3v8WrCoxnuR9aD3d87mzeJWAAPAVmeY2qayWw=";
+		};
 
-			src		= pkgs.fetchFromGitHub {
-				owner	= "githubnext";
-				repo	= "monaspace";
-				rev		= "2bddc16670ec9cf00435a1725033f241184dedd1";
-				sha256	= "sha256-YgpK+a66s8YiJg481uFlRKUvu006Z2sMOpuvPFcDJH4=";
-			};
+		nativeBuildInputs = with pkgs; [
+			installShellFiles
+			pkg-config
+			wayland-scanner
+		];
 
-			installPhase = ''
+		buildInputs = with pkgs; [
+			libinput
+			xorg.libxcb
+			libxkbcommon
+			pixman
+			wayland
+			wayland-protocols
+			wlroots
+			xorg.libX11
+			xorg.xcbutilwm
+			xwayland
+		];
+		outputs = [ "out" "man" ];
+
+		makeFlags = [
+			"PKG_CONFIG=${pkgs.stdenv.cc.targetPrefix}pkg-config"
+			"WAYLAND_SCANNER=wayland-scanner"
+			"PREFIX=$(out)"
+			"MANDIR=$(man)/share/man"
+		];
+
+		meta = {
+			homepage = "https://github.com/minego/dwl/";
+			description = "Dynamic window manager for Wayland";
+			license = lib.licenses.gpl3Only;
+			# inherit (wayland.meta) platforms;
+		};
+	};
+
+	monaspaceFont = pkgs.stdenv.mkDerivation {
+		name	= "monaspace";
+		version	= "1.000";
+
+		src		= pkgs.fetchFromGitHub {
+			owner	= "githubnext";
+			repo	= "monaspace";
+			rev		= "2bddc16670ec9cf00435a1725033f241184dedd1";
+			sha256	= "sha256-YgpK+a66s8YiJg481uFlRKUvu006Z2sMOpuvPFcDJH4=";
+		};
+
+		installPhase = ''
 			mkdir -p $out/share/fonts/OTF/
 			cp -r fonts/otf/* $out/share/fonts/OTF/
-			'';
+		'';
+	};
+
+	sparkLinesFont = pkgs.stdenv.mkDerivation {
+		name	= "sparklines";
+		version	= "2.0";
+
+		src		= pkgs.fetchzip {
+			url			= "https://github.com/aftertheflood/sparks/releases/download/v2.0/Sparks-font-complete.zip";
+			stripRoot	= false;
+			hash		= "sha256-xp/rCZpitX2IZO1Tvl3Me1WSPsxy55BDDuoQzQGBlII=";
 		};
 
-	sparkLinesFont = 
-		pkgs.stdenv.mkDerivation {
-			name	= "sparklines";
-			version	= "2.0";
-
-			src		= pkgs.fetchzip {
-				url			= "https://github.com/aftertheflood/sparks/releases/download/v2.0/Sparks-font-complete.zip";
-				stripRoot	= false;
-				hash		= "sha256-xp/rCZpitX2IZO1Tvl3Me1WSPsxy55BDDuoQzQGBlII=";
-			};
-
-			installPhase = ''
+		installPhase = ''
 			mkdir -p $out/share/fonts/OTF/
 			cp -r Sparks/*.otf $out/share/fonts/OTF/
-			'';
-		};
+		'';
+	};
 in
 {
 	# GPU
@@ -47,7 +88,7 @@ in
 
 	environment.systemPackages = [
 		# My customized build of the DWL wayland compositor
-		dwl.packages.${pkgs.system}.default
+		dwl-minego
 
 		# XDG Portals
 		pkgs.xdg-desktop-portal
