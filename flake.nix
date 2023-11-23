@@ -21,11 +21,6 @@
 			url = "github:minego/swapmods/main";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
-
-		nix-index-database = {
-			url = "github:Mic92/nix-index-database";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
 	};
 
 	outputs = {
@@ -35,8 +30,6 @@
 		dwl,
 		mackeys,
 		swapmods,
-		nix-index-database,
-
 		... 
 	}@inputs:
 	{
@@ -51,9 +44,6 @@
 					(import ./gui.nix						inputs)
 					(import ./libvirt.nix					inputs)
 					(import ./user-m.nix					inputs)
-
-					# Comma
-					nix-index-database.nixosModules.nix-index
 				];
 
 				specialArgs = { inherit inputs; };

@@ -121,13 +121,8 @@ in
 		pkgs.bluez
 		pkgs.man-pages
 		pkgs.man-pages-posix
-
-		pkgs.comma
-		pkgs.nix-index
 	];
 	documentation.dev.enable = true;
-
-	programs.command-not-found.enable = false;
 
 	programs.git = {
 		enable = true;
