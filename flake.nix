@@ -20,12 +20,12 @@
 
 				modules = [
 					./hosts/lord/configuration.nix
-					./common.nix
-					./laptop.nix
-					./libvirt.nix
-					./user-m.nix
-					./gui.nix
-					./interception-tools.nix
+					./modules/common.nix
+					./modules/laptop.nix
+					./modules/libvirt.nix
+					./modules/gui.nix
+					./modules/interception-tools.nix
+					./users/m.nix
 				];
 			};
 		};
