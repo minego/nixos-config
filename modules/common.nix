@@ -89,32 +89,33 @@
 
 	# List packages installed in system profile. To search, run:
 	# $ nix search wget
-	environment.systemPackages = [
-		pkgs.zsh
-		pkgs.psmisc
-		pkgs.usbutils
-		pkgs.file
-		pkgs.zsh-syntax-highlighting
-		pkgs.zsh-vi-mode
-		pkgs.git
-		pkgs.gnumake
-		pkgs.neovim
-		pkgs.fzf
-		pkgs.dtach
-		pkgs.gcc
-		pkgs.clang
-		pkgs.clang-tools
-		pkgs.gdb
-		pkgs.direnv
-		pkgs.go
-		pkgs.curl
-		pkgs.stow
-		pkgs.inotify-tools
-		pkgs.polkit
-		pkgs.polkit_gnome
-		pkgs.bluez
-		pkgs.man-pages
-		pkgs.man-pages-posix
+	environment.systemPackages = with pkgs; [
+		zsh
+		psmisc
+		usbutils
+		file
+		zsh-syntax-highlighting
+		zsh-vi-mode
+		git
+		gnumake
+		neovim
+		fzf
+		dtach
+		gcc
+		clang
+		clang-tools
+		gdb
+		direnv
+		go
+		curl
+		localsend
+		stow
+		inotify-tools
+		polkit
+		polkit_gnome
+		bluez
+		man-pages
+		man-pages-posix
 	];
 	documentation.dev.enable = true;
 
@@ -138,6 +139,10 @@
 	# networking.firewall.allowedUDPPorts = [ ... ];
 	# Or disable the firewall altogether.
 	# networking.firewall.enable = false;
+
+	# 53317 is used by localsend
+	networking.firewall.allowedTCPPorts = [ 53317 ];
+	networking.firewall.allowedUDPPorts = [ 53317 ];
 
 	# This value determines the NixOS release from which the default
 	# settings for stateful data, like file locations and database versions

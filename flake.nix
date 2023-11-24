@@ -25,6 +25,7 @@
 					./modules/libvirt.nix
 					./modules/docker.nix
 					./modules/gui.nix
+					./modules/syncthing.nix
 					./modules/interception-tools.nix
 					./users/m.nix
 				];
@@ -41,6 +42,7 @@
 					./modules/libvirt.nix
 					./modules/docker.nix
 					./modules/gui.nix
+					./modules/syncthing.nix
 					./modules/interception-tools.nix
 					./users/m.nix
 				];
