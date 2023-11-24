@@ -173,6 +173,9 @@ in
 			# xdg-desktop-portal-gtk
 		];
 
+		# Keep the behavior as it was prior to xdg-desktop-portal 1.17 until
+		# I can find better documentation for the xdg.portal.config option
+		config.common.default = "*";
 	};
 
 	environment.shellAliases = {
