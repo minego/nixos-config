@@ -23,6 +23,7 @@
 					./modules/common.nix
 					./modules/laptop.nix
 					./modules/libvirt.nix
+					./modules/docker.nix
 					./modules/gui.nix
 					./modules/interception-tools.nix
 					./users/m.nix
@@ -38,6 +39,7 @@
 					./modules/common.nix
 					./modules/8bitdo.nix
 					./modules/libvirt.nix
+					./modules/docker.nix
 					./modules/gui.nix
 					./modules/interception-tools.nix
 					./users/m.nix
