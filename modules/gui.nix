@@ -114,6 +114,7 @@ in
 		pkgs.sway-audio-idle-inhibit
 		pkgs.lxappearance
 		pkgs.bemenu
+		pkgs.j4-dmenu-desktop
 		pkgs.glib
 
 		# Applications
@@ -129,6 +130,7 @@ in
 		pkgs.thunderbird
 		pkgs.kitty
 		pkgs.linuxConsoleTools # jstest
+		pkgs.chromium
 	];
 
 	fonts.packages = [
