@@ -23,6 +23,11 @@
 	environment.systemPackages = with pkgs; [
 		clinfo
 		blender-hip
+		rocmPackages.clr
+	];
+
+	systemd.tmpfiles.rules = [
+		"L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
 	];
 
 	networking.hostName = "dent";
