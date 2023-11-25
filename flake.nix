@@ -62,6 +62,7 @@
 					./modules/common.nix
 					./modules/libvirt.nix
 					./modules/interception-tools.nix
+					./modules/plex.nix
 					./users/m.nix
 				];
 			};

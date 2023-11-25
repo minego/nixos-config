@@ -72,7 +72,7 @@
 	};
 
 	# Mergerfs aggregate volume
-	fileSystems."/mnt/media" = {
+	fileSystems."/data" = {
 		device = "/mnt/media?";
 		fsType = "fuse.mergerfs";
 		depends = [
