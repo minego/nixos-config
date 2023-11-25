@@ -93,6 +93,8 @@
 		zsh
 		psmisc
 		usbutils
+		pciutils
+		hwinfo
 		file
 		zsh-syntax-highlighting
 		zsh-vi-mode

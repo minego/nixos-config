@@ -62,7 +62,11 @@
 					./modules/common.nix
 					./modules/libvirt.nix
 					./modules/interception-tools.nix
+
+					./modules/nginx.nix
+					./modules/vaultwarden.nix
 					./modules/plex.nix
+					./modules/sabnzbd.nix
 					./users/m.nix
 				];
 			};
