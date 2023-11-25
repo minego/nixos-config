@@ -53,6 +53,19 @@
 				];
 			};
 
+			hotblack = inputs.nixpkgs.lib.nixosSystem {
+				system = "x86_64-linux";
+				specialArgs = {inherit inputs outputs;};
+
+				modules = [
+					./hosts/hotblack/configuration.nix
+					./modules/common.nix
+					./modules/libvirt.nix
+					./modules/interception-tools.nix
+					./users/m.nix
+				];
+			};
+
 		};
 	};
 }
