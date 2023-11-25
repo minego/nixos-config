@@ -116,6 +116,7 @@
 		bluez
 		man-pages
 		man-pages-posix
+		kitty.terminfo
 	];
 	documentation.dev.enable = true;
 
