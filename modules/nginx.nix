@@ -1,10 +1,11 @@
 { config, pkgs, ... }:
 {
 	services.nginx = {
-		enable = true;
+		enable					= true;
 
-		recommendedProxySettings = true;
-		recommendedTlsSettings = true;
+		recommendedProxySettings= true;
+		recommendedTlsSettings	= true;
+		recommendedGzipSettings	= true;
 
 		virtualHosts."minego.net" = {
 			forceSSL			= true;
