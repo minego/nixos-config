@@ -3,7 +3,6 @@
 	services.vaultwarden = {
 		enable			= true;
 		dbBackend		= "sqlite";
-		backupDir		= "/var/lib/vaultwarden/db_backup";
 
 		config = {
 			# DATA_FOLDER			= "/var/lib/bitwarden_rs/data";

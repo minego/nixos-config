@@ -2,10 +2,7 @@
 {
 	services.sabnzbd = {
 		enable			= true;
-
-		user			= "plex";
 		group			= "plex";
-
 		configFile		= "/var/lib/sabnzbd/sabnzbd.ini";
 	};
 
@@ -14,5 +11,15 @@
 	environment.systemPackages = with pkgs; [
 		par2cmdline
 	];
+
+	# Reverse proxy with subdir
+	services.nginx.virtualHosts."minego.net" = {
+		locations."/sabnzbd" = {
+			proxyPass = "http://127.0.0.1:8080";
+			proxyWebsockets = true;
+			extraConfig = "proxy_pass_header Authorization;";
+		};
+	};
+
 }
 

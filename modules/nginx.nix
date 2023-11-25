@@ -10,9 +10,19 @@
 		virtualHosts."minego.net" = {
 			forceSSL			= true;
 			default				= true;
+			root				= "/var/www/minego.net/";
 
 			locations."/" = {
-				root			= "/var/www/minego.net";
+			};
+
+			locations."/.videos/Movies/" = {
+				alias			= "/data/Movies/";
+				extraConfig		= "autoindex on;";
+			};
+
+			locations."/.videos/TV/" = {
+				alias			= "/data/TV/";
+				extraConfig		= "autoindex on;";
 			};
 
 			serverAliases		= [
@@ -26,6 +36,7 @@
 			sslCertificateKey	= "/var/lib/acme/minego.net/key.pem";
 		};
 	};
+
 	security.acme = {
 		acceptTerms			= true;
 		defaults = {
@@ -40,6 +51,7 @@
 			domain			= "*.minego.net";
 			dnsProvider		= "cloudflare";
 			group			= "nginx";
+			extraDomainNames= [ "minego.net" ];
 		};
 	};
 
