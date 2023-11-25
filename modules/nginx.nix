@@ -1,24 +1,29 @@
 { config, pkgs, ... }:
 {
-	services.nginx.enable = true;
+	services.nginx = {
+		enable = true;
 
-	services.nginx.virtualHosts."minego.net" = {
-		forceSSL			= true;
-		# enableACME			= true;
+		recommendedProxySettings = true;
+		recommendedTlsSettings = true;
 
-		locations."/" = {
-			root			= "/var/www/minego.net";
+		virtualHosts."minego.net" = {
+			forceSSL			= true;
+			default				= true;
+
+			locations."/" = {
+				root			= "/var/www/minego.net";
+			};
+
+			serverAliases		= [
+				"minego.net"
+				"www.minego.net"
+				"micahgorrell.com"
+				"www.micahgorrell.com"
+			];
+
+			sslCertificate		= "/var/lib/acme/minego.net/fullchain.pem";
+			sslCertificateKey	= "/var/lib/acme/minego.net/key.pem";
 		};
-
-		serverAliases		= [
-			"minego.net"
-			"www.minego.net"
-			"micahgorrell.com"
-			"www.micahgorrell.com"
-		];
-
-		sslCertificate		= "/var/lib/acme/minego.net/fullchain.pem";
-		sslCertificateKey	= "/var/lib/acme/minego.net/key.pem";
 	};
 	security.acme = {
 		acceptTerms			= true;
