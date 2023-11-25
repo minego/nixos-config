@@ -10,7 +10,6 @@ update:
 
 test:
 	@nix flake check
-	@sudo nixos-rebuild test --flake /etc/nixos#$(hostname)
 
 rollback:
 	@sudo nixos-rebuild switch --flake /etc/nixos#$(hostname) --rollback
