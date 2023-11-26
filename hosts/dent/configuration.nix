@@ -5,6 +5,20 @@
 		./hardware-configuration.nix
 	];
 
+	# Enable networking, with DHCP and a bridge device
+	networking.hostName = "dent";
+
+	networking.useDHCP = false;
+	networking.interfaces.eno1.useDHCP = true;
+	networking.interfaces.br0.useDHCP = true;
+	networking.bridges = {
+		"br0" = {
+			interfaces = [ "eno1" ];
+		};
+	};
+
+	time.timeZone = "America/Denver";
+
 	# amdgpu
 	boot.initrd.kernelModules = [ "amdgpu" ];
 	hardware.opengl.extraPackages = with pkgs; [
@@ -29,12 +43,4 @@
 	systemd.tmpfiles.rules = [
 		"L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
 	];
-
-	networking.hostName = "dent";
-
-	# Enable Network Manager
-	networking.networkmanager.enable = true;
-	programs.nm-applet.enable = true;
-
-	time.timeZone = "America/Denver";
 }

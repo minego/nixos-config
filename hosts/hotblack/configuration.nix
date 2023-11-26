@@ -5,6 +5,7 @@
 		./hardware-configuration.nix
     ];
 
+	# Enable networking, with DHCP and a bridge device
 	networking.hostName = "hotblack";
 
 	networking.useDHCP = false;
