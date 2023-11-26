@@ -94,6 +94,15 @@
 		];
 	};
 
+	# The 1TB fast nvme m.2 drive
+	fileSystems."/mnt/data" = {
+		device = "/dev/disk/by-uuid/7c0c654c-ed5a-4ee8-afa7-60ba53934361";
+		fsType = "auto";
+		depends = [ "/" ];
+		options = [ "relatime" "nofail" ];
+	};
+
+
 	swapDevices = [ ];
 
 	# Enables DHCP on each ethernet and wireless interface. In case of scripted networking
