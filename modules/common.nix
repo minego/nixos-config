@@ -7,6 +7,12 @@
 	# Allow unfree packages
 	nixpkgs.config.allowUnfree = true;
 
+	services.avahi = {
+		enable = true;
+		nssmdns = true;
+		openFirewall = true;
+	};
+
 	security.sudo.wheelNeedsPassword = false;
 
 	# Automatic Upgrades
