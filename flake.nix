@@ -66,6 +66,8 @@
 					./modules/nginx.nix
 					./modules/vaultwarden.nix
 					./modules/plex.nix
+					./modules/sonarr.nix
+					./modules/radarr.nix
 					./modules/sabnzbd.nix
 					./users/m.nix
 				];
