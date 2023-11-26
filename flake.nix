@@ -62,6 +62,7 @@
 					./modules/common.nix
 					./modules/libvirt.nix
 					./modules/interception-tools.nix
+					./modules/printer.nix
 
 					./modules/nginx.nix
 					./modules/vaultwarden.nix
@@ -69,6 +70,7 @@
 					./modules/sonarr.nix
 					./modules/radarr.nix
 					./modules/sabnzbd.nix
+
 					./users/m.nix
 				];
 			};

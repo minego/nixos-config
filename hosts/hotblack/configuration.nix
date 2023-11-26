@@ -55,8 +55,4 @@
 		# Optionally, you may need to select the appropriate driver version for your specific GPU.
 		package = config.boot.kernelPackages.nvidiaPackages.stable;
 	};
-
-	# Enable support for scanners
-	hardware.sane.enable = true;
-	users.users.m.extraGroups = [ "scanner" "lp" ];
 }
