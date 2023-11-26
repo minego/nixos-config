@@ -31,5 +31,10 @@
 	];
 
 	networking.hostName = "dent";
+
+	# Enable Network Manager
+	networking.networkmanager.enable = true;
+	programs.nm-applet.enable = true;
+
 	time.timeZone = "America/Denver";
 }

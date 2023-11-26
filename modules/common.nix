@@ -17,10 +17,6 @@
 	boot.loader.systemd-boot.enable = true;
 	boot.loader.efi.canTouchEfiVariables = true;
 
-	# Enable networking
-	networking.networkmanager.enable = true;
-	programs.nm-applet.enable = true;
-
 	# Select internationalisation properties.
 	i18n.defaultLocale = "en_US.UTF-8";
 
