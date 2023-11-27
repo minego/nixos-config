@@ -9,8 +9,8 @@ update:
 	@nixos-rebuild build
 	@nix store diff-closures /run/current-system ./result
 	@echo ================================================================================
-	@echo "Press enter or wait 10 seconds to continue, or ctrl-c to cancel" 
-	@bash -c 'read -t 10 -p "... " ignore'
+	@echo "Press enter or wait 30 seconds to continue, or ctrl-c to cancel" 
+	@bash -c 'read -t 30 -p "... " ignore' || true
 	@sudo nixos-rebuild switch --flake /etc/nixos#$(hostname) --upgrade
 
 test:
