@@ -6,6 +6,11 @@ switch:
 
 update:
 	@nix flake update
+	@nixos-rebuild build
+	@nix store diff-closures /run/current-system ./result
+	@echo ================================================================================
+	@echo "Press enter or wait 10 seconds to continue, or ctrl-c to cancel" 
+	@bash -c 'read -t 10 -p "... " ignore'
 	@sudo nixos-rebuild switch --flake /etc/nixos#$(hostname) --upgrade
 
 test:
