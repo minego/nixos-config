@@ -180,6 +180,25 @@ in
 		config.common.default = "*";
 	};
 
+	xdg.mime.defaultApplications = {
+		"text/html"					= "firefox.desktop";
+		"x-scheme-handler/http"		= "firefox.desktop";
+		"x-scheme-handler/https"	= "firefox.desktop";
+		"x-scheme-handler/about"	= "firefox.desktop";
+		"x-scheme-handler/unknown"	= "firefox.desktop";
+	};
+	environment.sessionVariables.BROWSER			= "${pkgs.firefox-wayland}/bin/firefox";
+	environment.sessionVariables.DEFAULT_BROWSER	= "${pkgs.firefox-wayland}/bin/firefox";
+
+	# Make Firefox use the native file picker
+	programs.firefox = {
+		enable = true;
+		preferences = {
+			"widget.use-xdg-desktop-portal.file-picker" = 1;
+		};
+	};
+
+
 	environment.shellAliases = {
 		lyrics = "sptlrx";
 	};

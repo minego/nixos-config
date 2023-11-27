@@ -97,6 +97,7 @@
 		usbutils
 		pciutils
 		hwinfo
+		lsof
 		file
 		zsh-syntax-highlighting
 		zsh-vi-mode
