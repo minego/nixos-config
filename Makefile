@@ -4,6 +4,9 @@ all:
 switch:
 	@sudo nixos-rebuild switch --flake /etc/nixos#$(hostname)
 
+switch-offline:
+	@sudo nixos-rebuild switch --flake /etc/nixos#$(hostname) --option substitute false
+
 update:
 	@nix flake update
 	@nixos-rebuild build

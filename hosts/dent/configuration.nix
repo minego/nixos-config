@@ -9,11 +9,11 @@
 	networking.hostName = "dent";
 
 	networking.useDHCP = false;
-	networking.interfaces.eno1.useDHCP = true;
+	networking.interfaces.enp42s0.useDHCP = true;
 	networking.interfaces.br0.useDHCP = true;
 	networking.bridges = {
 		"br0" = {
-			interfaces = [ "eno1" ];
+			interfaces = [ "enp42s0" ];
 		};
 	};
 
