@@ -131,6 +131,7 @@ in
 		pkgs.kitty
 		pkgs.linuxConsoleTools # jstest
 		pkgs.chromium
+		pkgs.freerdp
 	];
 
 	fonts.packages = [
