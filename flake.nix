@@ -28,7 +28,6 @@
 					./modules/common.nix
 					./modules/laptop.nix
 					./modules/libvirt.nix
-					./modules/docker.nix
 					./modules/gui.nix
 					./modules/syncthing.nix
 					./modules/interception-tools.nix
@@ -45,7 +44,6 @@
 					./modules/common.nix
 					./modules/8bitdo.nix
 					./modules/libvirt.nix
-					./modules/docker.nix
 					./modules/gui.nix
 					./modules/syncthing.nix
 					./modules/interception-tools.nix
