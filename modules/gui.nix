@@ -1,6 +1,9 @@
 { config, pkgs, lib, fetchzip, ... }:
+with lib;
 
 let
+	cfg = config.gui;
+
 	dwl-minego = pkgs.stdenv.mkDerivation {
 		name = "dwl-minego";
 		src = pkgs.fetchFromGitHub {
@@ -79,139 +82,139 @@ let
 	};
 in
 {
-	# GPU
-	hardware.opengl = {
-		enable = true;
-		driSupport = true;
-		driSupport32Bit = true;
+	# Options consumers of this module can set
+	options.gui = {
+		enable = mkEnableOption "Enable a GUI";
 	};
 
-	environment.systemPackages = [
-		# My customized build of the DWL wayland compositor
-		dwl-minego
+	config = mkIf cfg.enable {
+		environment.systemPackages = [
+			# My customized build of the DWL wayland compositor
+			dwl-minego
 
-		# XDG Portals
-		pkgs.xdg-desktop-portal
-		pkgs.xdg-desktop-portal-wlr
-		pkgs.xdg-desktop-portal-gtk
-		pkgs.xdg-utils
+			# XDG Portals
+			pkgs.xdg-desktop-portal
+			pkgs.xdg-desktop-portal-wlr
+			pkgs.xdg-desktop-portal-gtk
+			pkgs.xdg-utils
 
-		# Tools used by my DWL/wayland setup
-		pkgs.fzf
-		pkgs.wayland
-		pkgs.swayidle
-		pkgs.swaylock-effects
-		pkgs.waybar
-		pkgs.wob
-		pkgs.swaynotificationcenter
-		pkgs.udiskie
-		pkgs.playerctl
-		pkgs.sptlrx
-		pkgs.inotify-tools
-		pkgs.mpvpaper
-		pkgs.wlr-randr
-		pkgs.sway-contrib.grimshot
-		pkgs.sway-audio-idle-inhibit
-		pkgs.lxappearance
-		pkgs.bemenu
-		pkgs.j4-dmenu-desktop
-		pkgs.glib
+			# Tools used by my DWL/wayland setup
+			pkgs.fzf
+			pkgs.wayland
+			pkgs.swayidle
+			pkgs.swaylock-effects
+			pkgs.waybar
+			pkgs.wob
+			pkgs.swaynotificationcenter
+			pkgs.udiskie
+			pkgs.playerctl
+			pkgs.sptlrx
+			pkgs.inotify-tools
+			pkgs.mpvpaper
+			pkgs.wlr-randr
+			pkgs.sway-contrib.grimshot
+			pkgs.sway-audio-idle-inhibit
+			pkgs.lxappearance
+			pkgs.bemenu
+			pkgs.j4-dmenu-desktop
+			pkgs.glib
 
-		# Applications
-		pkgs.spotify
-		pkgs.wdisplays
-		pkgs.slack
-		pkgs.bitwarden
-		pkgs.pavucontrol
-		pkgs.pamixer
-		pkgs.steam
-		pkgs.tridactyl-native
-		pkgs.firefox-wayland
-		pkgs.thunderbird
-		pkgs.kitty
-		pkgs.linuxConsoleTools # jstest
-		pkgs.chromium
-		pkgs.freerdp
-	];
-
-	fonts.packages = [
-		pkgs.nerdfonts
-		pkgs.noto-fonts
-		pkgs.noto-fonts-cjk
-		pkgs.noto-fonts-emoji
-		pkgs.liberation_ttf
-		pkgs.fira-code
-		pkgs.fira-code-symbols
-		pkgs.mplus-outline-fonts.githubRelease
-		pkgs.dina-font
-		pkgs.proggyfonts
-		pkgs.terminus_font
-		monaspaceFont
-		sparkLinesFont
-	];
-	fonts.fontconfig.defaultFonts = {
-		serif = [ "Noto Serif" ];
-		sansSerif = [ "Monaspace Neon Light" "Noto Sans" ];
-	};
-
-	# This is needed for swaylock to work properly
-	security.pam.services.swaylock = {};
-	security.pam.loginLimits = [
-		{ domain = "@users"; item = "rtprio"; type = "-"; value = 1; }
-	];
-
-	# Make wayland applications behave
-	environment.sessionVariables.NIXOS_OZONE_WL = "1";
-
-	# XDG Desktop Portal
-	services.dbus.enable = true;
-	xdg.portal = {
-		enable = true;
-		wlr.enable = true;
-
-		# xdgOpenUsePortal = true;
-
-		extraPortals = with pkgs; [
-			xdg-desktop-portal-wlr
-			# xdg-desktop-portal-gtk
+			# Applications
+			pkgs.spotify
+			pkgs.wdisplays
+			pkgs.slack
+			pkgs.bitwarden
+			pkgs.pavucontrol
+			pkgs.pamixer
+			pkgs.steam
+			pkgs.tridactyl-native
+			pkgs.firefox-wayland
+			pkgs.thunderbird
+			pkgs.kitty
+			pkgs.linuxConsoleTools # jstest
+			pkgs.chromium
+			pkgs.freerdp
 		];
 
-		# Keep the behavior as it was prior to xdg-desktop-portal 1.17 until
-		# I can find better documentation for the xdg.portal.config option
-		config.common.default = "*";
-	};
-
-	xdg.mime.defaultApplications = {
-		"text/html"					= "firefox.desktop";
-		"x-scheme-handler/http"		= "firefox.desktop";
-		"x-scheme-handler/https"	= "firefox.desktop";
-		"x-scheme-handler/about"	= "firefox.desktop";
-		"x-scheme-handler/unknown"	= "firefox.desktop";
-	};
-	environment.sessionVariables.BROWSER			= "${pkgs.firefox-wayland}/bin/firefox";
-	environment.sessionVariables.DEFAULT_BROWSER	= "${pkgs.firefox-wayland}/bin/firefox";
-
-	# Make Firefox use the native file picker
-	programs.firefox = {
-		enable = true;
-		preferences = {
-			"widget.use-xdg-desktop-portal.file-picker" = 1;
+		fonts.packages = [
+			pkgs.nerdfonts
+			pkgs.noto-fonts
+			pkgs.noto-fonts-cjk
+			pkgs.noto-fonts-emoji
+			pkgs.liberation_ttf
+			pkgs.fira-code
+			pkgs.fira-code-symbols
+			pkgs.mplus-outline-fonts.githubRelease
+			pkgs.dina-font
+			pkgs.proggyfonts
+			pkgs.terminus_font
+			monaspaceFont
+			sparkLinesFont
+		];
+		fonts.fontconfig.defaultFonts = {
+			serif = [ "Noto Serif" ];
+			sansSerif = [ "Monaspace Neon Light" "Noto Sans" ];
 		};
+
+		# This is needed for swaylock to work properly
+		security.pam.services.swaylock = {};
+		security.pam.loginLimits = [
+			{ domain = "@users"; item = "rtprio"; type = "-"; value = 1; }
+		];
+
+		# Make wayland applications behave
+		environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
+		# XDG Desktop Portal
+		services.dbus.enable = true;
+		xdg.portal = {
+			enable = true;
+			wlr.enable = true;
+
+			# xdgOpenUsePortal = true;
+
+			extraPortals = with pkgs; [
+				xdg-desktop-portal-wlr
+				# xdg-desktop-portal-gtk
+			];
+
+			# Keep the behavior as it was prior to xdg-desktop-portal 1.17 until
+			# I can find better documentation for the xdg.portal.config option
+			config.common.default = "*";
+		};
+
+		xdg.mime.defaultApplications = {
+			"text/html"					= "firefox.desktop";
+			"x-scheme-handler/http"		= "firefox.desktop";
+			"x-scheme-handler/https"	= "firefox.desktop";
+			"x-scheme-handler/about"	= "firefox.desktop";
+			"x-scheme-handler/unknown"	= "firefox.desktop";
+		};
+		environment.sessionVariables.BROWSER			= "${pkgs.firefox-wayland}/bin/firefox";
+		environment.sessionVariables.DEFAULT_BROWSER	= "${pkgs.firefox-wayland}/bin/firefox";
+
+		# Make Firefox use the native file picker
+		programs.firefox = {
+			enable = true;
+			preferences = {
+				"widget.use-xdg-desktop-portal.file-picker" = 1;
+			};
+		};
+
+
+		environment.shellAliases = {
+			lyrics = "sptlrx";
+		};
+
+		programs.steam = {
+			enable = true;
+			remotePlay.openFirewall = true;
+			dedicatedServer.openFirewall = true;
+		};
+		hardware.steam-hardware.enable = true;
+
+		programs.dconf.enable = true;
+		programs.light.enable = true;
 	};
-
-
-	environment.shellAliases = {
-		lyrics = "sptlrx";
-	};
-
-	programs.steam = {
-		enable = true;
-		remotePlay.openFirewall = true;
-		dedicatedServer.openFirewall = true;
-	};
-	hardware.steam-hardware.enable = true;
-
-	programs.dconf.enable = true;
-	programs.light.enable = true;
 }
 

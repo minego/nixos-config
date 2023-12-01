@@ -10,69 +10,23 @@
 		};
 	};
 
-	outputs = {
-		self,
-		nixpkgs,
-		... 
-	}@inputs:
+	outputs = { self, nixpkgs, home-manager, ... }@inputs:
 	let
 		inherit (self) outputs;
-	in {
+
+		overlays = [
+		];
+	in rec {
 		nixosConfigurations = {
-			lord = inputs.nixpkgs.lib.nixosSystem {
-				system = "x86_64-linux";
-				specialArgs = {inherit inputs outputs;};
+			dent		= import ./hosts/dent		{ inherit inputs overlays; };
+			lord		= import ./hosts/lord		{ inherit inputs overlays; };
+			hotblack	= import ./hosts/hotblack	{ inherit inputs overlays; };
+		};
 
-				modules = [
-					./hosts/lord/configuration.nix
-					./modules/common.nix
-					./modules/laptop.nix
-					./modules/libvirt.nix
-					./modules/gui.nix
-					./modules/syncthing.nix
-					./modules/interception-tools.nix
-					./users/m.nix
-				];
-			};
-
-			dent = inputs.nixpkgs.lib.nixosSystem {
-				system = "x86_64-linux";
-				specialArgs = {inherit inputs outputs;};
-
-				modules = [
-					./hosts/dent/configuration.nix
-					./modules/common.nix
-					./modules/8bitdo.nix
-					./modules/libvirt.nix
-					./modules/gui.nix
-					./modules/syncthing.nix
-					./modules/interception-tools.nix
-					./users/m.nix
-				];
-			};
-
-			hotblack = inputs.nixpkgs.lib.nixosSystem {
-				system = "x86_64-linux";
-				specialArgs = {inherit inputs outputs;};
-
-				modules = [
-					./hosts/hotblack/configuration.nix
-					./modules/common.nix
-					./modules/libvirt.nix
-					./modules/interception-tools.nix
-					./modules/printer.nix
-
-					./modules/nginx.nix
-					./modules/vaultwarden.nix
-					./modules/plex.nix
-					./modules/sonarr.nix
-					./modules/radarr.nix
-					./modules/sabnzbd.nix
-
-					./users/m.nix
-				];
-			};
-
+		homeConfigurations = {
+			dent		= nixosConfigurations.dent.config.home-manager.users.m.home;
+			lord		= nixosConfigurations.lord.config.home-manager.users.m.home;
+			hotblack	= nixosConfigurations.hotblack.config.home-manager.users.m.home;
 		};
 	};
 }

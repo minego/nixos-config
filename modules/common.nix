@@ -93,28 +93,23 @@
 	# $ nix search wget
 	environment.systemPackages = with pkgs; [
 		home-manager
+
 		zsh
+		zsh-syntax-highlighting
+		zsh-vi-mode
+
 		psmisc
 		usbutils
 		pciutils
 		hwinfo
 		lsof
 		file
-		zsh-syntax-highlighting
-		zsh-vi-mode
-		git
+
 		gnumake
-		neovim
-		fzf
 		dtach
-		gcc
-		clang
-		clang-tools
-		gdb
 		direnv
-		go
+
 		curl
-		localsend
 		stow
 		inotify-tools
 		polkit
@@ -126,9 +121,16 @@
 	];
 	documentation.dev.enable = true;
 
+	programs.neovim = {
+		enable			= true;
+		defaultEditor	= true;
+		viAlias			= true;
+		vimAlias		= true;
+	};
+
 	programs.git = {
-		enable = true;
-		lfs.enable = true;
+		enable			= true;
+		lfs.enable		= true;
 	};
 
 	# Firmware Updater
