@@ -37,7 +37,6 @@ rec {
 
 		home.file = {
 			neovim = {
-				recursive = true;
 				source = pkgs.fetchFromGitHub {
 					owner	= "minego";
 					repo	= "dotfiles.neovim";
