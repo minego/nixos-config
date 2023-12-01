@@ -2,50 +2,6 @@
 with lib;
 
 let
-	dwl-minego = pkgs.stdenv.mkDerivation {
-		name = "dwl-minego";
-		src = pkgs.fetchFromGitHub {
-			owner	= "minego";
-			repo	= "dwl";
-			rev		= "f871b4214bf309ffbd9d10b01a9ab131c666e719";
-			sha256	= "sha256-MJA5Lz3v8WrCoxnuR9aD3d87mzeJWAAPAVmeY2qayWw=";
-		};
-
-		nativeBuildInputs = with pkgs; [
-			installShellFiles
-			pkg-config
-			wayland-scanner
-		];
-
-		buildInputs = with pkgs; [
-			libinput
-			xorg.libxcb
-			libxkbcommon
-			pixman
-			wayland
-			wayland-protocols
-			wlroots
-			xorg.libX11
-			xorg.xcbutilwm
-			xwayland
-		];
-		outputs = [ "out" "man" ];
-
-		makeFlags = [
-			"PKG_CONFIG=${pkgs.stdenv.cc.targetPrefix}pkg-config"
-			"WAYLAND_SCANNER=wayland-scanner"
-			"PREFIX=$(out)"
-			"MANDIR=$(man)/share/man"
-		];
-
-		meta = {
-			homepage = "https://github.com/minego/dwl/";
-			description = "Dynamic window manager for Wayland";
-			license = lib.licenses.gpl3Only;
-			# inherit (wayland.meta) platforms;
-		};
-	};
-
 	monaspaceFont = pkgs.stdenv.mkDerivation {
 		name	= "monaspace";
 		version	= "1.000";
@@ -86,66 +42,65 @@ in
 	};
 
 	config = mkIf config.gui.enable {
-		environment.systemPackages = [
-			# My customized build of the DWL wayland compositor
-			dwl-minego
+		environment.systemPackages = with pkgs; [
+			dwl
 
 			# XDG Portals
-			pkgs.xdg-desktop-portal
-			pkgs.xdg-desktop-portal-wlr
-			pkgs.xdg-desktop-portal-gtk
-			pkgs.xdg-utils
+			xdg-desktop-portal
+			xdg-desktop-portal-wlr
+			xdg-desktop-portal-gtk
+			xdg-utils
 
 			# Tools used by my DWL/wayland setup
-			pkgs.fzf
-			pkgs.wayland
-			pkgs.swayidle
-			pkgs.swaylock-effects
-			pkgs.waybar
-			pkgs.wob
-			pkgs.swaynotificationcenter
-			pkgs.udiskie
-			pkgs.playerctl
-			pkgs.sptlrx
-			pkgs.inotify-tools
-			pkgs.mpvpaper
-			pkgs.wlr-randr
-			pkgs.sway-contrib.grimshot
-			pkgs.sway-audio-idle-inhibit
-			pkgs.lxappearance
-			pkgs.bemenu
-			pkgs.j4-dmenu-desktop
-			pkgs.glib
+			fzf
+			wayland
+			swayidle
+			swaylock-effects
+			waybar
+			wob
+			swaynotificationcenter
+			udiskie
+			playerctl
+			sptlrx
+			inotify-tools
+			mpvpaper
+			wlr-randr
+			sway-contrib.grimshot
+			sway-audio-idle-inhibit
+			lxappearance
+			bemenu
+			j4-dmenu-desktop
+			glib
 
 			# Applications
-			pkgs.spotify
-			pkgs.wdisplays
-			pkgs.slack
-			pkgs.bitwarden
-			pkgs.pavucontrol
-			pkgs.pamixer
-			pkgs.steam
-			pkgs.tridactyl-native
-			pkgs.firefox-wayland
-			pkgs.thunderbird
-			pkgs.kitty
-			pkgs.linuxConsoleTools # jstest
-			pkgs.chromium
-			pkgs.freerdp
+			spotify
+			wdisplays
+			slack
+			bitwarden
+			pavucontrol
+			pamixer
+			steam
+			tridactyl-native
+			firefox-wayland
+			thunderbird
+			kitty
+			linuxConsoleTools # jstest
+			chromium
+			freerdp
 		];
 
-		fonts.packages = [
-			pkgs.nerdfonts
-			pkgs.noto-fonts
-			pkgs.noto-fonts-cjk
-			pkgs.noto-fonts-emoji
-			pkgs.liberation_ttf
-			pkgs.fira-code
-			pkgs.fira-code-symbols
-			pkgs.mplus-outline-fonts.githubRelease
-			pkgs.dina-font
-			pkgs.proggyfonts
-			pkgs.terminus_font
+		fonts.packages = with pkgs; [
+			nerdfonts
+			noto-fonts
+			noto-fonts-cjk
+			noto-fonts-emoji
+			liberation_ttf
+			fira-code
+			fira-code-symbols
+			mplus-outline-fonts.githubRelease
+			dina-font
+			proggyfonts
+			terminus_font
 			monaspaceFont
 			sparkLinesFont
 		];

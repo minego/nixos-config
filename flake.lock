@@ -1,5 +1,25 @@
 {
   "nodes": {
+    "dwl-minego": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1701449613,
+        "narHash": "sha256-useSL5mbJEVycsDX0bMFfnqeq8ki2863nA36fLg2teg=",
+        "owner": "minego",
+        "repo": "dwl",
+        "rev": "f2ee3030321b3ed782f78bfe64c916aa872d9bcf",
+        "type": "github"
+      },
+      "original": {
+        "owner": "minego",
+        "repo": "dwl",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -58,6 +78,7 @@
     },
     "root": {
       "inputs": {
+        "dwl-minego": "dwl-minego",
         "home-manager": "home-manager",
         "mackeys": "mackeys",
         "nixpkgs": "nixpkgs",

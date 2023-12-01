@@ -18,13 +18,19 @@
 			url = "github:minego/swapmods";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+
+		dwl-minego = {
+			url = "github:minego/dwl";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
 	};
 
-	outputs = { self, nixpkgs, home-manager, swapmods, mackeys, ... }@inputs:
+	outputs = { self, nixpkgs, home-manager, swapmods, mackeys, dwl-minego, ... }@inputs:
 	let
 		inherit (self) outputs;
 
 		overlays = [
+			dwl-minego.overlay
 			swapmods.overlay
 			mackeys.overlay
 		];
