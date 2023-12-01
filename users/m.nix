@@ -59,17 +59,35 @@ rec {
 		};
 
 		programs.git = {
-			enable			= true;
-			userName		= "Micah N Gorrell";
-			userEmail		= "m@minego.net";
-
-			lfs.enable		= true;
+			enable = true;
+			lfs.enable = true;
 
 			extraConfig = {
 				url."git@gitlab.com:".insteadOf = [ "https://gitlab.com" ];
 				init.defaultBranch = "main";
 				pull.rebase = true;
 			};
+
+			userEmail = "m@minego.net";
+			userName = "Micah N Gorrell";
+
+			includes = [
+				{
+					condition = "gitdir:~/src/vaas/";
+					contents.user = {
+						email = "micah.gorrell@venafi.com";
+						name = "Micah N Gorrell";
+					};
+				}
+
+				{
+					condition = "gitdir:~/src/venafi/";
+					contents.user = {
+						email = "micah.gorrell@venafi.com";
+						name = "Micah N Gorrell";
+					};
+				}
+			];
 		};
 
 		programs.home-manager.enable = true;
