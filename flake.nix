@@ -8,13 +8,25 @@
 			url = github:nix-community/home-manager;
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+
+		mackeys = {
+			url = "github:minego/mackeys";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
+
+		swapmods = {
+			url = "github:minego/swapmods";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
 	};
 
-	outputs = { self, nixpkgs, home-manager, ... }@inputs:
+	outputs = { self, nixpkgs, home-manager, swapmods, mackeys, ... }@inputs:
 	let
 		inherit (self) outputs;
 
 		overlays = [
+			swapmods.overlay
+			mackeys.overlay
 		];
 	in rec {
 		nixosConfigurations = {

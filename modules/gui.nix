@@ -2,8 +2,6 @@
 with lib;
 
 let
-	cfg = config.gui;
-
 	dwl-minego = pkgs.stdenv.mkDerivation {
 		name = "dwl-minego";
 		src = pkgs.fetchFromGitHub {
@@ -87,7 +85,7 @@ in
 		enable = mkEnableOption "Enable a GUI";
 	};
 
-	config = mkIf cfg.enable {
+	config = mkIf config.gui.enable {
 		environment.systemPackages = [
 			# My customized build of the DWL wayland compositor
 			dwl-minego

@@ -1,15 +1,12 @@
 { config, pkgs, lib, fetchzip, ... }:
 with lib;
 
-let
-	cfg = config.gui;
-in
 {
 	# Options consumers of this module can set
 	options.nvidia = {
-		enable = mkEnableOption "Enable everything needed for systems with an Nvidia GPU";
+		enable = mkEnableOption "nvidia GPU";
 	};
-	config = mkIf cfg.enable {
+	config = mkIf config.nvidia.enable {
 		hardware.opengl = {
 			enable = true;
 			driSupport = true;
