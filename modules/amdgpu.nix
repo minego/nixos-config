@@ -1,15 +1,12 @@
 { config, pkgs, lib, fetchzip, ... }:
 with lib;
 
-let
-	cfg = config.gui;
-in
 {
 	# Options consumers of this module can set
 	options.amdgpu = {
-		enable = mkEnableOption "Enable everything needed for systems with an AMD GPU";
+		enable = mkEnableOption "AMD GPU";
 	};
-	config = mkIf cfg.enable {
+	config = mkIf config.amdgpu.enable {
 		# amdgpu
 		boot.initrd.kernelModules = [ "amdgpu" ];
 

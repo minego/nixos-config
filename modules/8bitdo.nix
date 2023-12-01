@@ -1,16 +1,13 @@
 { config, pkgs, lib, ... }:
 with lib;
 
-let
-	cfg = config."8bitdo";
-in
 {
 	# Options consumers of this module can set
 	options."8bitdo" = {
 		enable = mkEnableOption "Enable the 8bitdo controller";
 	};
 
-	config = mkIf cfg.enable {
+	config = mkIf config."8bitdo".enable {
 
 		# Fix for using Xinput mode on 8bitdo Ultimate C controller
 		# Inspired by https://aur.archlinux.org/packages/8bitdo-ultimate-controller-udev
