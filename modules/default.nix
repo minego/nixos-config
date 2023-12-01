@@ -1,6 +1,7 @@
 { ... }: {
 	imports = [
 		./common.nix
+		./builder.nix
 
 		./gui.nix
 		./8bitdo.nix
