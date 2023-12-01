@@ -1,24 +1,18 @@
 { inputs, overlays, ... }:
 
 let
-	pkgs	= inputs.nixpkgs;
-	lib		= inputs.nixpkgs.lib;
+	lib = inputs.nixpkgs.lib;
 in
 lib.nixosSystem {
 	system = "x86_64-linux";
 	modules = [
-		../../modules
-		../../users/m.nix
-		./hardware-configuration.nix
-		inputs.home-manager.nixosModules.home-manager
-
 		{
 			nixpkgs.overlays = overlays;
-
 			# Modules
 			gui.enable		= true;
 			"8bitdo".enable	= true;
 			amdgpu.enable	= true;
+			nvidia.enable	= false;
 
 			# Enable networking, with DHCP and a bridge device
 			networking.hostName = "dent";
@@ -35,6 +29,13 @@ lib.nixosSystem {
 			time.timeZone = "America/Denver";
 
 			services.fstrim.enable = lib.mkDefault true;
+
+			imports = [
+				../../modules
+				../../users/m.nix
+				./hardware-configuration.nix
+				inputs.home-manager.nixosModules.home-manager
+			];
 		}
 	];
 }
