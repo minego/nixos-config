@@ -26,9 +26,14 @@ lib.nixosSystem {
 
 			services.fstrim.enable = lib.mkDefault true;
 
+			home-manager = {
+				useGlobalPkgs	= true;
+				useUserPackages	= true;
+			};
+
 			imports = [
 				../../modules
-				../../users/m.nix
+				../../users/m
 				./hardware-configuration.nix
 				inputs.home-manager.nixosModules.home-manager
 			];

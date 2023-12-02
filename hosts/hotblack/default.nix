@@ -28,10 +28,15 @@ lib.nixosSystem {
 
 			time.timeZone = "America/Denver";
 
+			home-manager = {
+				useGlobalPkgs	= true;
+				useUserPackages	= true;
+			};
+
 			imports = [
 				../../modules
 				../../modules/services
-				../../users/m.nix
+				../../users/m
 				./hardware-configuration.nix
 				inputs.home-manager.nixosModules.home-manager
 			];
