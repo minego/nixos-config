@@ -104,6 +104,9 @@
 	programs.starship.enable = true;
 	xdg.configFile."starship.toml".source = ./dotfiles/starship.toml;
 
+	programs.readline.enable = true;
+	home.file.".inputrc".source = ./dotfiles/inputrc;
+
 	dconf.settings = {
 		"org/gnome/desktop/interface" = {
 			color-scheme = "prefer-dark";

@@ -1,0 +1,49 @@
+set editing-mode vi
+set completion-ignore-case On
+set bell-style none
+
+set mark-symlinked-directories on
+
+# If there is any text on the current line then only show history items that
+# match that text when hitting up/down or page up/page down.  History will still
+# behave normally on a blank line, and a control+c will provide a blank line.
+"\e[B": history-search-forward
+"\e[A": history-search-backward
+
+"\e[5~": history-search-backward
+"\e[6~": history-search-forward
+
+
+$if mailx
+	set expand-tilde
+$endif
+
+$if term=linux
+	set vi-ins-mode-string \1\e[?0c\2
+	set vi-cmd-mode-string \1\e[?8c\2
+$else
+	set vi-ins-mode-string \1\e[6 q\2
+	set vi-cmd-mode-string \1\e[2 q\2
+$endif
+
+# Make ^y redraw the line
+"\C-y":redraw-current-line
+
+
+# vi-command mode only bindings
+################################################################################
+set keymap vi-command
+
+
+j: history-search-forward
+k: history-search-backward
+
+################################################################################
+
+# vi-insert mode only bindings
+################################################################################
+set keymap vi-insert
+
+
+################################################################################
+
