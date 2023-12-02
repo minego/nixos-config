@@ -8,7 +8,7 @@ with lib;
 	};
 
 	# Enable DWL
-	dwl.enable		= true;
+	dwl.enable = true;
 
 	imports = [
 		./modules

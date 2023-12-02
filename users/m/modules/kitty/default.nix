@@ -1,4 +1,4 @@
-{ config, pkgs, lib, osConfig, ... }:
+{ config, pkgs, lib, osConfig, inputs, ... }:
 with lib;
 
 {
@@ -81,39 +81,39 @@ with lib;
 				selection_background	= "#ffffff";
 				url_color				= "#ff2a6d";
 				cursor					= "#ff2a6d";
-				cursor_text_color		= "#111111";
+				cursor_text_color		= "#111112";
 
 				# black
-				color0					= "#000000";
-				color8					= "#222222";
+				color0					= "#${config.colors.light.black}";
+				color8					= "#${config.colors.dark.black}";
 
 				# red
-				color1					= "#ff2a6d";
-				color9					= "#D9245D";
+				color1					= "#${config.colors.light.red}";
+				color9					= "#${config.colors.dark.red}";
 
 				# green
-				color2					= "#bcea3b";
-				color10					= "#96BA2F";
+				color2					= "#${config.colors.light.green}";
+				color10					= "#${config.colors.dark.green}";
 
 				# yellow
-				color3					= "#faff00";
-				color11					= "#D5D900";
+				color3					= "#${config.colors.light.yellow}";
+				color11					= "#${config.colors.dark.yellow}";
 
 				# blue
-				color4					= "#02a9ea";
-				color12					= "#0285B8";
+				color4					= "#${config.colors.light.blue}";
+				color12					= "#${config.colors.dark.blue}";
 
 				# magenta
-				color5					= "#A61B47";
-				color13					= "#8C173C";
+				color5					= "#${config.colors.light.magenta}";
+				color13					= "#${config.colors.dark.magenta}";
 
 				# cyan
-				color6					= "#05d9e8";
-				color14					= "#04ACB8";
+				color6					= "#${config.colors.light.cyan}";
+				color14					= "#${config.colors.dark.cyan}";
 
 				# white
-				color7					= "#999999";
-				color15					= "#ffffff";
+				color7					= "#${config.colors.light.white}";
+				color15					= "#${config.colors.dark.white}";
 			};
 		};
 

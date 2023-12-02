@@ -11,5 +11,6 @@ with lib;
 		./dwl
 		./waybar
 		./swaync
+		./xenon-colorscheme
 	];
 }
