@@ -29,8 +29,10 @@ with lib;
 		eza
 		unzip
 		jq
-  ] ++ lib.optionals osConfig.gui.enable [
+	] ++ lib.optionals osConfig.gui.enable [
 		# Applications
+		kitty
+
 		spotify
 		wdisplays
 		slack
@@ -40,7 +42,6 @@ with lib;
 		steam
 		tridactyl-native
 		firefox-wayland
-		kitty
 		linuxConsoleTools # jstest
 		chromium
 		freerdp
@@ -57,6 +58,8 @@ with lib;
 			target = "./.config/nvim";
 		};
 	};
+
+	# programs.kitty.enable = true;
 
 	programs.neovim = {
 		enable			= true;
