@@ -6,8 +6,11 @@
 		homeDirectory	= "/home/m";
 	};
 
+	# Enable DWL
+	dwl.enable		= true;
+
 	imports = [
-		./../../modules/home/waybar.nix
+		./../../modules/home
 	];
 
 	home.packages = with pkgs; [
@@ -25,6 +28,23 @@
 		eza
 		unzip
 		jq
+		light
+
+		# Applications
+		spotify
+		wdisplays
+		slack
+		bitwarden
+		pavucontrol
+		pamixer
+		steam
+		tridactyl-native
+		firefox-wayland
+		thunderbird
+		kitty
+		linuxConsoleTools # jstest
+		chromium
+		freerdp
 	];
 
 	home.file = {
@@ -37,9 +57,6 @@
 			};
 			target = "./.config/nvim";
 		};
-	};
-
-	home.sessionVariables = {
 	};
 
 	programs.neovim = {
@@ -81,6 +98,30 @@
 		];
 	};
 
+	# Make wayland applications behave
+	home.sessionVariables.NIXOS_OZONE_WL = "1";
+
+	xdg.mimeApps.defaultApplications = {
+		"text/html"					= "firefox.desktop";
+		"x-scheme-handler/http"		= "firefox.desktop";
+		"x-scheme-handler/https"	= "firefox.desktop";
+		"x-scheme-handler/about"	= "firefox.desktop";
+		"x-scheme-handler/unknown"	= "firefox.desktop";
+	};
+	home.sessionVariables.BROWSER			= "${pkgs.firefox-wayland}/bin/firefox";
+	home.sessionVariables.DEFAULT_BROWSER	= "${pkgs.firefox-wayland}/bin/firefox";
+
+	# Make Firefox use the native file picker
+	programs.firefox.enable = true;
+
+#	programs.zsh = {
+#		enable = true;
+#		shellAliases = {
+#			lyrics = "sptlrx";
+#		};
+#	};
+
+	# Don't touch
 	programs.home-manager.enable = true;
 	home.stateVersion = "23.11";
 }

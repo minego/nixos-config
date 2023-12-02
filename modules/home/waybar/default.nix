@@ -1,164 +1,19 @@
 { config, pkgs, lib, osConfig, ... }:
-with lib;
 
 {
+	home.packages = with pkgs; [
+		# Needed by the waybar-dwl helper script
+		inotify-tools
+
+		# Used with "custom/audio_idle_inhibitor" below
+		sway-audio-idle-inhibit
+	];
+
 	# Waybar
 	programs.waybar = rec {
-		enable = osConfig.gui.enable;
+		enable = osConfig.gui.enable && config.dwl.enable;
 
-		style = ''
-			* {
-				border: none;
-				border-radius: 0;
-				font-family: "Terminus (TTF)";
-				font-size: 14px;
-				min-height: 0;
-			}
-			
-			window#waybar {
-				background: transparent;
-				color: white;
-			}
-			
-			#window {
-				font-weight: bold;
-				font-family: "Ubuntu";
-			}
-			/*
-			#workspaces {
-				padding: 0 5px;
-			}
-			*/
-			
-			#workspaces button {
-				padding: 0 5px;
-				background: transparent;
-				color: white;
-				border-top: 2px solid transparent;
-			}
-			
-			#workspaces button.focused {
-				color: #c9545d;
-				border-top: 2px solid #c9545d;
-			}
-			
-			#mode {
-				background: #64727D;
-				border-bottom: 3px solid white;
-			}
-			
-			#clock, #battery, #cpu, #memory, #network, #wireplumber, #pulseaudio, #mpris, #tray, #mode, #bluetooth, #backlight, #custom-notification, #idle_inhibitor, #custom-audio_idle_inhibitor, #custom-cpuusage, #custom-cpuhist {
-				padding: 0 9px;
-				margin: 0 4px;
-			}
-			
-			#clock {
-				/* font-weight: bold; */
-			}
-			
-			#battery {
-			}
-			
-			#battery icon {
-				color: #ff2a6d;
-			}
-			
-			#battery.charging {
-			}
-			
-			@keyframes blink {
-				to {
-					background-color: #ffffff;
-					color: black;
-				}
-			}
-			
-			#battery.warning:not(.charging) {
-				color: white;
-				animation-name: blink;
-				animation-duration: 0.5s;
-				animation-timing-function: linear;
-				animation-iteration-count: infinite;
-				animation-direction: alternate;
-			}
-			
-			#cpu {
-			}
-			
-			#memory {
-			}
-			
-			#network {
-			}
-			
-			#network.disconnected {
-				background: #f53c3c;
-			}
-			
-			#wireplumber {
-			}
-			
-			#wireplumber.muted {
-			}
-			
-			#pulseaudio {
-				background: #f53c3c;
-			}
-			
-			#pulseaudio.source-muted {
-				background: transparent;
-			}
-			
-			#mpris {
-			}
-			
-			#tray {
-			}
-			
-			#custom-dwl_layout {
-				color: white;
-				font-weight: bold;
-			}
-				
-			#custom-dwl_title {
-				color: white;
-			}
-				
-			#custom-dwl_tag {
-				color: white;
-				border-top: 3px solid rgba(0, 0, 0, 0);
-			}
-			
-			#custom-dwl_tag.urgent {
-			}
-			
-			#custom-dwl_tag.active {
-				/* magenta */
-				border-top: 3px solid #A61b47;
-			}
-			
-			#custom-dwl_tag.selected {
-				/* yellow */
-				border-top: 3px solid #faff00;
-			}
-				
-			#custom-notification {
-				font-family: "NotoSansMono Nerd Font";
-			}
-			
-			#custom-cpuusage {
-				font-family: "Sparks Bar Wide";
-				font-weight: normal;
-				font-style: normal;
-			}
-			
-			#custom-cpuhist {
-				font-family: "Sparks Dot-Line Thick";
-				font-weight: normal;
-				font-style: normal;
-			}
-			
-		'';
+		style = "${./waybar.css}";
 
 		settings = [{
 			layer =		"bottom";
@@ -307,73 +162,73 @@ with lib;
 			};
 
 			"custom/dwl_tag#0" = {
-				exec										= "~/.config/waybar/waybar-dwl.sh '' 0";
+				exec										= "${./waybar-dwl.sh} '' 0";
 				on-click									= "wtype -M alt 1 -m alt";
 				format										= "{}";
 				return-type									= "json";
 			};
 			"custom/dwl_tag#1" = {
-				exec										= "~/.config/waybar/waybar-dwl.sh '' 1";
+				exec										= "${./waybar-dwl.sh} '' 1";
 				on-click									= "wtype -M alt 2 -m alt";
 				format										= "{}";
 				return-type									= "json";
 			};
 			"custom/dwl_tag#2" = {
-				exec										= "~/.config/waybar/waybar-dwl.sh '' 2";
+				exec										= "${./waybar-dwl.sh} '' 2";
 				on-click									= "wtype -M alt 3 -m alt";
 				format										= "{}";
 				return-type									= "json";
 			};
 			"custom/dwl_tag#3" = {
-				exec										= "~/.config/waybar/waybar-dwl.sh '' 3";
+				exec										= "${./waybar-dwl.sh} '' 3";
 				on-click									= "wtype -M alt 4 -m alt";
 				format										= "{}";
 				return-type									= "json";
 			};
 			"custom/dwl_tag#4" = {
-				exec										= "~/.config/waybar/waybar-dwl.sh '' 4";
+				exec										= "${./waybar-dwl.sh} '' 4";
 				on-click									= "wtype -M alt 5 -m alt";
 				format										= "{}";
 				return-type									= "json";
 			};
 			"custom/dwl_tag#5" = {
-				exec										= "~/.config/waybar/waybar-dwl.sh '' 5";
+				exec										= "${./waybar-dwl.sh} '' 5";
 				on-click									= "wtype -M alt 6 -m alt";
 				format										= "{}";
 				return-type									= "json";
 			};
 			"custom/dwl_tag#6" = {
-				exec										= "~/.config/waybar/waybar-dwl.sh '' 6";
+				exec										= "${./waybar-dwl.sh} '' 6";
 				on-click									= "wtype -M alt 7 -m alt";
 				format										= "{}";
 				return-type									= "json";
 			};
 			"custom/dwl_tag#7" = {
-				exec										= "~/.config/waybar/waybar-dwl.sh '' 7";
+				exec										= "${./waybar-dwl.sh} '' 7";
 				on-click									= "wtype -M alt 8 -m alt";
 				format										= "{}";
 				return-type									= "json";
 			};
 			"custom/dwl_tag#8" = {
-				exec										= "~/.config/waybar/waybar-dwl.sh '' 8";
+				exec										= "${./waybar-dwl.sh} '' 8";
 				on-click									= "wtype -M alt 9 -m alt";
 				format										= "{}";
 				return-type									= "json";
 			};
 			"custom/dwl_tag#9" = {
-				exec										= "~/.config/waybar/waybar-dwl.sh '' 9";
+				exec										= "${./waybar-dwl.sh} '' 9";
 				on-click									= "wtype -M alt 0 -m alt";
 				format										= "{}";
 				return-type									= "json";
 			};
 			"custom/dwl_layout" = {
-				exec										= "~/.config/waybar/waybar-dwl.sh '' layout";
+				exec										= "${./waybar-dwl.sh} '' layout";
 				on-click									= "wtype -M alt ' ' -m alt";
 				format										= "{}";
 				return-type									= "json";
 			};
 			"custom/dwl_title" = {
-				exec										= "~/.config/waybar/waybar-dwl.sh '' title";
+				exec										= "${./waybar-dwl.sh} '' title";
 				format										= "{}";
 				escape										= true;
 				return-type									= "json";
