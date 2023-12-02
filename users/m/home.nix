@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, osConfig, ... }:
 
 {
 	home = {
@@ -25,10 +25,12 @@
 		codespell
 		mdcat
 		ripgrep
+		fd
 		eza
 		unzip
 		jq
 		light
+  ] ++ lib.optionals osConfig.gui.enable [
 
 		# Applications
 		spotify
