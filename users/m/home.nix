@@ -1,9 +1,10 @@
-{ config, pkgs, osConfig, ... }:
+{ config, pkgs, osConfig, lib, ... }:
+with lib;
 
 {
-	home = {
-		username		= "m";
-		homeDirectory	= "/home/m";
+	home = rec {
+		username		= lib.mkDefault "m";
+		homeDirectory	= lib.mkDefault "/home/${config.home.username}";
 	};
 
 	# Enable DWL
