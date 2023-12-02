@@ -33,6 +33,7 @@
 			dwl-minego.overlay
 			swapmods.overlay
 			mackeys.overlay
+			(import ./overlays/fonts.nix)
 		];
 	in rec {
 		nixosConfigurations = {

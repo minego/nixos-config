@@ -31,8 +31,6 @@ with lib;
 		jq
 	] ++ lib.optionals osConfig.gui.enable [
 		# Applications
-		kitty
-
 		spotify
 		wdisplays
 		slack
@@ -59,7 +57,7 @@ with lib;
 		};
 	};
 
-	# programs.kitty.enable = true;
+	programs.kitty.enable = true;
 
 	programs.neovim = {
 		enable			= true;
