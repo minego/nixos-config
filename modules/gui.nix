@@ -43,6 +43,13 @@ in
 
 	config = mkIf config.gui.enable {
 		environment.systemPackages = with pkgs; [
+			light
+
+			# XDG Portals
+			xdg-desktop-portal
+			xdg-desktop-portal-wlr
+			xdg-desktop-portal-gtk
+			xdg-utils
 		];
 
 		fonts.packages = with pkgs; [

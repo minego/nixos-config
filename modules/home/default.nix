@@ -2,5 +2,6 @@
 	imports = [
 		./dwl
 		./waybar
+		./swaync
 	];
 }
