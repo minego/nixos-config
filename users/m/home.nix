@@ -10,7 +10,7 @@
 	dwl.enable		= true;
 
 	imports = [
-		./../../modules/home
+		./modules
 	];
 
 	home.packages = with pkgs; [
@@ -21,7 +21,6 @@
 		neofetch
 		fzf
 		acpi
-		starship
 		codespell
 		mdcat
 		sptlrx
@@ -101,6 +100,9 @@
 			}
 		];
 	};
+
+	programs.starship.enable = true;
+	xdg.configFile."starship.toml".source = ./dotfiles/starship.toml;
 
 	dconf.settings = {
 		"org/gnome/desktop/interface" = {
