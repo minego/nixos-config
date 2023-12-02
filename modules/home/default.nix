@@ -1,6 +1,6 @@
 { ... }: {
 	imports = [
-		./dwl.nix
-		./waybar.nix
+		./dwl
+		./waybar
 	];
 }

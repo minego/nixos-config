@@ -14,6 +14,7 @@
 	];
 
 	home.packages = with pkgs; [
+		zsh
 		zsh-syntax-highlighting
 		zsh-vi-mode
 
@@ -113,12 +114,12 @@
 	# Make Firefox use the native file picker
 	programs.firefox.enable = true;
 
-	programs.zsh = {
-		enable = true;
-		shellAliases = {
-			lyrics = "sptlrx";
-		};
-	};
+#	programs.zsh = {
+#		enable = true;
+#		shellAliases = {
+#			lyrics = "sptlrx";
+#		};
+#	};
 
 	# Don't touch
 	programs.home-manager.enable = true;
