@@ -4,7 +4,7 @@ with lib;
 {
 	# Options consumers of this module can set
 	options."8bitdo" = {
-		enable = mkEnableOption "Enable the 8bitdo controller";
+		enable = mkEnableOption "8bitdo controller";
 	};
 
 	config = mkIf config."8bitdo".enable {

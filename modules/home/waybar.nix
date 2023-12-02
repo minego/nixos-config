@@ -4,7 +4,7 @@ with lib;
 {
 	# Waybar
 	programs.waybar = rec {
-		enable = osConfig.gui.enable;
+		enable = osConfig.gui.enable && config.dwl.enable;
 
 		style = ''
 			* {

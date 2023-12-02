@@ -38,55 +38,11 @@ in
 {
 	# Options consumers of this module can set
 	options.gui = {
-		enable = mkEnableOption "Enable a GUI";
+		enable = mkEnableOption "GUI";
 	};
 
 	config = mkIf config.gui.enable {
 		environment.systemPackages = with pkgs; [
-			dwl
-
-			# XDG Portals
-			xdg-desktop-portal
-			xdg-desktop-portal-wlr
-			xdg-desktop-portal-gtk
-			xdg-utils
-
-			# Tools used by my DWL/wayland setup
-			fzf
-			wayland
-			swayidle
-			swaylock-effects
-			waybar
-			wob
-			swaynotificationcenter
-			udiskie
-			playerctl
-			sptlrx
-			inotify-tools
-			mpvpaper
-			wlr-randr
-			sway-contrib.grimshot
-			sway-audio-idle-inhibit
-			lxappearance
-			bemenu
-			j4-dmenu-desktop
-			glib
-
-			# Applications
-			spotify
-			wdisplays
-			slack
-			bitwarden
-			pavucontrol
-			pamixer
-			steam
-			tridactyl-native
-			firefox-wayland
-			thunderbird
-			kitty
-			linuxConsoleTools # jstest
-			chromium
-			freerdp
 		];
 
 		fonts.packages = with pkgs; [
@@ -115,11 +71,24 @@ in
 			{ domain = "@users"; item = "rtprio"; type = "-"; value = 1; }
 		];
 
-		# Make wayland applications behave
-		environment.sessionVariables.NIXOS_OZONE_WL = "1";
+		# Install steam globally, because we're all gonna want it.
+		programs.steam = {
+			enable = true;
+			remotePlay.openFirewall = true;
+			dedicatedServer.openFirewall = true;
+		};
+
+		hardware.steam-hardware.enable = true;
+
+		programs.dconf.enable = true;
+		services.dbus.enable = true;
+
+		# Make Firefox use the native file picker
+		programs.firefox.preferences.widget.use-xdg-desktop-portal.file-picker = 1;
 
 		# XDG Desktop Portal
-		services.dbus.enable = true;
+		# TODO Find a way to do this through home-manager, since these options
+		# will not be right for other window managers
 		xdg.portal = {
 			enable = true;
 			wlr.enable = true;
@@ -135,39 +104,6 @@ in
 			# I can find better documentation for the xdg.portal.config option
 			config.common.default = "*";
 		};
-
-		xdg.mime.defaultApplications = {
-			"text/html"					= "firefox.desktop";
-			"x-scheme-handler/http"		= "firefox.desktop";
-			"x-scheme-handler/https"	= "firefox.desktop";
-			"x-scheme-handler/about"	= "firefox.desktop";
-			"x-scheme-handler/unknown"	= "firefox.desktop";
-		};
-		environment.sessionVariables.BROWSER			= "${pkgs.firefox-wayland}/bin/firefox";
-		environment.sessionVariables.DEFAULT_BROWSER	= "${pkgs.firefox-wayland}/bin/firefox";
-
-		# Make Firefox use the native file picker
-		programs.firefox = {
-			enable = true;
-			preferences = {
-				"widget.use-xdg-desktop-portal.file-picker" = 1;
-			};
-		};
-
-
-		environment.shellAliases = {
-			lyrics = "sptlrx";
-		};
-
-		programs.steam = {
-			enable = true;
-			remotePlay.openFirewall = true;
-			dedicatedServer.openFirewall = true;
-		};
-		hardware.steam-hardware.enable = true;
-
-		programs.dconf.enable = true;
-		programs.light.enable = true;
 	};
 }
 
