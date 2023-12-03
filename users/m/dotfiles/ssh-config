@@ -1,0 +1,22 @@
+# Compression           yes
+# CompressionLevel      9
+ServerAliveInterval     60
+ServerAliveCountMax     90
+# AddressFamily           inet
+
+AddKeysToAgent			yes
+ForwardAgent			yes
+
+Include					config.local
+
+################################################################################
+# This must be last so that the other hosts can override these options
+################################################################################
+Host *
+	User					m
+	# ForwardX11Trusted		yes
+	# ForwardX11				yes
+
+	# ControlMaster			auto
+	# ControlPath				~/.ssh/master-%r@%h:%p
+

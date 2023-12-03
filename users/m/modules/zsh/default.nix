@@ -42,7 +42,7 @@ with lib;
 			open			= "xdg-open";
 		};
 
-		history.path		= "./history";
+		history.path		= "~/.history";
 
 		initExtra			= ''
             # Tabs should not be 8 chars, that is just silly

@@ -62,6 +62,7 @@ with lib;
 		target = "./.config/nvim";
 	};
 
+	# Kitty is configured in a module, but only if enabled
 	programs.kitty.enable = true;
 
 	programs.neovim = {
@@ -77,17 +78,17 @@ with lib;
 	};
 
 	programs.git = {
-		enable = true;
-		lfs.enable = true;
+		enable			= true;
+		lfs.enable		= true;
+
+		userEmail		= "m@minego.net";
+		userName		= "Micah N Gorrell";
 
 		extraConfig = {
 			url."git@gitlab.com:".insteadOf = [ "https://gitlab.com" ];
 			init.defaultBranch = "main";
-			pull.rebase = true;
+			pull.rebase	= true;
 		};
-
-		userEmail = "m@minego.net";
-		userName = "Micah N Gorrell";
 
 		includes = [
 			{
@@ -106,6 +107,16 @@ with lib;
 				};
 			}
 		];
+	};
+
+	home.file.ssh-config = {
+		source = ./dotfiles/ssh-config;
+		target = "./.ssh/config";
+	};
+
+	home.file.ssh-rc = {
+		source = ./dotfiles/ssh-rc;
+		target = "./.ssh/rc";
 	};
 
 	programs.readline.enable = true;
