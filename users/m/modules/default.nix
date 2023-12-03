@@ -3,14 +3,13 @@ with lib;
 
 {
 	imports = [
-
-	] ++ lib.optionals osConfig.gui.enable [
-		./fonts
 		./kitty
 
 		./dwl
 		./waybar
 		./swaync
 		./xenon-colorscheme
+	] ++ lib.optionals osConfig.gui.enable [
+		./fonts
 	];
 }
