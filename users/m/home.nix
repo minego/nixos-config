@@ -1,4 +1,4 @@
-{ config, pkgs, osConfig, lib, ... }:
+{ config, pkgs, osConfig, lib, writeShellScriptBin, ... }:
 with lib;
 
 {
@@ -29,6 +29,18 @@ with lib;
 		eza
 		unzip
 		jq
+
+		# Install my own custom scripts from the scripts dir
+		(stdenv.mkDerivation {
+			name		= "homedir-scripts";
+			buildInputs	= with pkgs; [ bash ];
+			src			= ./scripts;
+			installPhase = ''
+				mkdir -p $out/bin
+				cp * $out/bin/
+				chmod +x $out/bin/*
+			'';
+		})
 	] ++ lib.optionals osConfig.gui.enable [
 		# Applications
 		spotify
@@ -173,12 +185,9 @@ with lib;
 	};
 	xdg.configFile."tridactyl/tridactylrc".source = ./dotfiles/tridactylrc;
 
-#	programs.zsh = {
-#		enable = true;
-#		shellAliases = {
-#			lyrics = "sptlrx";
-#		};
-#	};
+	home.shellAliases = {
+		lyrics = "sptlrx";
+	};
 
 	# Don't touch
 	programs.home-manager.enable = true;

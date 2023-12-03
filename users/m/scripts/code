@@ -1,0 +1,47 @@
+#!/bin/sh
+
+function findcodeenv() {
+	local INITIAL_PWD=${PWD}
+
+	while true; do
+		if [ -f .code-env ]; then
+			echo "${PWD}"
+			cd "${INITIAL_PWD}"
+			return 0
+		fi
+
+		cd ..
+		if [ "${PWD}" == "/" ]; then
+			# No '.code-env' file was found, so fall back to using the current
+			# dir. This means that no vim commands will be run, but we still
+			# get a reattachable session.
+			cd "${INITIAL_PWD}"
+			echo "${PWD}"
+			return 0
+		fi
+	done
+}
+
+ENV_DIR=$(findcodeenv)
+
+if [ $# -ne 0 ]; then
+	echo "Usage: cd to a directory that contains a .code-env file, and run `code` with no arguments"
+	exit 1
+fi
+
+NVIM_SESSION="${ENV_DIR}/.code-env"
+
+# Change to the root of the environment, because the env file may have paths
+# that are relative to that.
+cd ${ENV_DIR}
+
+SOCKET_DIR="${HOME}/.dtach-sockets/${ENV_DIR}"
+mkdir -p "${SOCKET_DIR}"
+
+if [ -f "${NVIM_SESSION}" ]; then
+	dtach -A "${SOCKET_DIR}/dtach.socket" -z -r winch nvim -S "${NVIM_SESSION}"
+else
+	dtach -A "${SOCKET_DIR}/dtach.socket" -z -r winch nvim
+fi
+
+

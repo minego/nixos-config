@@ -1,0 +1,24 @@
+#!/bin/sh
+
+if [ "x$2x" == "xx" ]; then
+	U=$USER
+else
+	U=$2
+fi
+
+if [ "x$3x" == "xx" ]; then
+	DARG=""
+else
+	DARG=" /d:$3"
+fi
+
+mkdir -p $HOME/share
+
+if [[ -v WAYLAND_DISPLAY ]]; then
+	# wlfreerdp /size:1920x1080 /dynamic-resolution -z /network:lan -grab-keyboard /v:$1 /u:$U /drive:$U,~/share
+	wlfreerdp /size:1920x1080 /dynamic-resolution -z /network:lan -grab-keyboard -toggle-fullscreen /v:$1 /u:$U
+else
+	echo \"xfreerdp /size:1920x1080 /dynamic-resolution -z /network:lan -grab-keyboard -toggle-fullscreen /v:$1 /u:$U $DARG /floatbar /drive:$U,$HOME/share\"
+	xfreerdp /size:1920x1080 /dynamic-resolution -z /network:lan -grab-keyboard -toggle-fullscreen /v:$1 /u:$U $DARG /floatbar /drive:$U,$HOME/share
+fi
+
