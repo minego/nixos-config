@@ -9,14 +9,14 @@ with lib;
 
 	config = mkIf config.gui.enable {
 		environment.systemPackages = with pkgs; [
-			light
-
 			# XDG Portals
 			xdg-desktop-portal
 			xdg-desktop-portal-wlr
 			xdg-desktop-portal-gtk
 			xdg-utils
 		];
+
+		programs.light.enable = true;
 
 		fonts.packages = with pkgs; [
 			# Install most through home-manager, but best to have at least one
