@@ -45,16 +45,14 @@ with lib;
 		freerdp
 	];
 
-	home.file = {
-		neovim = {
-			source = pkgs.fetchFromGitHub {
-				owner	= "minego";
-				repo	= "dotfiles.neovim";
-				rev		= "e02dbb9";
-				sha256	= "sha256-a2qZzSlJa2QbwB/dN71NCJNQwQaAdEJMAisVmexrWwI=";
-			};
-			target = "./.config/nvim";
+	home.file.neovim = {
+		source = pkgs.fetchFromGitHub {
+			owner	= "minego";
+			repo	= "dotfiles.neovim";
+			rev		= "e02dbb9";
+			sha256	= "sha256-a2qZzSlJa2QbwB/dN71NCJNQwQaAdEJMAisVmexrWwI=";
 		};
+		target = "./.config/nvim";
 	};
 
 	programs.kitty.enable = true;
@@ -166,8 +164,14 @@ with lib;
 	home.sessionVariables.BROWSER			= "${pkgs.firefox-wayland}/bin/firefox";
 	home.sessionVariables.DEFAULT_BROWSER	= "${pkgs.firefox-wayland}/bin/firefox";
 
-	# Make Firefox use the native file picker
 	programs.firefox.enable = true;
+
+	# Let firefox call tridactyl's native thingy, so the config can be loaded
+	home.file.tridactyl-native = {
+		source = "${pkgs.tridactyl-native}//lib/mozilla/native-messaging-hosts/tridactyl.json";
+		target = "./.mozilla/native-messaging-hosts/tridactyl.json";
+	};
+
 
 #	programs.zsh = {
 #		enable = true;
