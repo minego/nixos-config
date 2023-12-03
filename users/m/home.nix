@@ -15,18 +15,13 @@ with lib;
 	];
 
 	home.packages = with pkgs; [
-		zsh
-		zsh-syntax-highlighting
-		zsh-vi-mode
-
 		neofetch
-		fzf
+		neovim-remote
 		acpi
 		codespell
 		mdcat
 		sptlrx
 		fd
-		eza
 		unzip
 		jq
 
@@ -113,9 +108,6 @@ with lib;
 		];
 	};
 
-	programs.starship.enable = true;
-	xdg.configFile."starship.toml".source = ./dotfiles/starship.toml;
-
 	programs.readline.enable = true;
 	home.file.".inputrc".source = ./dotfiles/inputrc;
 
@@ -156,11 +148,6 @@ with lib;
 		};
 	};
 
-	home.sessionVariables.GTK_THEME = "palenight";
-
-	# Make wayland applications behave
-	home.sessionVariables.NIXOS_OZONE_WL = "1";
-
 	xdg.mimeApps = {
 		enable = true;
 
@@ -173,8 +160,19 @@ with lib;
 		};
 	};
 
-	home.sessionVariables.BROWSER			= "${pkgs.firefox-wayland}/bin/firefox";
-	home.sessionVariables.DEFAULT_BROWSER	= "${pkgs.firefox-wayland}/bin/firefox";
+	home.sessionVariables = {
+		BROWSER			= "${pkgs.firefox-wayland}/bin/firefox";
+		DEFAULT_BROWSER	= "${pkgs.firefox-wayland}/bin/firefox";
+
+		# Make wayland applications behave
+		NIXOS_OZONE_WL	= "1";
+		KEYTIMEOUT		= "1";
+		VISUAL			= "nvim";
+		EDITOR			= "nvim";
+		LC_CTYPE		= "C";
+
+		MALLOC_CHECK_	= "2";	# stupid linux malloc
+	};
 
 	programs.firefox.enable = true;
 
@@ -184,10 +182,6 @@ with lib;
 		target = "./.mozilla/native-messaging-hosts/tridactyl.json";
 	};
 	xdg.configFile."tridactyl/tridactylrc".source = ./dotfiles/tridactylrc;
-
-	home.shellAliases = {
-		lyrics = "sptlrx";
-	};
 
 	# Don't touch
 	programs.home-manager.enable = true;

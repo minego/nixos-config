@@ -4,6 +4,7 @@ with lib;
 {
 	imports = [
 		./kitty
+		./zsh
 
 		./dwl
 		./waybar

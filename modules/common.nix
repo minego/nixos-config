@@ -85,6 +85,9 @@
 		'';
 	};
 
+	# Needed for auto completion to work for zsh
+	environment.pathsToLink = [ "/share/zsh" ];
+
 	environment.shellAliases = {
 		vi = "nvim";
 	};

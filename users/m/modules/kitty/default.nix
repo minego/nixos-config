@@ -10,6 +10,8 @@ with lib;
 				size		= 11;
 			};
 
+			shellIntegration.enableZshIntegration = true;
+
 			extraConfig = ''
 				font_features    MonaspaceNeon-Light        +dlig +calt +liga +ss01 +ss02 +ss03 +ss04 +ss05 +ss06 +ss07
 				font_features    MonaspaceNeon-Regular      +dlig +calt +liga +ss01 +ss02 +ss03 +ss04 +ss05 +ss06 +ss07
