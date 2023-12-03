@@ -35,7 +35,7 @@ with lib;
 					"mpris"
 					"custom/cpuusage" "custom/cpuhist"
 					"pulseaudio" "network"
-					"battery#0" "battery#1"
+					"battery" "battery#1"
 					"bluetooth" "tray"
 
 					"custom/audio_idle_inhibitor"
@@ -91,9 +91,9 @@ with lib;
 
 				memory.format				= "{}% ";
 
-				"battery#0" = {
+				"battery" = {
 					format					= "{icon}";
-					bat						= "BAT0";
+					bat						= "BAT1";
 					tooltip-format			= "{capacity}% {timeTo}";
 					states = {
 						warning				= 30;
@@ -109,7 +109,7 @@ with lib;
 
 				"battery#1" = {
 					format					= "{icon}";
-					bat						= "BAT0";
+					bat						= "BAT2";
 					tooltip-format			= "{capacity}% {timeTo}";
 					states = {
 						warning				= 30;
