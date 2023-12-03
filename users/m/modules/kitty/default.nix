@@ -152,6 +152,6 @@ with lib;
             	</match>
             
             </fontconfig>
-		'';
+            '';
 	};
 }
