@@ -151,13 +151,18 @@ with lib;
 	# Make wayland applications behave
 	home.sessionVariables.NIXOS_OZONE_WL = "1";
 
-	xdg.mimeApps.defaultApplications = {
-		"text/html"					= "firefox.desktop";
-		"x-scheme-handler/http"		= "firefox.desktop";
-		"x-scheme-handler/https"	= "firefox.desktop";
-		"x-scheme-handler/about"	= "firefox.desktop";
-		"x-scheme-handler/unknown"	= "firefox.desktop";
+	xdg.mimeApps = {
+		enable = true;
+
+		defaultApplications = {
+			"text/html"					= "firefox.desktop";
+			"x-scheme-handler/http"		= "firefox.desktop";
+			"x-scheme-handler/https"	= "firefox.desktop";
+			"x-scheme-handler/about"	= "firefox.desktop";
+			"x-scheme-handler/unknown"	= "firefox.desktop";
+		};
 	};
+
 	home.sessionVariables.BROWSER			= "${pkgs.firefox-wayland}/bin/firefox";
 	home.sessionVariables.DEFAULT_BROWSER	= "${pkgs.firefox-wayland}/bin/firefox";
 

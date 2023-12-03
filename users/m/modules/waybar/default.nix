@@ -80,13 +80,13 @@ with lib;
 				"custom/cpuusage" = {
 					format					= "{}";
 					return-type				= "json";
-					exec					= "cpuusage";
+					exec					= "${./cpuusage}";
 				};
 
 				"custom/cpuhist" = {
 					format					= "{} ";
 					return-type				= "json";
-					exec					= "cpuhist";
+					exec					= "${./cpuhist}";
 				};
 
 				memory.format				= "{}% ";
