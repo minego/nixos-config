@@ -171,7 +171,7 @@ with lib;
 		source = "${pkgs.tridactyl-native}//lib/mozilla/native-messaging-hosts/tridactyl.json";
 		target = "./.mozilla/native-messaging-hosts/tridactyl.json";
 	};
-
+	xdg.configFile."tridactyl/tridactylrc".source = ./dotfiles/tridactylrc;
 
 #	programs.zsh = {
 #		enable = true;
