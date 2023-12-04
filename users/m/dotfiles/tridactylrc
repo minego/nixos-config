@@ -26,8 +26,8 @@ unbind <C-v>
 bind <C-v> mode ignore
 
 " But also support Tridactyl search too.
-bind / fillcmdline find
-bind ? fillcmdline find -?
+# bind / fillcmdline find
+# bind ? fillcmdline find -?
 bind n findnext
 bind N findnext --reverse
 
@@ -85,3 +85,6 @@ autocontain -u ^https?://([^/]*\.|)id\.atlassian\.com/groups/venafi/	Work WorkPr
 
 venafi.okta.com , Work
 
+" Fix UI stuff - Don't cover the input area
+guiset_quiet hoverlink		top-right
+guiset_quiet statuspanel	top-right
