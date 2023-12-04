@@ -7,11 +7,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1701573759,
-        "narHash": "sha256-RS6FtVAm+5JoqBY82FJYdR2v4hmAaOD/c4oVTjfo1H0=",
+        "lastModified": 1701716723,
+        "narHash": "sha256-XvfbrzZksQwox76mHtvONVyQhdgYBXJRiWLscOW/xko=",
         "owner": "minego",
         "repo": "dwl",
-        "rev": "e85bc22ea2cbdabf5b0ffc87c9d52424b9ff467b",
+        "rev": "68893bfa1b1087137f75608ce2a9d3aa5d2c77ed",
         "type": "github"
       },
       "original": {
