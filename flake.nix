@@ -4,6 +4,11 @@
 	inputs = {
 		nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
+		darwin = {
+			url = "github:LnL7/nix-darwin";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
+
 		home-manager = {
 			url = github:nix-community/home-manager;
 			inputs.nixpkgs.follows = "nixpkgs";
@@ -25,7 +30,7 @@
 		};
 	};
 
-	outputs = { self, nixpkgs, home-manager, swapmods, mackeys, dwl-minego, ... }@inputs:
+	outputs = { self, nixpkgs, darwin, home-manager, swapmods, mackeys, dwl-minego, ... }@inputs:
 	let
 		inherit (self) outputs;
 
@@ -40,6 +45,10 @@
 			dent		= import ./hosts/dent		{ inherit inputs overlays; };
 			lord		= import ./hosts/lord		{ inherit inputs overlays; };
 			hotblack	= import ./hosts/hotblack	{ inherit inputs overlays; };
+		};
+
+		darwinConfigurations = {
+			zaphod		= import ./hosts/zaphod		{ inherit inputs overlays; };
 		};
 
 		homeConfigurations = {
