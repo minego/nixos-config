@@ -33,6 +33,7 @@ with lib;
 			pamixer
 			kitty
 			freerdp
+			tigervnc
 		];
 	};
 }
