@@ -13,6 +13,9 @@ guiset_quiet hoverlink right
 bind K tabprev
 bind J tabnext
 
+" New tabs go at the end of the tab list
+set tabopenpos last
+
 " make d take you to the left (I find it much less confusing)
 bind d composite tabprev; tabclose #
 bind D tabclose
