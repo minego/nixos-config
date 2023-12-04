@@ -73,15 +73,13 @@ unbind --mode=ex <C-c>
 " This exposes you to 'cross site styling' attacks
 jsb browser.webRequest.onHeadersReceived.addListener(tri.request.clobberCSP,{urls:["<all_urls>"],types:["main_frame"]},["blocking","responseHeaders"])
 
-
-" " Isolate Facebook in its own container
-" " set auconcreatecontainer true
-" " autocontain facebook\.com facebook
+proxyadd WorkProxy http://prosser.minego.net:8118
 
 set auconcreatecontainer true
+autocontain -u ^https?://([^/]*\.|)venafi\.								Work WorkProxy
+autocontain -u ^https?://([^/]*\.|)amazonaws\.com/						Work WorkProxy
+autocontain -u ^https?://([^/]*\.|)gitlab\.com/							Work WorkProxy
+autocontain -u ^https?://([^/]*\.|)id\.atlassian\.com/groups/venafi/	Work WorkProxy
 
-autocontain -s wowbagger\. Work
-autocontain -s venafi\. Work
-
-autocontain -s 
+venafi.okta.com , Work
 
