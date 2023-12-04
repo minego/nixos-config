@@ -78,6 +78,8 @@ proxyadd WorkProxy http://prosser.minego.net:8118
 set auconcreatecontainer true
 autocontain -u ^https?://([^/]*\.|)venafi\.								Work WorkProxy
 autocontain -u ^https?://([^/]*\.|)amazonaws\.com/						Work WorkProxy
+autocontain -u ^https?://([^/]*\.|)awsapps\.com/						Work WorkProxy
+autocontain -u ^https?://([^/]*\.|)aws\.amazon\.com/						Work WorkProxy
 autocontain -u ^https?://([^/]*\.|)gitlab\.com/							Work WorkProxy
 autocontain -u ^https?://([^/]*\.|)id\.atlassian\.com/groups/venafi/	Work WorkProxy
 
