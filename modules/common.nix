@@ -125,15 +125,15 @@
 	documentation.dev.enable = true;
 
 	programs.neovim = {
-		enable			= true;
-		defaultEditor	= true;
-		viAlias			= true;
-		vimAlias		= true;
+		enable								= true;
+		defaultEditor						= true;
+		viAlias								= true;
+		vimAlias							= true;
 	};
 
 	programs.git = {
-		enable			= true;
-		lfs.enable		= true;
+		enable								= true;
+		lfs.enable							= true;
 	};
 
 	# Firmware Updater
@@ -141,9 +141,22 @@
 
 	# Enable the OpenSSH daemon.
 	services.openssh = {
-		enable = true;
-		settings.PasswordAuthentication = false;
-		settings.KbdInteractiveAuthentication = false;
+		enable								= true;
+		settings = {
+			PasswordAuthentication			= false;
+			KbdInteractiveAuthentication	= false;
+		};
+	};
+
+	# Enable spotifyd, but without creds so anyone can control these machines
+	# from a real spotify client.
+	services.spotifyd = {
+		enable								= true;
+		settings = {
+			use_mpris						= true;
+			device_type						= "computer";
+			device_name						= "${config.networking.hostName}";
+		};
 	};
 
 	# Open ports in the firewall.
@@ -152,9 +165,14 @@
 	# Or disable the firewall altogether.
 	# networking.firewall.enable = false;
 
-	# 53317 is used by localsend
-	networking.firewall.allowedTCPPorts = [ 53317 ];
-	networking.firewall.allowedUDPPorts = [ 53317 ];
+	networking.firewall.allowedTCPPorts = [
+		53317	# Used by local send
+		57621	# Used by spotifyd
+	];
+	networking.firewall.allowedUDPPorts = [
+		53317	# Used by local send
+		5353	# Used by spotifyd
+	];
 
 	# This value determines the NixOS release from which the default
 	# settings for stateful data, like file locations and database versions
