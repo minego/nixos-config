@@ -13,6 +13,9 @@ guiset_quiet hoverlink right
 bind K tabprev
 bind J tabnext
 
+" New tabs go at the end of the tab list
+set tabopenpos last
+
 " make d take you to the left (I find it much less confusing)
 bind d composite tabprev; tabclose #
 bind D tabclose
@@ -26,8 +29,8 @@ unbind <C-v>
 bind <C-v> mode ignore
 
 " But also support Tridactyl search too.
-bind / fillcmdline find
-bind ? fillcmdline find -?
+# bind / fillcmdline find
+# bind ? fillcmdline find -?
 bind n findnext
 bind N findnext --reverse
 
@@ -73,15 +76,18 @@ unbind --mode=ex <C-c>
 " This exposes you to 'cross site styling' attacks
 jsb browser.webRequest.onHeadersReceived.addListener(tri.request.clobberCSP,{urls:["<all_urls>"],types:["main_frame"]},["blocking","responseHeaders"])
 
-
-" " Isolate Facebook in its own container
-" " set auconcreatecontainer true
-" " autocontain facebook\.com facebook
+proxyadd WorkProxy http://prosser.minego.net:8118
 
 set auconcreatecontainer true
+autocontain -u ^https?://([^/]*\.|)venafi\.								Work WorkProxy
+autocontain -u ^https?://([^/]*\.|)amazonaws\.com/						Work WorkProxy
+autocontain -u ^https?://([^/]*\.|)awsapps\.com/						Work WorkProxy
+autocontain -u ^https?://([^/]*\.|)aws\.amazon\.com/						Work WorkProxy
+autocontain -u ^https?://([^/]*\.|)gitlab\.com/							Work WorkProxy
+autocontain -u ^https?://([^/]*\.|)id\.atlassian\.com/groups/venafi/	Work WorkProxy
 
-autocontain -s wowbagger\. Work
-autocontain -s venafi\. Work
+venafi.okta.com , Work
 
-autocontain -s 
-
+" Fix UI stuff - Don't cover the input area
+guiset_quiet hoverlink		top-right
+guiset_quiet statuspanel	top-right

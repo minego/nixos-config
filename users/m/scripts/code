@@ -1,6 +1,11 @@
 #!/bin/sh
 
 function findcodeenv() {
+	if [ -n "$1" ]; then
+		# If they provided a directory then start there
+		cd "$1" || exit $?
+	fi
+
 	local INITIAL_PWD=${PWD}
 
 	while true; do
@@ -10,7 +15,7 @@ function findcodeenv() {
 			return 0
 		fi
 
-		cd ..
+		cd .. || exit #?
 		if [ "${PWD}" == "/" ]; then
 			# No '.code-env' file was found, so fall back to using the current
 			# dir. This means that no vim commands will be run, but we still
@@ -22,12 +27,14 @@ function findcodeenv() {
 	done
 }
 
-ENV_DIR=$(findcodeenv)
-
-if [ $# -ne 0 ]; then
-	echo "Usage: cd to a directory that contains a .code-env file, and run `code` with no arguments"
+if [ $# -gt 1 ]; then
+	echo "Usage: code [<path>]"
+	echo ""
+	echo "If no path is specified then the current directory is used"
 	exit 1
 fi
+
+ENV_DIR=$(findcodeenv $@)
 
 NVIM_SESSION="${ENV_DIR}/.code-env"
 

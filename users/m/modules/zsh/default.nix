@@ -24,7 +24,6 @@ with lib;
 		autocd				= true;
 
 		sessionVariables	= {
-			MANPAGER		= "${pkgs.neovim-remote}/bin/nvr -O +Man! -";
 			EXA_ICON_SPACING= "2";
 		};
 
@@ -105,16 +104,6 @@ with lib;
             alias -s gif=feh
             alias -s jpg=feh
             alias -s md="glow -p"
-            
-            # Create a symlink to the actual $SSH_AUTH_SOCKET and then point
-            # the variable to that. This will mean that existing shells should
-            # not be affected by recreating it.
-            if [ -S "$SSH_AUTH_SOCK" ]; then
-            	if [ ! -L "$SSH_AUTH_SOCK" ]; then
-            		ln -sf $SSH_AUTH_SOCK ~/.ssh/ssh_auth_sock
-            		export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
-            	fi
-            fi
             
             # Teach myself some things...
             if [[ ! -n "$NO_HINTS" ]]; then
