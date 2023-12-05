@@ -1,6 +1,6 @@
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Linux)
-	NIXOS_REBUILD := nixos-rebuild
+	NIXOS_REBUILD := sudo nixos-rebuild
 endif
 ifeq ($(UNAME_S),Darwin)
 	NIXOS_REBUILD := darwin-rebuild
