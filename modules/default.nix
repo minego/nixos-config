@@ -8,16 +8,19 @@ with lib;
 		./laptop.nix
 		./printer.nix
 		./syncthing.nix
+
+		./gui
 	] ++ lib.optionals pkgs.stdenv.isLinux [
-		./gui.nix
+		./gui/linux.nix
+	] ++ lib.optionals pkgs.stdenv.isDarwin [
+		./gui/darwin.nix
+	] ++ [
 		./8bitdo.nix
 		./interception-tools.nix
 		./libvirt.nix
 
 		./amdgpu.nix
 		./nvidia.nix
-	] ++ lib.optionals pkgs.stdenv.isDarwin [
-
 	];
 }
 

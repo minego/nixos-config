@@ -30,31 +30,41 @@
 		};
 	};
 
-	outputs = { self, nixpkgs, darwin, home-manager, swapmods, mackeys, dwl-minego, ... }@inputs:
+	outputs = { nixpkgs, ... }@inputs:
 	let
-		inherit (self) outputs;
-
 		overlays = [
-			dwl-minego.overlay
-			swapmods.overlay
-			mackeys.overlay
+			inputs.dwl-minego.overlay
+			inputs.swapmods.overlay
+			inputs.mackeys.overlay
 			(import ./overlays/fonts.nix)
 		];
+
+		globals = rec {
+			user		= "m";
+			fullName	= "Micah N Gorrell";
+			email		= "m@minego.net";
+		};
 	in rec {
 		nixosConfigurations = {
-			dent		= import ./hosts/dent		{ inherit inputs overlays; };
-			lord		= import ./hosts/lord		{ inherit inputs overlays; };
-			hotblack	= import ./hosts/hotblack	{ inherit inputs overlays; };
+			dent		= import ./hosts/dent		{ inherit inputs globals overlays; };
+			lord		= import ./hosts/lord		{ inherit inputs globals overlays; };
+			hotblack	= import ./hosts/hotblack	{ inherit inputs globals overlays; };
 		};
 
 		darwinConfigurations = {
-			zaphod		= import ./hosts/zaphod		{ inherit inputs overlays; };
+			zaphod		= import ./hosts/zaphod		{ inherit inputs globals overlays; };
+			random		= import ./hosts/random		{ inherit inputs globals overlays; };
 		};
 
 		homeConfigurations = {
-			dent		= nixosConfigurations.dent.config.home-manager.users.m.home;
-			lord		= nixosConfigurations.lord.config.home-manager.users.m.home;
-			hotblack	= nixosConfigurations.hotblack.config.home-manager.users.m.home;
+			# NixOS
+			dent		= nixosConfigurations.dent.config.home-manager.users.${globals.user}.home;
+			lord		= nixosConfigurations.lord.config.home-manager.users.${globals.user}.home;
+			hotblack	= nixosConfigurations.hotblack.config.home-manager.users.${globals.user}.home;
+
+			# Darwin
+			zaphod		= nixosConfigurations.zaphod.config.home-manager.users.${globals.user}.home;
+			random		= nixosConfigurations.random.config.home-manager.users.${globals.user}.home;
 		};
 	};
 }

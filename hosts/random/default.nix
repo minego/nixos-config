@@ -8,12 +8,12 @@ inputs.darwin.lib.darwinSystem rec {
 			nixpkgs.overlays = overlays;
 
 			# Modules
-#			gui.enable			= false;
+			gui.enable			= false;
 #			"8bitdo".enable		= false;
 #			amdgpu.enable		= false;
 #			nvidia.enable		= false;
 
-			networking.hostName	= "zaphod";
+			networking.hostName	= "random";
 			time.timeZone		= "America/Denver";
 
 			# Auto upgrade nix package and the daemon service.
@@ -28,6 +28,7 @@ inputs.darwin.lib.darwinSystem rec {
 				../../users/m/darwin.nix
 
 #				../../modules
+				../../modules/gui.nix
 				inputs.home-manager.darwinModules.home-manager
 			];
 		}
