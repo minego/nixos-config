@@ -9,6 +9,8 @@ endif
 all:
 	@echo "Cowardly refusing to run. Try again with 'switch' or 'test'"
 
+install: switch
+
 switch:
 	$(NIXOS_REBUILD)  switch --flake ./#$(hostname)
 
