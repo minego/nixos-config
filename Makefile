@@ -12,10 +12,10 @@ all:
 install: switch
 
 switch:
-	$(NIXOS_REBUILD)  switch --flake ./#$(hostname)
+	$(NIXOS_REBUILD) switch --flake ./#$(hostname -s)
 
 switch-offline:
-	$(NIXOS_REBUILD) switch --flake ./#$(hostname) --option substitute false
+	$(NIXOS_REBUILD) switch --flake ./#$(hostname -s) --option substitute false
 
 update:
 	@nix flake update
@@ -24,13 +24,13 @@ update:
 	@echo ================================================================================
 	@echo "Press enter or wait 30 seconds to continue, or ctrl-c to cancel" 
 	@bash -c 'read -t 30 -p "... " ignore' || true
-	$(NIXOS_REBUILD) switch --flake /etc/nixos#$(hostname) --upgrade
+	$(NIXOS_REBUILD) switch --flake /etc/nixos#$(hostname -s) --upgrade
 
 test:
 	@nix flake check
 
 rollback:
-	$(NIXOS_REBUILD) switch --flake /etc/nixos#$(hostname) --rollback
+	$(NIXOS_REBUILD) switch --flake /etc/nixos#$(hostname -s) --rollback
 
 remote-dent:
 	@$(NIXOS_REBUILD) switch --fast --flake .#dent --target-host dent --build-host dent --use-remote-sudo
