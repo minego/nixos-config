@@ -5,12 +5,10 @@ inputs.darwin.lib.darwinSystem rec {
 
 	modules = [
 		{
-			nixpkgs.overlays = overlays ++ [
-				inputs.firefox-darwin.overlay
-			];
+			nixpkgs.overlays = overlays;
 
 			# Modules
-			gui.enable		= true;
+			gui.enable			= true;
 
 			networking.hostName	= "zaphod";
 			time.timeZone		= "America/Denver";

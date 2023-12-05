@@ -40,26 +40,6 @@
         "type": "github"
       }
     },
-    "firefox-darwin": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1701737024,
-        "narHash": "sha256-q1rNJSjoANG/DSrP+RM+LWK7HpqPqN+n6y9BG8V+Vr4=",
-        "owner": "bandithedoge",
-        "repo": "nixpkgs-firefox-darwin",
-        "rev": "7322fc60a4434c296d9c759fb19190d924fe766b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "bandithedoge",
-        "repo": "nixpkgs-firefox-darwin",
-        "type": "github"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -67,11 +47,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1701676655,
-        "narHash": "sha256-wP8i7hO2aLNJhYoTK3kqoymaCLgt4QcwWcO8d/A1CjQ=",
+        "lastModified": 1701728041,
+        "narHash": "sha256-x0pyrI1vC8evVDxCxyO6olOyr4wlFg9+VS3C3p4xFYQ=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "948703f3e71f1332a0cb535ebaf5cb14946e3724",
+        "rev": "ac7216918cd65f3824ba7817dea8f22e61221eaf",
         "type": "github"
       },
       "original": {
@@ -118,11 +98,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1701782919,
-        "narHash": "sha256-Yd5DM4PbBJNXpYC2/PwSd6D+dUpreW4za5TkSXkRYg4=",
+        "lastModified": 1701795904,
+        "narHash": "sha256-AZTvXKY6KxzMiv/wZmWRJjhqUuaA5W9nkxqPQXwBzCI=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "57a43cd4871363104369c27e71ea3efce3bef712",
+        "rev": "6d56b0811db9b92313e970f72633251aa180d89a",
         "type": "github"
       },
       "original": {
@@ -135,7 +115,6 @@
       "inputs": {
         "darwin": "darwin",
         "dwl-minego": "dwl-minego",
-        "firefox-darwin": "firefox-darwin",
         "home-manager": "home-manager",
         "mackeys": "mackeys",
         "nixpkgs": "nixpkgs",

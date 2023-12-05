@@ -3,17 +3,17 @@ ifeq ($(UNAME_S),Linux)
 	NIXOS_REBUILD := nixos-rebuild
 endif
 ifeq ($(UNAME_S),Darwin)
-	NIXOS_REBUILD := nix-darwin
+	NIXOS_REBUILD := darwin-rebuild
 endif
 
 all:
 	@echo "Cowardly refusing to run. Try again with 'switch' or 'test'"
 
 switch:
-	@sudo $(NIXOS_REBUILD)  switch --flake ./#$(hostname)
+	$(NIXOS_REBUILD)  switch --flake ./#$(hostname)
 
 switch-offline:
-	@sudo $(NIXOS_REBUILD) switch --flake ./#$(hostname) --option substitute false
+	$(NIXOS_REBUILD) switch --flake ./#$(hostname) --option substitute false
 
 update:
 	@nix flake update
@@ -22,13 +22,13 @@ update:
 	@echo ================================================================================
 	@echo "Press enter or wait 30 seconds to continue, or ctrl-c to cancel" 
 	@bash -c 'read -t 30 -p "... " ignore' || true
-	@sudo $(NIXOS_REBUILD) switch --flake /etc/nixos#$(hostname) --upgrade
+	$(NIXOS_REBUILD) switch --flake /etc/nixos#$(hostname) --upgrade
 
 test:
 	@nix flake check
 
 rollback:
-	@sudo $(NIXOS_REBUILD) switch --flake /etc/nixos#$(hostname) --rollback
+	$(NIXOS_REBUILD) switch --flake /etc/nixos#$(hostname) --rollback
 
 remote-dent:
 	@$(NIXOS_REBUILD) switch --fast --flake .#dent --target-host dent --build-host dent --use-remote-sudo

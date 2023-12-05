@@ -36,12 +36,6 @@
 			url = "github:minego/dwl";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
-
-		# Use official Firefox binary for macOS
-		firefox-darwin = {
-			url = "github:bandithedoge/nixpkgs-firefox-darwin";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
 	};
 
 	outputs = { nixpkgs, ... }@inputs:
@@ -52,6 +46,7 @@
 			inputs.mackeys.overlay
 			inputs.nur.overlay
 			(import ./overlays/fonts.nix)
+
 		];
 
 		globals = rec {
