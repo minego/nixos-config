@@ -34,6 +34,7 @@ inputs.nixpkgs.lib.nixosSystem {
 				../../users/m/linux.nix
 
 				../../modules
+				../../modules/linux
 				./hardware-configuration.nix
 				inputs.home-manager.nixosModules.home-manager
 			];

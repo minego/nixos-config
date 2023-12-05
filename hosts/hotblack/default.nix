@@ -37,6 +37,7 @@ lib.nixosSystem {
 				../../users/m/linux.nix
 
 				../../modules
+				../../modules/linux
 				../../modules/services
 				./hardware-configuration.nix
 				inputs.home-manager.nixosModules.home-manager

@@ -11,9 +11,6 @@ inputs.darwin.lib.darwinSystem rec {
 
 			# Modules
 			gui.enable			= false;
-#			"8bitdo".enable		= false;
-#			amdgpu.enable		= false;
-#			nvidia.enable		= false;
 
 			networking.hostName	= "random";
 			time.timeZone		= "America/Denver";
@@ -28,9 +25,8 @@ inputs.darwin.lib.darwinSystem rec {
 
 			imports = [
 				../../users/m/darwin.nix
-
-#				../../modules
-				../../modules/gui.nix
+				../../modules
+				../../modules/darwin
 				inputs.home-manager.darwinModules.home-manager
 			];
 		}

@@ -2,7 +2,7 @@
 with lib;
 
 {
-	config = mkIf (config.dwl.enable && osConfig.gui.enable) {
+	config = mkIf (config.dwl.enable && osConfig.gui.enable && pkgs.stdenv.isLinux) {
 		home.packages = with pkgs; [
 			swaynotificationcenter
 		];

@@ -44,15 +44,17 @@ with lib;
 	] ++ lib.optionals osConfig.gui.enable [
 		# Applications
 		spotify
-		wdisplays
 		slack
+		freerdp
+	] ++ lib.optionals (osConfig.gui.enable && pkgs.stdenv.isLinux) [
+		# TODO Find a way to install these on mac
+		steam
+		chromium
 		bitwarden
+
 		pavucontrol
 		pamixer
-		steam
 		linuxConsoleTools # jstest
-		chromium
-		freerdp
 	];
 
 	home.file.neovim = {

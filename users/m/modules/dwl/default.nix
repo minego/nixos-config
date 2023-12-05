@@ -7,7 +7,7 @@ with lib;
 		enable = mkEnableOption "DWL";
 	};
 
-	config = mkIf (config.dwl.enable && osConfig.gui.enable) {
+	config = mkIf (config.dwl.enable && osConfig.gui.enable && pkgs.stdenv.isLinux) {
 		home.packages = with pkgs; [
 			dwl
 			wayland
