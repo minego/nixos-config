@@ -5,7 +5,9 @@ inputs.darwin.lib.darwinSystem rec {
 
 	modules = [
 		{
-			nixpkgs.overlays = overlays;
+			nixpkgs.overlays = overlays ++ [
+				inputs.firefox-darwin.overlay
+			];
 
 			# Modules
 #			gui.enable			= false;
@@ -28,6 +30,7 @@ inputs.darwin.lib.darwinSystem rec {
 				../../users/m/darwin.nix
 
 #				../../modules
+				../../modules/gui.nix
 				inputs.home-manager.darwinModules.home-manager
 			];
 		}

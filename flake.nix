@@ -14,18 +14,27 @@
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
+		# Plugin for Interception Tools
 		mackeys = {
 			url = "github:minego/mackeys";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
+		# Plugin for Interception Tools
 		swapmods = {
 			url = "github:minego/swapmods";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
+		# My branch of DWL
 		dwl-minego = {
 			url = "github:minego/dwl";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
+
+		# Use official Firefox binary for macOS
+		firefox-darwin = {
+			url = "github:bandithedoge/nixpkgs-firefox-darwin";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 	};

@@ -1,10 +1,6 @@
 { config, pkgs, lib, ... }:
 
 {
-	imports = lib.optionals pkgs.stdenv.isLinux [
-		./linux.nix
-	];
-
 	users.users.m = {
 		shell			= pkgs.zsh;
 		description		= "Micah N Gorrell";

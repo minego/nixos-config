@@ -46,10 +46,13 @@ with lib;
 		pamixer
 		steam
 		tridactyl-native
-		firefox-wayland
 		linuxConsoleTools # jstest
 		chromium
 		freerdp
+	] ++ lib.optionals stdenv.isLinux [
+		firefox-wayland
+	] ++ lib.optionals stdenv.isDarwin [
+		firefox-bin
 	];
 
 	home.file.neovim = {
@@ -122,13 +125,13 @@ with lib;
 	programs.readline.enable = true;
 	home.file.".inputrc".source = ./dotfiles/inputrc;
 
-	dconf.settings = {
+	dconf.settings = mkIf pkgs.stdenv.isLinux {
 		"org/gnome/desktop/interface" = {
 			color-scheme = "prefer-dark";
 		};
 	};
 
-	gtk = {
+	gtk = mkIf pkgs.stdenv.isLinux {
 		enable = true;
 
 		iconTheme = {
@@ -159,7 +162,7 @@ with lib;
 		};
 	};
 
-	xdg.mimeApps = {
+	xdg.mimeApps = mkIf pkgs.stdenv.isLinux {
 		enable = true;
 
 		defaultApplications = {
@@ -184,8 +187,6 @@ with lib;
 
 		MALLOC_CHECK_	= "2";	# stupid linux malloc
 	};
-
-	programs.firefox.enable = true;
 
 	# Let firefox call tridactyl's native thingy, so the config can be loaded
 	home.file.tridactyl-native = {
