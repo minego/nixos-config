@@ -125,6 +125,4 @@ with lib;
 	programs.direnv = {
 		enable				= true;
 	};
-
-
 }

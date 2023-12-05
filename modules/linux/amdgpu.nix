@@ -6,7 +6,7 @@ with lib;
 	options.amdgpu = {
 		enable = mkEnableOption "AMD GPU";
 	};
-	config = mkIf config.amdgpu.enable {
+	config = mkIf (config.amdgpu.enable && pkgs.stdenv.isLinux) {
 		# amdgpu
 		boot.initrd.kernelModules = [ "amdgpu" ];
 

@@ -1,34 +1,29 @@
 { inputs, overlays, ... }:
 
-let
-	lib = inputs.nixpkgs.lib;
-in
-lib.nixosSystem {
+inputs.nixpkgs.lib.nixosSystem {
 	system = "x86_64-linux";
 	modules = [
 		{
-			nixpkgs.overlays = overlays;
+			nixpkgs.overlays		= overlays;
+
 			# Modules
-			gui.enable		= true;
-			"8bitdo".enable	= true;
-			amdgpu.enable	= true;
-			nvidia.enable	= false;
+			gui.enable				= true;
+			"8bitdo".enable			= true;
+			amdgpu.enable			= true;
+			nvidia.enable			= false;
+
+			time.timeZone			= "America/Denver";
+			services.fstrim.enable	= true;
 
 			# Enable networking, with DHCP and a bridge device
-			networking.hostName = "dent";
+			networking.hostName		= "dent";
 
-			networking.useDHCP = false;
+			networking.useDHCP		= false;
+
+			# Setup a bridge to be used with libvirt
 			networking.interfaces.enp42s0.useDHCP = true;
 			networking.interfaces.br0.useDHCP = true;
-			networking.bridges = {
-				"br0" = {
-					interfaces = [ "enp42s0" ];
-				};
-			};
-
-			time.timeZone = "America/Denver";
-
-			services.fstrim.enable = lib.mkDefault true;
+			networking.bridges.br0.interfaces = [ "enp42s0" ];
 
 			home-manager = {
 				useGlobalPkgs	= true;
@@ -36,8 +31,10 @@ lib.nixosSystem {
 			};
 
 			imports = [
+				../../users/m/linux.nix
+
 				../../modules
-				../../users/m
+				../../modules/linux
 				./hardware-configuration.nix
 				inputs.home-manager.nixosModules.home-manager
 			];

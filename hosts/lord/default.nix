@@ -32,8 +32,10 @@ lib.nixosSystem {
 			};
 
 			imports = [
+				../../users/m/linux.nix
+
 				../../modules
-				../../users/m
+				../../modules/linux
 				./hardware-configuration.nix
 				inputs.home-manager.nixosModules.home-manager
 			];
