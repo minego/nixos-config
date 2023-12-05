@@ -37,16 +37,12 @@ with lib;
 			":qall"			= "exit";
 			":e"			= "vi";
 
-			# TODO Find a way to disable this on macOS
-			open			= "xdg-open";
+			open			= lib.mkIf pkgs.stdenv.isLinux "xdg-open";
 		};
 
 		history.path		= "$HOME/.history";
 
 		initExtra			= ''
-            # Tabs should not be 8 chars, that is just silly
-            env TERM=linux ${pkgs.util-linux}/bin/setterm -regtabs 4
-            
             # Allow completion to find matches regardless of case
             zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
             

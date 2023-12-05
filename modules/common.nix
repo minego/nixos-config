@@ -1,6 +1,8 @@
 { config, pkgs, lib, inputs, ... }:
 
 {
+	time.timeZone = lib.mkDefault "America/Denver";
+
 	# Enable the nix command and flakes
 	nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -54,5 +56,10 @@
 			device_type						= "computer";
 			device_name						= "${config.networking.hostName}";
 		};
+	};
+
+	home-manager = {
+		useGlobalPkgs	= true;
+		useUserPackages	= true;
 	};
 }

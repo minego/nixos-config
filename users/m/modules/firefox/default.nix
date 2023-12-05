@@ -19,6 +19,7 @@ with lib;
 
 		programs.firefox = {
 			enable				= true;
+
 			package				=
 				if
 					pkgs.stdenv.isDarwin
@@ -103,8 +104,8 @@ with lib;
 		xdg.configFile."tridactyl/tridactylrc".source = ./../../dotfiles/tridactylrc;
 
 		home.sessionVariables = {
-			BROWSER			= "${pkgs.firefox}/bin/firefox";
-			DEFAULT_BROWSER	= "${pkgs.firefox}/bin/firefox";
+			# BROWSER			= "${pkgs.firefox}/bin/firefox";
+			# DEFAULT_BROWSER	= "${pkgs.firefox}/bin/firefox";
 
 			# Make wayland applications behave
 			NIXOS_OZONE_WL	= "1";

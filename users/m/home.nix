@@ -17,7 +17,8 @@ with lib;
 	dwl.enable = true;
 
 	# TODO Find a working firefox package/overlay for aarch64-darwin
-	firefox.enable = mkIf pkgs.stdenv.isLinux true;
+	# firefox.enable = mkIf pkgs.stdenv.isLinux true;
+	firefox.enable = true;
 
 	imports = [
 		./modules

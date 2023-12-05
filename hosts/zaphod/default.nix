@@ -1,25 +1,16 @@
-{ inputs, globals, overlays, ... }:
+{ inputs, globals, overlays, darwinOverlays, ... }:
 
 inputs.darwin.lib.darwinSystem rec {
 	system = "aarch64-darwin";
 
 	modules = [
 		{
-			nixpkgs.overlays = overlays;
+			nixpkgs.overlays = overlays ++ darwinOverlays;
 
 			# Modules
 			gui.enable			= true;
 
 			networking.hostName	= "zaphod";
-			time.timeZone		= "America/Denver";
-
-			# Auto upgrade nix package and the daemon service.
-			services.nix-daemon.enable = true;
-
-			home-manager = {
-				useGlobalPkgs	= true;
-				useUserPackages	= true;
-			};
 
 			imports = [
 				../../users/m/darwin.nix

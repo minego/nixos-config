@@ -9,6 +9,9 @@
 		pathsToLink		= [ "/Applications" ];
 	};
 
+	# Auto upgrade nix package and the daemon service.
+	services.nix-daemon.enable = true;
+
 	# Do this with Karabiner instead
 	system.keyboard.enableKeyMapping = false;
 

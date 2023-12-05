@@ -36,17 +36,31 @@
 			url = "github:minego/dwl";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+
+		# Official Firefox builds for Darwin
+        nixpkgs-firefox-darwin = {
+			url = "github:bandithedoge/nixpkgs-firefox-darwin";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
 	};
 
 	outputs = { nixpkgs, ... }@inputs:
 	let
+		inherit (nixpkgs) lib;
+
 		overlays = [
 			inputs.dwl-minego.overlay
 			inputs.swapmods.overlay
 			inputs.mackeys.overlay
 			inputs.nur.overlay
 			(import ./overlays/fonts.nix)
+		];
 
+		linuxOverlays = [
+		];
+
+		darwinOverlays = [
+			inputs.nixpkgs-firefox-darwin.overlay
 		];
 
 		globals = rec {
@@ -56,14 +70,14 @@
 		};
 	in rec {
 		nixosConfigurations = {
-			dent		= import ./hosts/dent		{ inherit inputs globals overlays; };
-			lord		= import ./hosts/lord		{ inherit inputs globals overlays; };
-			hotblack	= import ./hosts/hotblack	{ inherit inputs globals overlays; };
+			dent		= import ./hosts/dent		{ inherit inputs globals overlays linuxOverlays; };
+			lord		= import ./hosts/lord		{ inherit inputs globals overlays linuxOverlays; };
+			hotblack	= import ./hosts/hotblack	{ inherit inputs globals overlays linuxOverlays; };
 		};
 
 		darwinConfigurations = {
-			zaphod		= import ./hosts/zaphod		{ inherit inputs globals overlays; };
-			random		= import ./hosts/random		{ inherit inputs globals overlays; };
+			zaphod		= import ./hosts/zaphod		{ inherit inputs globals overlays darwinOverlays; };
+			random		= import ./hosts/random		{ inherit inputs globals overlays darwinOverlays; };
 		};
 
 		homeConfigurations = {

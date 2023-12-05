@@ -1,10 +1,10 @@
-{ inputs, overlays, ... }:
+{ inputs, overlays, linuxOverlays, ... }:
 
 inputs.nixpkgs.lib.nixosSystem {
 	system = "x86_64-linux";
 	modules = [
 		{
-			nixpkgs.overlays		= overlays;
+			nixpkgs.overlays		= overlays ++ linuxOverlays;
 
 			# Modules
 			gui.enable				= true;
@@ -12,7 +12,6 @@ inputs.nixpkgs.lib.nixosSystem {
 			amdgpu.enable			= true;
 			nvidia.enable			= false;
 
-			time.timeZone			= "America/Denver";
 			services.fstrim.enable	= true;
 
 			# Enable networking, with DHCP and a bridge device
@@ -24,11 +23,6 @@ inputs.nixpkgs.lib.nixosSystem {
 			networking.interfaces.enp42s0.useDHCP = true;
 			networking.interfaces.br0.useDHCP = true;
 			networking.bridges.br0.interfaces = [ "enp42s0" ];
-
-			home-manager = {
-				useGlobalPkgs	= true;
-				useUserPackages	= true;
-			};
 
 			imports = [
 				../../users/m/linux.nix

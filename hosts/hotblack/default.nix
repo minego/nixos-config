@@ -1,13 +1,11 @@
-{ inputs, overlays, ... }:
+{ inputs, overlays, linuxOverlays, ... }:
 
-let
-	lib = inputs.nixpkgs.lib;
-in
-lib.nixosSystem {
+inputs.nixpkgs.lib.nixosSystem {
 	system = "x86_64-linux";
 	modules = [
 		{
-			nixpkgs.overlays = overlays;
+			nixpkgs.overlays = overlays ++ linuxOverlays;
+
 			# Turn on all features related to desktop and graphical applications
 			gui.enable		= false;
 			"8bitdo".enable	= false;
@@ -24,13 +22,6 @@ lib.nixosSystem {
 				"br0" = {
 					interfaces = [ "eno1" ];
 				};
-			};
-
-			time.timeZone = "America/Denver";
-
-			home-manager = {
-				useGlobalPkgs	= true;
-				useUserPackages	= true;
 			};
 
 			imports = [
