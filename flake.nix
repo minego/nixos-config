@@ -14,6 +14,11 @@
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
+		nur = {
+			url = github:nix-community/NUR;
+			# inputs.nixpkgs.follows = "nixpkgs";
+		};
+
 		# Plugin for Interception Tools
 		mackeys = {
 			url = "github:minego/mackeys";
@@ -45,6 +50,7 @@
 			inputs.dwl-minego.overlay
 			inputs.swapmods.overlay
 			inputs.mackeys.overlay
+			inputs.nur.overlay
 			(import ./overlays/fonts.nix)
 		];
 

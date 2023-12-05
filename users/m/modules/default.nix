@@ -5,6 +5,7 @@ with lib;
 	imports = [
 		./kitty
 		./zsh
+		./firefox
 
 		./dwl
 		./waybar

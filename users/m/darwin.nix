@@ -4,6 +4,7 @@
 	users.users.m = {
 		shell			= pkgs.zsh;
 		description		= "Micah N Gorrell";
+		home			= lib.mkDefault "/Users/m";
 
 		openssh.authorizedKeys.keys = [
 			"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHrr0jgE0HE25pM0Mpqz1H8Bu3VczJa1wSIcJVLbPtiL m@dent"

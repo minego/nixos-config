@@ -4,7 +4,13 @@ with lib;
 {
 	home = rec {
 		username		= lib.mkDefault "m";
-		homeDirectory	= lib.mkDefault "/home/${config.home.username}";
+		homeDirectory	= 
+				if
+					pkgs.stdenv.isDarwin
+				then
+					lib.mkDefault "/Users/${config.home.username}"
+				else
+					lib.mkDefault "/home/${config.home.username}";
 	};
 
 	# Enable DWL
@@ -17,7 +23,6 @@ with lib;
 	home.packages = with pkgs; [
 		neofetch
 		neovim-remote
-		acpi
 		codespell
 		mdcat
 		sptlrx
@@ -45,14 +50,9 @@ with lib;
 		pavucontrol
 		pamixer
 		steam
-		tridactyl-native
 		linuxConsoleTools # jstest
 		chromium
 		freerdp
-	] ++ lib.optionals stdenv.isLinux [
-		firefox-wayland
-	] ++ lib.optionals stdenv.isDarwin [
-		firefox-bin
 	];
 
 	home.file.neovim = {
@@ -161,39 +161,6 @@ with lib;
 			'';
 		};
 	};
-
-	xdg.mimeApps = mkIf pkgs.stdenv.isLinux {
-		enable = true;
-
-		defaultApplications = {
-			"text/html"					= "firefox.desktop";
-			"x-scheme-handler/http"		= "firefox.desktop";
-			"x-scheme-handler/https"	= "firefox.desktop";
-			"x-scheme-handler/about"	= "firefox.desktop";
-			"x-scheme-handler/unknown"	= "firefox.desktop";
-		};
-	};
-
-	home.sessionVariables = {
-		BROWSER			= "${pkgs.firefox-wayland}/bin/firefox";
-		DEFAULT_BROWSER	= "${pkgs.firefox-wayland}/bin/firefox";
-
-		# Make wayland applications behave
-		NIXOS_OZONE_WL	= "1";
-		KEYTIMEOUT		= "1";
-		VISUAL			= "nvim";
-		EDITOR			= "nvim";
-		LC_CTYPE		= "C";
-
-		MALLOC_CHECK_	= "2";	# stupid linux malloc
-	};
-
-	# Let firefox call tridactyl's native thingy, so the config can be loaded
-	home.file.tridactyl-native = {
-		source = "${pkgs.tridactyl-native}//lib/mozilla/native-messaging-hosts/tridactyl.json";
-		target = "./.mozilla/native-messaging-hosts/tridactyl.json";
-	};
-	xdg.configFile."tridactyl/tridactylrc".source = ./dotfiles/tridactylrc;
 
 	# Don't touch
 	programs.home-manager.enable = true;
