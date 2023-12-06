@@ -125,17 +125,6 @@ with lib;
 			};
 		};
 
-		# Fix the terminfo for ssh
-		home.file.kitty-terminfo1 = {
-			source = "${pkgs.kitty.terminfo.outPath}/share/terminfo/78/xterm-kitty";
-			target = "./.terminfo/xterm-kitty";
-		};
-
-		home.file.kitty-terminfo2 = {
-			source = "${pkgs.kitty.terminfo.outPath}/share/terminfo/78/xterm-kitty";
-			target = "./.terminfo/78/xterm-kitty";
-		};
-
 		# Much better icon
 		xdg.configFile."kitty/kitty.app.png".source = ./kitty.app.png;
 

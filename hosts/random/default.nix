@@ -8,7 +8,7 @@ inputs.darwin.lib.darwinSystem rec {
 			nixpkgs.overlays = overlays ++ darwinOverlays;
 
 			# Modules
-			gui.enable			= false;
+			gui.enable			= true;
 
 			networking.hostName	= "random";
 

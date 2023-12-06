@@ -169,6 +169,20 @@ with lib;
 		};
 	};
 
+	# On darwin the terminfo related environment variables don't seem to get
+	# set early enough to be used via ssh.
+	#
+	# Just make the symlink in our home dir to ensure we can ssh from kitty
+	home.file.kitty-terminfo1 = {
+		source = "${pkgs.kitty.terminfo.outPath}/share/terminfo/78/xterm-kitty";
+		target = "./.terminfo/xterm-kitty";
+	};
+
+	home.file.kitty-terminfo2 = {
+		source = "${pkgs.kitty.terminfo.outPath}/share/terminfo/78/xterm-kitty";
+		target = "./.terminfo/78/xterm-kitty";
+	};
+
 	# Don't touch
 	programs.home-manager.enable = true;
 	home.stateVersion = "23.11";
