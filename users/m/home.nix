@@ -1,4 +1,4 @@
-{ config, pkgs, osConfig, lib, writeShellScriptBin, ... }:
+{ config, pkgs, osConfig, lib, ... }:
 with lib;
 
 {

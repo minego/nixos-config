@@ -50,8 +50,10 @@ with lib;
 			};
 
 			settings = {
+				listen_on				= "unix:/tmp/kitty.sock";
 				term					= "xterm-kitty";
 				kitty_mod				= "ctrl+shift";
+				allow_remote_control	= true;
 
 				linux_display_server	= "wayland";
 				macos_option_as_alt		= true;
@@ -116,8 +118,15 @@ with lib;
 				# white
 				color7					= "#${config.colors.light.white}";
 				color15					= "#${config.colors.dark.white}";
+
+				remember_window_size	= false;
+				initial_window_width	= 1920;
+				initial_window_height	= 1080;
 			};
 		};
+
+		# Much better icon
+		xdg.configFile."kitty/kitty.app.png".source = ./kitty.app.png;
 
 		# The monaspace fonts don't specify the right spacing, and that makes
 		# kitty refuse to treat them as mono space fonts, even though they are.

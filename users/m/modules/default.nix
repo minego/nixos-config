@@ -11,6 +11,7 @@ with lib;
 		./waybar
 		./swaync
 		./xenon-colorscheme
+		./karabiner
 	] ++ lib.optionals osConfig.gui.enable [
 		./fonts
 	];
