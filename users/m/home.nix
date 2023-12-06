@@ -26,8 +26,6 @@ with lib;
 
 	home.packages = with pkgs; [
 		neofetch
-		neovim-remote
-		codespell
 		mdcat
 		sptlrx
 		fd
@@ -62,25 +60,8 @@ with lib;
 		linuxConsoleTools # jstest
 	];
 
-	home.file.neovim = {
-		source = pkgs.fetchFromGitHub {
-			owner	= "minego";
-			repo	= "dotfiles.neovim";
-			rev		= "e02dbb9";
-			sha256	= "sha256-a2qZzSlJa2QbwB/dN71NCJNQwQaAdEJMAisVmexrWwI=";
-		};
-		target = "./.config/nvim";
-	};
-
 	# Kitty is configured in a module, but only if enabled
 	programs.kitty.enable = true;
-
-	programs.neovim = {
-		enable			= true;
-		defaultEditor	= true;
-		viAlias			= true;
-		vimAlias		= true;
-	};
 
 	programs.ripgrep = {
 		enable			= true;

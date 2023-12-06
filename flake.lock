@@ -80,6 +80,22 @@
         "type": "github"
       }
     },
+    "neovim-config": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1699632662,
+        "narHash": "sha256-a2qZzSlJa2QbwB/dN71NCJNQwQaAdEJMAisVmexrWwI=",
+        "owner": "minego",
+        "repo": "dotfiles.neovim",
+        "rev": "e02dbb98cbaa12a7ee4fa2f5aa84513db20ad647",
+        "type": "github"
+      },
+      "original": {
+        "owner": "minego",
+        "repo": "dotfiles.neovim",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1701436327,
@@ -137,6 +153,7 @@
         "dwl-minego": "dwl-minego",
         "home-manager": "home-manager",
         "mackeys": "mackeys",
+        "neovim-config": "neovim-config",
         "nixpkgs": "nixpkgs",
         "nixpkgs-firefox-darwin": "nixpkgs-firefox-darwin",
         "nur": "nur",

@@ -42,6 +42,11 @@
 			url = "github:bandithedoge/nixpkgs-firefox-darwin";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+
+		neovim-config = {
+			url = "github:minego/dotfiles.neovim";
+			flake = false;
+		};
 	};
 
 	outputs = { nixpkgs, ... }@inputs:
@@ -54,6 +59,10 @@
 			inputs.mackeys.overlay
 			inputs.nur.overlay
 			(import ./overlays/fonts.nix)
+
+			(self: super: {
+				neovim-config = inputs.neovim-config;
+			})
 		];
 
 		linuxOverlays = [

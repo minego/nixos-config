@@ -3,6 +3,7 @@ with lib;
 
 {
 	imports = [
+		./neovim
 		./kitty
 		./zsh
 		./firefox

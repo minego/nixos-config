@@ -1,4 +1,4 @@
-{ config, pkgs, lib, inputs, ... }:
+{ config, pkgs, lib, globals, inputs, ... }:
 
 {
 	time.timeZone = lib.mkDefault "America/Denver";
@@ -50,16 +50,18 @@
 	# Enable spotifyd, but without creds so anyone can control these machines
 	# from a real spotify client.
 	services.spotifyd = {
-		enable								= true;
+		enable				= true;
 		settings = {
-			use_mpris						= true;
-			device_type						= "computer";
-			device_name						= "${config.networking.hostName}";
+			use_mpris		= true;
+			device_type		= "computer";
+			device_name		= "${config.networking.hostName}";
 		};
 	};
 
 	home-manager = {
-		useGlobalPkgs	= true;
-		useUserPackages	= true;
+		useGlobalPkgs		= true;
+		useUserPackages		= true;
+
+		extraSpecialArgs	= { inherit globals inputs; };
 	};
 }
