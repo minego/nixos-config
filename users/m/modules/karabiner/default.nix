@@ -12,14 +12,7 @@ let
         			# Tell kitty to open a new window
         			$KITTEN @ launch --type os-window --cwd "$HOME" \
         				--to unix:$SOCK								\
-        				--var "font_family=Monaspace Neon"			\
-        				--var "font_size=17"						\
-        				--var "background=#050505"					\
-        				--var "background_opacity=0.75"				\
-        															\
-        				--var "remember_window_size=no"				\
-        				--var "initial_window_width=400"			\
-        				--var "initial_window_height=400"			\
+        				--os-window-state fullscreen				\
         				--var "hide_window_decorations=yes"			\
         															\
         				$0 menu
