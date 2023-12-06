@@ -83,11 +83,11 @@
     "neovim-config": {
       "flake": false,
       "locked": {
-        "lastModified": 1699632662,
-        "narHash": "sha256-a2qZzSlJa2QbwB/dN71NCJNQwQaAdEJMAisVmexrWwI=",
+        "lastModified": 1701891157,
+        "narHash": "sha256-7hiMB9LljqjEUBEV/ZgxCxt5etxLyNCEPmz0cRgFo2c=",
         "owner": "minego",
         "repo": "dotfiles.neovim",
-        "rev": "e02dbb98cbaa12a7ee4fa2f5aa84513db20ad647",
+        "rev": "d8181f496644d99e9c19e416d60fa5bdb2432d7a",
         "type": "github"
       },
       "original": {
@@ -98,11 +98,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1701436327,
-        "narHash": "sha256-tRHbnoNI8SIM5O5xuxOmtSLnswEByzmnQcGGyNRjxsE=",
+        "lastModified": 1701718080,
+        "narHash": "sha256-6ovz0pG76dE0P170pmmZex1wWcQoeiomUZGggfH9XPs=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "91050ea1e57e50388fa87a3302ba12d188ef723a",
+        "rev": "2c7f3c0fb7c08a0814627611d9d7d45ab6d75335",
         "type": "github"
       },
       "original": {
@@ -134,11 +134,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1701795904,
-        "narHash": "sha256-AZTvXKY6KxzMiv/wZmWRJjhqUuaA5W9nkxqPQXwBzCI=",
+        "lastModified": 1701906331,
+        "narHash": "sha256-4dzaExoiung1HWn0nTp9xBHtB5rQMTsfOC2FtJuUoH4=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "6d56b0811db9b92313e970f72633251aa180d89a",
+        "rev": "b8ad2b1feccf3b75e2d7fabad6d97769318febf4",
         "type": "github"
       },
       "original": {
@@ -157,7 +157,8 @@
         "nixpkgs": "nixpkgs",
         "nixpkgs-firefox-darwin": "nixpkgs-firefox-darwin",
         "nur": "nur",
-        "swapmods": "swapmods"
+        "swapmods": "swapmods",
+        "zsh-vi-mode": "zsh-vi-mode"
       }
     },
     "swapmods": {
@@ -177,6 +178,22 @@
       "original": {
         "owner": "minego",
         "repo": "swapmods",
+        "type": "github"
+      }
+    },
+    "zsh-vi-mode": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1699262975,
+        "narHash": "sha256-xbchXJTFWeABTwq6h4KWLh+EvydDrDzcY9AQVK65RS8=",
+        "owner": "jeffreytse",
+        "repo": "zsh-vi-mode",
+        "rev": "ea1f58ab9b1f3eac50e2cde3e3bc612049ef683b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jeffreytse",
+        "repo": "zsh-vi-mode",
         "type": "github"
       }
     }

@@ -47,6 +47,11 @@
 			url = "github:minego/dotfiles.neovim";
 			flake = false;
 		};
+
+		zsh-vi-mode = {
+			url = "github:jeffreytse/zsh-vi-mode";
+			flake = false;
+		};
 	};
 
 	outputs = { nixpkgs, ... }@inputs:
@@ -62,6 +67,13 @@
 
 			(self: super: {
 				neovim-config = inputs.neovim-config;
+			})
+
+			# Get the latest zsh-vi-mode
+			(self: super: {
+				zsh-vi-mode = super.zsh-vi-mode.overrideDerivation (oldAttrs: {
+					src = inputs.zsh-vi-mode;
+				});
 			})
 		];
 
