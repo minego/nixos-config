@@ -35,5 +35,15 @@ with lib;
 			freerdp
 			tigervnc
 		];
+
+		home.sessionVariables = {
+			BROWSER			= "${pkgs.firefox}/bin/firefox";
+			DEFAULT_BROWSER	= "${pkgs.firefox}/bin/firefox";
+
+			# Make wayland applications behave
+			NIXOS_OZONE_WL	= "1";
+
+			MALLOC_CHECK_	= "2";	# stupid linux malloc
+		};
 	};
 }

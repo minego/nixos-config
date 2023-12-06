@@ -145,17 +145,10 @@ with lib;
 		xdg.configFile."tridactyl/tridactylrc".source = ./../../dotfiles/tridactylrc;
 
 		home.sessionVariables = {
-			# BROWSER			= "${pkgs.firefox}/bin/firefox";
-			# DEFAULT_BROWSER	= "${pkgs.firefox}/bin/firefox";
-
-			# Make wayland applications behave
-			NIXOS_OZONE_WL	= "1";
 			KEYTIMEOUT		= "1";
 			VISUAL			= "nvim";
 			EDITOR			= "nvim";
 			LC_CTYPE		= "C";
-
-			MALLOC_CHECK_	= "2";	# stupid linux malloc
 		};
 	};
 }

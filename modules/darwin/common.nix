@@ -2,11 +2,10 @@
 
 {
 	environment = {
-		shells			= with pkgs; [ bash zsh ];
-		loginShell		= pkgs.zsh;
-		systemPackages	= [ pkgs.coreutils ];
-		systemPath		= [ "/opt/homebrew/bin" ];
-		pathsToLink		= [ "/Applications" ];
+		shells				= with pkgs; [ bash zsh ];
+		loginShell			= pkgs.zsh;
+		systemPackages		= [ pkgs.coreutils ];
+		pathsToLink			= [ "/Applications" ];
 	};
 
 	# Auto upgrade nix package and the daemon service.
