@@ -8,8 +8,6 @@ with lib;
 		zsh-vi-mode
 		zsh-system-clipboard
 		zsh-nix-shell
-
-		mdcat
 	];
 
 
@@ -89,22 +87,6 @@ with lib;
             bindkey "$terminfo[kcud1]" down-line-or-beginning-search
             bindkey -M vicmd "k" up-line-or-beginning-search
             bindkey -M vicmd "j" down-line-or-beginning-search
-            
-            # Suffix Aliases (run a file as if it was a command for a specific extension)
-            alias -s c=nvim
-            alias -s h=nvim
-            alias -s go=nvim
-            alias -s txt=nvim
-            alias -s pdf=zathura
-            alias -s png=feh
-            alias -s gif=feh
-            alias -s jpg=feh
-            alias -s md="glow -p"
-            
-            # Teach myself some things...
-            if [[ ! -n "$NO_HINTS" ]]; then
-            	mdcat ~/.zsh.hints.md
-            fi
             '';
 	};
 
