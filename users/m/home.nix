@@ -50,6 +50,7 @@ with lib;
 		spotify
 		slack
 		freerdp
+		mpv
 	] ++ lib.optionals (osConfig.gui.enable && pkgs.stdenv.isLinux) [
 		# TODO Find a way to install these on mac
 		steam

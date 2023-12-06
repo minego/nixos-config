@@ -83,6 +83,8 @@ with lib;
 					i-dont-care-about-cookies
 				];
 				settings = {
+					"signon.rememberSignons"				= false;
+
 					"app.update.auto"						= false;
 					"browser.aboutConfig.showWarning"		= false;
 					"browser.warnOnQuit"					= false;
