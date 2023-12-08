@@ -83,7 +83,7 @@ autocontain -u ^https?://([^/]*\.|)venafi\.								Work WorkProxy
 autocontain -u ^https?://([^/]*\.|)amazonaws\.							Work WorkProxy
 autocontain -u ^https?://([^/]*\.|)awsapps\.							Work WorkProxy
 autocontain -u ^https?://([^/]*\.|)aws\.amazon\.						Work WorkProxy
-autocontain -u ^https?://([^/]*\.|)gitlab\.								Work WorkProxy
+autocontain -u ^https?://([^/]*\.|)gitlab\.com							Work WorkProxy
 autocontain -u ^https?://([^/]*\.|)atlassian\.							Work WorkProxy
 
 " Fix UI stuff - Don't cover the input area
