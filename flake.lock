@@ -200,11 +200,11 @@
       "locked": {
         "lastModified": 1,
         "narHash": "sha256-GtEuoGafPE8iK5q/4aB/Z1mLPrN4czMlacR/Rd8B6yA=",
-        "path": "/nix/store/kdzxmzj6ddglrgbzr409s7jrgl113x5w-source/flakes/gitlab-nvim-flake",
+        "path": "/nix/store/8rdlxwh4s81k3sx4x34ya9agzqx3ji1v-source/flakes/gitlab-nvim-flake",
         "type": "path"
       },
       "original": {
-        "path": "/nix/store/kdzxmzj6ddglrgbzr409s7jrgl113x5w-source/flakes/gitlab-nvim-flake",
+        "path": "/nix/store/8rdlxwh4s81k3sx4x34ya9agzqx3ji1v-source/flakes/gitlab-nvim-flake",
         "type": "path"
       }
     },
@@ -550,11 +550,11 @@
         "vim-test": "vim-test"
       },
       "locked": {
-        "lastModified": 1702045781,
-        "narHash": "sha256-FnG775BFAVUdiUEPhKmtfrG4lcDPFX5rABIIdskqXOY=",
+        "lastModified": 1702050017,
+        "narHash": "sha256-edsXCG8TE/DxvAph+RkVw+GIT2eAcT/06+CCOmEbd2Y=",
         "owner": "minego",
         "repo": "nvim-flake",
-        "rev": "2c4b8ce896996f10c14ab61c419cde0614755956",
+        "rev": "6c7af399f0b10638d2691aba10cd911b6aa40077",
         "type": "github"
       },
       "original": {
