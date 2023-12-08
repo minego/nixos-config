@@ -3,7 +3,7 @@ with lib;
 
 {
 	imports = [
-		./neovim
+		./xenon-colorscheme
 		./kitty
 		./zsh
 		./firefox
@@ -11,7 +11,6 @@ with lib;
 		./dwl
 		./waybar
 		./swaync
-		./xenon-colorscheme
 		./karabiner
 	] ++ lib.optionals osConfig.gui.enable [
 		./fonts

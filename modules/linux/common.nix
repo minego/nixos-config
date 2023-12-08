@@ -97,13 +97,6 @@
 		lfs.enable							= true;
 	};
 
-	programs.neovim = {
-		enable								= true;
-		defaultEditor						= true;
-		viAlias								= true;
-		vimAlias							= true;
-	};
-
 	services.avahi = {
 		enable = true;
 		nssmdns = true;

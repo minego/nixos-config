@@ -43,9 +43,10 @@
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
-		neovim-config = {
-			url = "github:minego/dotfiles.neovim";
-			flake = false;
+		# My customized neovim package, with configuration
+		neovim-minego = {
+			url = "github:minego/nvim-flake";
+			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
 		zsh-vi-mode = {
@@ -63,11 +64,8 @@
 			inputs.swapmods.overlay
 			inputs.mackeys.overlay
 			inputs.nur.overlay
+			inputs.neovim-minego.overlay
 			(import ./overlays/fonts.nix)
-
-			(self: super: {
-				neovim-config = inputs.neovim-config;
-			})
 
 			# Get the latest zsh-vi-mode
 			(self: super: {
