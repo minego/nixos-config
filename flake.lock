@@ -83,11 +83,11 @@
     "neovim-config": {
       "flake": false,
       "locked": {
-        "lastModified": 1701891157,
-        "narHash": "sha256-7hiMB9LljqjEUBEV/ZgxCxt5etxLyNCEPmz0cRgFo2c=",
+        "lastModified": 1701907391,
+        "narHash": "sha256-a2qZzSlJa2QbwB/dN71NCJNQwQaAdEJMAisVmexrWwI=",
         "owner": "minego",
         "repo": "dotfiles.neovim",
-        "rev": "d8181f496644d99e9c19e416d60fa5bdb2432d7a",
+        "rev": "9062f3e92171918c95865169159059e6917b67fb",
         "type": "github"
       },
       "original": {

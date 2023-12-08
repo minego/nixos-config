@@ -82,11 +82,9 @@ set auconcreatecontainer true
 autocontain -u ^https?://([^/]*\.|)venafi\.								Work WorkProxy
 autocontain -u ^https?://([^/]*\.|)amazonaws\.com/						Work WorkProxy
 autocontain -u ^https?://([^/]*\.|)awsapps\.com/						Work WorkProxy
-autocontain -u ^https?://([^/]*\.|)aws\.amazon\.com/						Work WorkProxy
+autocontain -u ^https?://([^/]*\.|)aws\.amazon\.com/					Work WorkProxy
 autocontain -u ^https?://([^/]*\.|)gitlab\.com/							Work WorkProxy
-autocontain -u ^https?://([^/]*\.|)id\.atlassian\.com/groups/venafi/	Work WorkProxy
-
-venafi.okta.com , Work
+autocontain -u ^https?://([^/]*\.|)atlassian\.com/						Work WorkProxy
 
 " Fix UI stuff - Don't cover the input area
 guiset_quiet hoverlink		top-right
