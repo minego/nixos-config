@@ -3,6 +3,11 @@ with lib;
 
 {
 	config = mkIf config.gui.enable {
+		# This is needed for bitwarden
+		nixpkgs.config.permittedInsecurePackages = [
+			"electron-25.9.0"
+		];
+
 		environment.systemPackages = with pkgs; [
 			# XDG Portals
 			xdg-desktop-portal

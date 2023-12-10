@@ -16,8 +16,6 @@ with lib;
 	# Enable various modules
 	dwl.enable = true;
 
-	# TODO Find a working firefox package/overlay for aarch64-darwin
-	# firefox.enable = mkIf pkgs.stdenv.isLinux true;
 	firefox.enable = true;
 
 	imports = [
@@ -50,7 +48,6 @@ with lib;
 		freerdp
 		mpv
 	] ++ lib.optionals (osConfig.gui.enable && pkgs.stdenv.isLinux) [
-		# TODO Find a way to install these on mac
 		steam
 		chromium
 		bitwarden
