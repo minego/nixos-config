@@ -41,6 +41,7 @@
 		gnumake
 		dtach
 		direnv
+		cmake
 
 		curl
 		stow
