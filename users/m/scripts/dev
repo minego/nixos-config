@@ -1,48 +1,46 @@
 #!/bin/sh
 
-function findcodeenv() {
-	if [ -n "$1" ]; then
-		# If they provided a directory then start there
-		cd "$1" || exit $?
-	fi
-
-	local INITIAL_PWD=${PWD}
-
+function findProjectRoot() {
 	while true; do
-		if [ -f .code-env ]; then
+		if [[ -d .git || -f .code-env ]]; then
 			echo "${PWD}"
-			cd "${INITIAL_PWD}"
 			return 0
 		fi
 
 		cd .. || exit #?
 		if [ "${PWD}" == "/" ]; then
-			# No '.code-env' file was found, so fall back to using the current
-			# dir. This means that no vim commands will be run, but we still
-			# get a reattachable session.
-			cd "${INITIAL_PWD}"
 			echo "${PWD}"
 			return 0
 		fi
 	done
+
+	return 1
 }
 
 if [ $# -gt 1 ]; then
-	echo "Usage: code [<path>]"
+	echo "Usage: dev [<path>]"
 	echo ""
 	echo "If no path is specified then the current directory is used"
 	exit 1
 fi
 
-ENV_DIR=$(findcodeenv $@)
+if [ -n "$1" ]; then
+	# If they provided a directory then start there
+	cd "$1" || exit $?
+fi
 
-NVIM_SESSION="${ENV_DIR}/.code-env"
+PROJECT_ROOT=$(findProjectRoot)
+NVIM_SESSION="${PROJECT_ROOT}/.code-env"
+if [ ! -d "${PROJECT_ROOT}" ]; then
+	echo "Could not find the project root"
+	exit 1
+fi
 
 # Change to the root of the environment, because the env file may have paths
 # that are relative to that.
-cd ${ENV_DIR}
+cd ${PROJECT_ROOT}
 
-SOCKET_DIR="${HOME}/.dtach-sockets/${ENV_DIR}"
+SOCKET_DIR="${HOME}/.dtach-sockets/${PROJECT_ROOT}"
 mkdir -p "${SOCKET_DIR}"
 
 if [ -f "${NVIM_SESSION}" ]; then
