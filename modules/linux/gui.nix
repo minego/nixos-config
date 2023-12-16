@@ -3,6 +3,12 @@ with lib;
 
 {
 	config = mkIf config.gui.enable {
+		# This is required to use the lldb-vscode DAP to debug on Linux, and I
+		# tend to need to do that on any system that is a "desktop" so that is
+		# why I put this here.
+		boot.kernel.sysctl."kernel.yama.ptrace_scope" = mkForce 0;
+
+
 		# This is needed for bitwarden
 		nixpkgs.config.permittedInsecurePackages = [
 			"electron-25.9.0"
