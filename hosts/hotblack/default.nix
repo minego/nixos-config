@@ -8,6 +8,7 @@ inputs.nixpkgs.lib.nixosSystem {
 
 			# Turn on all features related to desktop and graphical applications
 			gui.enable		= false;
+			printer.enable	= false;
 			"8bitdo".enable	= false;
 			nvidia.enable	= true;
 			amdgpu.enable	= false;

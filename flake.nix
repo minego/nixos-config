@@ -53,6 +53,12 @@
 			url = "github:jeffreytse/zsh-vi-mode";
 			flake = false;
 		};
+
+		# Micro VMs
+		microvm = {
+			url = "github:astro/microvm.nix";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
 	};
 
 	outputs = { nixpkgs, ... }@inputs:
@@ -89,13 +95,30 @@
 		};
 	in rec {
 		nixosConfigurations = {
+			# My main desktop computer
 			dent		= import ./hosts/dent		{ inherit inputs globals overlays linuxOverlays; };
+
+			# Thinkpad
 			lord		= import ./hosts/lord		{ inherit inputs globals overlays linuxOverlays; };
+
+			# Home server
 			hotblack	= import ./hosts/hotblack	{ inherit inputs globals overlays linuxOverlays; };
+
+			# NixOS VM running on my macbook pro
+			zaphod-vm	= import ./hosts/zaphod-vm	{ inherit inputs globals overlays linuxOverlays; };
+
+			# Gateway VM
+			gateway-vm	= import ./hosts/gateway-vm { inherit inputs globals overlays linuxOverlays; };
 		};
 
+		# Shortcut to allow accessing the VM as '.#zaphod-vm' instead of the whole path
+		packages.aarch64-darwin.zaphod-vm = nixosConfigurations.zaphod-vm.config.system.build.vm;
+
 		darwinConfigurations = {
+			# Macbook pro (m2 max)
 			zaphod		= import ./hosts/zaphod		{ inherit inputs globals overlays darwinOverlays; };
+
+			# Mac mini (m1)
 			random		= import ./hosts/random		{ inherit inputs globals overlays darwinOverlays; };
 		};
 

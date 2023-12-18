@@ -8,6 +8,7 @@ inputs.nixpkgs.lib.nixosSystem {
 
 			# Modules
 			gui.enable				= true;
+			steam.enable			= true;
 			"8bitdo".enable			= true;
 			amdgpu.enable			= true;
 			nvidia.enable			= false;

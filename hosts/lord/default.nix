@@ -11,6 +11,8 @@ lib.nixosSystem {
 
 			# Modules
 			gui.enable		= true;
+			steam.enable	= true;
+			laptop.enable	= true;
 			"8bitdo".enable	= true;
 			nvidia.enable	= false;
 			amdgpu.enable	= false;

@@ -8,12 +8,6 @@ with lib;
 		# why I put this here.
 		boot.kernel.sysctl."kernel.yama.ptrace_scope" = mkForce 0;
 
-
-		# This is needed for bitwarden
-		nixpkgs.config.permittedInsecurePackages = [
-			"electron-25.9.0"
-		];
-
 		environment.systemPackages = with pkgs; [
 			# XDG Portals
 			xdg-desktop-portal
@@ -25,8 +19,6 @@ with lib;
 		programs.dconf.enable	= true;
 		services.dbus.enable	= true;
 		programs.light.enable	= true;
-
-		hardware.steam-hardware.enable = true;
 
 		fonts.packages = with pkgs; [
 			# Install most through home-manager, but best to have at least one
@@ -64,13 +56,6 @@ with lib;
 			# Keep the behavior as it was prior to xdg-desktop-portal 1.17 until
 			# I can find better documentation for the xdg.portal.config option
 			config.common.default = "*";
-		};
-
-		# Install steam globally, because we're all gonna want it.
-		programs.steam = {
-			enable = true;
-			remotePlay.openFirewall = true;
-			dedicatedServer.openFirewall = true;
 		};
 	};
 }

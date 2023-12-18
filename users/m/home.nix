@@ -41,16 +41,18 @@ with lib;
 				chmod +x $out/bin/*
 			'';
 		})
-	] ++ lib.optionals osConfig.gui.enable [
-		# Applications
+	] ++ lib.optionals (osConfig.gui.enable && (
+			(pkgs.stdenv.isLinux && pkgs.stdenv.isx86_64) ||
+			(pkgs.stdenv.isDarwin)
+	)) [
+		# These aren't available on aarch64 linux
 		spotify
 		slack
+	] ++ lib.optionals osConfig.gui.enable [
 		freerdp
 		mpv
 	] ++ lib.optionals (osConfig.gui.enable && pkgs.stdenv.isLinux) [
-		steam
 		chromium
-		bitwarden
 
 		pavucontrol
 		pamixer
