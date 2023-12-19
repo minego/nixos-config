@@ -23,8 +23,14 @@ inputs.nixpkgs.lib.nixosSystem {
 			# TODO Turn on the kernel option to be able to run x86 apps on arm
 
 			virtualisation.vmVariant.virtualisation = {
-				graphics			= false;
+				graphics			= true;
 				host.pkgs			= inputs.nixpkgs.legacyPackages.aarch64-darwin;
+
+				cores				= 8;
+				memorySize			= 32768;
+				diskSize			= 204800;
+
+				guestAgent.enable	= true;
 			};
 
 			# Modules
@@ -42,7 +48,10 @@ inputs.nixpkgs.lib.nixosSystem {
 			# Enable networking, with DHCP and a bridge device
 			networking.hostName		= "zaphod-vm";
 
-			networking.useDHCP		= true;
+			networking.useDHCP		= false;
+			networking.interfaces.eth0.useDHCP = true;
+
+			services.getty.autologinUser = "m";
 
 			imports = [
 				../../users/m/linux.nix

@@ -99,9 +99,9 @@
 	};
 
 	services.avahi = {
-		enable = true;
-		nssmdns = true;
-		openFirewall = true;
+		enable								= true;
+		nssmdns4							= true;
+		openFirewall						= true;
 	};
 
 	# Firmware Updater
