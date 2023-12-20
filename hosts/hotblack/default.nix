@@ -17,8 +17,14 @@ inputs.nixpkgs.lib.nixosSystem {
 			networking.hostName = "hotblack";
 
 			networking.useDHCP = false;
-			networking.interfaces.eno1.useDHCP = true;
-			networking.interfaces.br0.useDHCP = true;
+
+			networking.interfaces.eno1 = {
+				useDHCP = true;
+			};
+			networking.interfaces.br0 = {
+				useDHCP = true;
+			};
+
 			networking.bridges = {
 				"br0" = {
 					interfaces = [ "eno1" ];
