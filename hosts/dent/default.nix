@@ -12,6 +12,7 @@ inputs.nixpkgs.lib.nixosSystem {
 			"8bitdo".enable			= true;
 			amdgpu.enable			= true;
 			nvidia.enable			= false;
+			samba.enable			= true;
 
 			services.fstrim.enable	= true;
 

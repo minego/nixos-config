@@ -16,6 +16,7 @@ with lib;
 		./nvidia.nix
 
 		./syncthing.nix
+		./samba.nix
 	];
 }
 
