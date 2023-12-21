@@ -6,7 +6,6 @@ with lib;
 		zsh
 		zsh-syntax-highlighting
 		zsh-vi-mode
-		zsh-system-clipboard
 		zsh-nix-shell
 	];
 
