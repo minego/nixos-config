@@ -4,7 +4,12 @@
 	environment = {
 		shells					= with pkgs; [ bash zsh ];
 		loginShell				= pkgs.zsh;
-		systemPackages			= [ pkgs.coreutils ];
+		systemPackages			= with pkgs; [
+			coreutils
+
+			# I don't want to always install this, but it makes my life easier if I do so...
+			ninja
+		];
 		pathsToLink				= [ "/Applications" ];
 
 		variables = {
