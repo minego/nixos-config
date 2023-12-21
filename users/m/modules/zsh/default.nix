@@ -86,6 +86,8 @@ with lib;
             bindkey "$terminfo[kcud1]" down-line-or-beginning-search
             bindkey -M vicmd "k" up-line-or-beginning-search
             bindkey -M vicmd "j" down-line-or-beginning-search
+
+            export PATH="$HOME/.local/bin:$PATH"
             '';
 	};
 

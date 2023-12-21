@@ -6,9 +6,6 @@
 		loginShell				= pkgs.zsh;
 		systemPackages			= with pkgs; [
 			coreutils
-
-			# I don't want to always install this, but it makes my life easier if I do so...
-			ninja
 		];
 		pathsToLink				= [ "/Applications" ];
 

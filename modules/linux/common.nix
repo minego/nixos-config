@@ -9,6 +9,9 @@
 		polkit
 		polkit_gnome
 		bluez
+
+		cmake
+		ninja
 	];
 
 	# Automatic Upgrades
