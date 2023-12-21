@@ -15,6 +15,7 @@
 		spice-protocol
 		win-virtio
 		win-spice
+		virtiofsd
 	];
 
 	# Manage the virtualisation services
