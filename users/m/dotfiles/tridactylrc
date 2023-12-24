@@ -79,6 +79,9 @@ jsb browser.webRequest.onHeadersReceived.addListener(tri.request.clobberCSP,{url
 proxyadd WorkProxy http://prosser.minego.net:8118
 
 set auconcreatecontainer true
+
+set autocontainmode relaxed
+
 autocontain -u ^https?://([^/]*\.|)venafi\.								Work WorkProxy
 autocontain -u ^https?://([^/]*\.|)amazonaws\.							Work WorkProxy
 autocontain -u ^https?://([^/]*\.|)awsapps\.							Work WorkProxy
