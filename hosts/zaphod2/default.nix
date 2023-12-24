@@ -8,8 +8,19 @@ lib.nixosSystem {
 	modules = [
 		{
 			nixpkgs.overlays = overlays
-				++ linuxOverlays
-				++ [ inputs.apple-silicon.overlays.apple-silicon-overlay ];
+			++ linuxOverlays
+			++ [
+				inputs.apple-silicon.overlays.apple-silicon-overlay
+
+				# Patch DWL to enable scaling
+				(final: prev: {
+					dwl = prev.dwl.overrideAttrs(old: {
+						patches = [
+							./dwl.patch
+						];
+					});
+				})
+			];
 
 			# Modules
 			gui.enable		= true;

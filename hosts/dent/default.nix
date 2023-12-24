@@ -4,7 +4,16 @@ inputs.nixpkgs.lib.nixosSystem {
 	system = "x86_64-linux";
 	modules = [
 		{
-			nixpkgs.overlays		= overlays ++ linuxOverlays;
+			nixpkgs.overlays = overlays ++ linuxOverlays ++ [
+				# Patch DWL to enable adaptive sync
+				(final: prev: {
+					dwl = prev.dwl.overrideAttrs(old: {
+						patches = [
+							./dwl.patch
+						];
+					});
+				})
+			];
 
 			# Modules
 			gui.enable				= true;
