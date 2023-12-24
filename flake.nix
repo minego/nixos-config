@@ -4,6 +4,11 @@
 	inputs = {
 		nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
+		apple-silicon = {
+			url = "github:tpwrules/nixos-apple-silicon";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
+
 		darwin = {
 			url = "github:LnL7/nix-darwin";
 			inputs.nixpkgs.follows = "nixpkgs";
@@ -103,6 +108,9 @@
 
 			# Home server
 			hotblack	= import ./hosts/hotblack	{ inherit inputs globals overlays linuxOverlays; };
+
+			# Macbook pro (m2 max) running NixOS with Asahi
+			zaphod2		= import ./hosts/zaphod2	{ inherit inputs globals overlays linuxOverlays; };
 
 			# NixOS VM running on my macbook pro
 			zaphod-vm	= import ./hosts/zaphod-vm	{ inherit inputs globals overlays linuxOverlays; };

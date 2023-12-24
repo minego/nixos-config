@@ -1,5 +1,27 @@
 {
   "nodes": {
+    "apple-silicon": {
+      "inputs": {
+        "flake-compat": "flake-compat",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "rust-overlay": "rust-overlay"
+      },
+      "locked": {
+        "lastModified": 1703366710,
+        "narHash": "sha256-sZKrfh54SMzbmlMUlhPw+LZFGb4VYQN/u8o2P1GFwnY=",
+        "owner": "tpwrules",
+        "repo": "nixos-apple-silicon",
+        "rev": "46a0a36c01b8944f0c7d506808f341106121433d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tpwrules",
+        "repo": "nixos-apple-silicon",
+        "type": "github"
+      }
+    },
     "cmake-tools": {
       "flake": false,
       "locked": {
@@ -101,6 +123,21 @@
       "original": {
         "owner": "editorconfig",
         "repo": "editorconfig-vim",
+        "type": "github"
+      }
+    },
+    "flake-compat": {
+      "locked": {
+        "lastModified": 1688025799,
+        "narHash": "sha256-ktpB4dRtnksm9F5WawoIkEneh1nrEvuxb5lJFt1iOyw=",
+        "owner": "nix-community",
+        "repo": "flake-compat",
+        "rev": "8bf105319d44f6b9f0d764efa4fdef9f1cc9ba1c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "flake-compat",
         "type": "github"
       }
     },
@@ -1141,6 +1178,7 @@
     },
     "root": {
       "inputs": {
+        "apple-silicon": "apple-silicon",
         "darwin": "darwin",
         "dwl-minego": "dwl-minego",
         "home-manager": "home-manager",
@@ -1152,6 +1190,22 @@
         "nur": "nur",
         "swapmods": "swapmods",
         "zsh-vi-mode": "zsh-vi-mode"
+      }
+    },
+    "rust-overlay": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1686795910,
+        "narHash": "sha256-jDa40qRZ0GRQtP9EMZdf+uCbvzuLnJglTUI2JoHfWDc=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "5c2b97c0a9bc5217fc3dfb1555aae0fb756d99f9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "type": "github"
       }
     },
     "swapmods": {

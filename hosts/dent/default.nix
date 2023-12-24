@@ -26,6 +26,8 @@ inputs.nixpkgs.lib.nixosSystem {
 			networking.interfaces.br0.useDHCP = true;
 			networking.bridges.br0.interfaces = [ "enp42s0" ];
 
+			boot.loader.efi.canTouchEfiVariables = true;
+
 			imports = [
 				../../users/m/linux.nix
 

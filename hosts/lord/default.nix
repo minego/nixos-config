@@ -26,6 +26,11 @@ lib.nixosSystem {
 			boot.initrd.luks.devices."luks-7c93fd91-b48e-49bb-9de9-28832248b424".device = "/dev/disk/by-uuid/7c93fd91-b48e-49bb-9de9-28832248b424";
 			services.fstrim.enable = lib.mkDefault true;
 
+			boot.loader.efi.canTouchEfiVariables = true;
+			
+			# This isn't available on aarch64, so just include it here
+			services.thermald.enable	= true;
+
 			imports = [
 				../../users/m/linux.nix
 

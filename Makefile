@@ -12,7 +12,7 @@ all:
 install: switch
 
 switch:
-	$(NIXOS_REBUILD) switch --flake ./#$(hostname -s)
+	$(NIXOS_REBUILD) switch --flake ./#$(hostname -s) --impure
 
 switch-debug:
 	$(NIXOS_REBUILD) switch --flake ./#$(hostname -s) --option eval-cache false --show-trace
