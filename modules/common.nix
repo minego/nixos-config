@@ -49,17 +49,6 @@
 		kitty.terminfo
 	];
 
-	# Enable spotifyd, but without creds so anyone can control these machines
-	# from a real spotify client.
-	services.spotifyd = {
-		enable				= true;
-		settings = {
-			use_mpris		= true;
-			device_type		= "computer";
-			device_name		= "${config.networking.hostName}";
-		};
-	};
-
 	home-manager = {
 		useGlobalPkgs		= true;
 		useUserPackages		= true;

@@ -45,6 +45,8 @@ lib.nixosSystem {
 			# Reference the firmware required for asahi
 			hardware.asahi.peripheralFirmwareDirectory = ../../firmware;
 
+			services.tlp.enable = true;
+
 			imports = [
 				../../users/m/linux.nix
 
