@@ -25,6 +25,8 @@ inputs.nixpkgs.lib.nixosSystem {
 				};
 			};
 
+			boot.loader.efi.canTouchEfiVariables = true;
+
 			imports = [
 				../../users/m/linux.nix
 

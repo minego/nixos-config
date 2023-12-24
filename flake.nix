@@ -4,6 +4,11 @@
 	inputs = {
 		nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
+		apple-silicon = {
+			url = "github:tpwrules/nixos-apple-silicon";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
+
 		darwin = {
 			url = "github:LnL7/nix-darwin";
 			inputs.nixpkgs.follows = "nixpkgs";
@@ -82,6 +87,9 @@
 		];
 
 		linuxOverlays = [
+			# Force the use of the x86_64 version of specific packages (which
+			# is a no-op on x86_64 boxes)
+			(import ./overlays/aarch64_and_x86_64.nix)
 		];
 
 		darwinOverlays = [
@@ -103,6 +111,9 @@
 
 			# Home server
 			hotblack	= import ./hosts/hotblack	{ inherit inputs globals overlays linuxOverlays; };
+
+			# Macbook pro (m2 max) running NixOS with Asahi
+			zaphod2		= import ./hosts/zaphod2	{ inherit inputs globals overlays linuxOverlays; };
 
 			# NixOS VM running on my macbook pro
 			zaphod-vm	= import ./hosts/zaphod-vm	{ inherit inputs globals overlays linuxOverlays; };
@@ -127,6 +138,7 @@
 			dent		= nixosConfigurations.dent.config.home-manager.users.${globals.user}.home;
 			lord		= nixosConfigurations.lord.config.home-manager.users.${globals.user}.home;
 			hotblack	= nixosConfigurations.hotblack.config.home-manager.users.${globals.user}.home;
+			zaphod2		= nixosConfigurations.zaphod2.config.home-manager.users.${globals.user}.home;
 
 			# Darwin
 			zaphod		= nixosConfigurations.zaphod.config.home-manager.users.${globals.user}.home;

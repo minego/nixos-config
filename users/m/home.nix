@@ -41,12 +41,13 @@ with lib;
 				chmod +x $out/bin/*
 			'';
 		})
-	] ++ lib.optionals (osConfig.gui.enable && (
-			(pkgs.stdenv.isLinux && pkgs.stdenv.isx86_64) ||
-			(pkgs.stdenv.isDarwin)
-	)) [
+#	] ++ lib.optionals (osConfig.gui.enable && (
+#			(pkgs.stdenv.isLinux && pkgs.stdenv.isx86_64) ||
+#			(pkgs.stdenv.isDarwin)
+#	)) [
 		# These aren't available on aarch64 linux
 		spotify
+		spotify-tui
 		slack
 	] ++ lib.optionals osConfig.gui.enable [
 		freerdp
