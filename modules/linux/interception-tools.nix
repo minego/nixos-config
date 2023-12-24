@@ -8,7 +8,7 @@ in
 {
 	# Interception-Tools
 	services.interception-tools = {
-		enable = true;
+		enable = false;
 		plugins = [
 			caps2escPkg
 			mackeys

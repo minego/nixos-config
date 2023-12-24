@@ -87,6 +87,9 @@
 		];
 
 		linuxOverlays = [
+			# Force the use of the x86_64 version of specific packages (which
+			# is a no-op on x86_64 boxes)
+			(import ./overlays/aarch64_and_x86_64.nix)
 		];
 
 		darwinOverlays = [
@@ -135,6 +138,7 @@
 			dent		= nixosConfigurations.dent.config.home-manager.users.${globals.user}.home;
 			lord		= nixosConfigurations.lord.config.home-manager.users.${globals.user}.home;
 			hotblack	= nixosConfigurations.hotblack.config.home-manager.users.${globals.user}.home;
+			zaphod2		= nixosConfigurations.zaphod2.config.home-manager.users.${globals.user}.home;
 
 			# Darwin
 			zaphod		= nixosConfigurations.zaphod.config.home-manager.users.${globals.user}.home;

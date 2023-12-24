@@ -37,9 +37,10 @@ lib.nixosSystem {
 
 			# This should be false with asahi!
 			boot.loader.efi.canTouchEfiVariables = false;
-			boot.extraModprobeConfig = ''
-                            options hid_apple iso_layout=0
-			'';
+			boot.extraModprobeConfig = "options hid_apple iso_layout=0 swap_fn_leftctrl=1 fnmode=2";
+
+			# Rosetta for Linux
+			boot.binfmt.emulatedSystems = [ "x86_64-linux" ];
 
 			# Reference the firmware required for asahi
 			hardware.asahi.peripheralFirmwareDirectory = ../../firmware;
