@@ -102,6 +102,12 @@
 			email		= "m@minego.net";
 		};
 	in rec {
+		# Set the version of 'nixpkgs' used on the command line to be locked to
+		# the version at the time this configuration was applied. This will
+		# prevent downloading a bunch of stuff every time we run a command like
+		# 'nix shell nixpkgs#neovim'
+		nix.registry.nixpkgs.flake = inputs.nixpkgs;
+
 		nixosConfigurations = {
 			# My main desktop computer
 			dent		= import ./hosts/dent		{ inherit inputs globals overlays linuxOverlays; };
