@@ -48,10 +48,10 @@ with lib;
 				chmod +x $out/bin/*
 			'';
 		})
-#	] ++ lib.optionals (osConfig.gui.enable && (
-#			(pkgs.stdenv.isLinux && pkgs.stdenv.isx86_64) ||
-#			(pkgs.stdenv.isDarwin)
-#	)) [
+	] ++ lib.optionals (osConfig.gui.enable && (
+			(pkgs.stdenv.isLinux && pkgs.stdenv.isx86_64) ||
+			(pkgs.stdenv.isDarwin)
+	)) [
 		# These aren't available on aarch64 linux
 		spotify
 		spotify-tui
@@ -145,11 +145,11 @@ with lib;
 		};
 
 		gtk3.extraConfig = {
-			Settings = "gtk-application-prefer-dark-theme=1";
+			"gtk-application-prefer-dark-theme" = "1";
 		};
 
 		gtk4.extraConfig = {
-			Settings = "gtk-application-prefer-dark-theme=1";
+			"gtk-application-prefer-dark-theme" = "1";
 		};
 	};
 

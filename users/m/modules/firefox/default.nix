@@ -80,6 +80,7 @@ with lib;
 					sponsorblock
 					don-t-fuck-with-paste
 					i-dont-care-about-cookies
+					user-agent-string-switcher
 				];
 				settings = {
 					"signon.rememberSignons"				= false;
@@ -118,6 +119,9 @@ with lib;
 					"cookiebanners.ui.desktop.enabled"		= true;
 
 					"devtools.command-button-screenshot.enabled" = true;
+
+					# Don't stop me from using tridactyl on mozilla pages!
+					"extensions.webextensions.restrictedDomains" = "";
 				};
 
 				extraConfig = "";
