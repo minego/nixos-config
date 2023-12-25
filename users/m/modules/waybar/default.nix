@@ -35,12 +35,12 @@ with lib;
 					"mpris"
 					"custom/cpuusage" "custom/cpuhist"
 					"pulseaudio" "network"
-					"battery" "battery#1"
 					"bluetooth" "tray"
 
 					"custom/audio_idle_inhibitor"
 					"clock"
 					"custom/notification"
+					"battery" "battery#1"
 				];
 
 				backlight = {
@@ -239,7 +239,7 @@ with lib;
 
 				"custom/notification" = {
 					tooltip										= false;
-					format										= "  {icon}   ";
+					format										= "{icon}";
 					format-icons = {
 						notification							= "<span foreground='#ff2a6d'><sup></sup></span>";
 						none									= "";
