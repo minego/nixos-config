@@ -31,6 +31,8 @@ lib.nixosSystem {
 			nvidia.enable	= false;
 			amdgpu.enable	= false;
 
+			webdav.enable	= true;
+
 			# Turn on the asahi GPU driver
 			hardware.asahi.useExperimentalGPUDriver = true;
 			hardware.opengl = {
