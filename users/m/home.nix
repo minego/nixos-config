@@ -22,6 +22,13 @@ with lib;
 		./modules
 	];
 
+	home.sessionVariables = {
+		KEYTIMEOUT		= "1";
+		VISUAL			= "nvim";
+		EDITOR			= "nvim";
+		LC_CTYPE		= "C";
+	};
+
 	home.packages = with pkgs; [
 		neofetch
 		mdcat

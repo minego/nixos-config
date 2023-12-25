@@ -2,7 +2,6 @@
 with lib;
 
 {
-
 	options = {
 		firefox = {
 			enable = lib.mkEnableOption {
@@ -143,12 +142,5 @@ with lib;
 			target = "./.mozilla/native-messaging-hosts/tridactyl.json";
 		};
 		xdg.configFile."tridactyl/tridactylrc".source = ./../../dotfiles/tridactylrc;
-
-		home.sessionVariables = {
-			KEYTIMEOUT		= "1";
-			VISUAL			= "nvim";
-			EDITOR			= "nvim";
-			LC_CTYPE		= "C";
-		};
 	};
 }

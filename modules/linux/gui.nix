@@ -37,25 +37,25 @@ with lib;
 		];
 
 		# Make Firefox use the native file picker
-		programs.firefox.preferences.widget.use-xdg-desktop-portal.file-picker = 1;
+		programs.firefox.preferences.widget.use-xdg-desktop-portal.file-picker = 0;
+
+		# Enable xinput2 in firefox
+		environment.sessionVariables = {
+			MOZ_USE_XINPUT2 = "1";
+		};
 
 		# XDG Desktop Portal
 		# TODO Find a way to do this through home-manager, since these options
 		# will not be right for other window managers
 		xdg.portal = {
-			enable = true;
-			wlr.enable = true;
+			enable				= true;
+			wlr.enable			= true;
 
-			# xdgOpenUsePortal = true;
+			xdgOpenUsePortal	= false;
 
-			extraPortals = with pkgs; [
-				xdg-desktop-portal-wlr
-				# xdg-desktop-portal-gtk
-			];
-
-			# Keep the behavior as it was prior to xdg-desktop-portal 1.17 until
-			# I can find better documentation for the xdg.portal.config option
-			config.common.default = "*";
+			config.common = {
+				default			= [ "wlr" "gtk" ];
+			};
 		};
 	};
 }
