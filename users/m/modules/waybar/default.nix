@@ -93,7 +93,6 @@ with lib;
 
 				"battery" = {
 					format					= "{icon}";
-					bat						= "BAT1";
 					tooltip-format			= "{capacity}% {timeTo}";
 					states = {
 						warning				= 30;
