@@ -23,21 +23,22 @@ lib.nixosSystem {
 			];
 
 			# Modules
-			gui.enable		= true;
-			steam.enable	= true;
-			laptop.enable	= true;
-			"8bitdo".enable	= true;
+			gui.enable							= true;
+			steam.enable						= true;
+			laptop.enable						= true;
+			"8bitdo".enable						= true;
 
-			nvidia.enable	= false;
-			amdgpu.enable	= false;
+			nvidia.enable						= false;
+			amdgpu.enable						= false;
 
-			webdav.enable	= true;
+			webdav.enable						= true;
+			interception-tools.enable			= true;
 
 			# Turn on the asahi GPU driver
 			hardware.asahi.useExperimentalGPUDriver = true;
 			hardware.opengl = {
-				enable = true;
-				driSupport = true;
+				enable							= true;
+				driSupport						= true;
 			};
 
 			networking.hostName = "zaphod2";

@@ -17,7 +17,9 @@ lib.nixosSystem {
 			nvidia.enable						= false;
 			amdgpu.enable						= false;
 
-			networking.hostName = "lord";
+			interception-tools.enable			= false;
+
+			networking.hostName					= "lord";
 
 			services.xserver = {
 				enable							= true;

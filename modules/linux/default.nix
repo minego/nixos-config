@@ -18,6 +18,7 @@ with lib;
 		./syncthing.nix
 		./samba.nix
 		./webdav.nix
+		./steam.nix
 	];
 }
 

@@ -7,9 +7,9 @@ with lib;
 
 		# Install steam globally, because we're all gonna want it.
 		programs.steam = {
-			enable = true;
-			remotePlay.openFirewall = true;
-			dedicatedServer.openFirewall = true;
+			enable							= true;
+			remotePlay.openFirewall			= true;
+			dedicatedServer.openFirewall	= true;
 		};
 	};
 }
