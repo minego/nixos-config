@@ -8,15 +8,25 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "usb_storage" "sdhci_pci" ];
+  boot.initrd.availableKernelModules = [ "usb_storage" "uas" "sdhci_pci" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ ];
+  boot.kernelModules = [
+    "usb_storage"
+    "usbhid"
+    "dm-crypt"
+    "xts"
+    "encrypted_keys"
+    "ext4"
+    "dm-snapshot"
+  ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/c3e6bb6e-4fca-4445-800f-2e0729bf5e22";
+    { device = "/dev/disk/by-uuid/5c112e5f-52a8-41a0-be1b-d7ab9ec684a8";
       fsType = "ext4";
     };
+
+  boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-uuid/8ce611b3-8baf-4e42-b733-3884e1628e90";
 
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/6AF2-1410";
