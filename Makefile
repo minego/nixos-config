@@ -7,10 +7,9 @@ endif
 ifeq ($(UNAME_S),Darwin)
 	TOOL := darwin-rebuild
 endif
-ifeq ($(UNAME_M),aarch64)
-	# A pure build with asahi is problematic...
-	ARGS := --impure
-endif
+
+# Having an asahi host in my config requires being impure
+ARGS := --impure
 
 all:
 	@echo "Cowardly refusing to run. Try again with 'switch' or 'test'"
