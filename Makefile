@@ -1,9 +1,15 @@
+HOSTNAME := $(hostname -s)
 UNAME_S := $(shell uname -s)
+UNAME_M := $(shell uname -m)
 ifeq ($(UNAME_S),Linux)
-	NIXOS_REBUILD := sudo nixos-rebuild
+	TOOL := sudo nixos-rebuild
 endif
 ifeq ($(UNAME_S),Darwin)
-	NIXOS_REBUILD := darwin-rebuild
+	TOOL := darwin-rebuild
+endif
+ifeq ($(UNAME_M),aarch64)
+	# A pure build with asahi is problematic...
+	ARGS := --impure
 endif
 
 all:
@@ -12,34 +18,27 @@ all:
 install: switch
 
 switch:
-	$(NIXOS_REBUILD) switch --flake ./#$(hostname -s) --impure
+	$(TOOL) switch --flake ./#$(HOSTNAME) $(ARGS)
 
 switch-debug:
-	$(NIXOS_REBUILD) switch --flake ./#$(hostname -s) --option eval-cache false --show-trace
+	$(TOOL) switch --flake ./#$(HOSTNAME) $(ARGS) --option eval-cache false --show-trace
 
 switch-offline:
-	$(NIXOS_REBUILD) switch --flake ./#$(hostname -s) --option substitute false
+	$(TOOL) switch --flake ./#$(HOSTNAME) $(ARGS) --option substitute false
 
 update:
 	@nix flake update
-	@$(NIXOS_REBUILD) build
+	@$(TOOL) build $(ARGS)
 	@nix store diff-closures /run/current-system ./result
 	@echo ================================================================================
 	@echo "Press enter or wait 30 seconds to continue, or ctrl-c to cancel" 
 	@bash -c 'read -t 30 -p "... " ignore' || true
-	$(NIXOS_REBUILD) switch --flake /etc/nixos#$(hostname -s) --upgrade
+	$(TOOL) switch --flake ./#$(HOSTNAME) $(ARGS) --upgrade
 
 test:
 	@nix flake check
 
 rollback:
-	$(NIXOS_REBUILD) switch --flake /etc/nixos#$(hostname -s) --rollback
+	$(TOOL) switch --flake ./#$(HOSTNAME) $(ARGS) --rollback
 
-remote-dent:
-	@$(NIXOS_REBUILD) switch --fast --flake .#dent --target-host dent --build-host dent --use-remote-sudo
 
-remote-hotblack:
-	@$(NIXOS_REBUILD) switch --fast --flake .#hotblack --target-host hotblack --build-host hotblack --use-remote-sudo
-
-remote-lord:
-	@$(NIXOS_REBUILD) switch --fast --flake .#lord --target-host lord --build-host lord --use-remote-sudo
