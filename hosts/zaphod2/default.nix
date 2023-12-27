@@ -41,25 +41,25 @@ lib.nixosSystem {
 				driSupport						= true;
 			};
 
-			networking.hostName = "zaphod2";
+			networking.hostName					= "zaphod2";
 
 			# Enable Network Manager
-			networking.networkmanager.enable = true;
-			programs.nm-applet.enable = true;
+			networking.networkmanager.enable	= true;
+			programs.nm-applet.enable			= true;
 
-			services.fstrim.enable = lib.mkDefault true;
+			services.fstrim.enable				= lib.mkDefault true;
 
 			# This should be false with asahi!
-			boot.loader.efi.canTouchEfiVariables = false;
-			boot.extraModprobeConfig = "options hid_apple iso_layout=0 swap_fn_leftctrl=1 fnmode=2";
+			boot.loader.efi.canTouchEfiVariables= false;
+			boot.extraModprobeConfig			= "options hid_apple iso_layout=0 swap_fn_leftctrl=1 fnmode=2";
 
 			# Rosetta for Linux
-			boot.binfmt.emulatedSystems = [ "x86_64-linux" ];
+			boot.binfmt.emulatedSystems			= [ "x86_64-linux" ];
 
 			# Reference the firmware required for asahi
 			hardware.asahi.peripheralFirmwareDirectory = ../../firmware;
 
-			services.tlp.enable = true;
+			services.tlp.enable					= true;
 
 			imports = [
 				../../users/m/linux.nix
