@@ -24,7 +24,7 @@ lib.nixosSystem {
 
 			# Modules
 			gui.enable							= true;
-			steam.enable						= true;
+			steam.enable						= false;
 			laptop.enable						= true;
 			"8bitdo".enable						= true;
 
