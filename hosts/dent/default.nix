@@ -8,7 +8,7 @@ inputs.nixpkgs.lib.nixosSystem {
 				# Patch DWL to enable adaptive sync
 				(final: prev: {
 					dwl = prev.dwl.overrideAttrs(old: {
-						patches = [
+						patches = old.patches ++ [
 							./dwl.patch
 						];
 					});

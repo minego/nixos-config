@@ -15,7 +15,7 @@ lib.nixosSystem {
 				# Patch DWL to enable scaling
 				(final: prev: {
 					dwl = prev.dwl.overrideAttrs(old: {
-						patches = [
+						patches = old.patches ++ [
 							./dwl.patch
 						];
 					});
@@ -31,7 +31,6 @@ lib.nixosSystem {
 			nvidia.enable						= false;
 			amdgpu.enable						= false;
 
-			webdav.enable						= true;
 			interception-tools.enable			= true;
 
 			# Turn on the asahi GPU driver

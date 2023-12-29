@@ -37,8 +37,8 @@
 		};
 
 		# My branch of DWL
-		dwl-minego = {
-			url = "github:minego/dwl";
+		dwl-minego-customized = {
+			url = "github:minego/dwl/main";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
@@ -71,7 +71,7 @@
 		inherit (nixpkgs) lib;
 
 		overlays = [
-			inputs.dwl-minego.overlay
+			inputs.dwl-minego-customized.overlay
 			inputs.swapmods.overlay
 			inputs.mackeys.overlay
 			inputs.nur.overlay

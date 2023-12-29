@@ -47,6 +47,8 @@
 		man-pages
 		man-pages-posix
 		kitty.terminfo
+
+		nix-output-monitor
 	];
 
 	home-manager = {
