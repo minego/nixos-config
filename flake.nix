@@ -121,15 +121,9 @@
 			# Macbook pro (m2 max) running NixOS with Asahi
 			zaphod2		= import ./hosts/zaphod2	{ inherit inputs globals overlays linuxOverlays; };
 
-			# NixOS VM running on my macbook pro
-			zaphod-vm	= import ./hosts/zaphod-vm	{ inherit inputs globals overlays linuxOverlays; };
-
 			# Gateway VM
 			gateway-vm	= import ./hosts/gateway-vm { inherit inputs globals overlays linuxOverlays; };
 		};
-
-		# Shortcut to allow accessing the VM as '.#zaphod-vm' instead of the whole path
-		packages.aarch64-darwin.zaphod-vm = nixosConfigurations.zaphod-vm.config.system.build.vm;
 
 		darwinConfigurations = {
 			# Macbook pro (m2 max)

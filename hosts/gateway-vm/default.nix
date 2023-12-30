@@ -10,7 +10,7 @@ inputs.nixpkgs.lib.nixosSystem {
 	system = "x86_64-linux";
 
 	modules = [
-		microvm.nixosModules.microvm
+		inputs.microvm.nixosModules.microvm
 
 		{
 			networking.hostName		= "gateway-vm";
