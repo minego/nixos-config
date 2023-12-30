@@ -22,7 +22,6 @@ inputs.nixpkgs.lib.nixosSystem {
 			amdgpu.enable						= true;
 			nvidia.enable						= false;
 			samba.enable						= true;
-			webdav.enable						= true;
 
 			services.fstrim.enable				= true;
 			interception-tools.enable			= true;
