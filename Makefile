@@ -33,11 +33,6 @@ switch-offline:
 
 update:
 	@nix flake update |& $(PIPETO)
-	@$(TOOL) build $(ARGS) |& $(PIPETO)
-	@nix store diff-closures /run/current-system ./result
-	@echo ================================================================================
-	@echo "Press enter or wait 30 seconds to continue, or ctrl-c to cancel" 
-	@bash -c 'read -t 30 -p "... " ignore' || true
 	$(TOOL) switch --flake ./#$(HOSTNAME) $(ARGS) --upgrade |& $(PIPETO)
 
 test:
