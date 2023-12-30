@@ -71,7 +71,7 @@
 		inherit (nixpkgs) lib;
 
 		overlays = [
-			inputs.dwl-minego-customized.overlay
+			inputs.dwl-minego-customized.overlays.default
 			inputs.swapmods.overlay
 			inputs.mackeys.overlay
 			inputs.nur.overlay
