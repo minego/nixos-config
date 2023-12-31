@@ -33,6 +33,13 @@ inputs.nixpkgs.lib.nixosSystem {
 				};
 			};
 
+			binary-cache.enable					= true;
+			# Use these systems as a binary cache
+			nix.settings.substituters = [
+				"ssh://nix-ssh@dent.minego.net"
+			];
+
+
 			boot.loader.efi.canTouchEfiVariables = true;
 
 			imports = [
