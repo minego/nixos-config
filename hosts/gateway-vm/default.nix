@@ -13,24 +13,6 @@ inputs.nixpkgs.lib.nixosSystem {
 
 			networking.hostName		= "gateway-vm";
 			networking.useDHCP		= true;
-
-			# A gui is needed to run p81
-			gui.enable				= true;
-
-			printer.enable			= false;
-			"8bitdo".enable			= false;
-			laptop.enable			= false;
-			steam.enable			= false;
-			amdgpu.enable			= false;
-			nvidia.enable			= false;
-
-			imports = [
-				../../users/m/linux.nix
-
-				../../modules
-				../../modules/linux
-				inputs.home-manager.nixosModules.home-manager
-			];
 		}
 
 		{
