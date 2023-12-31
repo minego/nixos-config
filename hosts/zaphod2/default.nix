@@ -33,6 +33,9 @@ lib.nixosSystem {
 
 			interception-tools.enable			= true;
 
+			binary-cache.enable					= true;
+			binary-cache.consume				= true;
+
 			# Turn on the asahi GPU driver
 			hardware.asahi.useExperimentalGPUDriver = true;
 			hardware.opengl = {

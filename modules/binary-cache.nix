@@ -41,7 +41,7 @@ in {
 			then {
 				settings = {
 					substituters = [
-						"http://binarycache.example.com"
+						"http://binarycache.minego.net"
 						"https://nix-community.cachix.org"
 						"https://cache.nixos.org/"
 					];
