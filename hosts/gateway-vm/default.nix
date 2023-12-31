@@ -39,6 +39,12 @@ inputs.nixpkgs.lib.nixosSystem {
 				virtualisation = {
 					memorySize			= 4096;
 					cores				= 2;         
+
+					# We need a gui for p81
+					graphics			= true;
+
+					diskImage			= "/var/lib/libvirt/images/gateway-vm.qcow2";
+					diskSize			= 4096;
 				};
 			};
 		}
