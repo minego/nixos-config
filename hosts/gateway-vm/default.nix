@@ -1,8 +1,6 @@
 { inputs, overlays, linuxOverlays, ... }:
 
 # Gateway VM
-#
-# https://astro.github.io/microvm.nix/declaring.html
 
 inputs.nixpkgs.lib.nixosSystem {
 	# Even if the host is aarch64, this requires p81 binaries which are not
@@ -10,30 +8,19 @@ inputs.nixpkgs.lib.nixosSystem {
 	system = "x86_64-linux";
 
 	modules = [
-		inputs.microvm.nixosModules.microvm
-
 		{
+			nixpkgs.overlays = overlays ++ linuxOverlays;
+
 			networking.hostName		= "gateway-vm";
 			networking.useDHCP		= true;
 
-			microvm = {
-				# hypervisor		= "cloud-hypervisor";
-
-				vcpu				= 1;
-				mem					= 4096;
-
-				interfaces = [{
-					type			= "bridge";
-					id				= "vm-a1";
-				}];
-			};
-
-			# Modules
+			# A gui is needed to run p81
 			gui.enable				= true;
 
+			printer.enable			= false;
+			"8bitdo".enable			= false;
 			laptop.enable			= false;
 			steam.enable			= false;
-			"8bitdo".enable			= false;
 			amdgpu.enable			= false;
 			nvidia.enable			= false;
 
@@ -44,6 +31,16 @@ inputs.nixpkgs.lib.nixosSystem {
 				../../modules/linux
 				inputs.home-manager.nixosModules.home-manager
 			];
+		}
+
+		{
+			virtualisation.vmVariant = {
+				# following configuration is added only when building VM with build-vm
+				virtualisation = {
+					memorySize			= 4096;
+					cores				= 2;         
+				};
+			};
 		}
 	];
 }

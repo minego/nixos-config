@@ -6,12 +6,14 @@ inputs.nixpkgs.lib.nixosSystem {
 		{
 			nixpkgs.overlays = overlays ++ linuxOverlays;
 
-			# Turn on all features related to desktop and graphical applications
+			# Turn off all features related to desktop and graphical applications
 			gui.enable		= false;
 			printer.enable	= false;
 			"8bitdo".enable	= false;
-			nvidia.enable	= true;
 			amdgpu.enable	= false;
+
+			# This machine doesn't run a gui but it does have an Nvidia GPU
+			nvidia.enable	= true;
 
 			# Enable networking, with DHCP and a bridge device
 			networking.hostName = "hotblack";

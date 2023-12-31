@@ -58,12 +58,6 @@
 			url = "github:jeffreytse/zsh-vi-mode";
 			flake = false;
 		};
-
-		# Micro VMs
-		microvm = {
-			url = "github:astro/microvm.nix";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
 	};
 
 	outputs = { nixpkgs, ... }@inputs:

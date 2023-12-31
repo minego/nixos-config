@@ -41,4 +41,5 @@ test:
 rollback:
 	$(TOOL) switch --flake ./#$(HOSTNAME) $(ARGS) --rollback |& $(PIPETO)
 
-
+gateway-vm:
+	$(TOOL) build-vm --flake ./#gateway-vm $(ARGS) |& $(PIPETO)
