@@ -27,7 +27,10 @@ inputs.nixpkgs.lib.nixosSystem {
 			interception-tools.enable			= true;
 
 			binary-cache.enable					= true;
-			binary-cache.server					= true;
+			# Use these systems as a binary cache
+			nix.settings.substituters = [
+				"ssh://nix-ssh@hotblack.minego.net"
+			];
 
 			# Enable networking, with DHCP and a bridge device
 			networking.hostName		= "dent";

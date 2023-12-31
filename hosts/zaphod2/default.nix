@@ -33,8 +33,14 @@ lib.nixosSystem {
 
 			interception-tools.enable			= true;
 
+			# Host this machine's binary cache over ssh
 			binary-cache.enable					= true;
-			binary-cache.consume				= true;
+
+			# Use these systems as a binary cache
+			nix.settings.substituters = [
+				"ssh://nix-ssh@dent.minego.net"
+				"ssh://nix-ssh@hotblack.minego.net"
+			];
 
 			# Turn on the asahi GPU driver
 			hardware.asahi.useExperimentalGPUDriver = true;
