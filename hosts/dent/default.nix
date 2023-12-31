@@ -26,6 +26,9 @@ inputs.nixpkgs.lib.nixosSystem {
 			services.fstrim.enable				= true;
 			interception-tools.enable			= true;
 
+			binary-cache.enable					= true;
+			binary-cache.server					= true;
+
 			# Enable networking, with DHCP and a bridge device
 			networking.hostName		= "dent";
 
