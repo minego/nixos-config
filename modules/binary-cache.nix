@@ -36,6 +36,9 @@ in {
 				};
 			} else {};
 
+		# Open the firewall if needed
+		networking.firewall.allowedTCPPorts = if cfg.server then [ 80 ] else [];
+
 		# Use the binary cache at binarycache.minego.net
 		nix = if cfg.consume
 			then {
