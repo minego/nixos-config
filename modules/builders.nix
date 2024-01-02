@@ -15,7 +15,7 @@ with lib;
 		nix.buildMachines = []
 		++ lib.optionals(config.builders.dent) [{
 			hostName			= "dent-builder";
-			systems				= ["x86_64-linux" "aarch64-linux"];
+			systems				= ["x86_64-linux"];
 			protocol			= "ssh-ng";
 
 			maxJobs				= 32;
@@ -35,7 +35,7 @@ with lib;
 		}]
 		++ lib.optionals(config.builders.hotblack) [{
 			hostName			= "hotblack-builder";
-			systems				= ["x86_64-linux" "aarch64-linux"];
+			systems				= ["x86_64-linux"];
 			protocol			= "ssh-ng";
 
 			maxJobs				= 8;

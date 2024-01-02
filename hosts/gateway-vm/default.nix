@@ -11,15 +11,21 @@ inputs.nixpkgs.lib.nixosSystem {
 		{
 			nixpkgs.overlays = overlays ++ linuxOverlays;
 
-			networking.hostName		= "gateway-vm";
-			networking.useDHCP		= true;
-		}
+			networking.hostName			= "gateway-vm";
+			networking.useDHCP			= true;
 
-		{
+			# Modules
+			gui.enable					= false;
+			steam.enable				= false;
+			"8bitdo".enable				= false;
+			amdgpu.enable				= false;
+			nvidia.enable				= false;
+			samba.enable				= false;
+
+			# VM Options
 			virtualisation.vmVariant = {
 				# following configuration is added only when building VM with build-vm
 				virtualisation = {
-					host.pkgs			= inputs.nixpkgs.legacyPackages.aarch64-linux;
 					memorySize			= 4096;
 					cores				= 2;
 
@@ -30,6 +36,14 @@ inputs.nixpkgs.lib.nixosSystem {
 					diskSize			= 4096;
 				};
 			};
+
+			imports = [
+				../../users/m/linux.nix
+
+				../../modules
+				../../modules/linux
+				inputs.home-manager.nixosModules.home-manager
+			];
 		}
 	];
 }
