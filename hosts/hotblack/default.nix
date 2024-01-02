@@ -15,6 +15,13 @@ inputs.nixpkgs.lib.nixosSystem {
 			# This machine doesn't run a gui but it does have an Nvidia GPU
 			nvidia.enable							= true;
 
+			# Remote builders and binary cache
+			builders.enable							= true;
+			builders.cache							= true;
+			builders.dent							= true;
+			builders.hotblack						= false;
+			builders.zaphod							= true;
+
 			# Enable networking, with DHCP and a bridge device
 			networking.hostName						= "hotblack";
 			networking.useDHCP						= false;

@@ -33,6 +33,7 @@ lib.nixosSystem {
 
 			interception-tools.enable			= true;
 
+			# Remote builders and binary cache
 			builders.enable						= true;
 			builders.cache						= true;
 			builders.dent						= true;

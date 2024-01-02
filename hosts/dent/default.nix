@@ -26,6 +26,13 @@ inputs.nixpkgs.lib.nixosSystem {
 			services.fstrim.enable					= true;
 			interception-tools.enable				= true;
 
+			# Remote builders and binary cache
+			builders.enable						= true;
+			builders.cache						= true;
+			builders.dent						= false;
+			builders.hotblack					= true;
+			builders.zaphod						= true;
+
 			# Enable networking, with DHCP and a bridge device
 			networking.hostName						= "dent";
 			networking.useDHCP						= false;
