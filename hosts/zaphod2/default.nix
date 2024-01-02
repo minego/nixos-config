@@ -34,8 +34,10 @@ lib.nixosSystem {
 			interception-tools.enable			= true;
 
 			builders.enable						= true;
+			builders.cache						= true;
 			builders.dent						= true;
 			builders.hotblack					= true;
+			builders.zaphod						= false;
 
 			# Turn on the asahi GPU driver
 			hardware.asahi.useExperimentalGPUDriver = true;
