@@ -7,33 +7,27 @@ inputs.nixpkgs.lib.nixosSystem {
 			nixpkgs.overlays = overlays ++ linuxOverlays;
 
 			# Turn off all features related to desktop and graphical applications
-			gui.enable		= false;
-			printer.enable	= false;
-			"8bitdo".enable	= false;
-			amdgpu.enable	= false;
+			gui.enable								= false;
+			printer.enable							= false;
+			"8bitdo".enable							= false;
+			amdgpu.enable							= false;
 
 			# This machine doesn't run a gui but it does have an Nvidia GPU
-			nvidia.enable	= true;
+			nvidia.enable							= true;
 
 			# Enable networking, with DHCP and a bridge device
-			networking.hostName = "hotblack";
+			networking.hostName						= "hotblack";
+			networking.useDHCP						= false;
 
-			networking.useDHCP = false;
+			# Setup a bridge to be used with libvirt
+			networking.interfaces.eno1.useDHCP		= true;
+			networking.interfaces.br0.useDHCP		= true;
+			networking.bridges.br0.interfaces		= [ "eno1" ];
 
-			networking.interfaces.eno1 = {
-				useDHCP = true;
-			};
-			networking.interfaces.br0 = {
-				useDHCP = true;
-			};
+			boot.loader.efi.canTouchEfiVariables	= true;
 
-			networking.bridges = {
-				"br0" = {
-					interfaces = [ "eno1" ];
-				};
-			};
-
-			boot.loader.efi.canTouchEfiVariables = true;
+			# Rosetta for Linux
+			boot.binfmt.emulatedSystems				= [ "aarch64-linux" ];
 
 			imports = [
 				../../users/m/linux.nix

@@ -16,27 +16,29 @@ inputs.nixpkgs.lib.nixosSystem {
 			];
 
 			# Modules
-			gui.enable							= true;
-			steam.enable						= true;
-			"8bitdo".enable						= true;
-			amdgpu.enable						= true;
-			nvidia.enable						= false;
-			samba.enable						= true;
+			gui.enable								= true;
+			steam.enable							= true;
+			"8bitdo".enable							= true;
+			amdgpu.enable							= true;
+			nvidia.enable							= false;
+			samba.enable							= true;
 
-			services.fstrim.enable				= true;
-			interception-tools.enable			= true;
+			services.fstrim.enable					= true;
+			interception-tools.enable				= true;
 
 			# Enable networking, with DHCP and a bridge device
-			networking.hostName		= "dent";
-
-			networking.useDHCP		= false;
+			networking.hostName						= "dent";
+			networking.useDHCP						= false;
 
 			# Setup a bridge to be used with libvirt
-			networking.interfaces.enp42s0.useDHCP = true;
-			networking.interfaces.br0.useDHCP = true;
-			networking.bridges.br0.interfaces = [ "enp42s0" ];
+			networking.interfaces.enp42s0.useDHCP	= true;
+			networking.interfaces.br0.useDHCP		= true;
+			networking.bridges.br0.interfaces		= [ "enp42s0" ];
 
-			boot.loader.efi.canTouchEfiVariables = true;
+			boot.loader.efi.canTouchEfiVariables	= true;
+
+			# Rosetta for Linux
+			boot.binfmt.emulatedSystems				= [ "aarch64-linux" ];
 
 			imports = [
 				../../users/m/linux.nix
