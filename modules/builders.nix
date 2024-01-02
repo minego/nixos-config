@@ -83,9 +83,14 @@ with lib;
 				"hotblack:Jrz20HhPde23eQOdKxyfqNtQ6GbSCIVMTLwRdkUbVds="
 				"binarycache.zaphod2:+Ld5Ku7ZRYWG62/b5z6ZLT2e7VENzrHV32uf9Wk3puU="
 			];
-			trusted-substituters = [
+			trusted-substituters = []
+			++ lib.optionals(config.builders.dent) [
 				"ssh-ng://dent-builder"
+			]
+			++ lib.optionals(config.builders.hotblack) [
 				"ssh://hotblack-builder"
+			]
+			++ lib.optionals(config.builders.zaphod) [
 				"ssh://zaphod-builder"
 			];
 		};
