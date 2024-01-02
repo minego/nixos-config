@@ -33,6 +33,10 @@ lib.nixosSystem {
 
 			interception-tools.enable			= true;
 
+			builders.enable						= true;
+			builders.dent						= true;
+			builders.hotblack					= true;
+
 			# Turn on the asahi GPU driver
 			hardware.asahi.useExperimentalGPUDriver = true;
 			hardware.opengl = {
@@ -53,7 +57,7 @@ lib.nixosSystem {
 			boot.extraModprobeConfig			= "options hid_apple iso_layout=0 swap_fn_leftctrl=1 fnmode=2";
 
 			# Rosetta for Linux
-			boot.binfmt.emulatedSystems			= [ "x86_64-linux" ];
+			# boot.binfmt.emulatedSystems			= [ "x86_64-linux" ];
 
 			# Reference the firmware required for asahi
 			hardware.asahi.peripheralFirmwareDirectory = ../../firmware;

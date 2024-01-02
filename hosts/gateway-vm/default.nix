@@ -19,8 +19,9 @@ inputs.nixpkgs.lib.nixosSystem {
 			virtualisation.vmVariant = {
 				# following configuration is added only when building VM with build-vm
 				virtualisation = {
+					host.pkgs			= inputs.nixpkgs.legacyPackages.aarch64-linux;
 					memorySize			= 4096;
-					cores				= 2;         
+					cores				= 2;
 
 					# We need a gui for p81
 					graphics			= true;

@@ -6,6 +6,7 @@ with lib;
 	imports = [
 		./common.nix
 		./gui
+		./builders.nix
 	];
 }
 
