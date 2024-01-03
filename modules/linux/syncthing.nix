@@ -30,7 +30,7 @@
 
 				"Code" = {
 					enable	 = true;
-					id		= "notes";
+					id		= "code";
 					path	= "/home/m/src/shared";
 					devices	= [ "dent" "zaphod2" "zem" "random" ];
 				};
