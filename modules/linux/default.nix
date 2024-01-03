@@ -15,9 +15,11 @@ with lib;
 		./amdgpu.nix
 		./nvidia.nix
 
-		./syncthing.nix
 		./samba.nix
 		./steam.nix
+
+		./builders.nix
+		./syncthing.nix
 	];
 }
 

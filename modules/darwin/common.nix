@@ -6,6 +6,8 @@
 		loginShell				= pkgs.zsh;
 		systemPackages			= with pkgs; [
 			coreutils
+
+			syncthing
 		];
 		pathsToLink				= [ "/Applications" ];
 
