@@ -23,7 +23,7 @@
 					enable	 = true;
 					id		= "notes";
 					path	= "/home/m/notes";
-					devices	= [ "dent" "lord" "pixel7" ];
+					devices	= [ "dent" "lord" "pixel7" "zaphod2" ];
 				};
 			};
 		};
