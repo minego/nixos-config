@@ -32,8 +32,20 @@ with lib;
 	# nix-darwin doesn't have support for configuring syncthing, so enable it
 	# here for macOS. The shares configured by NixOS for the Linux boxes will
 	# still automate most of the needed configs.
+	#
+	# We don't need to enable here for Linux because that is done in
+	# 'modules/linux/syncthing.nix'
 	services.syncthing = mkIf pkgs.stdenv.isDarwin {
 		enable = true;
+	};
+
+	# Use home-manager to create the .stignore file for the syncthing shares
+	home.file.stignore = {
+		target = "./src/shared/.stignore";
+		text = ''
+            direnv
+            build
+            '';
 	};
 
 	home.packages = with pkgs; [

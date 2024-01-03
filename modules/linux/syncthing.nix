@@ -43,6 +43,8 @@
 	#	22000/TCP+UDP		Sync traffic
 	#	21027/UDP			Discovery
 
-#	networking.firewall.allowedTCPPorts = [ 22000 ];
-#	networking.firewall.allowedUDPPorts = [ 22000 21027 ];
+	networking.firewall.allowedTCPPorts = [ 22000 ];
+	networking.firewall.allowedUDPPorts = [ 22000 21027 ];
+
+	# The .stignore file is created using home-manager, in 'users/m/home.nix'
 }
