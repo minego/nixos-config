@@ -49,6 +49,7 @@
 		kitty.terminfo
 
 		nix-output-monitor
+		asciinema
 	];
 
 	home-manager = {
