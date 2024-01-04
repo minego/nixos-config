@@ -27,11 +27,11 @@ inputs.nixpkgs.lib.nixosSystem {
 			interception-tools.enable				= true;
 
 			# Remote builders and binary cache
-			builders.enable						= true;
-			builders.cache						= true;
-			builders.dent						= false;
-			builders.hotblack					= true;
-			builders.zaphod						= true;
+			builders.enable							= true;
+			builders.cache							= true;
+			builders.dent							= false;
+			builders.hotblack						= true;
+			builders.zaphod							= true;
 
 			# Enable networking, with DHCP and a bridge device
 			networking.hostName						= "dent";
@@ -39,8 +39,8 @@ inputs.nixpkgs.lib.nixosSystem {
 
 			# Enable remote LUKS unlocking
 			luks-ssh = {
-				# enable							= true;
-				# modules							= [ "brcmfmac" "hci_bcm4377" ];
+				enable								= true;
+				modules								= [ "r8169" ];
 			};
 
 			# Setup a bridge to be used with libvirt
