@@ -22,6 +22,12 @@ inputs.nixpkgs.lib.nixosSystem {
 			builders.hotblack						= false;
 			builders.zaphod							= true;
 
+			# Enable remote LUKS unlocking
+			luks-ssh = {
+				enable								= true;
+				modules								= [ "e1000e" ];
+			};
+
 			# Enable networking, with DHCP and a bridge device
 			networking.hostName						= "hotblack";
 			networking.useDHCP						= false;
