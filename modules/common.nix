@@ -1,61 +1,81 @@
 { config, pkgs, lib, globals, inputs, ... }:
+with lib;
 
 {
-	time.timeZone = lib.mkDefault "America/Denver";
+	options.authorizedKeys.keys = mkOption{
+		description	= ''
+            A list of trusted ssh keys that should be used trusted by the
+            default user (m) and a handful of other things such as remote
+            LUKS unlocking, and remote nix builders.
+            '';
 
-	# Enable the nix command and flakes
-	nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-	# Allow unfree packages
-	nixpkgs.config.allowUnfree = true;
-
-	programs.zsh = {
-		enable = true;
-		interactiveShellInit = ''
-			source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-		'';
+		default = [
+			"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHrr0jgE0HE25pM0Mpqz1H8Bu3VczJa1wSIcJVLbPtiL m@dent"
+			"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHeoTPiXAOmtOWU5oAajvYX+QBOUVF3yyObGii16BQ/+ m@lord"
+			"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOWCk1KpqchVgLCWC711+F1fnRnp6so3FwLpPYG85xIi m@hotblack"
+			"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHOpMsaa0+ZPrF3dTHcXXXRiA/qfGYtF1wehO0UkEaWV m@zaphod"
+			"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILyOr1jFfS3I12H73/phT6OLCcz5joIYOVOQgiR1OpHv m@random"
+			"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINpCf3ELP19jIwlrm9zMiPhzHUAQQ1shXgIrbrYmPpnj phone"
+		];
 	};
 
-	# Needed for auto completion to work for zsh
-	environment.pathsToLink = [ "/share/zsh" ];
+	config = {
+		time.timeZone = lib.mkDefault "America/Denver";
 
-	environment.shellAliases = {
-		vi = "nvim";
-	};
+		# Enable the nix command and flakes
+		nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-	# List packages installed in system profile. To search, run:
-	# $ nix search wget
-	environment.systemPackages = with pkgs; [
-		neovim
+		# Allow unfree packages
+		nixpkgs.config.allowUnfree = true;
 
-		home-manager
+		programs.zsh = {
+			enable = true;
+			interactiveShellInit = ''
+				source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+			'';
+		};
 
-		zsh
-		zsh-syntax-highlighting
-		zsh-vi-mode
+		# Needed for auto completion to work for zsh
+		environment.pathsToLink = [ "/share/zsh" ];
 
-		pciutils
-		lsof
-		file
+		environment.shellAliases = {
+			vi = "nvim";
+		};
 
-		gnumake
-		dtach
-		direnv
+		# List packages installed in system profile. To search, run:
+		# $ nix search wget
+		environment.systemPackages = with pkgs; [
+			neovim
 
-		curl
-		stow
-		man-pages
-		man-pages-posix
-		kitty.terminfo
+			home-manager
 
-		nix-output-monitor
-		asciinema
-	];
+			zsh
+			zsh-syntax-highlighting
+			zsh-vi-mode
 
-	home-manager = {
-		useGlobalPkgs		= true;
-		useUserPackages		= true;
+			pciutils
+			lsof
+			file
 
-		extraSpecialArgs	= { inherit globals inputs; };
+			gnumake
+			dtach
+			direnv
+
+			curl
+			stow
+			man-pages
+			man-pages-posix
+			kitty.terminfo
+
+			nix-output-monitor
+			asciinema
+		];
+
+		home-manager = {
+			useGlobalPkgs		= true;
+			useUserPackages		= true;
+
+			extraSpecialArgs	= { inherit globals inputs; };
+		};
 	};
 }

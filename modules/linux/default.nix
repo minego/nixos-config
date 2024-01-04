@@ -20,6 +20,7 @@ with lib;
 
 		./builders.nix
 		./syncthing.nix
+		./luks-ssh.nix
 	];
 }
 
