@@ -40,12 +40,6 @@ lib.nixosSystem {
 			builders.hotblack					= true;
 			builders.zaphod						= false;
 
-			# Enable remote LUKS unlocking
-			luks-ssh = {
-				enable							= true;
-				modules							= [ "brcmfmac" "hci_bcm4377" ];
-			};
-
 			# Turn on the asahi GPU driver
 			hardware.asahi.useExperimentalGPUDriver = true;
 			hardware.opengl = {

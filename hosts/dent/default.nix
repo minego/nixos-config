@@ -37,6 +37,12 @@ inputs.nixpkgs.lib.nixosSystem {
 			networking.hostName						= "dent";
 			networking.useDHCP						= false;
 
+			# Enable remote LUKS unlocking
+			luks-ssh = {
+				# enable							= true;
+				# modules							= [ "brcmfmac" "hci_bcm4377" ];
+			};
+
 			# Setup a bridge to be used with libvirt
 			networking.interfaces.enp42s0.useDHCP	= true;
 			networking.interfaces.br0.useDHCP		= true;
