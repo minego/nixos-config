@@ -1,4 +1,7 @@
 " set searchengine duckduckgo
+set searchurls.kagi https://kagi.com/search?q=%s
+set searchengine kagi
+
 set allowautofocus false
 set incsearch true
 set editorcmd kitty -e nvim

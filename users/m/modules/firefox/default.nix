@@ -81,6 +81,7 @@ with lib;
 					don-t-fuck-with-paste
 					i-dont-care-about-cookies
 					user-agent-string-switcher
+					kagi-search
 				];
 				settings = {
 					"signon.rememberSignons"				= false;
