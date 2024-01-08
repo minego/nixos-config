@@ -47,4 +47,13 @@
 	networking.firewall.allowedUDPPorts = [ 22000 21027 ];
 
 	# The .stignore file is created using home-manager, in 'users/m/home.nix'
+
+
+	environment.systemPackages = with pkgs; [
+		# cli tool for Sync Thing
+		(pkgs.writeShellScriptBin "stc" ''
+            exec ${pkgs.stc-cli}/bin/stc -homedir "${config.services.syncthing.configDir}" "$@"
+            ''
+		)
+	];
 }
