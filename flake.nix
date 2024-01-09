@@ -58,6 +58,12 @@
 			url = "github:jeffreytse/zsh-vi-mode";
 			flake = false;
 		};
+
+		# NixThePlanet - macOS VM builder
+		nixtheplanet = {
+			url = "github:matthewcroughan/nixtheplanet";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
 	};
 
 	outputs = { nixpkgs, ... }@inputs:
