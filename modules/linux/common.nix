@@ -17,34 +17,36 @@
 	];
 
 	# Automatic Upgrades
-	system.autoUpgrade.enable	= false;
-	system.autoUpgrade.allowReboot = false;
+	system.autoUpgrade.enable			= false;
+	system.autoUpgrade.allowReboot		= false;
 
 	# Bootloader.
-	boot.loader.systemd-boot.enable = true;
+	boot.loader.systemd-boot.enable		= true;
 
-	documentation.dev.enable	= true;
-	security.sudo.wheelNeedsPassword = false;
+	boot.tmp.cleanOnBoot				= true;
+
+	documentation.dev.enable			= true;
+	security.sudo.wheelNeedsPassword	= false;
 
 	# Enable bluetooth
-	hardware.bluetooth.enable	= true;
-	hardware.bluetooth.powerOnBoot = true;
-	services.blueman.enable		= true;
+	hardware.bluetooth.enable			= true;
+	hardware.bluetooth.powerOnBoot		= true;
+	services.blueman.enable				= true;
 
 	# Enable CUPS to print documents.
-	services.printing.enable	= true;
+	services.printing.enable			= true;
 
 	# Enable sound with pipewire.
-	sound.enable				= true;
-	hardware.pulseaudio.enable	= false;
-	security.rtkit.enable		= true;
+	sound.enable						= true;
+	hardware.pulseaudio.enable			= false;
+	security.rtkit.enable				= true;
 	services.pipewire = {
-		enable					= true;
-		alsa.enable				= true;
-		alsa.support32Bit		= true;
-		pulse.enable			= true;
+		enable							= true;
+		alsa.enable						= true;
+		alsa.support32Bit				= true;
+		pulse.enable					= true;
 
-		# jack.enable			= true;
+		# jack.enable					= true;
 	};
 
 # TODO Figure out why this isn't working on aarch64
