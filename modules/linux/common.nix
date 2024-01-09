@@ -12,6 +12,8 @@
 
 		cmake
 		ninja
+
+		remmina
 	];
 
 	# Automatic Upgrades
