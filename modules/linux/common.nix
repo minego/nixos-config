@@ -118,11 +118,13 @@
 	# Enable the OpenSSH daemon.
 	services.openssh = {
 		enable								= true;
+		openFirewall						= true;
 		settings = {
 			PasswordAuthentication			= false;
 			KbdInteractiveAuthentication	= false;
 		};
 	};
+	programs.ssh.startAgent					= true;
 	programs.mosh.enable					= true;
 
 	# This value determines the NixOS release from which the default

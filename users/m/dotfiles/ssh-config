@@ -20,3 +20,8 @@ Host *
 	# ControlMaster			auto
 	# ControlPath				~/.ssh/master-%r@%h:%p
 
+Host dent-mac
+	User					m
+	Port					2222
+	Hostname				dent.minego.net
+
