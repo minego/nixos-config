@@ -23,7 +23,7 @@ with lib;
 
 	config = mkIf config.gui.enable {
 		environment.systemPackages = with pkgs; [
-			virt-manager
+			# virt-manager
 			virt-viewer
 		];
 	};
