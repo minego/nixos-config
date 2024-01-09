@@ -18,6 +18,7 @@
 				"pixel7"	= { id = "L4KCXPG-5LK5DFR-I3RSZOD-T43RKOG-GKU7HTK-QSMRU33-TIQP3TX-EKO2YQN"; };
 				"zem"		= { id = "TFBJXJ5-XKVNFHI-HVJ5X3N-ATR3XKF-EIKXFLQ-C6XX4K5-UDZUPS7-OJ2TXQF"; };
 				"random"	= { id = "OV3MXZG-LWYH4RW-D7SILOK-YFUVDLG-BXMHKNC-XFQHOKO-66DZL4Y-N6OPWQT"; };
+				"dent-mac"	= { id = "SFXJBV6-3IXWBLA-YCSHPWP-6AESK6Q-SA3SKAS-CXPVDTL-J5PRKEV-4IWVZQ5"; };
 			};
 
 			folders = {
@@ -32,7 +33,7 @@
 					enable	 = true;
 					id		= "code";
 					path	= "/home/m/src/shared";
-					devices	= [ "dent" "zaphod2" "zem" "random" ];
+					devices	= [ "dent" "zaphod2" "zem" "random" "dent-mac" ];
 				};
 			};
 		};
