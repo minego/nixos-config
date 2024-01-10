@@ -94,11 +94,9 @@
 
 	networking.firewall.allowedTCPPorts = [
 		53317	# Used by local send
-		57621	# Used by spotifyd
 	];
 	networking.firewall.allowedUDPPorts = [
 		53317	# Used by local send
-		5353	# Used by spotifyd
 	];
 
 	programs.git = {
