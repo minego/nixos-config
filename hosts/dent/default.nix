@@ -66,7 +66,8 @@ inputs.nixpkgs.lib.nixosSystem {
 		# Build and start a macOS VM
 		inputs.nixtheplanet.nixosModules.macos-ventura {
 			services.macos-ventura = {
-				enable				= true;
+				enable				= false;
+
 				openFirewall		= true;
 				vncListenAddr		= "0.0.0.0";
 				sshPort				= 2222;
