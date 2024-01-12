@@ -1,6 +1,5 @@
 " set searchengine duckduckgo
-set searchurls.kagi https://kagi.com/search?q=%s
-set searchengine kagi
+set searchengine google
 
 set allowautofocus false
 set incsearch true
