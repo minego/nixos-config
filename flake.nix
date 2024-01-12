@@ -50,7 +50,7 @@
 
 		# My customized neovim package, with configuration
 		neovim-minego = {
-			url = "github:minego/nvim-flake";
+			url = "github:minego/nixvim";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
@@ -72,10 +72,11 @@
 
 		overlays = [
 			inputs.dwl-minego-customized.overlays.default
+			inputs.neovim-minego.overlays.default
 			inputs.swapmods.overlay
 			inputs.mackeys.overlay
+
 			inputs.nur.overlay
-			inputs.neovim-minego.overlay
 			(import ./overlays/fonts.nix)
 
 			# Get the latest zsh-vi-mode
