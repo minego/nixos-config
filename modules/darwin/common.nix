@@ -6,8 +6,15 @@
 		loginShell				= pkgs.zsh;
 		systemPackages			= with pkgs; [
 			coreutils
-
 			syncthing
+
+			# I don't love having these installed, but they make development
+			# easier since I don't have to install them for every little thing
+			cmake
+			ninja
+			openssl
+			openssl.dev
+			pkg-config
 		];
 		pathsToLink				= [ "/Applications" ];
 
