@@ -43,6 +43,7 @@ inputs.nixpkgs.lib.nixosSystem {
 				../../modules
 				../../modules/linux
 				inputs.home-manager.nixosModules.home-manager
+				./hardware-configuration.nix
 			];
 		}
 	];
