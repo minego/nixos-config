@@ -3,7 +3,6 @@
 
 	inputs = {
 		nixpkgs.url	= "github:NixOS/nixpkgs/nixos-unstable";
-		nixos.url	= "nixpkgs/nixos-unstable";
 
 		apple-silicon = {
 			url = "github:tpwrules/nixos-apple-silicon";
@@ -72,7 +71,7 @@
 		};
 	};
 
-	outputs = { nixpkgs, nixos, ... }@inputs:
+	outputs = { nixpkgs, ... }@inputs:
 	let
 		inherit (nixpkgs) lib;
 

@@ -11,8 +11,17 @@ inputs.nixpkgs.lib.nixosSystem {
 		{
 			nixpkgs.overlays = overlays ++ linuxOverlays;
 
-			networking.hostName					= "gateway-vm";
-			networking.networkmanager.enable	= false;
+			networking = {
+				hostName						= "gateway-vm";
+
+				usePredictableInterfaceNames	= false;
+				interfaces.eth0.ipv4.addresses = [{
+					address						= "192.168.122.1";
+					prefixLength				= 24;
+				}];
+				defaultGateway					= "192.168.122.0";
+				nameservers						= [ "8.8.8.8" "1.1.1.1" ];
+			};
 
 			# Modules
 			gui.enable							= false;
@@ -24,21 +33,21 @@ inputs.nixpkgs.lib.nixosSystem {
 
 			bios.enable							= true;
 
+			# Bootloader.
+			boot.loader.grub.enable				= true;
+			boot.loader.grub.device				= "/dev/vda";
+
 			environment.systemPackages = [
 				inputs.p81.packages.x86_64-linux.p81
 			];
 
 			services.xserver = {
 				enable							= true;
-				desktopManager.gnome.enable		= true;
-
-				displayManager = {
-					gdm.enable					= true;
-					autoLogin = {
-						enable					= true;
-						user					= "m";
-					};
+				desktopManager = {
+					xterm.enable				= false;
+					xfce.enable					= true;
 				};
+				displayManager.defaultSession	= "xfce";
 			};
 
 			# VM Options
@@ -57,7 +66,7 @@ inputs.nixpkgs.lib.nixosSystem {
 			};
 
 			imports = [
-				"${inputs.nixos}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
+				# "${inputs.nixos}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
 
 				../../users/m/linux.nix
 
@@ -65,7 +74,7 @@ inputs.nixpkgs.lib.nixosSystem {
 				../../modules/linux
 				inputs.home-manager.nixosModules.home-manager
 
-				# ./hardware-configuration.nix
+				./hardware-configuration.nix
 			];
 		}
 	];
