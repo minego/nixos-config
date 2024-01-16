@@ -2,7 +2,8 @@
 	description = "Micah N Gorrell's NixOS Configuration";
 
 	inputs = {
-		nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+		nixpkgs.url	= "github:NixOS/nixpkgs/nixos-unstable";
+		nixos.url	= "nixpkgs/nixos-unstable";
 
 		apple-silicon = {
 			url = "github:tpwrules/nixos-apple-silicon";
@@ -64,9 +65,14 @@
 			url = "github:matthewcroughan/nixtheplanet";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+
+		p81 = {
+			url = "github:portothree/p81.nix";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
 	};
 
-	outputs = { nixpkgs, ... }@inputs:
+	outputs = { nixpkgs, nixos, ... }@inputs:
 	let
 		inherit (nixpkgs) lib;
 

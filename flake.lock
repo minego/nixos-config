@@ -472,6 +472,21 @@
         "type": "github"
       }
     },
+    "nixos": {
+      "locked": {
+        "lastModified": 1705133751,
+        "narHash": "sha256-rCIsyE80jgiOU78gCWN3A0wE0tR2GI5nH6MlS+HaaSQ=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "9b19f5e77dd906cb52dade0b7bd280339d2a1f3d",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "ref": "nixos-unstable",
+        "type": "indirect"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1704538339,
@@ -762,6 +777,26 @@
         "type": "github"
       }
     },
+    "p81": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1661862789,
+        "narHash": "sha256-mdIsJWKarGZvbqAdqH2rngTNJ3PmWBDIRKvZ+pI5lSo=",
+        "owner": "portothree",
+        "repo": "p81.nix",
+        "rev": "1538c2227c831d83263bed239bec4b061264f0cf",
+        "type": "github"
+      },
+      "original": {
+        "owner": "portothree",
+        "repo": "p81.nix",
+        "type": "github"
+      }
+    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat_2",
@@ -800,10 +835,12 @@
         "home-manager": "home-manager",
         "mackeys": "mackeys",
         "neovim-minego": "neovim-minego",
+        "nixos": "nixos",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-firefox-darwin": "nixpkgs-firefox-darwin",
         "nixtheplanet": "nixtheplanet",
         "nur": "nur",
+        "p81": "p81",
         "swapmods": "swapmods",
         "zsh-vi-mode": "zsh-vi-mode"
       }
