@@ -778,6 +778,26 @@
         "type": "github"
       }
     },
+    "p81": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1696977269,
+        "narHash": "sha256-z/0QV65Ga+RMOtE3ZJyMpy/uHr1DW3gos9I0FqgzjO0=",
+        "owner": "devusb",
+        "repo": "p81.nix",
+        "rev": "cf58b6ef6dc980175f3022070bacfadb6cd84b45",
+        "type": "github"
+      },
+      "original": {
+        "owner": "devusb",
+        "repo": "p81.nix",
+        "type": "github"
+      }
+    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat_2",
@@ -821,6 +841,7 @@
         "nixpkgs-stable": "nixpkgs-stable",
         "nixtheplanet": "nixtheplanet",
         "nur": "nur",
+        "p81": "p81",
         "swapmods": "swapmods",
         "zsh-vi-mode": "zsh-vi-mode"
       }

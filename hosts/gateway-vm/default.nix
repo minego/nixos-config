@@ -25,16 +25,12 @@ inputs.nixpkgs.lib.nixosSystem {
 			nvidia.enable						= false;
 			samba.enable						= false;
 
+			p81.enable							= true;
 			bios.enable							= true;
 
 			# Bootloader.
 			boot.loader.grub.enable				= true;
 			boot.loader.grub.device				= "/dev/vda";
-
-			environment.systemPackages = [
-				# inputs.p81.packages.x86_64-linux.p81
-				# perimeter81
-			];
 
 			services.xserver = {
 				enable							= true;

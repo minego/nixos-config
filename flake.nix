@@ -66,10 +66,10 @@
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
-#		p81 = {
-#			url = "github:devusb/p81.nix";
-#			inputs.nixpkgs.follows = "nixpkgs";
-#		};
+		p81 = {
+			url = "github:devusb/p81.nix";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
 	};
 
 	outputs = { nixpkgs, ... }@inputs:
@@ -81,7 +81,7 @@
 			inputs.neovim-minego.overlays.default
 			inputs.swapmods.overlay
 			inputs.mackeys.overlay
-			# inputs.p81.overlay
+			inputs.p81.overlays.default
 
 			inputs.nur.overlay
 			(import ./overlays/fonts.nix)
