@@ -13,15 +13,9 @@ inputs.nixpkgs.lib.nixosSystem {
 
 			networking = {
 				hostName						= "gateway-vm";
-
-				usePredictableInterfaceNames	= false;
-				interfaces.eth0.ipv4.addresses = [{
-					address						= "192.168.122.1";
-					prefixLength				= 24;
-				}];
-				defaultGateway					= "192.168.122.0";
-				nameservers						= [ "8.8.8.8" "1.1.1.1" ];
+				networkmanager.enable			= true;
 			};
+			programs.nm-applet.enable			= true;
 
 			# Modules
 			gui.enable							= false;
@@ -38,7 +32,8 @@ inputs.nixpkgs.lib.nixosSystem {
 			boot.loader.grub.device				= "/dev/vda";
 
 			environment.systemPackages = [
-				inputs.p81.packages.x86_64-linux.p81
+				# inputs.p81.packages.x86_64-linux.p81
+				# perimeter81
 			];
 
 			services.xserver = {

@@ -778,26 +778,6 @@
         "type": "github"
       }
     },
-    "p81": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1661862789,
-        "narHash": "sha256-mdIsJWKarGZvbqAdqH2rngTNJ3PmWBDIRKvZ+pI5lSo=",
-        "owner": "portothree",
-        "repo": "p81.nix",
-        "rev": "1538c2227c831d83263bed239bec4b061264f0cf",
-        "type": "github"
-      },
-      "original": {
-        "owner": "portothree",
-        "repo": "p81.nix",
-        "type": "github"
-      }
-    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat_2",
@@ -841,7 +821,6 @@
         "nixpkgs-stable": "nixpkgs-stable",
         "nixtheplanet": "nixtheplanet",
         "nur": "nur",
-        "p81": "p81",
         "swapmods": "swapmods",
         "zsh-vi-mode": "zsh-vi-mode"
       }
