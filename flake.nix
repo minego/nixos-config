@@ -3,6 +3,7 @@
 
 	inputs = {
 		nixpkgs.url	= "github:NixOS/nixpkgs/nixos-unstable";
+		nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
 
 		apple-silicon = {
 			url = "github:tpwrules/nixos-apple-silicon";
@@ -83,6 +84,15 @@
 
 			inputs.nur.overlay
 			(import ./overlays/fonts.nix)
+
+			# Allow grabbing specific packages from the previous release to
+			# deal with things that are broken by unstable.
+			(final: _prev: {
+				stable = import inputs.nixpkgs-stable {
+					system					= final.system;
+					config.allowUnfree		= true;
+				};
+			})
 
 			# Get the latest zsh-vi-mode
 			(self: super: {

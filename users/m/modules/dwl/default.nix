@@ -24,7 +24,7 @@ with lib;
 			sway-contrib.grimshot
 			sway-audio-idle-inhibit
 			bemenu
-			j4-dmenu-desktop
+			stable.j4-dmenu-desktop
 			light
 
 			# Applications
