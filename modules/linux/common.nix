@@ -18,6 +18,7 @@ with lib;
 			polkit_gnome
 			bluez
 			remmina
+			foot
 
 			# I don't love having these installed, but they make development
 			# easier since I don't have to install them for every little thing
