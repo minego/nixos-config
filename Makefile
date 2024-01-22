@@ -9,7 +9,7 @@ ifeq ($(UNAME_S),Darwin)
 endif
 
 # Having an asahi host in my config requires being impure
-ARGS := --impure
+# ARGS := --impure
 
 all:
 	@echo "Cowardly refusing to run. Try again with 'switch' or 'test'"
