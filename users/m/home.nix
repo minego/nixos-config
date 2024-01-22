@@ -79,7 +79,7 @@ with lib;
 		freerdp
 		mpv
 	] ++ lib.optionals (osConfig.gui.enable && pkgs.stdenv.isLinux) [
-		chromium
+		# chromium
 
 		pavucontrol
 		pamixer
