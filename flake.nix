@@ -7,7 +7,7 @@
 
 		apple-silicon = {
 			url = "github:tpwrules/nixos-apple-silicon";
-			inputs.nixpkgs.follows = "nixpkgs";
+			# inputs.nixpkgs.follows = "nixpkgs";
 		};
 
 		darwin = {
