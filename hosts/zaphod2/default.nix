@@ -47,7 +47,7 @@ lib.nixosSystem {
 			hardware = {
 				asahi = {
 					addEdgeKernelConfig			= true;
-					peripheralFirmwareDirectory	= ./firmware;
+					peripheralFirmwareDirectory	= ../../firmware;
 					useExperimentalGPUDriver	= true;
 					experimentalGPUInstallMode	= "driver";
 					withRust					= true;
