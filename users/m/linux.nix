@@ -14,7 +14,5 @@
 		];
 		isNormalUser	= true;
 	};
-
-	home-manager.users.m = import ./home.nix;
 }
 

@@ -25,6 +25,33 @@ with lib;
 		environment.systemPackages = with pkgs; [
 			# virt-manager
 			virt-viewer
+
+			kitty
+			dwl
+			wayland
+			bemenu
+
+			swayidle
+			swaylock-effects
+			wob
+			udiskie
+			playerctl
+			inotify-tools
+			mpvpaper
+			wlr-randr
+			sway-contrib.grimshot
+			sway-audio-idle-inhibit
+			bemenu
+			stable.j4-dmenu-desktop
+			light
+
+			# Applications
+			wdisplays
+			pavucontrol
+			pamixer
+			kitty
+			freerdp
+			tigervnc
 		];
 	};
 }

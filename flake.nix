@@ -15,11 +15,6 @@
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
-		home-manager = {
-			url = github:nix-community/home-manager;
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
-
 		nur = {
 			url = github:nix-community/NUR;
 			# inputs.nixpkgs.follows = "nixpkgs";
@@ -148,21 +143,6 @@
 
 			# Mac mini (m1)
 			random		= import ./hosts/random		{ inherit inputs globals overlays darwinOverlays; };
-		};
-
-		homeConfigurations = {
-			# NixOS
-			dent		= nixosConfigurations.dent.config.home-manager.users.${globals.user}.home;
-			hotblack	= nixosConfigurations.hotblack.config.home-manager.users.${globals.user}.home;
-			zaphod2		= nixosConfigurations.zaphod2.config.home-manager.users.${globals.user}.home;
-
-			# Gavin's NixOS Laptop
-			lord-m		= nixosConfigurations.lord.config.home-manager.users.${globals.user}.home;
-			lord-gavin	= nixosConfigurations.lord.config.home-manager.users.gavin.home;
-
-			# Darwin
-			zaphod		= nixosConfigurations.zaphod.config.home-manager.users.${globals.user}.home;
-			random		= nixosConfigurations.random.config.home-manager.users.${globals.user}.home;
 		};
 	};
 }

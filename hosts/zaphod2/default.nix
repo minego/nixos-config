@@ -54,7 +54,7 @@ lib.nixosSystem {
 				};
 				opengl = {
 					enable						= true;
-					# driSupport					= true;
+					driSupport					= true;
 				};
 			};
 
@@ -80,7 +80,6 @@ lib.nixosSystem {
 
 				../../modules
 				../../modules/linux
-				inputs.home-manager.nixosModules.home-manager
 
 				./hardware-configuration.nix
 				inputs.apple-silicon.nixosModules.apple-silicon-support

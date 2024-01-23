@@ -47,8 +47,6 @@ with lib;
 		environment.systemPackages = with pkgs; [
 			neovim
 
-			home-manager
-
 			zsh
 			zsh-syntax-highlighting
 			zsh-vi-mode
@@ -70,12 +68,5 @@ with lib;
 			nix-output-monitor
 			asciinema
 		];
-
-		home-manager = {
-			useGlobalPkgs		= true;
-			useUserPackages		= true;
-
-			extraSpecialArgs	= { inherit globals inputs; };
-		};
 	};
 }

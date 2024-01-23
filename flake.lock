@@ -321,26 +321,6 @@
     "home-manager": {
       "inputs": {
         "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1705879479,
-        "narHash": "sha256-ZIohbyly1KOe+8I3gdyNKgVN/oifKdmeI0DzMfytbtg=",
-        "owner": "nix-community",
-        "repo": "home-manager",
-        "rev": "2d47379ad591bcb14ca95a90b6964b8305f6c913",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "home-manager",
-        "type": "github"
-      }
-    },
-    "home-manager_2": {
-      "inputs": {
-        "nixpkgs": [
           "neovim-minego",
           "nixvim",
           "nixpkgs"
@@ -614,7 +594,7 @@
     "nixvim": {
       "inputs": {
         "flake-parts": "flake-parts",
-        "home-manager": "home-manager_2",
+        "home-manager": "home-manager",
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs_2",
         "pre-commit-hooks": "pre-commit-hooks"
@@ -847,7 +827,6 @@
         "apple-silicon": "apple-silicon",
         "darwin": "darwin",
         "dwl-minego-customized": "dwl-minego-customized",
-        "home-manager": "home-manager",
         "mackeys": "mackeys",
         "neovim-minego": "neovim-minego",
         "nixpkgs": "nixpkgs_3",
