@@ -75,11 +75,6 @@
 			url = github:NixOS/mobile-nixos;
 			flake = false;
 		};
-
-		mobile-nixos-ppp = {
-			url = github:samueldr-wip/mobile-nixos-wip/wip/pinephone-pro;
-			flake = false;
-		};
 	};
 
 	outputs = { nixpkgs, ... }@inputs:
@@ -178,12 +173,6 @@
 			random		= nixosConfigurations.random.config.home-manager.users.${globals.user}.home;
 		};
 
-		marvin-image = (
-			import "${inputs.mobile-nixos-ppp}/lib/eval-with-configuration.nix" {
-				configuration = [ import ./hosts/marvin { inherit inputs globals overlays linuxOverlays; } ];
-				device = "pine64-pinephonepro";
-				pkgs = nixpkgs.legacyPackages.aarch64-linux;
-			}
-		).outputs.disk-image;
+		marvin-image	= nixosConfigurations.marvin.config.mobile.outputs.u-boot.disk-image;
 	};
 }

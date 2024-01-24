@@ -32,33 +32,8 @@ lib.nixosSystem {
 			powerManagement.enable				= true;
 			hardware.opengl.enable				= true;
 
-			systemd.defaultUnit					= "graphical.target";
-			systemd.services.phosh = {
-				wantedBy						= [ "graphical.target" ];
-				serviceConfig = {
-					ExecStart					= "${pkgs.phosh}/bin/phosh";
-					User						= 1000;
-					PAMName						= "login";
-					WorkingDirectory			= "~";
-
-					TTYPath						= "/dev/tty7";
-					TTYReset					= "yes";
-					TTYVHangup					= "yes";
-					TTYVTDisallocate			= "yes";
-
-					StandardInput				= "tty-fail";
-					StandardOutput				= "journal";
-					StandardError				= "journal";
-
-					UtmpIdentifier				= "tty7";
-					UtmpMode					= "user";
-
-					Restart						= "always";
-				};
-			};
-			services.xserver.desktopManager.gnome.enable = true;
-
 			imports = [
+				./phone.nix
 				../../users/m/linux.nix
 
 				../../modules
