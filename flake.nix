@@ -140,6 +140,9 @@
 
 			# Gateway VM
 			gateway-vm	= import ./hosts/gateway-vm { inherit inputs globals overlays linuxOverlays; };
+
+			# PinePhone Pro
+			marvin		= import ./hosts/marvin		{ inherit inputs globals overlays linuxOverlays; };
 		};
 
 		darwinConfigurations = {
