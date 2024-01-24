@@ -1,3 +1,0 @@
-[submodule "hosts/marvin/mobile-nixos"]
-	path = hosts/marvin/mobile-nixos
-	url = git@github.com:NixOS/mobile-nixos.git

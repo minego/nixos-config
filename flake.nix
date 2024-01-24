@@ -27,48 +27,58 @@
 
 		# Plugin for Interception Tools
 		mackeys = {
-			url = "github:minego/mackeys";
+			url = github:minego/mackeys;
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
 		# Plugin for Interception Tools
 		swapmods = {
-			url = "github:minego/swapmods";
+			url = github:minego/swapmods;
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
 		# My branch of DWL
 		dwl-minego-customized = {
-			url = "github:minego/dwl/main";
+			url = github:minego/dwl/main;
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
 		# Official Firefox builds for Darwin
         nixpkgs-firefox-darwin = {
-			url = "github:bandithedoge/nixpkgs-firefox-darwin";
+			url = github:bandithedoge/nixpkgs-firefox-darwin;
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
 		# My customized neovim package, with configuration
 		neovim-minego = {
-			url = "github:minego/nixvim";
+			url = github:minego/nixvim;
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
 		zsh-vi-mode = {
-			url = "github:jeffreytse/zsh-vi-mode";
+			url = github:jeffreytse/zsh-vi-mode;
 			flake = false;
 		};
 
 		# NixThePlanet - macOS VM builder
 		nixtheplanet = {
-			url = "github:matthewcroughan/nixtheplanet";
+			url = github:matthewcroughan/nixtheplanet;
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
 		p81 = {
-			url = "github:devusb/p81.nix";
+			url = github:devusb/p81.nix;
 			inputs.nixpkgs.follows = "nixpkgs";
+		};
+
+		mobile-nixos = {
+			url = github:NixOS/mobile-nixos;
+			flake = false;
+		};
+
+		mobile-nixos-ppp = {
+			url = github:samueldr-wip/mobile-nixos-wip/wip/pinephone-pro;
+			flake = false;
 		};
 	};
 
@@ -167,5 +177,13 @@
 			zaphod		= nixosConfigurations.zaphod.config.home-manager.users.${globals.user}.home;
 			random		= nixosConfigurations.random.config.home-manager.users.${globals.user}.home;
 		};
+
+		marvin-image = (
+			import "${inputs.mobile-nixos-ppp}/lib/eval-with-configuration.nix" {
+				configuration = [ import ./hosts/marvin { inherit inputs globals overlays linuxOverlays; } ];
+				device = "pine64-pinephonepro";
+				pkgs = nixpkgs.legacyPackages.aarch64-linux;
+			}
+		).outputs.disk-image;
 	};
 }

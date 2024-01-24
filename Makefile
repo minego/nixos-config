@@ -27,7 +27,7 @@ switch-offline:
 
 # Build for the phone
 build-marvin:
-	$(TOOL) build --flake ./#marvin $(ARGS)
+	nix build ./#marvin-image $(ARGS)
 
 update:
 	@nix flake update
