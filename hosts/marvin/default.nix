@@ -36,6 +36,7 @@ lib.nixosSystem {
 			builders.zaphod						= true;
 
 			imports = [
+				./hardware-configuration.nix
 				./phone.nix
 				../../users/m/linux.nix
 
