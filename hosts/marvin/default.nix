@@ -41,7 +41,7 @@ lib.nixosSystem {
 				inputs.home-manager.nixosModules.home-manager
 
 				(import "${inputs.mobile-nixos}/lib/configuration.nix" {
-					device = "pine64-pinephone";
+					device = "pine64-pinephonepro";
 				})
 			];
 		}
