@@ -19,6 +19,10 @@ with lib;
 		programs.firefox = {
 			enable				= true;
 
+			nativeMessagingHosts = [
+				pkgs.tridactyl-native
+			];
+
 			package				=
 				if
 					pkgs.stdenv.isDarwin
@@ -140,11 +144,6 @@ with lib;
 			};
 		};
 
-		# Let firefox call tridactyl's native thingy, so the config can be loaded
-		home.file.tridactyl-native = {
-			source = "${pkgs.tridactyl-native}//lib/mozilla/native-messaging-hosts/tridactyl.json";
-			target = "./.mozilla/native-messaging-hosts/tridactyl.json";
-		};
 		xdg.configFile."tridactyl/tridactylrc".source = ./../../dotfiles/tridactylrc;
 	};
 }
