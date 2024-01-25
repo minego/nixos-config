@@ -860,6 +860,7 @@
         "nur": "nur",
         "p81": "p81",
         "swapmods": "swapmods",
+        "sxmo-nix": "sxmo-nix",
         "zsh-vi-mode": "zsh-vi-mode"
       }
     },
@@ -896,6 +897,22 @@
       "original": {
         "owner": "minego",
         "repo": "swapmods",
+        "type": "github"
+      }
+    },
+    "sxmo-nix": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1670262526,
+        "narHash": "sha256-Rkv5CR31ZrDxbGbOeZMyOXqPdIGKCFd2PNRJs1aiBd8=",
+        "owner": "wentam",
+        "repo": "sxmo-nix",
+        "rev": "74129afef2e5ebc874fc3b02bbda863c8c2a0cdc",
+        "type": "github"
+      },
+      "original": {
+        "owner": "wentam",
+        "repo": "sxmo-nix",
         "type": "github"
       }
     },

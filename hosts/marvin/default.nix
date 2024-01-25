@@ -47,6 +47,9 @@ lib.nixosSystem {
 				../../modules/linux
 				inputs.home-manager.nixosModules.home-manager
 
+				(import "${inputs.sxmo-nix}/modules/sxmo")
+				(import "${inputs.sxmo-nix}/modules/tinydm")
+
 				(import "${inputs.mobile-nixos}/lib/configuration.nix" {
 					device = "pine64-pinephonepro";
 				})

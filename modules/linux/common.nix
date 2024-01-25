@@ -48,10 +48,10 @@ with lib;
 
 		# Enable sound with pipewire.
 		sound.enable						= true;
-		hardware.pulseaudio.enable			= false;
+		hardware.pulseaudio.enable			= mkForce false;
 		security.rtkit.enable				= true;
 		services.pipewire = {
-			enable							= true;
+			enable							= mkForce true;
 			alsa.enable						= true;
 			alsa.support32Bit				= true;
 			pulse.enable					= true;

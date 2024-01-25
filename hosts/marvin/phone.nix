@@ -3,14 +3,29 @@ with lib;
 
 {
 	config = {
-		# Temporary experiments with phosh
-		services.xserver.desktopManager.phosh = {
-			enable							= true;
-			user							= "m";
+		mobile.beautification = {
+			silentBoot						= mkForce false;
+			splash							= mkForce false;
+		};
 
-			group							= "users";
-			# for better compatibility with x11 applications
-			phocConfig.xwayland				= "immediate";
+		# sxmo
+		services.xserver = {
+			enable							= true;
+			desktopManager.sxmo.enable		= true;
+
+			displayManager = {
+				# power->toggle WM in sxmo only works with tinytm
+				tinydm.enable				= true;
+
+				autoLogin.enable			= true;
+				autoLogin.user				= "m";
+
+				# Xorg
+				# defaultSession				= "sxmo";
+
+				# Wayland
+				defaultSession				= "swmo";
+			};
 		};
 
 		# It is a phone...

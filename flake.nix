@@ -75,6 +75,11 @@
 			url = github:NixOS/mobile-nixos;
 			flake = false;
 		};
+
+		sxmo-nix = {
+			url = github:wentam/sxmo-nix;
+			flake = false;
+		};
 	};
 
 	outputs = { nixpkgs, ... }@inputs:
