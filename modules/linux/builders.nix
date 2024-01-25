@@ -83,6 +83,7 @@ with lib;
 				"dent:Zemx3xLrAPvvAFOiK9QUjeTSoKrZ/TclqQ+WIyYSpFU="
 				"hotblack:Jrz20HhPde23eQOdKxyfqNtQ6GbSCIVMTLwRdkUbVds="
 				"binarycache.zaphod2:+Ld5Ku7ZRYWG62/b5z6ZLT2e7VENzrHV32uf9Wk3puU="
+				"binarycache.hotblack:ksw182xvbAMU33TF80hjCJgyzWTHmoVWS6IKHg1PmAM="
 			];
 			trusted-substituters = []
 			++ lib.optionals(config.builders.dent) [
