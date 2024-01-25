@@ -34,11 +34,28 @@ with lib;
 			config.mobile.device.firmware
 		];
 
+		# Enable power management options
+		powerManagement.enable				= true;
+
+		# Marvin only has 4GB of memory
+		zramSwap.enable						= true;
+
 		mobile.boot.stage-1.firmware = [
 			config.mobile.device.firmware
 		];
 
 		services.fwupd.enable				= true;
+
+
+		users.users."m" = {
+			extraGroups = [
+				"dialout"
+				"feedbackd"
+				"networkmanager"
+				"video"
+				"wheel"
+			];
+		};
 	};
 }
 
