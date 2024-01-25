@@ -31,6 +31,7 @@ lib.nixosSystem {
 			services.fstrim.enable				= lib.mkDefault true;
 
 			powerManagement.enable				= true;
+			services.upower.enable				= true;
 			hardware.opengl.enable				= true;
 
 			builders.enable						= true;
