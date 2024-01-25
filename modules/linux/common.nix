@@ -18,7 +18,10 @@ with lib;
 			polkit_gnome
 			bluez
 			remmina
+
+			glxinfo
 			foot
+			xterm
 
 			# I don't love having these installed, but they make development
 			# easier since I don't have to install them for every little thing
