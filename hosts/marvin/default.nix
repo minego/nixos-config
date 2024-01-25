@@ -1,4 +1,4 @@
-{ inputs, overlays, linuxOverlays, lib, ... }:
+{ inputs, overlays, linuxOverlays, ... }:
 
 let
 	lib = inputs.nixpkgs.lib;
