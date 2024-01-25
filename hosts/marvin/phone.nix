@@ -19,10 +19,6 @@ with lib;
 			megapixels
 		];
 		programs.calls.enable				= true;
-		systemd.services.ModemManager.serviceConfig.ExecStart = [
-			# clear ExecStart from upstream unit file.
-			"${pkgs.modemmanager}/sbin/ModemManager --test-quick-suspend-resume"
-		];
 
 		# GPS
 		services.geoclue2.enable			= true;
