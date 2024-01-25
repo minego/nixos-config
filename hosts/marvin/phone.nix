@@ -9,23 +9,11 @@ with lib;
 		};
 
 		# sxmo
-		services.xserver = {
+
+		services.xserver.desktopManager.sxmo = {
 			enable							= true;
-			desktopManager.sxmo.enable		= true;
-
-			displayManager = {
-				# power->toggle WM in sxmo only works with tinytm
-				tinydm.enable				= true;
-
-				autoLogin.enable			= true;
-				autoLogin.user				= "m";
-
-				# Xorg
-				# defaultSession				= "sxmo";
-
-				# Wayland
-				defaultSession				= "swmo";
-			};
+			user							= "m";
+			group							= "users";
 		};
 
 		# It is a phone...

@@ -77,7 +77,7 @@
 		};
 
 		sxmo-nix = {
-			url = github:wentam/sxmo-nix;
+			url = github:chuangzhu/nixpkgs-sxmo;
 			flake = false;
 		};
 	};

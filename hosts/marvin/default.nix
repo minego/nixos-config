@@ -11,7 +11,7 @@ lib.nixosSystem {
 			nixpkgs.overlays = overlays
 			++ linuxOverlays
 			++ [
-				# Add host specific overlays here
+				(import "${inputs.sxmo-nix}/overlay.nix")
 			];
 
 			# Modules
@@ -26,6 +26,7 @@ lib.nixosSystem {
 			interception-tools.enable			= false;
 
 			networking.hostName					= "marvin";
+			networking.networkmanager.enable	= true;
 
 			services.fstrim.enable				= lib.mkDefault true;
 
@@ -47,8 +48,7 @@ lib.nixosSystem {
 				../../modules/linux
 				inputs.home-manager.nixosModules.home-manager
 
-				(import "${inputs.sxmo-nix}/modules/sxmo")
-				(import "${inputs.sxmo-nix}/modules/tinydm")
+				(import "${inputs.sxmo-nix}/module.nix")
 
 				(import "${inputs.mobile-nixos}/lib/configuration.nix" {
 					device = "pine64-pinephonepro";
