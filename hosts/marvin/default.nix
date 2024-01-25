@@ -1,4 +1,5 @@
-{ inputs, overlays, linuxOverlays, ... }:
+{ inputs, overlays, linuxOverlays, lib, ... }:
+with lib;
 
 let
 	lib = inputs.nixpkgs.lib;
@@ -34,6 +35,9 @@ lib.nixosSystem {
 
 			builders.enable						= true;
 			builders.zaphod						= true;
+
+			# The phone uses tow-boot, not systemd-boot
+			boot.loader.systemd-boot.enable		= mkForce false;
 
 			imports = [
 				./hardware-configuration.nix
