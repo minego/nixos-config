@@ -32,6 +32,9 @@ lib.nixosSystem {
 			powerManagement.enable				= true;
 			hardware.opengl.enable				= true;
 
+			builders.enable						= true;
+			builders.zaphod						= true;
+
 			imports = [
 				./phone.nix
 				../../users/m/linux.nix

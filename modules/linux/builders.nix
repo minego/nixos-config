@@ -55,6 +55,7 @@ with lib;
 		# This can be done by creating a new key and adding it to the trusted
 		# list or by doing something like:
 		#
+		#		sudo mkdir -p /root/.ssh
 		#		sudo cp ~/.ssh/id_ed25519* /root/.ssh/
 		#		sudo ssh-keygen -p -N "" -f /root/.ssh/id_ed25519
 		#
@@ -63,9 +64,9 @@ with lib;
 		# key for that purpose and that needs to be trusted by the local box.
 		#
 		#	cd /var
-		#	nix-store --generate-binary-cache-key binarycache.$(hostname -s) cache-priv-key.pem cache-pub-key.pem
-		#	chown nix-serve cache-priv-key.pem
-		#	chmod 600 cache-priv-key.pem
+		#	sudo nix-store --generate-binary-cache-key binarycache.$(hostname -s) cache-priv-key.pem cache-pub-key.pem
+		#	sudo chown nix-serve cache-priv-key.pem
+		#	sudo chmod 600 cache-priv-key.pem
 		#	sudo $(which nix) store sign --all -k /var/cache-priv-key.pem
 		#	cat cache-pub-key.pem
 		#
