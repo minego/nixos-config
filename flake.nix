@@ -114,9 +114,6 @@
 		];
 
 		linuxOverlays = [
-			# Force the use of the x86_64 version of specific packages (which
-			# is a no-op on x86_64 boxes)
-			(import ./overlays/aarch64_and_x86_64.nix)
 		];
 
 		darwinOverlays = [
@@ -147,6 +144,14 @@
 
 			# PinePhone Pro
 			marvin		= import ./hosts/marvin		{ inherit inputs overlays linuxOverlays; };
+
+			# Steam Deck
+			wonko		= import ./hosts/wonko		{ inherit inputs overlays linuxOverlays; };
+		};
+
+		# Images can be built with `nix build ./#images.foobar`
+		images = {
+			wonko		= nixosConfigurations.wonko.config.system.build.isoImage;
 		};
 
 		darwinConfigurations = {
