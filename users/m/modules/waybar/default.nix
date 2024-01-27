@@ -17,12 +17,133 @@ with lib;
 		programs.waybar = rec {
 			enable = osConfig.gui.enable && config.dwl.enable;
 
-			style = "${./waybar.css}";
+			style = ''
+				* {
+					border:						none;
+					border-radius:				0;
+					font-family:				"Monaspace Neon Light";
+					font-size:					16px;
+					min-height:					0;
+				}
+
+				window#waybar {
+					background:					transparent;
+					color:						white;
+				}
+
+				#window {
+					font-weight:				bold;
+					font-family:				"Monaspace Neon Light";
+				}
+
+				window#waybar > * {
+					padding-bottom:				${if osConfig.hasNotch then "40px" else "0px"}
+				}
+
+				#workspaces button {
+					padding:					0 5px;
+					background:					transparent;
+					color:						white;
+					border-top:					2px solid transparent;
+				}
+
+				#workspaces button.focused {
+					color:						#c9545d;
+					border-top:					2px solid #c9545d;
+				}
+
+				#mode {
+					background:					#64727D;
+					border-bottom:				3px solid white;
+				}
+
+				#clock, #battery, #cpu, #memory, #network, #wireplumber, #pulseaudio, #mpris, #tray, #mode, #bluetooth, #backlight, #custom-notification, #idle_inhibitor, #custom-audio_idle_inhibitor, #custom-cpuusage, #custom-cpuhist {
+					padding:					0 9px;
+					margin:						0 4px;
+				}
+
+				#battery icon {
+					color:						#ff2a6d;
+				}
+
+				#battery.charging {
+				}
+
+				@keyframes blink {
+					to {
+						background-color:		#ffffff;
+						color:					black;
+					}
+				}
+
+				#battery.warning:not(.charging) {
+					color:						white;
+					animation-name:				blink;
+					animation-duration:			0.5s;
+					animation-timing-function:	linear;
+					animation-iteration-count:	infinite;
+					animation-direction:		alternate;
+				}
+
+				#network.disconnected {
+					background:					#f53c3c;
+				}
+
+				#pulseaudio {
+					background:					#f53c3c;
+				}
+
+				#pulseaudio.source-muted {
+					background:					transparent;
+				}
+
+				#custom-dwl_layout {
+					color:						white;
+					font-weight:				bold;
+				}
+					
+				#custom-dwl_title {
+					color:						white;
+				}
+					
+				#custom-dwl_tag {
+					color:						white;
+					border-top:					3px solid rgba(0, 0, 0, 0);
+				}
+
+				#custom-dwl_tag.active {
+					/* magenta */
+					border-top:					3px solid #A61b47;
+				}
+
+				#custom-dwl_tag.selected {
+					/* yellow */
+					border-top:					3px solid #faff00;
+				}
+					
+				#custom-notification {
+					font-family:				"Monaspace Neon Light";
+				}
+
+				#custom-cpuusage {
+					font-family:				"Sparks Bar Wide";
+					font-weight:				normal;
+					font-style:					normal;
+				}
+
+				#custom-cpuhist {
+					font-family:				"Sparks Dot-Line Thick";
+					font-weight:				normal;
+					font-style:					normal;
+				}
+			'';
 
 			settings = [{
-				layer =		"bottom";
-				position =	"top";
-				height =	24;
+				layer		= "bottom";
+				position	= "top";
+
+				# Make the top bar taller to hide the notch if needed
+				height		= if osConfig.hasNotch then 64 else 24;
 
 				modules-left = [
 					"custom/dwl_tag#0" "custom/dwl_tag#1" "custom/dwl_tag#2"

@@ -3,7 +3,7 @@ with lib;
 
 {
 	options.me = mkOption {
-		description = "Details about my default user";
+		description		= "Details about my default user";
 
 		default = {
 			user		= "m";
@@ -12,7 +12,12 @@ with lib;
 		};
 	};
 
-	options.authorizedKeys.keys = mkOption{
+	options.hasNotch = mkOption {
+		description		= "True if the machine is apple silicon with a notch";
+		default			= false;
+	};
+
+	options.authorizedKeys.keys = mkOption {
 		description	= ''
             A list of trusted ssh keys that should be used trusted by the
             default user (m) and a handful of other things such as remote

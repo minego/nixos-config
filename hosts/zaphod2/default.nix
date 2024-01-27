@@ -25,6 +25,9 @@ lib.nixosSystem {
 				})
 			];
 
+			# Make the top bar taller to hide the notch if needed
+			hasNotch							= true;
+
 			# Modules
 			gui.enable							= true;
 			steam.enable						= false;
@@ -47,7 +50,7 @@ lib.nixosSystem {
 			hardware = {
 				asahi = {
 					addEdgeKernelConfig			= true;
-					peripheralFirmwareDirectory	= ../../firmware;
+					peripheralFirmwareDirectory	= ./firmware;
 					useExperimentalGPUDriver	= true;
 					experimentalGPUInstallMode	= "driver";
 					withRust					= true;
@@ -66,12 +69,10 @@ lib.nixosSystem {
 
 			services.fstrim.enable				= lib.mkDefault true;
 
-			# This should be false with asahi!
-			boot.loader.efi.canTouchEfiVariables= false;
-			boot.extraModprobeConfig			= "options hid_apple iso_layout=0 swap_fn_leftctrl=1 fnmode=2";
-
-			# Rosetta for Linux
-			# boot.binfmt.emulatedSystems			= [ "x86_64-linux" ];
+			boot = {
+				extraModprobeConfig				= "options hid_apple iso_layout=0 swap_fn_leftctrl=1 fnmode=2";
+				kernelParams					= [ "apple_dcp.show_notch=1" ];
+			};
 
 			services.tlp.enable					= true;
 
