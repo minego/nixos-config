@@ -2,12 +2,6 @@
 with lib;
 
 {
-	options.bios = {
-		# If enabled, disabled systemd-boot and other uefi related stuff... This
-		# is needed for VMs in some cases.
-		enable = mkEnableOption "bios";
-	};
-
 	config = {
 		environment.systemPackages = with pkgs; [
 			psmisc
@@ -37,7 +31,7 @@ with lib;
 		system.autoUpgrade.allowReboot		= false;
 
 		# Bootloader.
-		boot.loader.systemd-boot.enable		= if config.bios.enable then false else true;
+		boot.loader.systemd-boot.enable		= mkDefault true;
 
 		boot.tmp.cleanOnBoot				= true;
 
@@ -54,10 +48,10 @@ with lib;
 
 		# Enable sound with pipewire.
 		sound.enable						= true;
-		hardware.pulseaudio.enable			= false;
+		hardware.pulseaudio.enable			= mkForce false;
 		security.rtkit.enable				= true;
 		services.pipewire = {
-			enable							= true;
+			enable							= mkForce true;
 			alsa.enable						= true;
 			alsa.support32Bit				= true;
 			pulse.enable					= true;

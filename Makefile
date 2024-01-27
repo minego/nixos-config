@@ -25,6 +25,10 @@ switch-debug:
 switch-offline:
 	$(TOOL) switch --flake ./#$(HOSTNAME) $(ARGS) --option substitute false
 
+# Build for the phone
+build-marvin:
+	nix build ./#marvin-image $(ARGS)
+
 update:
 	@nix flake update
 	$(TOOL) switch --flake ./#$(HOSTNAME) $(ARGS) --upgrade

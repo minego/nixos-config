@@ -1,4 +1,5 @@
-{ inputs, overlays, linuxOverlays, ... }:
+{ inputs, overlays, linuxOverlays, lib, ... }:
+with lib;
 
 # Gateway VM
 
@@ -26,7 +27,9 @@ inputs.nixpkgs.lib.nixosSystem {
 			samba.enable						= false;
 
 			p81.enable							= true;
-			bios.enable							= true;
+
+			# Bootloader.
+			boot.loader.systemd-boot.enable		= mkForce false;
 
 			# Bootloader.
 			boot.loader.grub.enable				= true;
