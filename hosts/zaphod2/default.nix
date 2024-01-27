@@ -54,7 +54,7 @@ lib.nixosSystem {
 				};
 				opengl = {
 					enable						= true;
-					# driSupport					= true;
+					driSupport					= true;
 				};
 			};
 
