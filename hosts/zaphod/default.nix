@@ -1,4 +1,4 @@
-{ inputs, globals, overlays, darwinOverlays, ... }:
+{ inputs, overlays, darwinOverlays, ... }:
 
 inputs.darwin.lib.darwinSystem rec {
 	system = "aarch64-darwin";

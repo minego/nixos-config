@@ -1,7 +1,17 @@
-{ config, pkgs, lib, globals, inputs, ... }:
+{ config, pkgs, lib, inputs, ... }:
 with lib;
 
 {
+	options.me = mkOption {
+		description = "Details about my default user";
+
+		default = {
+			user		= "m";
+			fullName	= "Micah N Gorrell";
+			email		= "m@minego.net";
+		};
+	};
+
 	options.authorizedKeys.keys = mkOption{
 		description	= ''
             A list of trusted ssh keys that should be used trusted by the
@@ -75,7 +85,7 @@ with lib;
 			useGlobalPkgs		= true;
 			useUserPackages		= true;
 
-			extraSpecialArgs	= { inherit globals inputs; };
+			extraSpecialArgs	= { inherit inputs; };
 		};
 	};
 }

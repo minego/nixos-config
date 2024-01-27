@@ -122,12 +122,6 @@
 		darwinOverlays = [
 			inputs.nixpkgs-firefox-darwin.overlay
 		];
-
-		globals = rec {
-			user		= "m";
-			fullName	= "Micah N Gorrell";
-			email		= "m@minego.net";
-		};
 	in rec {
 		# Set the version of 'nixpkgs' used on the command line to be locked to
 		# the version at the time this configuration was applied. This will
@@ -137,45 +131,45 @@
 
 		nixosConfigurations = {
 			# My main desktop computer
-			dent		= import ./hosts/dent		{ inherit inputs globals overlays linuxOverlays; };
+			dent		= import ./hosts/dent		{ inherit inputs overlays linuxOverlays; };
 
 			# Thinkpad
-			lord		= import ./hosts/lord		{ inherit inputs globals overlays linuxOverlays; };
+			lord		= import ./hosts/lord		{ inherit inputs overlays linuxOverlays; };
 
 			# Home server
-			hotblack	= import ./hosts/hotblack	{ inherit inputs globals overlays linuxOverlays; };
+			hotblack	= import ./hosts/hotblack	{ inherit inputs overlays linuxOverlays; };
 
 			# Macbook pro (m2 max) running NixOS with Asahi
-			zaphod2		= import ./hosts/zaphod2	{ inherit inputs globals overlays linuxOverlays; };
+			zaphod2		= import ./hosts/zaphod2	{ inherit inputs overlays linuxOverlays; };
 
 			# Gateway VM
-			gateway-vm	= import ./hosts/gateway-vm { inherit inputs globals overlays linuxOverlays; };
+			gateway-vm	= import ./hosts/gateway-vm { inherit inputs overlays linuxOverlays; };
 
 			# PinePhone Pro
-			marvin		= import ./hosts/marvin		{ inherit inputs globals overlays linuxOverlays; };
+			marvin		= import ./hosts/marvin		{ inherit inputs overlays linuxOverlays; };
 		};
 
 		darwinConfigurations = {
 			# Macbook pro (m2 max)
-			zaphod		= import ./hosts/zaphod		{ inherit inputs globals overlays darwinOverlays; };
+			zaphod		= import ./hosts/zaphod		{ inherit inputs overlays darwinOverlays; };
 
 			# Mac mini (m1)
-			random		= import ./hosts/random		{ inherit inputs globals overlays darwinOverlays; };
+			random		= import ./hosts/random		{ inherit inputs overlays darwinOverlays; };
 		};
 
 		homeConfigurations = {
 			# NixOS
-			dent		= nixosConfigurations.dent.config.home-manager.users.${globals.user}.home;
-			hotblack	= nixosConfigurations.hotblack.config.home-manager.users.${globals.user}.home;
-			zaphod2		= nixosConfigurations.zaphod2.config.home-manager.users.${globals.user}.home;
+			dent		= nixosConfigurations.dent.config.home-manager.users.m.home;
+			hotblack	= nixosConfigurations.hotblack.config.home-manager.users.m.home;
+			zaphod2		= nixosConfigurations.zaphod2.config.home-manager.users.m.home;
 
 			# Gavin's NixOS Laptop
-			lord-m		= nixosConfigurations.lord.config.home-manager.users.${globals.user}.home;
+			lord-m		= nixosConfigurations.lord.config.home-manager.users.m.home;
 			lord-gavin	= nixosConfigurations.lord.config.home-manager.users.gavin.home;
 
 			# Darwin
-			zaphod		= nixosConfigurations.zaphod.config.home-manager.users.${globals.user}.home;
-			random		= nixosConfigurations.random.config.home-manager.users.${globals.user}.home;
+			zaphod		= nixosConfigurations.zaphod.config.home-manager.users.m.home;
+			random		= nixosConfigurations.random.config.home-manager.users.m.home;
 		};
 
 		marvin-image	= nixosConfigurations.marvin.config.mobile.outputs.u-boot.disk-image;

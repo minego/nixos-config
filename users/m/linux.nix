@@ -1,20 +1,19 @@
-{ globals, config, pkgs, lib, ... }:
+{ config, pkgs, lib, ... }:
 
 {
-	users.users.m = {
-		shell			= pkgs.zsh;
-		description		= "Micah N Gorrell";
-
-		openssh.authorizedKeys.keys = config.authorizedKeys.keys;
+	users.users."${config.me.user}" = {
+		shell								= pkgs.zsh;
+		description							= config.me.fullName;
+		openssh.authorizedKeys.keys			= config.authorizedKeys.keys;
 
 		extraGroups = [
 			"networkmanager"
 			"wheel"
 			"video"
 		];
-		isNormalUser	= true;
+		isNormalUser						= true;
 	};
 
-	home-manager.users.m = import ./home.nix;
+	home-manager.users."${config.me.user}"	= import ./home.nix;
 }
 

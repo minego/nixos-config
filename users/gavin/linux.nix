@@ -1,4 +1,4 @@
-{ globals, config, pkgs, lib, ... }:
+{ config, pkgs, lib, ... }:
 
 {
 	users.users.gavin = {
