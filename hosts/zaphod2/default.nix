@@ -11,6 +11,9 @@ lib.nixosSystem {
 			++ linuxOverlays
 			++ [
 				inputs.apple-silicon.overlays.apple-silicon-overlay
+				(final: prev: {
+					mesa = final.mesa-asahi-edge;
+				})
 
 				# Patch DWL to enable scaling
 				(final: prev: {
@@ -41,10 +44,18 @@ lib.nixosSystem {
 			builders.zaphod						= false;
 
 			# Turn on the asahi GPU driver
-			hardware.asahi.useExperimentalGPUDriver = true;
-			hardware.opengl = {
-				enable							= true;
-				driSupport						= true;
+			hardware = {
+				asahi = {
+					addEdgeKernelConfig			= true;
+					peripheralFirmwareDirectory	= ../../firmware;
+					useExperimentalGPUDriver	= true;
+					experimentalGPUInstallMode	= "driver";
+					withRust					= true;
+				};
+				opengl = {
+					enable						= true;
+					driSupport					= true;
+				};
 			};
 
 			networking.hostName					= "zaphod2";
@@ -61,9 +72,6 @@ lib.nixosSystem {
 
 			# Rosetta for Linux
 			# boot.binfmt.emulatedSystems			= [ "x86_64-linux" ];
-
-			# Reference the firmware required for asahi
-			hardware.asahi.peripheralFirmwareDirectory = ../../firmware;
 
 			services.tlp.enable					= true;
 
