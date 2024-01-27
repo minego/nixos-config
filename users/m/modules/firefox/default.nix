@@ -85,6 +85,7 @@ with lib;
 					don-t-fuck-with-paste
 					i-dont-care-about-cookies
 					user-agent-string-switcher
+					simple-tab-groups
 				];
 				settings = {
 					"signon.rememberSignons"				= false;
