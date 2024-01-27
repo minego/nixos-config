@@ -37,7 +37,7 @@ with lib;
 				}
 
 				window#waybar > * {
-					padding-bottom:				${if osConfig.hasNotch then "40px" else "0px"}
+					margin-top:					${if osConfig.hasNotch then "20px" else "0px"};
 				}
 
 				#workspaces button {
@@ -143,7 +143,7 @@ with lib;
 				position	= "top";
 
 				# Make the top bar taller to hide the notch if needed
-				height		= if osConfig.hasNotch then 64 else 24;
+				height		= if osConfig.hasNotch then 44 else 24;
 
 				modules-left = [
 					"custom/dwl_tag#0" "custom/dwl_tag#1" "custom/dwl_tag#2"
