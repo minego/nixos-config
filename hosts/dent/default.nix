@@ -30,7 +30,7 @@ inputs.nixpkgs.lib.nixosSystem {
 			builders.enable							= true;
 			builders.cache							= true;
 			builders.dent							= false;
-			builders.hotblack						= true;
+			builders.hotblack						= false;
 			builders.zaphod							= true;
 
 			# Enable networking, with DHCP and a bridge device
