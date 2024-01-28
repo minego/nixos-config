@@ -44,6 +44,7 @@ inputs.nixpkgs.lib.nixosSystem {
 
 				../../modules
 				../../modules/linux
+				../../modules/linux/steamdeck.nix
 				inputs.home-manager.nixosModules.home-manager
 			];
 		}

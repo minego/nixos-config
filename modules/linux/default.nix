@@ -21,7 +21,6 @@ with lib;
 		./builders.nix
 		./syncthing.nix
 		./luks-ssh.nix
-		./steamdeck.nix
 
 		./p81.nix
 	];
