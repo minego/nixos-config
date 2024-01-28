@@ -7,6 +7,7 @@ inputs.nixpkgs.lib.nixosSystem {
 	system = "x86_64-linux";
 	modules = [
 		"${inputs.nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
+		inputs.jovian-nixos.nixosModules.default
 
 		{
 			nixpkgs.overlays = overlays ++ linuxOverlays ++ [
@@ -14,11 +15,12 @@ inputs.nixpkgs.lib.nixosSystem {
 			];
 
 			# Modules
+			steamdeck.enable						= true;
+			jovian.devices.steamdeck.enable			= true;
+
 			gui.enable								= true;
 			steam.enable							= true;
 			"8bitdo".enable							= true;
-			amdgpu.enable							= true;
-			nvidia.enable							= false;
 			samba.enable							= true;
 
 			services.fstrim.enable					= true;
