@@ -81,11 +81,11 @@
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1704912446,
-        "narHash": "sha256-x0+9iZQJ5GyUBJ4xAYLciUqDYxuyztItLCbhQ8FxWuM=",
+        "lastModified": 1706552352,
+        "narHash": "sha256-mbRcjqSx/ld6gebsogU/BNLJKDK+msgc4hAQ1TUex3M=",
         "owner": "minego",
         "repo": "dwl",
-        "rev": "693b23210350198c03fd93645e5f87e221842576",
+        "rev": "5267ec2ca6642373ba7e2ac0c13da91cf09eaf05",
         "type": "github"
       },
       "original": {
