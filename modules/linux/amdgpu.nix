@@ -8,7 +8,10 @@ with lib;
 	};
 	config = mkIf (config.amdgpu.enable && pkgs.stdenv.isLinux) {
 		# amdgpu
-		boot.initrd.kernelModules = [ "amdgpu" ];
+		boot = {
+			initrd.kernelModules = [ "amdgpu" ];
+			kernelParams = [ "amdgpu.dpm=1" ];
+		};
 
 		hardware.opengl = {
 			enable = true;
