@@ -2,7 +2,10 @@
 with lib;
 
 {
-	config = mkIf config.gui.enable {
+	# Importing this module should automatically turn this option on
+	config.gui.enable = mkForce true;
+
+	config = {
 		# This is required to use the lldb-vscode DAP to debug on Linux, and I
 		# tend to need to do that on any system that is a "desktop" so that is
 		# why I put this here.
@@ -21,8 +24,19 @@ with lib;
 		programs.light.enable	= true;
 
 		fonts.packages = with pkgs; [
-			# Install most through home-manager, but best to have at least one
+			nerdfonts
 			noto-fonts
+			noto-fonts-cjk
+			noto-fonts-emoji
+			liberation_ttf
+			fira-code
+			fira-code-symbols
+			mplus-outline-fonts.githubRelease
+			proggyfonts
+			terminus_font
+
+			monaspace
+			sparklines
 		];
 		
 		fonts.fontconfig.defaultFonts = {

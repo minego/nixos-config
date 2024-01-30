@@ -36,7 +36,6 @@
 	services.spice-vdagentd.enable = true;
 	boot.extraModprobeConfig = "options kvm_intel nested=1";
 
-
 	environment.etc = {
 		"ovmf/edk2-x86_64-secure-code.fd" = {
 			source = config.virtualisation.libvirtd.qemu.package + "/share/qemu/edk2-x86_64-secure-code.fd";

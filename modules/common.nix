@@ -2,19 +2,33 @@
 with lib;
 
 {
-	options.me = mkOption {
-		description		= "Details about my default user";
+	options = {
+		me = mkOption {
+			description		= "Details about my default user";
 
-		default = {
-			user		= "m";
-			fullName	= "Micah N Gorrell";
-			email		= "m@minego.net";
+			default = {
+				user		= "m";
+				fullName	= "Micah N Gorrell";
+				email		= "m@minego.net";
+			};
 		};
-	};
 
-	options.hasNotch = mkOption {
-		description		= "True if the machine is apple silicon with a notch";
-		default			= false;
+		# This option exists so that my homebrew config can tell if the gui
+		# module was enabled. It should NOT be enabled directly in a host's
+		# config though.
+		#
+		# Instead, it should be on by default for Darwin since that always has
+		# a gui enabled, and it should be turned on for Linux by importing
+		# `modules/linux/gui.nix` which will set this option.
+		gui.enable = lib.mkEnableOption {
+			description		= "GUI";
+			default			= if pkgs.stdenv.isDarwin then true else false;
+		};
+
+		hasNotch = mkOption {
+			description		= "True if the machine is apple silicon with a notch";
+			default			= false;
+		};
 	};
 
 	options.authorizedKeys.keys = mkOption {
@@ -31,6 +45,7 @@ with lib;
 			"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHOpMsaa0+ZPrF3dTHcXXXRiA/qfGYtF1wehO0UkEaWV m@zaphod"
 			"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILyOr1jFfS3I12H73/phT6OLCcz5joIYOVOQgiR1OpHv m@random"
 			"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO6XNKufvADcA5zNAp5mYVBA2kQ2OIXIOq9enSyUmJsM m@marvin"
+			"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINpCf3ELP19jIwlrm9zMiPhzHUAQQ1shXgIrbrYmPpnj phone"
 		];
 	};
 

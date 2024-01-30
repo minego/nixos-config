@@ -7,13 +7,7 @@ let
 	mackeys		= pkgs.minego.mackeys;
 in
 {
-	options = {
-		interception-tools = {
-			enable = mkEnableOption "Interception Tools";
-		};
-	};
-
-	config = mkIf config.interception-tools.enable {
+	config = mkIf pkgs.stdenv.isLinux {
 		# Interception-Tools
 		services.interception-tools = {
 			enable = true;

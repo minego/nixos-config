@@ -28,24 +28,6 @@ lib.nixosSystem {
 			# Make the top bar taller to hide the notch if needed
 			hasNotch							= true;
 
-			# Modules
-			gui.enable							= true;
-			steam.enable						= false;
-			laptop.enable						= true;
-			"8bitdo".enable						= true;
-
-			nvidia.enable						= false;
-			amdgpu.enable						= false;
-
-			interception-tools.enable			= true;
-
-			# Remote builders and binary cache
-			builders.enable						= true;
-			builders.cache						= true;
-			builders.dent						= true;
-			builders.hotblack					= true;
-			builders.zaphod						= false;
-
 			# Turn on the asahi GPU driver
 			hardware = {
 				asahi = {
@@ -61,13 +43,12 @@ lib.nixosSystem {
 				};
 			};
 
+
 			networking.hostName					= "zaphod2";
 
 			# Enable Network Manager
 			networking.networkmanager.enable	= true;
 			programs.nm-applet.enable			= true;
-
-			services.fstrim.enable				= lib.mkDefault true;
 
 			boot = {
 				extraModprobeConfig				= "options hid_apple iso_layout=0 swap_fn_leftctrl=1 fnmode=2";
@@ -79,13 +60,30 @@ lib.nixosSystem {
 			imports = [
 				../../users/m/linux.nix
 
-				../../modules
-				../../modules/linux
+				../../modules/common.nix
+				../../modules/linux/common.nix
+				../../modules/linux/gui.nix
+				# ../../modules/linux/printer.nix
+				../../modules/linux/8bitdo.nix
+				../../modules/linux/interception-tools.nix
+				../../modules/linux/libvirt.nix
+				# ../../modules/linux/steam.nix
+				../../modules/linux/builders.nix
+				../../modules/linux/syncthing.nix
+				../../modules/linux/laptop.nix
+
 				inputs.home-manager.nixosModules.home-manager
 
 				./hardware-configuration.nix
 				inputs.apple-silicon.nixosModules.apple-silicon-support
 			];
+
+			# Remote builders and binary cache
+			builders.enable						= true;
+			builders.cache						= true;
+			builders.dent						= true;
+			builders.hotblack					= true;
+			builders.zaphod						= false;
 		}
 	];
 }

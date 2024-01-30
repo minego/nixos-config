@@ -15,6 +15,8 @@
 			openssl
 			openssl.dev
 			pkg-config
+
+			virt-viewer
 		];
 		pathsToLink				= [ "/Applications" ];
 
