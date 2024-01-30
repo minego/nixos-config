@@ -41,16 +41,16 @@ inputs.nixpkgs.lib.nixosSystem {
 			builders.cache							= true;
 			builders.dent							= true;
 			builders.hotblack						= false;
-			builders.zaphod							= true;
+			builders.zaphod							= false;
 
 			# The printer physicall connected to this host.
 			hardware.printers = {
-				ensurePrinters = [{
-					name = "Brother_HL-L2390DW";
-					location = "Home";
-					deviceUri = "usb://Brother/HL-L2390DW?serial=U64967L0N446196";
-					model = "HLL2390DW";
-				}];
+#				ensurePrinters = [{
+#					name = "Brother_HL-L2390DW";
+#					location = "Home";
+#					deviceUri = "usb://Brother/HL-L2390DW?serial=U64967L0N446196";
+#					model = "HLL2390DW";
+#				}];
 			};
 		}
 	];
