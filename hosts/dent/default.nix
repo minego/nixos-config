@@ -1,16 +1,18 @@
 { inputs, overlays, linuxOverlays, ... }:
 
-inputs.nixpkgs.lib.nixosSystem {
+let
 	system = "x86_64-linux";
+in
+inputs.nixpkgs.lib.nixosSystem {
+	inherit system;
+
 	modules = [
 		{
 			nixpkgs.overlays = overlays ++ linuxOverlays ++ [
 				# Patch DWL to enable adaptive sync
 				(final: prev: {
-					dwl = prev.dwl.overrideAttrs(old: {
-						patches = old.patches ++ [
-							./dwl.patch
-						];
+					dwl-unwrapped = inputs.dwl-minego-customized.packages.${system}.dwl-unwrapped.overrideAttrs(old: {
+						patches = [ ./dwl.patch ];
 					});
 				})
 			];

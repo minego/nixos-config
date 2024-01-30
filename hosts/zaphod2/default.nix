@@ -2,9 +2,11 @@
 
 let
 	lib = inputs.nixpkgs.lib;
+	system = "aarch64-linux";
 in
 lib.nixosSystem {
-	system = "aarch64-linux";
+	inherit system;
+
 	modules = [
 		{
 			nixpkgs.overlays = overlays
@@ -17,7 +19,7 @@ lib.nixosSystem {
 
 				# Patch DWL to enable scaling
 				(final: prev: {
-					dwl = prev.dwl.overrideAttrs(old: {
+					dwl-unwrapped = inputs.dwl-minego-customized.packages.${system}.dwl-unwrapped.overrideAttrs(old: {
 						patches = old.patches ++ [
 							./dwl.patch
 						];
