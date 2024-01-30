@@ -14,8 +14,8 @@ inputs.darwin.lib.darwinSystem rec {
 
 			imports = [
 				../../users/m/darwin.nix
-				../../modules
-				../../modules/darwin
+				../../modules/common.nix
+				../../modules/darwin/common.nix
 				inputs.home-manager.darwinModules.home-manager
 			];
 		}

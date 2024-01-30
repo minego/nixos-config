@@ -1,15 +1,13 @@
-HOSTNAME := $(hostname -s)
-UNAME_S := $(shell uname -s)
-UNAME_M := $(shell uname -m)
+HOSTNAME	:= $(shell hostname -s)
+UNAME_S		:= $(shell uname -s)
+UNAME_M		:= $(shell uname -m)
+
 ifeq ($(UNAME_S),Linux)
-	TOOL := sudo nixos-rebuild
+	TOOL	:= sudo nixos-rebuild
 endif
 ifeq ($(UNAME_S),Darwin)
-	TOOL := darwin-rebuild
+	TOOL	:= darwin-rebuild
 endif
-
-# Having an asahi host in my config requires being impure
-# ARGS := --impure
 
 all:
 	@echo "Cowardly refusing to run. Try again with 'switch' or 'test'"
@@ -17,27 +15,30 @@ all:
 install: switch
 
 switch:
-	$(TOOL) switch --flake ./#$(HOSTNAME) $(ARGS)
+	$(TOOL) switch --flake ./#$(HOSTNAME)
 
-switch-debug:
-	$(TOOL) switch --flake ./#$(HOSTNAME) $(ARGS) --option eval-cache false --show-trace
+switch-debug: check
+	$(TOOL) switch --flake ./#$(HOSTNAME) --option eval-cache false --show-trace
 
 switch-offline:
-	$(TOOL) switch --flake ./#$(HOSTNAME) $(ARGS) --option substitute false
+	$(TOOL) switch --flake ./#$(HOSTNAME) --option substitute false
 
 # Build for the phone
 build-marvin:
-	nix build ./#marvin-image $(ARGS)
+	nix build ./#marvin-image
 
 update:
 	@nix flake update
-	$(TOOL) switch --flake ./#$(HOSTNAME) $(ARGS) --upgrade
+	$(TOOL) switch --flake ./#$(HOSTNAME) --upgrade
 
-test:
-	@nix flake check
+check:
+	@nix flake check --show-trace
+
+test: check
+	$(TOOL) dry-build --flake ./#$(HOSTNAME)
 
 rollback:
-	$(TOOL) switch --flake ./#$(HOSTNAME) $(ARGS) --rollback
+	$(TOOL) switch --flake ./#$(HOSTNAME) --rollback
 
 gateway-vm:
-	$(TOOL) build-vm --flake ./#gateway-vm $(ARGS)
+	$(TOOL) build-vm --flake ./#gateway-vm

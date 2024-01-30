@@ -18,21 +18,6 @@ inputs.nixpkgs.lib.nixosSystem {
 			steamdeck.enable						= true;
 			jovian.devices.steamdeck.enable			= true;
 
-			gui.enable								= true;
-			steam.enable							= true;
-			"8bitdo".enable							= true;
-			samba.enable							= true;
-
-			services.fstrim.enable					= true;
-			interception-tools.enable				= true;
-
-			# Remote builders and binary cache
-			builders.enable							= true;
-			builders.cache							= false;
-			builders.dent							= true;
-			builders.hotblack						= true;
-			builders.zaphod							= false;
-
 			# Enable networking, with DHCP and a bridge device
 			networking.hostName						= "wonko";
 			networking.useDHCP						= false;
@@ -42,11 +27,28 @@ inputs.nixpkgs.lib.nixosSystem {
 			imports = [
 				../../users/m/linux.nix
 
-				../../modules
-				../../modules/linux
+				../../modules/common.nix
+				../../modules/linux/common.nix
+				../../modules/linux/gui.nix
+				../../modules/linux/printer.nix
+				../../modules/linux/8bitdo.nix
+				../../modules/linux/interception-tools.nix
+				# ../../modules/linux/libvirt.nix
+				# ../../modules/linux/amdgpu.nix
+				../../modules/linux/steam.nix
+				../../modules/linux/builders.nix
+				../../modules/linux/syncthing.nix
+
 				../../modules/linux/steamdeck.nix
 				inputs.home-manager.nixosModules.home-manager
 			];
+
+			# Remote builders and binary cache
+			builders.enable							= true;
+			builders.cache							= false;
+			builders.dent							= true;
+			builders.hotblack						= true;
+			builders.zaphod							= false;
 		}
 	];
 }

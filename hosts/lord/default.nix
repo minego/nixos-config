@@ -9,18 +9,9 @@ lib.nixosSystem {
 		{
 			nixpkgs.overlays = overlays ++ linuxOverlays;
 
-			# Modules
-			gui.enable							= true;
-			steam.enable						= true;
-			laptop.enable						= true;
-			"8bitdo".enable						= true;
-			nvidia.enable						= false;
-			amdgpu.enable						= false;
-
-			interception-tools.enable			= false;
-
 			networking.hostName					= "lord";
 
+			# Gavin likes gnome
 			services.xserver = {
 				enable							= true;
 				displayManager.gdm.enable		= true;
@@ -44,8 +35,14 @@ lib.nixosSystem {
 				../../users/m/linux.nix
 				../../users/gavin/linux.nix
 
-				../../modules
-				../../modules/linux
+				../../modules/common.nix
+				../../modules/linux/common.nix
+				../../modules/linux/gui.nix
+				../../modules/linux/printer.nix
+				../../modules/linux/8bitdo.nix
+				../../modules/linux/steam.nix
+				../../modules/linux/laptop.nix
+
 				./hardware-configuration.nix
 				inputs.home-manager.nixosModules.home-manager
 			];

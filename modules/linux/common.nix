@@ -3,7 +3,9 @@ with lib;
 
 {
 	config = {
-		boot.kernelPackages = pkgs.linuxPackages_latest;
+		# Using mkOverride instead of mkDefault to make this higher priority
+		# but I still want to be able to use mkForce for a specific host
+		boot.kernelPackages = mkOverride 500 pkgs.linuxPackages_latest;
 
 		environment.systemPackages = with pkgs; [
 			psmisc
@@ -45,8 +47,7 @@ with lib;
 		hardware.bluetooth.powerOnBoot		= true;
 		services.blueman.enable				= true;
 
-		# Enable CUPS to print documents.
-		services.printing.enable			= true;
+		services.fstrim.enable				= true;
 
 		# Enable sound with pipewire.
 		sound.enable						= true;
@@ -74,33 +75,27 @@ with lib;
 		};
 
 		systemd.user.services.mpris-proxy = {
-			description = "Mpris proxy";
-			after = [ "network.target" "sound.target" ];
-			wantedBy = [ "default.target" ];
-			serviceConfig.ExecStart = "${pkgs.bluez}/bin/mpris-proxy";
+			description						= "Mpris proxy";
+			after							= [ "network.target" "sound.target" ];
+			wantedBy						= [ "default.target" ];
+			serviceConfig.ExecStart			= "${pkgs.bluez}/bin/mpris-proxy";
 		};
 
 		# Select internationalisation properties.
-		i18n.defaultLocale = "en_US.UTF-8";
+		i18n.defaultLocale					= "en_US.UTF-8";
 
 		i18n.extraLocaleSettings = {
-			LC_ALL				= "en_US.UTF-8"; 
-			LC_ADDRESS			= "en_US.UTF-8";
-			LC_IDENTIFICATION	= "en_US.UTF-8";
-			LC_MEASUREMENT		= "en_US.UTF-8";
-			LC_MONETARY			= "en_US.UTF-8";
-			LC_NAME				= "en_US.UTF-8";
-			LC_NUMERIC			= "en_US.UTF-8";
-			LC_PAPER			= "en_US.UTF-8";
-			LC_TELEPHONE		= "en_US.UTF-8";
-			LC_TIME				= "en_US.UTF-8";
+			LC_ALL							= "en_US.UTF-8"; 
+			LC_ADDRESS						= "en_US.UTF-8";
+			LC_IDENTIFICATION				= "en_US.UTF-8";
+			LC_MEASUREMENT					= "en_US.UTF-8";
+			LC_MONETARY						= "en_US.UTF-8";
+			LC_NAME							= "en_US.UTF-8";
+			LC_NUMERIC						= "en_US.UTF-8";
+			LC_PAPER						= "en_US.UTF-8";
+			LC_TELEPHONE					= "en_US.UTF-8";
+			LC_TIME							= "en_US.UTF-8";
 		};
-
-		# Open ports in the firewall.
-		# networking.firewall.allowedTCPPorts = [ ... ];
-		# networking.firewall.allowedUDPPorts = [ ... ];
-		# Or disable the firewall altogether.
-		# networking.firewall.enable = false;
 
 		networking.firewall.allowedTCPPorts = [
 			53317	# Used by local send

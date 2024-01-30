@@ -15,33 +15,9 @@ inputs.nixpkgs.lib.nixosSystem {
 				})
 			];
 
-			# Modules
-			gui.enable								= true;
-			steam.enable							= true;
-			"8bitdo".enable							= true;
-			amdgpu.enable							= true;
-			nvidia.enable							= false;
-			samba.enable							= true;
-
-			services.fstrim.enable					= true;
-			interception-tools.enable				= true;
-
-			# Remote builders and binary cache
-			builders.enable							= true;
-			builders.cache							= true;
-			builders.dent							= false;
-			builders.hotblack						= false;
-			builders.zaphod							= true;
-
 			# Enable networking, with DHCP and a bridge device
 			networking.hostName						= "dent";
 			networking.useDHCP						= false;
-
-			# Enable remote LUKS unlocking
-			luks-ssh = {
-				enable								= true;
-				modules								= [ "r8169" ];
-			};
 
 			# Setup a bridge to be used with libvirt
 			networking.interfaces.enp42s0.useDHCP	= true;
@@ -56,11 +32,33 @@ inputs.nixpkgs.lib.nixosSystem {
 			imports = [
 				../../users/m/linux.nix
 
-				../../modules
-				../../modules/linux
+				../../modules/common.nix
+				../../modules/linux/common.nix
+				../../modules/linux/gui.nix
+				../../modules/linux/printer.nix
+				../../modules/linux/8bitdo.nix
+				../../modules/linux/interception-tools.nix
+				../../modules/linux/libvirt.nix
+				../../modules/linux/amdgpu.nix
+				../../modules/linux/steam.nix
+				../../modules/linux/builders.nix
+				../../modules/linux/luks-ssh.nix
+				../../modules/linux/syncthing.nix
+
 				./hardware-configuration.nix
 				inputs.home-manager.nixosModules.home-manager
 			];
+
+			# Remote builders and binary cache
+			builders.enable							= true;
+			builders.cache							= true;
+			builders.zaphod							= true;
+
+			# Enable remote LUKS unlocking
+			luks-ssh = {
+				enable								= true;
+				modules								= [ "r8169" ];
+			};
 		}
 
 		# Build and start a macOS VM

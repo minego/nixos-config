@@ -1,9 +1,10 @@
-{ inputs, overlays, linuxOverlays, lib, ... }:
-with lib;
+{ inputs, overlays, linuxOverlays, ... }:
 
 # Gateway VM
-
-inputs.nixpkgs.lib.nixosSystem {
+let
+	lib = inputs.nixpkgs.lib;
+in
+lib.nixosSystem {
 	# Even if the host is aarch64, this requires p81 binaries which are not
 	# available for aarch64
 	system = "x86_64-linux";
@@ -18,18 +19,8 @@ inputs.nixpkgs.lib.nixosSystem {
 			};
 			programs.nm-applet.enable			= true;
 
-			# Modules
-			gui.enable							= false;
-			steam.enable						= false;
-			"8bitdo".enable						= false;
-			amdgpu.enable						= false;
-			nvidia.enable						= false;
-			samba.enable						= false;
-
-			p81.enable							= true;
-
 			# Bootloader.
-			boot.loader.systemd-boot.enable		= mkForce false;
+			boot.loader.systemd-boot.enable		= lib.mkForce false;
 
 			# Bootloader.
 			boot.loader.grub.enable				= true;
@@ -64,8 +55,13 @@ inputs.nixpkgs.lib.nixosSystem {
 
 				../../users/m/linux.nix
 
-				../../modules
-				../../modules/linux
+				../../modules/common.nix
+				../../modules/linux/common.nix
+				../../modules/linux/gui.nix
+				../../modules/linux/builders.nix
+
+				../../modules/linux/p81.nix
+
 				inputs.home-manager.nixosModules.home-manager
 
 				./hardware-configuration.nix

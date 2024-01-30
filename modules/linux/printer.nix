@@ -2,21 +2,12 @@
 with lib;
 
 {
-	config = mkIf config.printer.enable {
+	config = mkIf pkgs.stdenv.isLinux {
 		# Enable support for printing
 		services.printing = {
 			enable = true;
 			drivers = [ pkgs.brlaser pkgs.hll2390dw-cups ];
 		};
-
-#		hardware.printers = {
-#			ensurePrinters = [{
-#				name = "Brother_HL-L2390DW";
-#				location = "Home";
-#				deviceUri = "usb://Brother/HL-L2390DW?serial=U64967L0N446196";
-#				model = "HLL2390DW";
-#			}];
-#		};
 
 		# Enable support for scanners
 		hardware.sane = {

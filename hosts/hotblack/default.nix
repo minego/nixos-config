@@ -6,22 +6,6 @@ inputs.nixpkgs.lib.nixosSystem {
 		{
 			nixpkgs.overlays = overlays ++ linuxOverlays;
 
-			# Turn off all features related to desktop and graphical applications
-			gui.enable								= false;
-			printer.enable							= false;
-			"8bitdo".enable							= false;
-			amdgpu.enable							= false;
-
-			# This machine doesn't run a gui but it does have an Nvidia GPU
-			nvidia.enable							= true;
-
-			# Remote builders and binary cache
-			builders.enable							= true;
-			builders.cache							= true;
-			builders.dent							= true;
-			builders.hotblack						= false;
-			builders.zaphod							= true;
-
 			# Enable networking, with DHCP and a bridge device
 			networking.hostName						= "hotblack";
 			networking.useDHCP						= false;
@@ -39,12 +23,35 @@ inputs.nixpkgs.lib.nixosSystem {
 			imports = [
 				../../users/m/linux.nix
 
-				../../modules
-				../../modules/linux
+				../../modules/common.nix
+				../../modules/linux/common.nix
+				../../modules/linux/printer.nix
+				../../modules/linux/interception-tools.nix
+				../../modules/linux/libvirt.nix
+				../../modules/linux/nvidia.nix
+				../../modules/linux/builders.nix
+
 				../../modules/services
 				./hardware-configuration.nix
 				inputs.home-manager.nixosModules.home-manager
 			];
+
+			# Remote builders and binary cache
+			builders.enable							= true;
+			builders.cache							= true;
+			builders.dent							= true;
+			builders.hotblack						= false;
+			builders.zaphod							= false;
+
+			# The printer physicall connected to this host.
+			hardware.printers = {
+#				ensurePrinters = [{
+#					name = "Brother_HL-L2390DW";
+#					location = "Home";
+#					deviceUri = "usb://Brother/HL-L2390DW?serial=U64967L0N446196";
+#					model = "HLL2390DW";
+#				}];
+			};
 		}
 	];
 }

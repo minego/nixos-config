@@ -15,38 +15,28 @@ lib.nixosSystem {
 			];
 
 			# Modules
-			gui.enable							= true;
-			steam.enable						= false;
-			laptop.enable						= true;
-			"8bitdo".enable						= false;
-
-			nvidia.enable						= false;
-			amdgpu.enable						= false;
-
-			interception-tools.enable			= false;
-
 			networking.hostName					= "marvin";
 			networking.networkmanager.enable	= true;
-
-			services.fstrim.enable				= lib.mkDefault true;
 
 			powerManagement.enable				= true;
 			services.upower.enable				= true;
 			hardware.opengl.enable				= true;
 
-			builders.enable						= true;
-			builders.zaphod						= true;
-
 			# The phone uses tow-boot, not systemd-boot
 			boot.loader.systemd-boot.enable		= lib.mkForce false;
 
 			imports = [
-				./hardware-configuration.nix
 				./phone.nix
 				../../users/m/linux.nix
 
-				../../modules
-				../../modules/linux
+				../../modules/common.nix
+				../../modules/linux/common.nix
+				../../modules/linux/gui.nix
+				../../modules/linux/builders.nix
+				../../modules/linux/syncthing.nix
+				../../modules/linux/laptop.nix
+
+				./hardware-configuration.nix
 				inputs.home-manager.nixosModules.home-manager
 
 				(import "${inputs.sxmo-nix}/module.nix")
@@ -55,6 +45,9 @@ lib.nixosSystem {
 					device = "pine64-pinephonepro";
 				})
 			];
+
+			builders.enable						= true;
+			builders.zaphod						= true;
 		}
 	];
 }

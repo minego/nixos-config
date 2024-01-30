@@ -5,7 +5,7 @@ with lib;
 	options = {
 		firefox = {
 			enable = lib.mkEnableOption {
-				description		= "Enable Firefox.";
+				description		= "Firefox";
 				default			= false;
 			};
 		};
