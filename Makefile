@@ -14,7 +14,11 @@ all:
 
 install: switch
 
-switch: check
+build:
+	$(TOOL) build --flake ./#$(HOSTNAME)
+	nvd diff /run/current-system result
+
+switch:
 	$(TOOL) switch --flake ./#$(HOSTNAME)
 
 switch-debug: check
