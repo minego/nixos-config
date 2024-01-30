@@ -59,11 +59,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1706497381,
-        "narHash": "sha256-VzzLBvm4ejehe42yKlCUjG3op3NLXq78MKS8u/W3NLQ=",
+        "lastModified": 1706581965,
+        "narHash": "sha256-1H7dRdK9LJ7+2X1XQtbwXr+QMqtVVo/ZF0/LIvkjdK8=",
         "owner": "LnL7",
         "repo": "nix-darwin",
-        "rev": "00538eecf2d1a8f98a53a71c9c84f913003ec5e8",
+        "rev": "91b9daf672c957ef95a05491a75f62e6a01d5aaf",
         "type": "github"
       },
       "original": {
@@ -325,11 +325,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1706435589,
-        "narHash": "sha256-yhEYJxMv5BkfmUuNe4QELKo+V5eq1pwhtVs6kEziHfE=",
+        "lastModified": 1706473109,
+        "narHash": "sha256-iyuAvpKTsq2u23Cr07RcV5XlfKExrG8gRpF75hf1uVc=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "4d54c29bce71f8c261513e0662cc573d30f3e33e",
+        "rev": "d634c3abafa454551f2083b054cd95c3f287be61",
         "type": "github"
       },
       "original": {
@@ -552,11 +552,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1706488880,
-        "narHash": "sha256-aYMf8VLfVPTC8ROqzolhFbL1f9wtzfuDsugF/WiPW90=",
+        "lastModified": 1706575264,
+        "narHash": "sha256-UIG7oWcRc3xRncJbNVUftK4GWO+Wa+xx3hagfSICDzs=",
         "owner": "bandithedoge",
         "repo": "nixpkgs-firefox-darwin",
-        "rev": "b9bb36e4550084ac6ed3dfeaf8452ef95a0ab5cd",
+        "rev": "478b32e60ac0841be9a606c9cb59c60a1dd1dbcc",
         "type": "github"
       },
       "original": {
@@ -694,11 +694,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1706548190,
-        "narHash": "sha256-AECukQgQujRdTkTzlquV8oYGD7q2AwTzaKYNJDZqWVo=",
+        "lastModified": 1706622270,
+        "narHash": "sha256-TFWM+f68Erlohr51497l5rEnxyK3PuNqhw2xDW4mXao=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "af0ee065b9b7f3415c7ce792078574c9e1b9b307",
+        "rev": "298613e6c804d1798096203f7907deee2bde2d5d",
         "type": "github"
       },
       "original": {

@@ -14,6 +14,10 @@ all:
 
 install: switch
 
+build:
+	$(TOOL) build --flake ./#$(HOSTNAME)
+	nvd diff /run/current-system result
+
 switch:
 	$(TOOL) switch --flake ./#$(HOSTNAME)
 
@@ -27,7 +31,7 @@ switch-offline:
 build-marvin:
 	nix build ./#marvin-image
 
-update:
+update: check
 	@nix flake update
 	$(TOOL) switch --flake ./#$(HOSTNAME) --upgrade
 

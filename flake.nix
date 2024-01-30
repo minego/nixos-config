@@ -1,5 +1,5 @@
 {
-	description = "Micah N Gorrell's NixOS Configuration";
+	description = "minego's NixOS Configuration";
 
 	inputs = {
 		nixpkgs.url	= "github:NixOS/nixpkgs/nixos-unstable";
@@ -177,5 +177,23 @@
 		};
 
 		marvin-image	= nixosConfigurations.marvin.config.mobile.outputs.u-boot.disk-image;
+
+		devShells.x86_64-linux.default = let
+			pkgs = nixpkgs.legacyPackages.x86_64-linux;
+		in pkgs.mkShell rec {
+			name		= "minego-nixos-config";
+			packages	= with pkgs; [
+				nvd gnumake
+			];
+		};
+
+		devShells.aarch64-linux.default = let
+			pkgs = nixpkgs.legacyPackages.aarch64-linux;
+		in pkgs.mkShell rec {
+			name		= "minego-nixos-config";
+			packages	= with pkgs; [
+				nvd gnumake
+			];
+		};
 	};
 }
