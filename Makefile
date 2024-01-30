@@ -14,20 +14,20 @@ all:
 
 install: switch
 
-switch: check
+switch:
 	$(TOOL) switch --flake ./#$(HOSTNAME)
 
 switch-debug: check
 	$(TOOL) switch --flake ./#$(HOSTNAME) --option eval-cache false --show-trace
 
-switch-offline: check
+switch-offline:
 	$(TOOL) switch --flake ./#$(HOSTNAME) --option substitute false
 
 # Build for the phone
-build-marvin: check
+build-marvin:
 	nix build ./#marvin-image
 
-update: check
+update:
 	@nix flake update
 	$(TOOL) switch --flake ./#$(HOSTNAME) --upgrade
 
