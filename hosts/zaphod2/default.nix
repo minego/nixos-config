@@ -20,9 +20,7 @@ lib.nixosSystem {
 				# Patch DWL to enable scaling
 				(final: prev: {
 					dwl-unwrapped = inputs.dwl-minego-customized.packages.${system}.dwl-unwrapped.overrideAttrs(old: {
-						patches = old.patches ++ [
-							./dwl.patch
-						];
+						patches = [ ./dwl.patch ];
 					});
 				})
 			];
