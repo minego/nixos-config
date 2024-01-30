@@ -1,7 +1,7 @@
 # nixos-config
 My personal nixos configuration
 
-## Checkout this repo in /etc/nixos and then apply with a command such as:
+## Clone this repo in /etc/nixos and then apply with a command such as:
 ```
 make switch
 ```
@@ -12,20 +12,12 @@ Each machine has an entry in `flake.nix` that imports machine specific options
 and hardware specific options.
 
 ```
-cd ~/
 git checkout git@github.com:minego/nixos-config.git
 cd nixos-config
-mkdir -p hosts/${hostname}/
-cp /etc/nixos/hardware-configuration.nix hosts/${hostname}/
-cp hosts/lord/configuration.nix hosts/${hostname}
 
-echo "Add the relevant bits to \"flake.nix\" and \"hosts/${hostname}/configuration.nix\"
+mkdir -p hosts/$(hostname)/
+nixos-generate-config --show-hardware-config > hosts/$(hostname)/hardware-configuration.nix
+cp hosts/dent/default.nix hosts/${hostname}/
 
-cd ..
-sudo mv /etc/nixos /etc/nixos.bk
-sudo mv nixos-config /etc/nixos
-
-cd /etc/nixos
-echo "Run \"make switch\" when done"
-
+echo "Add the host to flake.nix and tweak hosts/$(hostname)/default.nix, then run 'make switch'"
 ```
