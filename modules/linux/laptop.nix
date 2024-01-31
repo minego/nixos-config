@@ -7,7 +7,8 @@ with lib;
 	];
 
 	# Don't shutdown if someone hits the power button!
-	services.logind.extraConfig = ''
-		HandlePowerKey=ignore
-	'';
+	services.logind = {
+		extraConfig		= "HandlePowerKey=suspend";
+		lidSwitch		= "suspend";
+	};
 }
