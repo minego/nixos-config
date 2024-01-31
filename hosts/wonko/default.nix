@@ -1,22 +1,23 @@
 { inputs, overlays, linuxOverlays, ... }:
 
 let
-	lib = inputs.nixpkgs.lib;
+	lib		= inputs.nixpkgs.lib;
+	system	= "x86_64-linux";
+	pkgs	= inputs.nixpkgs.legacyPackages.${system};
 in
-inputs.nixpkgs.lib.nixosSystem {
-	system = "x86_64-linux";
+lib.nixosSystem {
 	modules = [
-		"${inputs.nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
 		inputs.jovian-nixos.nixosModules.default
 
 		{
-			nixpkgs.overlays = overlays ++ linuxOverlays ++ [
-				# Add host specific overlays here
-			];
+			# Disable the kernel options I normally use, so that jovian can
+			# set the kernel for the steam deck
+			kernel.latest							= false;
+			kernel.zen								= false;
 
-			# Modules
-			steamdeck.enable						= true;
-			jovian.devices.steamdeck.enable			= true;
+			nixpkgs.overlays = overlays ++ linuxOverlays ++ [
+				inputs.jovian-nixos.overlays.default
+			];
 
 			# Enable networking, with DHCP and a bridge device
 			networking.hostName						= "wonko";
@@ -25,21 +26,24 @@ inputs.nixpkgs.lib.nixosSystem {
 			boot.loader.efi.canTouchEfiVariables	= true;
 
 			imports = [
-				../../users/m/linux.nix
+				inputs.nixos-generators.nixosModules.all-formats
 
 				../../modules/common.nix
 				../../modules/linux/common.nix
 				../../modules/linux/gui.nix
+				../../modules/linux/dwl.nix
 				../../modules/linux/printer.nix
 				../../modules/linux/8bitdo.nix
 				../../modules/linux/interception-tools.nix
 				# ../../modules/linux/libvirt.nix
 				# ../../modules/linux/amdgpu.nix
-				../../modules/linux/steam.nix
+				# ../../modules/linux/steam.nix
 				../../modules/linux/builders.nix
 				../../modules/linux/syncthing.nix
 
 				../../modules/linux/steamdeck.nix
+
+				../../users/m/linux.nix
 				inputs.home-manager.nixosModules.home-manager
 			];
 
@@ -49,6 +53,8 @@ inputs.nixpkgs.lib.nixosSystem {
 			builders.dent							= true;
 			builders.hotblack						= true;
 			builders.zaphod							= false;
+
+			nixpkgs.hostPlatform					= system;
 		}
 	];
 }

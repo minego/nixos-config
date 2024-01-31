@@ -1,15 +1,17 @@
 { inputs, overlays, darwinOverlays, ... }:
 
-inputs.darwin.lib.darwinSystem rec {
-	system = "aarch64-darwin";
-
+let
+	lib		= inputs.darwin.lib;
+	system	= "aarch64-darwin";
+	pkgs	= inputs.nixpkgs.legacyPackages.${system};
+in
+lib.darwinSystem rec {
 	modules = [
 		{
 			nixpkgs.overlays = overlays ++ darwinOverlays;
 
 			# Modules
 			gui.enable			= true;
-
 			networking.hostName	= "zaphod";
 
 			imports = [

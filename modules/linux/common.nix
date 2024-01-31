@@ -2,12 +2,27 @@
 with lib;
 
 {
-	config = {
-		# Using mkOverride instead of mkDefault to make this higher priority
-		# but I still want to be able to use mkForce for a specific host
-		boot.kernelPackages = mkOverride 500 pkgs.linuxPackages_latest;
+	options.kernel = {
+		latest = mkEnableOption {
+			default			= true;
+			description		= "Default to installking pkgs.linuxPackages_latest";
+		};
 
-		environment.systemPackages = with pkgs; [
+		zen = mkEnableOption {
+			default			= false;
+			description		= "Default to installking pkgs.linuxPackages_zen";
+		};
+	};
+
+	config = mkMerge [
+	(mkIf config.kernel.latest {
+		boot.kernelPackages = mkOverride 500 pkgs.linuxPackages_latest;
+	})
+	(mkIf config.kernel.zen {
+		boot.kernelPackages = mkOverride 500 pkgs.linuxPackages_zen;
+	})
+	{
+			environment.systemPackages = with pkgs; [
 			psmisc
 			usbutils
 			hwinfo
@@ -137,5 +152,5 @@ with lib;
 		# Before changing this value read the documentation for this option
 		# (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
 		system.stateVersion = "23.05"; # Did you read the comment?
-	};
+	}];
 }

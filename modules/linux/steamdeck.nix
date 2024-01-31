@@ -13,13 +13,29 @@ with lib;
 			user								= config.me.user;
 		};
 
-		jovian.steam.autoStart					= true;
-		jovian.steam.user						= config.me.user;
 		jovian.decky-loader.user				= config.me.user;
-		jovian.steam.desktopSession				= "dwl";
+
+		steamdeck.enable						= mkDefault true;
+		jovian = {
+			steam = {
+				enable							= mkDefault true;
+				autoStart						= mkDefault true;
+				user							= config.me.user;
+
+				desktopSession					= "dwl";
+			};
+
+			devices.steamdeck = {
+				enable							= mkDefault true;
+				autoUpdate						= mkDefault true;
+				enableKernelPatches				= mkDefault true;
+			};
+		};
 
 		environment.systemPackages = with pkgs; [
+			mangohud
 			steamdeck-firmware
+			jupiter-dock-updater-bin
 		];
 	};
 }

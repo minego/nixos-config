@@ -2,13 +2,14 @@
 
 # Gateway VM
 let
-	lib = inputs.nixpkgs.lib;
-in
-lib.nixosSystem {
 	# Even if the host is aarch64, this requires p81 binaries which are not
 	# available for aarch64
-	system = "x86_64-linux";
+	system	= "x86_64-linux";
 
+	lib		= inputs.nixpkgs.lib;
+	pkgs	= inputs.nixpkgs.legacyPackages.${system};
+in
+lib.nixosSystem {
 	modules = [
 		{
 			nixpkgs.overlays = overlays ++ linuxOverlays;

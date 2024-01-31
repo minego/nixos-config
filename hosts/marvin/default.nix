@@ -1,11 +1,11 @@
 { inputs, overlays, linuxOverlays, ... }:
 
 let
-	lib = inputs.nixpkgs.lib;
-	pkgs = inputs.nixpkgs.legacyPackages.aarch64-linux;
+	lib		= inputs.nixpkgs.lib;
+	system	= "aarch64-linux";
+	pkgs	= inputs.nixpkgs.legacyPackages.${system};
 in
 lib.nixosSystem {
-	system = "aarch64-linux";
 	modules = [
 		{
 			nixpkgs.overlays = overlays

@@ -31,9 +31,13 @@ switch-debug: check
 switch-offline:
 	$(TOOL) switch --flake ./#$(HOSTNAME) --option substitute false $(ARGS)
 
-# Build for the phone
-build-marvin:
+# Build an image for the phone
+marvin-image:
 	nix build ./#marvin-image
+
+# Build an image for the steam deck
+wonko-image:
+	nix build .#nixosConfigurations.wonko.config.formats.install-iso
 
 update:
 	@nix flake update
