@@ -8,6 +8,7 @@ endif
 ifeq ($(UNAME_S),Darwin)
 	TOOL	:= darwin-rebuild
 endif
+ARGS		:= --impure
 
 all:
 	@echo "Cowardly refusing to run. Try again with 'switch' or 'test'"
@@ -15,25 +16,26 @@ all:
 install: switch
 
 build:
-	$(TOOL) build --flake ./#$(HOSTNAME)
+	$(TOOL) build --flake ./#$(HOSTNAME) $(ARGS)
 	nvd diff /run/current-system result
 
 switch:
-	$(TOOL) switch --flake ./#$(HOSTNAME) --impure
+	$(TOOL) switch --flake ./#$(HOSTNAME) $(ARGS)
 
 switch-debug: check
-	$(TOOL) switch --flake ./#$(HOSTNAME) --option eval-cache false --show-trace
+	$(TOOL) switch --flake ./#$(HOSTNAME) --option eval-cache false --show-trace $(ARGS)
 
 switch-offline:
-	$(TOOL) switch --flake ./#$(HOSTNAME) --option substitute false
+	$(TOOL) switch --flake ./#$(HOSTNAME) --option substitute false $(ARGS)
 
 # Build for the phone
 build-marvin:
 	nix build ./#marvin-image
 
-update: check
+update:
 	@nix flake update
-	$(TOOL) switch --flake ./#$(HOSTNAME) --upgrade
+	$(TOOL) switch --flake ./#$(HOSTNAME) --upgrade $(ARGS)
+	nvd diff /run/current-system result
 
 check:
 	@nix flake check --show-trace
