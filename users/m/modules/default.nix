@@ -8,7 +8,6 @@ with lib;
 		./zsh
 		./firefox
 
-		./waybar
 		./karabiner
 	] ++ lib.optionals osConfig.gui.enable [
 		./fonts
