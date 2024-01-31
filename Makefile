@@ -36,7 +36,7 @@ marvin-image:
 	nix build ./#marvin-image
 
 # Build an image for the steam deck
-wonko-image:
+wonko-installer:
 	nix build .#nixosConfigurations.wonko.config.formats.install-iso
 
 update:

@@ -2,27 +2,25 @@
 with lib;
 
 {
-	# Options consumers of this module can set
-	options.steamdeck = {
-		enable = mkEnableOption "Steam Deck";
-	};
-
-	config = mkIf (config.steamdeck.enable && pkgs.stdenv.isLinux) {
+	config = {
 		services.xserver.displayManager.autoLogin = {
 			enable								= true;
 			user								= config.me.user;
 		};
 
+		# Disable the display manager I usually use
+		services.greetd.enable					= mkForce false;
+		programs.regreet.enable					= mkForce false;
+
 		jovian.decky-loader.user				= config.me.user;
 
-		steamdeck.enable						= mkDefault true;
 		jovian = {
 			steam = {
 				enable							= mkDefault true;
 				autoStart						= mkDefault true;
 				user							= config.me.user;
 
-				desktopSession					= "dwl";
+				# desktopSession					= "dwl";
 			};
 
 			devices.steamdeck = {
@@ -31,6 +29,10 @@ with lib;
 				enableKernelPatches				= mkDefault true;
 			};
 		};
+
+		# The Steam Deck UI integrates with NetworkManager
+		networking.networkmanager.enable		= true;
+		networking.wireless.enable				= false;
 
 		environment.systemPackages = with pkgs; [
 			mangohud
