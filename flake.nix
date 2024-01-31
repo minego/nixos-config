@@ -2,89 +2,26 @@
 	description = "minego's NixOS Configuration";
 
 	inputs = {
-		nixpkgs.url	= "github:NixOS/nixpkgs/nixos-unstable";
-		nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
+		nixpkgs.url				= "github:NixOS/nixpkgs/nixos-unstable";
+		nixpkgs-stable.url		= "github:nixos/nixpkgs/nixos-23.11";
 
-		apple-silicon = {
-			url = "github:tpwrules/nixos-apple-silicon";
-			# inputs.nixpkgs.follows = "nixpkgs";
-		};
+		neovim-minego			= { url = github:minego/nixvim;							inputs.nixpkgs.follows = "nixpkgs"; };
+		dwl-minego-customized	= { url = github:minego/dwl/main;						inputs.nixpkgs.follows = "nixpkgs"; };
+		mackeys					= { url = github:minego/mackeys;						inputs.nixpkgs.follows = "nixpkgs"; };
+		swapmods				= { url = github:minego/swapmods;						inputs.nixpkgs.follows = "nixpkgs"; };
 
-		darwin = {
-			url = "github:LnL7/nix-darwin";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
+		apple-silicon.url		= "github:tpwrules/nixos-apple-silicon";
+		mobile-nixos			= { url = github:NixOS/mobile-nixos;					flake = false; };
+		darwin					= { url = "github:LnL7/nix-darwin";						inputs.nixpkgs.follows = "nixpkgs"; };
+		jovian-nixos			= { url = github:Jovian-Experiments/Jovian-NixOS;		inputs.nixpkgs.follows = "nixpkgs"; };
+		home-manager			= { url = github:nix-community/home-manager;			inputs.nixpkgs.follows = "nixpkgs"; };
 
-		home-manager = {
-			url = github:nix-community/home-manager;
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
-
-		nur = {
-			url = github:nix-community/NUR;
-			# inputs.nixpkgs.follows = "nixpkgs";
-		};
-
-		# Plugin for Interception Tools
-		mackeys = {
-			url = github:minego/mackeys;
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
-
-		# Plugin for Interception Tools
-		swapmods = {
-			url = github:minego/swapmods;
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
-
-		# My branch of DWL
-		dwl-minego-customized = {
-			url = github:minego/dwl/main;
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
-
-		# Official Firefox builds for Darwin
-        nixpkgs-firefox-darwin = {
-			url = github:bandithedoge/nixpkgs-firefox-darwin;
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
-
-		# My customized neovim package, with configuration
-		neovim-minego = {
-			url = github:minego/nixvim;
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
-
-		zsh-vi-mode = {
-			url = github:jeffreytse/zsh-vi-mode;
-			flake = false;
-		};
-
-		# NixThePlanet - macOS VM builder
-		nixtheplanet = {
-			url = github:matthewcroughan/nixtheplanet;
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
-
-		p81 = {
-			url = github:devusb/p81.nix;
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
-
-		mobile-nixos = {
-			url = github:NixOS/mobile-nixos;
-			flake = false;
-		};
-
-		sxmo-nix = {
-			url = github:chuangzhu/nixpkgs-sxmo;
-			flake = false;
-		};
-
-		jovian-nixos = {
-			url = github:Jovian-Experiments/Jovian-NixOS;
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
+		nur.url					= github:nix-community/NUR;
+        nixpkgs-firefox-darwin	= { url = github:bandithedoge/nixpkgs-firefox-darwin;	inputs.nixpkgs.follows = "nixpkgs"; };
+		zsh-vi-mode				= { url = github:jeffreytse/zsh-vi-mode;				flake = false; };
+		nixtheplanet			= { url = github:matthewcroughan/nixtheplanet;			inputs.nixpkgs.follows = "nixpkgs"; };
+		p81						= { url = github:devusb/p81.nix;						inputs.nixpkgs.follows = "nixpkgs"; };
+		sxmo-nix				= { url = github:chuangzhu/nixpkgs-sxmo;				flake = false; };
 	};
 
 	outputs = { nixpkgs, ... }@inputs:

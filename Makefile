@@ -8,6 +8,9 @@ endif
 ifeq ($(UNAME_S),Darwin)
 	TOOL	:= darwin-rebuild
 endif
+
+# Using the "replace" mode with tpwrules/nixos-apple-silicon doesn't work
+# in "pure" mode. The "overlay" option works as well, but rebuilds the world.
 ARGS		:= --impure
 
 all:
@@ -38,7 +41,7 @@ update:
 	nvd diff /run/current-system result
 
 check:
-	@nix flake check --show-trace
+	@nix flake check --show-trace $(ARGS)
 
 test: check
 	$(TOOL) dry-build --flake ./#$(HOSTNAME)
