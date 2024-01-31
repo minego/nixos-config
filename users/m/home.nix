@@ -18,13 +18,6 @@ with lib;
 		./modules
 	];
 
-	home.sessionVariables = {
-		KEYTIMEOUT		= "1";
-		VISUAL			= "nvim";
-		EDITOR			= "nvim";
-		LC_CTYPE		= "C";
-	};
-
 	# nix-darwin doesn't have support for configuring syncthing, so enable it
 	# here for macOS. The shares configured by NixOS for the Linux boxes will
 	# still automate most of the needed configs.

@@ -148,6 +148,8 @@ with lib;
             '';
 
 		interactiveShellInit= ''
+			source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+
             # Use viins keymap as the default.
             bindkey -v
             
@@ -177,6 +179,9 @@ with lib;
             EXA_ICON_SPACING=2;
             '';
 	};
+
+	# Needed for auto completion to work for zsh
+	environment.pathsToLink = [ "/share/zsh" ];
 
 	programs.direnv = {
 		enable				= true;

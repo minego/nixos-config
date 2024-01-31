@@ -54,7 +54,6 @@ with lib;
 	];
 
 	config = {
-
 		time.timeZone = lib.mkDefault "America/Denver";
 
 		# Enable the nix command and flakes
@@ -63,18 +62,16 @@ with lib;
 		# Allow unfree packages
 		nixpkgs.config.allowUnfree = true;
 
-		programs.zsh = {
-			enable = true;
-			interactiveShellInit = ''
-				source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-			'';
-		};
-
-		# Needed for auto completion to work for zsh
-		environment.pathsToLink = [ "/share/zsh" ];
-
 		environment.shellAliases = {
 			vi = "nvim";
+		};
+
+		environment.variables = {
+			KEYTIMEOUT		= "1";
+			VISUAL			= "nvim";
+			EDITOR			= "nvim";
+			SUDO_EDITOR		= "nvim";
+			LC_CTYPE		= "C";
 		};
 
 		# List packages installed in system profile. To search, run:
@@ -83,10 +80,6 @@ with lib;
 			neovim
 
 			home-manager
-
-			zsh
-			zsh-syntax-highlighting
-			zsh-vi-mode
 
 			pciutils
 			lsof
