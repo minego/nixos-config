@@ -37,6 +37,7 @@ inputs.nixpkgs.lib.nixosSystem {
 				../../modules/common.nix
 				../../modules/linux/common.nix
 				../../modules/linux/gui.nix
+				../../modules/linux/dwl.nix
 				../../modules/linux/printer.nix
 				../../modules/linux/8bitdo.nix
 				../../modules/linux/interception-tools.nix

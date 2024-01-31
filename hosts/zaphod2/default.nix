@@ -13,9 +13,9 @@ lib.nixosSystem {
 			++ linuxOverlays
 			++ [
 				inputs.apple-silicon.overlays.apple-silicon-overlay
-				(final: prev: {
-					mesa = final.mesa-asahi-edge;
-				})
+#				(final: prev: {
+#					mesa = final.mesa-asahi-edge;
+#				})
 
 				# Patch DWL to enable scaling
 				(final: prev: {
@@ -34,7 +34,7 @@ lib.nixosSystem {
 					addEdgeKernelConfig			= true;
 					peripheralFirmwareDirectory	= ./firmware;
 					useExperimentalGPUDriver	= true;
-					experimentalGPUInstallMode	= "driver";
+					experimentalGPUInstallMode	= "replace";
 					withRust					= true;
 				};
 				opengl = {
@@ -63,6 +63,7 @@ lib.nixosSystem {
 				../../modules/common.nix
 				../../modules/linux/common.nix
 				../../modules/linux/gui.nix
+				../../modules/linux/dwl.nix
 				# ../../modules/linux/printer.nix
 				../../modules/linux/8bitdo.nix
 				../../modules/linux/interception-tools.nix

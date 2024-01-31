@@ -82,11 +82,11 @@
         "wlr-dpms": "wlr-dpms"
       },
       "locked": {
-        "lastModified": 1706650448,
-        "narHash": "sha256-1zEbfRdI0KIyTT/L0v/72Ncm503rChLXWh7IF69y8/g=",
+        "lastModified": 1706661625,
+        "narHash": "sha256-MHDMm59gL1eT5mfghwfzyOnfuyBUw3H+orpk54+E554=",
         "owner": "minego",
         "repo": "dwl",
-        "rev": "8607e9a8ce7c73cfda7da1b2912fb04dfa3c1d0a",
+        "rev": "d216861912d8c719460078722fad8ae6578a861a",
         "type": "github"
       },
       "original": {

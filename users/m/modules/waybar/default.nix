@@ -2,7 +2,7 @@
 with lib;
 
 {
-	config = mkIf (config.dwl.enable && osConfig.gui.enable && pkgs.stdenv.isLinux) {
+	config = mkIf (osConfig.gui.enable && pkgs.stdenv.isLinux) {
 		home.packages = with pkgs; [
 			waybar
 
@@ -15,7 +15,7 @@ with lib;
 
 		# Waybar
 		programs.waybar = rec {
-			enable = osConfig.gui.enable && config.dwl.enable;
+			enable = osConfig.gui.enable;
 
 			style = ''
 				* {

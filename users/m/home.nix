@@ -13,11 +13,7 @@ with lib;
 					lib.mkDefault "/home/${config.home.username}";
 	};
 
-	# Enable various modules
-	dwl.enable = true;
-
 	firefox.enable = true;
-
 	imports = [
 		./modules
 	];

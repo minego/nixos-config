@@ -19,7 +19,7 @@ build:
 	nvd diff /run/current-system result
 
 switch:
-	$(TOOL) switch --flake ./#$(HOSTNAME)
+	$(TOOL) switch --flake ./#$(HOSTNAME) --impure
 
 switch-debug: check
 	$(TOOL) switch --flake ./#$(HOSTNAME) --option eval-cache false --show-trace

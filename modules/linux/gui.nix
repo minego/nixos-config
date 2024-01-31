@@ -17,6 +17,16 @@ with lib;
 			xdg-desktop-portal-wlr
 			xdg-desktop-portal-gtk
 			xdg-utils
+
+			kitty
+			firefox
+
+			pavucontrol
+			pamixer
+			freerdp
+			tigervnc
+			remmina
+			sway-contrib.grimshot
 		];
 
 		programs.dconf.enable	= true;
@@ -56,6 +66,14 @@ with lib;
 		# Enable xinput2 in firefox
 		environment.sessionVariables = {
 			MOZ_USE_XINPUT2 = "1";
+
+			BROWSER			= "${pkgs.firefox}/bin/firefox";
+			DEFAULT_BROWSER	= "${pkgs.firefox}/bin/firefox";
+
+			# Make wayland applications behave
+			NIXOS_OZONE_WL	= "1";
+
+			MALLOC_CHECK_	= "2";	# stupid linux malloc
 		};
 
 		# XDG Desktop Portal
