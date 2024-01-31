@@ -86,11 +86,6 @@
 			wonko		= import ./hosts/wonko		{ inherit inputs overlays linuxOverlays; };
 		};
 
-		# Images can be built with `nix build ./#images.foobar`
-		images = {
-			wonko		= nixosConfigurations.wonko.config.system.build.isoImage;
-		};
-
 		darwinConfigurations = {
 			# Macbook pro (m2 max)
 			zaphod		= import ./hosts/zaphod		{ inherit inputs overlays darwinOverlays; };

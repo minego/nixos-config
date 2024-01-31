@@ -20,7 +20,7 @@ with lib;
 				autoStart						= mkDefault true;
 				user							= config.me.user;
 
-				# desktopSession					= "dwl";
+				desktopSession					= "dwl";
 			};
 
 			devices.steamdeck = {
