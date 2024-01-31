@@ -25,9 +25,6 @@ lib.nixosSystem {
 				})
 			];
 
-			# Make the top bar taller to hide the notch if needed
-			hasNotch							= true;
-
 			# Turn on the asahi GPU driver
 			hardware = {
 				asahi = {
@@ -52,7 +49,7 @@ lib.nixosSystem {
 
 			boot = {
 				extraModprobeConfig				= "options hid_apple iso_layout=0 swap_fn_leftctrl=1 fnmode=2";
-				kernelParams					= [ "apple_dcp.show_notch=1" ];
+				# kernelParams					= [ "apple_dcp.show_notch=1" ];
 			};
 
 			services.tlp.enable					= true;

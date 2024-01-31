@@ -24,11 +24,6 @@ with lib;
 			description		= "GUI";
 			default			= if pkgs.stdenv.isDarwin then true else false;
 		};
-
-		hasNotch = mkOption {
-			description		= "True if the machine is apple silicon with a notch";
-			default			= false;
-		};
 	};
 
 	options.authorizedKeys.keys = mkOption {
