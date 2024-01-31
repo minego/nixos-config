@@ -29,11 +29,7 @@
 		inherit (nixpkgs) lib;
 
 		overlays = [
-			inputs.dwl-minego-customized.overlays.default
 			inputs.neovim-minego.overlays.default
-			inputs.swapmods.overlay
-			inputs.mackeys.overlay
-			inputs.p81.overlays.default
 
 			inputs.nur.overlay
 			(import ./overlays/fonts.nix)
@@ -56,6 +52,10 @@
 		];
 
 		linuxOverlays = [
+			inputs.dwl-minego-customized.overlays.default
+			inputs.swapmods.overlay
+			inputs.mackeys.overlay
+			inputs.p81.overlays.default
 		];
 
 		darwinOverlays = [

@@ -49,7 +49,12 @@ with lib;
 		];
 	};
 
+	imports = [
+		./zsh.nix
+	];
+
 	config = {
+
 		time.timeZone = lib.mkDefault "America/Denver";
 
 		# Enable the nix command and flakes

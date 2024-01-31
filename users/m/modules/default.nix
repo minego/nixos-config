@@ -5,7 +5,6 @@ with lib;
 	imports = [
 		./xenon-colorscheme
 		./kitty
-		./zsh
 		./firefox
 
 		./karabiner

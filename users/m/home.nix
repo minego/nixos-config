@@ -127,11 +127,6 @@ with lib;
 		target = "./.ssh/config";
 	};
 
-	home.file.ssh-rc = {
-		source = ./dotfiles/ssh-rc;
-		target = "./.ssh/rc";
-	};
-
 	programs.readline.enable = true;
 	home.file.".inputrc".source = ./dotfiles/inputrc;
 
