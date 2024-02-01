@@ -37,7 +37,7 @@ lib.nixosSystem {
 				../../modules/linux/interception-tools.nix
 				# ../../modules/linux/libvirt.nix
 				# ../../modules/linux/amdgpu.nix
-				# ../../modules/linux/steam.nix
+				../../modules/linux/steam.nix
 				../../modules/linux/builders.nix
 				../../modules/linux/syncthing.nix
 				../../modules/linux/laptop.nix
