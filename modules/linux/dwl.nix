@@ -16,15 +16,9 @@ with lib;
 			firefox
 		];
 
-
-		services.xserver.displayManager.session = [{
-			manage									= "desktop";
-			name									= "dwl";
-			start = ''
-                ${pkgs.dwl}/bin/dwl &
-                waitPID=$!
-                '';
-		}];
+		services.xserver.displayManager.sessionPackages = [
+			pkgs.dwl-unwrapped
+		];
 
 		services.greetd = {
 			enable									= mkDefault true;
@@ -39,9 +33,8 @@ with lib;
 				};
 
 				commands = {
-					suspend							= [ "systemctl" "suspend" ];
 					reboot							= [ "systemctl" "reboot" ];
-					poweroff							= [ "systemctl" "poweroff" ];
+					poweroff						= [ "systemctl" "poweroff" ];
 				};
 			};
 		};
