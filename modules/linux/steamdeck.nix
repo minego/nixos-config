@@ -8,8 +8,7 @@ with lib;
 			user								= config.me.user;
 		};
 
-		# Disable the display manager I usually use
-		services.greetd.enable					= mkForce false;
+		# Disable regreet - Jovian uses greetd, but with its own greeter
 		programs.regreet.enable					= mkForce false;
 
 		jovian.decky-loader.user				= config.me.user;

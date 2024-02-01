@@ -45,6 +45,8 @@ lib.nixosSystem {
 				../../modules/linux/steamdeck.nix
 				../../users/m/linux.nix
 				inputs.home-manager.nixosModules.home-manager
+
+				./hardware-configuration.nix
 			];
 
 			# Remote builders and binary cache
