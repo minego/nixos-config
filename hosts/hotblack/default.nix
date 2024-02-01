@@ -10,6 +10,10 @@ lib.nixosSystem {
 		{
 			nixpkgs.overlays = overlays ++ linuxOverlays;
 
+			# Make a copy of the sources used to build the current running
+			# system so it can be accessed as `/run/current-system/flake`
+			system.extraSystemBuilderCmds = "ln -s ${../../.} $out/flake";
+
 			# Enable networking, with DHCP and a bridge device
 			networking.hostName						= "hotblack";
 			networking.useDHCP						= false;

@@ -24,6 +24,10 @@ lib.nixosSystem {
 				})
 			];
 
+			# Make a copy of the sources used to build the current running
+			# system so it can be accessed as `/run/current-system/flake`
+			system.extraSystemBuilderCmds = "ln -s ${../../.} $out/flake";
+
 			# Turn on the asahi GPU driver
 			hardware = {
 				asahi = {

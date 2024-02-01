@@ -14,6 +14,10 @@ lib.nixosSystem {
 		{
 			nixpkgs.overlays = overlays ++ linuxOverlays;
 
+			# Make a copy of the sources used to build the current running
+			# system so it can be accessed as `/run/current-system/flake`
+			system.extraSystemBuilderCmds = "ln -s ${../../.} $out/flake";
+
 			networking = {
 				hostName						= "gateway-vm";
 				networkmanager.enable			= true;

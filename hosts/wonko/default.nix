@@ -15,6 +15,10 @@ lib.nixosSystem {
 			kernel.latest							= false;
 			kernel.zen								= false;
 
+			# Make a copy of the sources used to build the current running
+			# system so it can be accessed as `/run/current-system/flake`
+			system.extraSystemBuilderCmds = "ln -s ${../../.} $out/flake";
+
 			nixpkgs.overlays = overlays ++ linuxOverlays ++ [
 				inputs.jovian-nixos.overlays.default
 			];

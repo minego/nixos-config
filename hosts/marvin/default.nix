@@ -14,7 +14,10 @@ lib.nixosSystem {
 				(import "${inputs.sxmo-nix}/overlay.nix")
 			];
 
-			# Modules
+			# Make a copy of the sources used to build the current running
+			# system so it can be accessed as `/run/current-system/flake`
+			system.extraSystemBuilderCmds = "ln -s ${../../.} $out/flake";
+
 			networking.hostName					= "marvin";
 			networking.networkmanager.enable	= true;
 
