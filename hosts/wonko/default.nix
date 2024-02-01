@@ -21,6 +21,13 @@ lib.nixosSystem {
 
 			nixpkgs.overlays = overlays ++ linuxOverlays ++ [
 				inputs.jovian-nixos.overlays.default
+
+				# Patch DWL to enable adaptive sync, and rotate the screen
+				(final: prev: {
+					dwl-unwrapped = inputs.dwl-minego-customized.packages.${system}.dwl-unwrapped.overrideAttrs(old: {
+						patches = [ ./dwl.patch ];
+					});
+				})
 			];
 
 			# Enable networking, with DHCP and a bridge device
