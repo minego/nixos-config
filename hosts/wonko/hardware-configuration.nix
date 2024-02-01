@@ -23,6 +23,13 @@
       fsType = "vfat";
     };
 
+  # Mount the internal storage of the Steam Deck, so I can access games in
+  # that library as well
+  fileSystems."/mnt/steamos" =
+    { device = "/dev/disk/by-uuid/1bb334e6-3c14-46b3-9bae-d50053587d50";
+      fsType = "ext4";
+    };
+
   swapDevices = [ ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
