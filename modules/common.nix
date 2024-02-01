@@ -59,7 +59,9 @@ with lib;
 		nixpkgs.config.allowUnfree = true;
 
 		environment.shellAliases = {
-			vi = "nvim";
+			vi				= "nvim";
+			t				= "todo.sh";
+			todo			= "todo.sh";
 		};
 
 		environment.variables = {
@@ -93,6 +95,14 @@ with lib;
 
 			nix-output-monitor
 			asciinema
+
+			(pkgs.writeShellScriptBin "todo.sh" ''
+                export TODO_DIR="$HOME/notes/"
+                export TODO_FILE="$TODO_DIR/todo.txt"
+                export DONE_FILE="$TODO_DIR/done.txt"
+                export REPORT_FILE="$TODO_DIR/report.txt"
+                exec ${pkgs.todo-txt-cli}/bin/todo.sh $@
+                '')
 		];
 
 		home-manager = {
