@@ -33,11 +33,14 @@ switch-offline:
 
 # Build an image for the phone
 marvin-image:
-	nix build ./#marvin-image
+	nix build ./#marvin-image $(ARGS)
 
 # Build an image for the steam deck
 wonko-installer:
-	nix build .#nixosConfigurations.wonko.config.formats.install-iso
+	nix build .#nixosConfigurations.wonko.config.formats.install-iso $(ARGS)
+
+wonko-image:
+	nix build .#nixosConfigurations.wonko.config.formats.raw-efi $(ARGS)
 
 update:
 	@nix flake update

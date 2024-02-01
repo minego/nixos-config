@@ -40,9 +40,9 @@ lib.nixosSystem {
 				# ../../modules/linux/steam.nix
 				../../modules/linux/builders.nix
 				../../modules/linux/syncthing.nix
+				../../modules/linux/laptop.nix
 
 				../../modules/linux/steamdeck.nix
-
 				../../users/m/linux.nix
 				inputs.home-manager.nixosModules.home-manager
 			];
