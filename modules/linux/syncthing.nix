@@ -19,6 +19,7 @@
 				"zem"		= { id = "TFBJXJ5-XKVNFHI-HVJ5X3N-ATR3XKF-EIKXFLQ-C6XX4K5-UDZUPS7-OJ2TXQF"; };
 				"random"	= { id = "OV3MXZG-LWYH4RW-D7SILOK-YFUVDLG-BXMHKNC-XFQHOKO-66DZL4Y-N6OPWQT"; };
 				"dent-mac"	= { id = "SFXJBV6-3IXWBLA-YCSHPWP-6AESK6Q-SA3SKAS-CXPVDTL-J5PRKEV-4IWVZQ5"; };
+				"wonko"		= { id = "FENARYZ-NAJAM4L-MK5BIUP-SUDBIJI-HGTSNBW-BVGPKTX-JS4UEAC-F534SQY"; };
 			};
 
 			folders = {
@@ -26,14 +27,14 @@
 					enable	 = true;
 					id		= "notes";
 					path	= "/home/m/notes";
-					devices	= [ "dent" "lord" "pixel7" "zaphod2" ];
+					devices	= [ "dent" "lord" "pixel7" "zaphod2" "wonko" ];
 				};
 
 				"Code" = {
 					enable	 = true;
 					id		= "code";
 					path	= "/home/m/src/shared";
-					devices	= [ "dent" "zaphod2" "zem" "random" "dent-mac" ];
+					devices	= [ "dent" "zaphod2" "zem" "random" "dent-mac" "wonko" ];
 				};
 			};
 		};
