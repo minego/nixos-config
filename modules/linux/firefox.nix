@@ -2,42 +2,20 @@
 with lib;
 
 let
-	# Patch native_main to make it check TRIDACTYL_RC first for the rc file path
-	native-patched = pkgs.tridactyl-native.overrideAttrs(old: {
-		patches = [ ./tridactyl/native_main.patch ];
-	});
-
-	# Wrap native_main so that TRIDACTYL_RC is set properly
-	native-wrapped = (pkgs.symlinkJoin {
-			name		= "tridactyl-native-wrapped";
-			paths		= [ native-patched ];
-			buildInputs	= [ pkgs.makeWrapper ];
-
-			postBuild = ''
-				wrapProgram $out/bin/native_main \
-					--set TRIDACTYL_RC "${./tridactyl/tridactylrc}"
-				'';
-		});
+	ff = if pkgs.stdenv.isDarwin
+		then pkgs.firefox-bin
+		else pkgs.firefox-wayland;
 in
 
 {
-	environment.systemPackages = [
-		native-wrapped
-	];
-
 	programs.firefox = {
 		enable = true;
 
+		# NOTE: This depends on placing the tridactylrc file with home-manager
 		nativeMessagingHosts.packages = [
-			native-wrapped
+			pkgs.tridactyl-native
 		];
-		package =
-			if
-				pkgs.stdenv.isDarwin
-			then
-				pkgs.firefox-bin
-			else
-				pkgs.firefox-wayland;
+		package = ff;
 
 		policies = {
 			ExtensionSettings = with builtins;
@@ -54,7 +32,7 @@ in
 				(extension "tridactyl-vim"				"tridactyl.vim@cmcaine.co.uk")
 				(extension "ublock-origin"				"uBlock0@raymondhill.net")
 				(extension "bitwarden-password-manager"	"{446900e4-71c2-419f-a6a7-df9c091e268b}")
-				(extension "simple-tab-groups"			"simple-tab-groups@drive4ik")
+				# (extension "simple-tab-groups"			"simple-tab-groups@drive4ik")
 				(extension "okta-browser-plugin"		"plugin@okta.com")
 				(extension "protondb-for-steam"			"{30280527-c46c-4e03-bb16-2e3ed94fa57c}")
 				(extension "i-dont-care-about-cookies"	"jid1-KKzOGWgsW3Ao4Q@jetpack")
@@ -74,7 +52,9 @@ in
 			"extensions.pocket.enabled"				= false;
 			"extensions.screenshots.disabled"		= false;
 
+			"browser.uitour.enabled"				= false;
 			"signon.rememberSignons"				= false;
+			"services.sync.engine.passwords"		= false;
 			"app.update.auto"						= false;
 			"browser.aboutConfig.showWarning"		= false;
 			"browser.warnOnQuit"					= false;
