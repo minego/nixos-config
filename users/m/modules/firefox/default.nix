@@ -86,10 +86,10 @@ with lib;
 					i-dont-care-about-cookies
 					user-agent-string-switcher
 					simple-tab-groups
+					container-proxy
 				];
 				settings = {
 					"signon.rememberSignons"				= false;
-
 					"app.update.auto"						= false;
 					"browser.aboutConfig.showWarning"		= false;
 					"browser.warnOnQuit"					= false;

@@ -2,6 +2,10 @@
 with lib;
 
 {
+	imports = [
+		./firefox.nix
+	];
+
 	# Importing this module should automatically turn this option on
 	config.gui.enable = mkForce true;
 
@@ -19,7 +23,6 @@ with lib;
 			xdg-utils
 
 			kitty
-			firefox
 
 			pavucontrol
 			pamixer
@@ -59,22 +62,6 @@ with lib;
 		security.pam.loginLimits = [
 			{ domain = "@users"; item = "rtprio"; type = "-"; value = 1; }
 		];
-
-		# Make Firefox use the native file picker
-		programs.firefox.preferences.widget.use-xdg-desktop-portal.file-picker = 0;
-
-		# Enable xinput2 in firefox
-		environment.sessionVariables = {
-			MOZ_USE_XINPUT2 = "1";
-
-			BROWSER			= "${pkgs.firefox}/bin/firefox";
-			DEFAULT_BROWSER	= "${pkgs.firefox}/bin/firefox";
-
-			# Make wayland applications behave
-			NIXOS_OZONE_WL	= "1";
-
-			MALLOC_CHECK_	= "2";	# stupid linux malloc
-		};
 
 		# XDG Desktop Portal
 		# TODO Find a way to do this through home-manager, since these options
