@@ -83,6 +83,8 @@ in
 
 			# Don't stop me from using tridactyl on mozilla pages!
 			"extensions.webextensions.restrictedDomains" = "";
+
+			"svg.context-properties.content.enabled"= true;
 		};
 	};
 
