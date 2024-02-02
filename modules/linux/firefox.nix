@@ -32,7 +32,7 @@ in
 				(extension "tridactyl-vim"				"tridactyl.vim@cmcaine.co.uk")
 				(extension "ublock-origin"				"uBlock0@raymondhill.net")
 				(extension "bitwarden-password-manager"	"{446900e4-71c2-419f-a6a7-df9c091e268b}")
-				# (extension "simple-tab-groups"			"simple-tab-groups@drive4ik")
+				(extension "simple-tab-groups"			"simple-tab-groups@drive4ik")
 				(extension "okta-browser-plugin"		"plugin@okta.com")
 				(extension "protondb-for-steam"			"{30280527-c46c-4e03-bb16-2e3ed94fa57c}")
 				(extension "i-dont-care-about-cookies"	"jid1-KKzOGWgsW3Ao4Q@jetpack")

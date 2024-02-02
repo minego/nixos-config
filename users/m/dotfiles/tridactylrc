@@ -78,16 +78,7 @@ unbind --mode=ex <C-c>
 " This exposes you to 'cross site styling' attacks
 jsb browser.webRequest.onHeadersReceived.addListener(tri.request.clobberCSP,{urls:["<all_urls>"],types:["main_frame"]},["blocking","responseHeaders"])
 
-proxyadd WorkProxy http://prosser.minego.net:8118
-
-
 " Fix UI stuff - Don't cover the input area
 guiset_quiet hoverlink		top-right
 guiset_quiet statuspanel	top-right
-
-
-tgroupcreate other
-tgroupcreate venafi
-tgroupcreate gaming
-tgroupcreate nix
 
