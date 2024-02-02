@@ -13,7 +13,6 @@ with lib;
 			pamixer
 
 			kitty
-			firefox
 		];
 
 		services.xserver.displayManager.sessionPackages = [
