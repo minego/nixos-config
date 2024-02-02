@@ -1,0 +1,16 @@
+diff -Naur a/src/native_main.nim b/src/native_main.nim
+--- a/src/native_main.nim	2024-02-02 07:06:35.357558887 -0700
++++ b/src/native_main.nim	2024-02-02 07:12:59.258542342 -0700
+@@ -82,8 +82,11 @@
+         close(strm)
+         quit(0)
+ 
+-
+ proc findUserConfigFile(): string =
++    let path = getEnv("TRIDACTYL_RC")
++    if fileExists(path):
++        return path
++
+     let candidateFiles =
+         when not defined(windows):
+             [

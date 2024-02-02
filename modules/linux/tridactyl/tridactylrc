@@ -80,17 +80,6 @@ jsb browser.webRequest.onHeadersReceived.addListener(tri.request.clobberCSP,{url
 
 proxyadd WorkProxy http://prosser.minego.net:8118
 
-" set auconcreatecontainer true
-" set autocontainmode relaxed
-
-" autocontain -u ^https?://([^/]*\.|)venafi\.								Work WorkProxy
-" autocontain -u ^https?://([^/]*\.|)amazonaws\.							Work WorkProxy
-" autocontain -u ^https?://([^/]*\.|)awsapps\.							Work WorkProxy
-" autocontain -u ^https?://([^/]*\.|)aws\.amazon\.						Work WorkProxy
-" autocontain -u ^https?://([^/]*\.|)gitlab\.com							Work WorkProxy
-" autocontain -u ^https?://([^/]*\.|)atlassian\.							Work WorkProxy
-" autocontain -u ^https?://([^/]*\.|)slack\.								Work WorkProxy
-
 
 " Fix UI stuff - Don't cover the input area
 guiset_quiet hoverlink		top-right

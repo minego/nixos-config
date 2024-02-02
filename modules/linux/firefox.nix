@@ -1,23 +1,36 @@
 { pkgs, config, lib, ... }:
 with lib;
 
+let
+	# Patch native_main to make it check TRIDACTYL_RC first for the rc file path
+	native-patched = pkgs.tridactyl-native.overrideAttrs(old: {
+		patches = [ ./tridactyl/native_main.patch ];
+	});
+
+	# Wrap native_main so that TRIDACTYL_RC is set properly
+	native-wrapped = (pkgs.symlinkJoin {
+			name		= "tridactyl-native-wrapped";
+			paths		= [ native-patched ];
+			buildInputs	= [ pkgs.makeWrapper ];
+
+			postBuild = ''
+				wrapProgram $out/bin/native_main \
+					--set TRIDACTYL_RC "${./tridactyl/tridactylrc}"
+				'';
+		});
+in
+
 {
+	environment.systemPackages = [
+		native-wrapped
+	];
+
 	programs.firefox = {
 		enable = true;
 
 		nativeMessagingHosts.packages = [
-			(pkgs.symlinkJoin {
-				name = "tridactyl-native-wrapped";
-				paths = [
-					(pkgs.writeShellScriptBin "native_main" ''
-                        export XDG_CONFIG_HOME="${./.}"
-                        ${pkgs.tridactyl-native}/bin/native_main $@
-                        '')
-					pkgs.tridactyl-native
-				];
-			})
+			native-wrapped
 		];
-
 		package =
 			if
 				pkgs.stdenv.isDarwin
