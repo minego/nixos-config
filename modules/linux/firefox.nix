@@ -67,40 +67,42 @@ in
 			# To find the UUID, install the extension manually and then visit
 			#		about:debugging#/runtime/this-firefox
 		} // {
-			Settings = {
-				"extensions.pocket.enabled"				= false;
-				"extensions.screenshots.disabled"		= false;
+			# Add any other policies here
+		};
 
-				"signon.rememberSignons"				= false;
-				"app.update.auto"						= false;
-				"browser.aboutConfig.showWarning"		= false;
-				"browser.warnOnQuit"					= false;
-				"browser.quitShortcut.disabled"			= false;
+		preferences = {
+			"extensions.pocket.enabled"				= false;
+			"extensions.screenshots.disabled"		= false;
 
-				"browser.theme.dark-private-windows"	= true;
-				"browser.toolbars.bookmarks.visibility"	= false;
+			"signon.rememberSignons"				= false;
+			"app.update.auto"						= false;
+			"browser.aboutConfig.showWarning"		= false;
+			"browser.warnOnQuit"					= false;
+			"browser.quitShortcut.disabled"			= false;
 
-				# Restore previous session
-				"browser.startup.page"					= 3;
+			"browser.theme.dark-private-windows"	= true;
+			"browser.toolbars.bookmarks.visibility"	= false;
 
-				# Make new tabs blank
-				"browser.newtabpage.enabled"			= false;
+			# Restore previous session
+			"browser.startup.page"					= 3;
 
-				# Disable welcome splash
-				"trailhead.firstrun.didSeeAboutWelcome" = true;
+			# Make new tabs blank
+			"browser.newtabpage.enabled"			= false;
 
-				# Enable hardware video acceleration
-				"media.ffmpeg.vaapi.enabled"			= true;
+			# Disable welcome splash
+			"trailhead.firstrun.didSeeAboutWelcome" = true;
 
-				"dom.forms.autocomplete.formautofill"	= false;
-				"dom.payments.defaults.saveAddress"		= false;
-				"ui.systemUsesDarkTheme"				= true;
-				"cookiebanners.ui.desktop.enabled"		= true;
-				"devtools.command-button-screenshot.enabled" = true;
+			# Enable hardware video acceleration
+			"media.ffmpeg.vaapi.enabled"			= true;
 
-				# Don't stop me from using tridactyl on mozilla pages!
-				"extensions.webextensions.restrictedDomains" = "";
-			};
+			"dom.forms.autocomplete.formautofill"	= false;
+			"dom.payments.defaults.saveAddress"		= false;
+			"ui.systemUsesDarkTheme"				= true;
+			"cookiebanners.ui.desktop.enabled"		= true;
+			"devtools.command-button-screenshot.enabled" = true;
+
+			# Don't stop me from using tridactyl on mozilla pages!
+			"extensions.webextensions.restrictedDomains" = "";
 		};
 	};
 
