@@ -97,6 +97,7 @@ with lib;
 			asciinema
 
 			(pkgs.writeShellScriptBin "todo.sh" ''
+				export TODOTXT_CFG_FILE=${writeText "config" ""}
                 export TODO_DIR="$HOME/notes/"
                 export TODO_FILE="$TODO_DIR/todo.txt"
                 export DONE_FILE="$TODO_DIR/done.txt"
