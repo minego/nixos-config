@@ -28,6 +28,12 @@ with lib;
             # check if we are already authenticated to tailscale
             status="$(${tailscale}/bin/tailscale status -json | ${jq}/bin/jq -r .BackendState)"
             if [ $status = "Running" ]; then
+				echo "Already connected"
+                exit 0
+            fi
+
+            if [ $status = "NeedsLogin" ]; then
+				echo "Login is required; Run 'sudo tailscale up' manually once."
                 exit 0
             fi
             
