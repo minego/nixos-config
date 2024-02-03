@@ -3,7 +3,7 @@ with lib;
 
 {
 	services.tailscale = {
-		enable					= true;
+		enable					= mkDefault true;
 		openFirewall			= true;
 
 		# Set to "server" or "both" with mkForce if needed for specific machines
@@ -31,7 +31,7 @@ with lib;
                 exit 0
             fi
             
-            ${tailscale}/bin/tailscale up
+            ${tailscale}/bin/tailscale up --timeout 10s
             '';
 	};
 
