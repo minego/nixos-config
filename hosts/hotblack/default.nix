@@ -23,10 +23,34 @@ lib.nixosSystem {
 			networking.interfaces.br0.useDHCP		= true;
 			networking.bridges.br0.interfaces		= [ "eno1" ];
 
+			# Disable TCPSegmentationOffload and GenericSegmentationOffload for
+			# the e1000 network card.
+			#
+			# When those are on the card in this machine behaves badly, and
+			# will randomly stop responding to network requests for a few
+			# seconds at a time.
+			systemd.services.fixNetwork-e1000 = {
+				wantedBy	= [ "multi-user.target"	];
+				after		= [ "network.target"	];
+				description	= "Disable ethernet segmentation offload";
+				script		= "${pkgs.ethtool}/bin/ethtool -K eno1 tso off gso off";
+			};
+
+			# Set options recommended by tailscale
+			systemd.services.fixNetwork-tailscale = {
+				wantedBy	= [ "multi-user.target"	];
+				after		= [ "network.target"	];
+				description	= "Set options on br0 recommended by tailscale";
+				script		= "${pkgs.ethtool}/bin/ethtool -K br0 rx-udp-gro-forwarding on rx-gro-list off ";
+			};
+
 			boot.loader.efi.canTouchEfiVariables	= true;
 
 			# Rosetta for Linux
 			boot.binfmt.emulatedSystems				= [ "aarch64-linux" ];
+
+			# This machine acts as a tailscale exit node
+			services.tailscale.useRoutingFeatures	= lib.mkForce "both";
 
 			imports = [
 				../../users/m/linux.nix

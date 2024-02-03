@@ -103,17 +103,4 @@
 	swapDevices = [ ];
 	nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 	hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-
-	# Disable TCPSegmentationOffload and GenericSegmentationOffload for
-	# the e1000 network card.
-	#
-	# When those are on the card in this machine behaves badly, and
-	# will randomly stop responding to network requests for a few
-	# seconds at a time.
-	systemd.services.fixNetwork = {
-		wantedBy	= [ "multi-user.target"	];
-		after		= [ "network.target"	];
-		description	= "Disable ethernet segmentation offload";
-		script		= "${pkgs.ethtool}/bin/ethtool -K eno1 tso off gso off";
-	};
 }

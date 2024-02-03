@@ -12,6 +12,9 @@
 		par2cmdline
 	];
 
+	# Wait until after nginx to start
+	systemd.services.sabnzbd.after = [ "network.target" "nginx.service" ];
+
 	# Reverse proxy with subdir
 	services.nginx.virtualHosts."minego.net" = {
 		locations."/sabnzbd" = {
