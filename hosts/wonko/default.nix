@@ -47,11 +47,9 @@ lib.nixosSystem {
 				../../modules/linux/8bitdo.nix
 				../../modules/linux/interception-tools.nix
 				# ../../modules/linux/libvirt.nix
-				# ../../modules/linux/amdgpu.nix
 				../../modules/linux/steam.nix
 				../../modules/linux/builders.nix
 				../../modules/linux/syncthing.nix
-				../../modules/linux/laptop.nix
 
 				../../modules/linux/steamdeck.nix
 				../../users/m/linux.nix

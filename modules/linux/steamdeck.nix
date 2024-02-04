@@ -36,6 +36,7 @@ with lib;
 		networking.wireless.enable				= false;
 
 		environment.systemPackages = with pkgs; [
+			acpi
 			mangohud
 			steamdeck-firmware
 			jupiter-dock-updater-bin
