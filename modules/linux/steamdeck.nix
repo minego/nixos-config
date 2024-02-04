@@ -28,8 +28,7 @@ with lib;
 				enableKernelPatches				= mkDefault true;
 			};
 
-			# TODO: Enable this maybe?
-			# steamos.useSteamOSConfig			= mkDefault true;
+			steamos.useSteamOSConfig			= mkDefault true;
 		};
 
 		# The Steam Deck UI integrates with NetworkManager
