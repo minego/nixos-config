@@ -14,20 +14,13 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/f222513b-ded1-49fa-b591-20ce86a2fe7f";
+    { device = "/dev/disk/by-uuid/1bb334e6-3c14-46b3-9bae-d50053587d50";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/12CE-A600";
+    { device = "/dev/disk/by-uuid/0EAB-4FA8";
       fsType = "vfat";
-    };
-
-  # Mount the internal storage of the Steam Deck, so I can access games in
-  # that library as well
-  fileSystems."/mnt/steamos" =
-    { device = "/dev/disk/by-uuid/1bb334e6-3c14-46b3-9bae-d50053587d50";
-      fsType = "ext4";
     };
 
   swapDevices = [ ];
@@ -43,3 +36,4 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
+
