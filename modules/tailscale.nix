@@ -37,7 +37,7 @@ with lib;
                 exit 0
             fi
             
-            ${tailscale}/bin/tailscale up --timeout 10s
+            ${tailscale}/bin/tailscale up ${escapeShellArgs config.services.tailscale.extraUpFlags}
             '';
 	};
 

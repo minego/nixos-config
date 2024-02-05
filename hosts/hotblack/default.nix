@@ -50,7 +50,13 @@ lib.nixosSystem {
 			boot.binfmt.emulatedSystems				= [ "aarch64-linux" ];
 
 			# This machine acts as a tailscale exit node
-			services.tailscale.useRoutingFeatures	= lib.mkForce "both";
+			services.tailscale = {
+				useRoutingFeatures					= lib.mkForce "both";
+				extraUpFlags						= [
+					"--advertise-exit-node"
+					"--advertise-routes=172.31.0.0/16"
+				];
+			};
 
 			imports = [
 				../../users/m/linux.nix
