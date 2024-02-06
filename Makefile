@@ -44,8 +44,9 @@ wonko-image:
 
 update:
 	@nix flake update
-	$(TOOL) switch --flake ./#$(HOSTNAME) --upgrade $(ARGS)
+	$(TOOL) build --flake ./#$(HOSTNAME) --upgrade $(ARGS)
 	nvd diff /run/current-system result
+	$(TOOL) switch --flake ./#$(HOSTNAME) --upgrade $(ARGS)
 
 check:
 	@nix flake check --show-trace $(ARGS)

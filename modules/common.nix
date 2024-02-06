@@ -79,6 +79,7 @@ with lib;
 			neovim
 
 			home-manager
+			nvd
 
 			pciutils
 			lsof
