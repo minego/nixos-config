@@ -83,11 +83,11 @@
         "wvkbd-minego": "wvkbd-minego"
       },
       "locked": {
-        "lastModified": 1707334373,
-        "narHash": "sha256-yghiOwft1E0gR4JYtbiRdOQOKcIx+2mnif8JntXVNCU=",
+        "lastModified": 1707334528,
+        "narHash": "sha256-lyhLkypogVuL6oLKGYww2CH1b+wYsoyjHdURSruWxKk=",
         "owner": "minego",
         "repo": "dwl",
-        "rev": "eb65ad07f70f52734f853ac4cf68a69ca45a1df3",
+        "rev": "9a678839eac72216691d6cddda824a67982823af",
         "type": "github"
       },
       "original": {
