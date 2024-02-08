@@ -29,17 +29,18 @@ in
 			};
 
 			in listToAttrs [
-				(extension "tridactyl-vim"				"tridactyl.vim@cmcaine.co.uk")
-				(extension "ublock-origin"				"uBlock0@raymondhill.net")
-				(extension "bitwarden-password-manager"	"{446900e4-71c2-419f-a6a7-df9c091e268b}")
-				(extension "simple-tab-groups"			"simple-tab-groups@drive4ik")
-				(extension "okta-browser-plugin"		"plugin@okta.com")
-				(extension "protondb-for-steam"			"{30280527-c46c-4e03-bb16-2e3ed94fa57c}")
-				(extension "i-dont-care-about-cookies"	"jid1-KKzOGWgsW3Ao4Q@jetpack")
-				(extension "gitlab-notify"				"{dfc14507-bc0e-4d1b-899e-ba09a445acab}")
-				(extension "dark"						"firefox-compact-dark@mozilla.org")
-				(extension "sponsorblock"				"sponsorBlocker@ajay.app")
-				(extension "container-proxy"			"contaner-proxy@bekh-ivanov.me")
+				(extension "oled-borderless-pitch-black"	"{47400ad1-545d-449a-85f6-f9edfc7e590a}")
+				(extension "dark"							"firefox-compact-dark@mozilla.org")
+				(extension "tridactyl-vim"					"tridactyl.vim@cmcaine.co.uk")
+				(extension "ublock-origin"					"uBlock0@raymondhill.net")
+				(extension "bitwarden-password-manager"		"{446900e4-71c2-419f-a6a7-df9c091e268b}")
+				(extension "simple-tab-groups"				"simple-tab-groups@drive4ik")
+				(extension "okta-browser-plugin"			"plugin@okta.com")
+				(extension "protondb-for-steam"				"{30280527-c46c-4e03-bb16-2e3ed94fa57c}")
+				(extension "i-dont-care-about-cookies"		"jid1-KKzOGWgsW3Ao4Q@jetpack")
+				(extension "gitlab-notify"					"{dfc14507-bc0e-4d1b-899e-ba09a445acab}")
+				(extension "sponsorblock"					"sponsorBlocker@ajay.app")
+				(extension "container-proxy"				"contaner-proxy@bekh-ivanov.me")
 			];
 
 			# To find the UUID, install the extension manually and then visit
