@@ -26,6 +26,10 @@ lib.nixosSystem {
 				(final: prev: {
 					dwl-unwrapped = inputs.dwl-minego-customized.packages.${system}.dwl-unwrapped.overrideAttrs(old: {
 						patches = [ ./dwl.patch ];
+
+						postPatch = ''
+							echo -en "\n\nCFLAGS += -DROTATE_270=1\n" >> config.mk
+						'';
 					});
 				})
 			];

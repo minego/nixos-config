@@ -1,20 +1,3 @@
-diff --git a/dwl.c b/dwl.c
-index 23998a0..9fd60e5 100644
---- a/dwl.c
-+++ b/dwl.c
-@@ -1583,6 +1583,12 @@ createtouch(struct wlr_touch *touch)
-                struct libinput_device *libinput_device =  (struct libinput_device*)
-                        wlr_libinput_get_device_handle(&touch->base);
- 
-+				float matrix[6] = {  0,  1,  0,
-+									-1,  0,  1,
-+									 0,  0,  1 };
-+									
-+				libinput_device_config_calibration_set_matrix(libinput_device, matrix);
-+
-                if (libinput_device_config_tap_get_finger_count(libinput_device)) {
-                        libinput_device_config_tap_set_enabled(libinput_device, tap_to_click);
-                        libinput_device_config_tap_set_drag_enabled(libinput_device, tap_and_drag);
 diff --git a/local-monitors.h b/local-monitors.h
 index 6e27880..851dff4 100644
 --- a/local-monitors.h
