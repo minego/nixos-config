@@ -25,6 +25,9 @@ build:
 switch:
 	$(TOOL) switch --flake ./#$(HOSTNAME) $(ARGS)
 
+testdwl:
+	$(TOOL) switch --flake ./#$(HOSTNAME) $(ARGS) --override-input dwl-minego-customized ../dwl/
+
 switch-debug: check
 	$(TOOL) switch --flake ./#$(HOSTNAME) --option eval-cache false --show-trace $(ARGS)
 
