@@ -41,6 +41,7 @@ lib.nixosSystem {
 				../../users/gavin/linux.nix
 
 				../../modules/common.nix
+				../../modules/tailscale.nix
 				../../modules/linux/common.nix
 				../../modules/linux/gui.nix
 				../../modules/linux/printer.nix

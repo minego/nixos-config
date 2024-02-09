@@ -16,4 +16,9 @@
   };
 
   nix.settings.max-jobs = lib.mkDefault 3;
+
+  # Do NOT set hostPlatform here, because it breaks mobile-nixos
+  # https://github.com/NixOS/mobile-nixos/issues/564
+  # nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
+  nixpkgs.system = lib.mkDefault "aarch64-linux";
 }

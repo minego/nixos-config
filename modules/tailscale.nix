@@ -1,7 +1,7 @@
 { pkgs, config, lib, ... }:
 with lib;
 
-{
+rec {
 	services.tailscale = {
 		enable					= mkDefault true;
 		openFirewall			= true;
@@ -11,6 +11,7 @@ with lib;
 	};
 
 	systemd.services.tailscale-autoconnect = {
+		enable					= services.tailscale.enable;
 		description				= "Automatic connection to Tailscale";
 
 		# make sure tailscale is running before trying to connect to tailscale

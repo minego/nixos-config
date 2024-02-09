@@ -23,7 +23,7 @@ build:
 	nvd diff /run/current-system result
 
 switch:
-	$(TOOL) switch --flake ./#$(HOSTNAME) $(ARGS)
+	$(TOOL) switch --flake ./#$(HOSTNAME) $(ARGS) --show-trace
 
 testdwl:
 	$(TOOL) switch --flake ./#$(HOSTNAME) $(ARGS) --override-input dwl-minego-customized ../dwl/

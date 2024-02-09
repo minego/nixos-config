@@ -47,7 +47,6 @@ with lib;
 
 	imports = [
 		./zsh.nix
-		./tailscale.nix
 	];
 
 	config = {

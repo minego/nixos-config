@@ -61,6 +61,7 @@ lib.nixosSystem {
 				../../users/m/linux.nix
 
 				../../modules/common.nix
+				../../modules/tailscale.nix
 				../../modules/linux/common.nix
 				../../modules/linux/gui.nix
 				../../modules/linux/builders.nix

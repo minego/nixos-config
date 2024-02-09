@@ -40,6 +40,7 @@ lib.nixosSystem {
 				inputs.nixos-generators.nixosModules.all-formats
 
 				../../modules/common.nix
+				../../modules/tailscale.nix
 				../../modules/linux/common.nix
 				../../modules/linux/gui.nix
 				../../modules/linux/dwl.nix
