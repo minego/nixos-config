@@ -78,17 +78,18 @@
         "nixpkgs": [
           "nixpkgs"
         ],
+        "swipeguess": "swipeguess",
         "sxmo_swaylock": "sxmo_swaylock",
         "systems": "systems",
         "wlr-dpms": "wlr-dpms",
         "wvkbd-minego": "wvkbd-minego"
       },
       "locked": {
-        "lastModified": 1707520766,
-        "narHash": "sha256-/XVSHKt38rfs+XAhqZTmjBrfGS2uNZuL7rH7ao3hPSw=",
+        "lastModified": 1707585816,
+        "narHash": "sha256-LYIkX9fhf3wPCKj4Yr5uDhU+LH2J9ejRZc1XcMwEUR4=",
         "owner": "minego",
         "repo": "dwl",
-        "rev": "cd82092cc2fab6d5c062379244dc3a1df987a681",
+        "rev": "60fd8d2f0a445bf6c9320ad90ba4883e345e39f5",
         "type": "github"
       },
       "original": {
@@ -415,11 +416,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1707226874,
-        "narHash": "sha256-uo3oGHc/oLbcS6tDlm+Z130tQNRX2ufs9r+kGRTx0Ng=",
+        "lastModified": 1707567487,
+        "narHash": "sha256-4VyGscBVW9HX5h0UULi1blX1zSvN20hda/AeZkW40ZI=",
         "owner": "Jovian-Experiments",
         "repo": "Jovian-NixOS",
-        "rev": "8f355736d9449a6650418f8e70f8dacf652401a7",
+        "rev": "f02d975f23e83306ff1ab7ef2920e5da147b2d96",
         "type": "github"
       },
       "original": {
@@ -635,11 +636,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1707439204,
-        "narHash": "sha256-3qJJtwdsMnhihkoRWUvhUM18oxaU+2A9PsUwNENowQk=",
+        "lastModified": 1707573929,
+        "narHash": "sha256-ZO5fCh6imevpa6xaT5RNm0Rhc+P/crDZq7PNlQLbBME=",
         "owner": "bandithedoge",
         "repo": "nixpkgs-firefox-darwin",
-        "rev": "82fb60f4cf769b95085e9fb4755be0aa8ee1841d",
+        "rev": "b9be8c8093a224bfcf5449bf0ef1a9253e3fc1d3",
         "type": "github"
       },
       "original": {
@@ -777,11 +778,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1707518652,
-        "narHash": "sha256-A5+VO7KRnHosQm1lfIiMKxVFGA0X+9yOT3qIsHBUdRQ=",
+        "lastModified": 1707583450,
+        "narHash": "sha256-HEaczyxNnsjFPtoWZr/odx4jFRR/HQVpsYtIKokPQt4=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "bef795c8806a21c5f8089f5dee354cb35885a74f",
+        "rev": "2f014699cc4a8b9f42b48c9d79f3a69654ae3501",
         "type": "github"
       },
       "original": {
@@ -1042,6 +1043,22 @@
         "type": "github"
       }
     },
+    "swipeguess": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1698184552,
+        "narHash": "sha256-zpV7A42wzoRZBpDBQUKGFCnLNJELqQE69fJTx8TN4uE=",
+        "ref": "refs/heads/master",
+        "rev": "7cb7bdc2cab115ed0d8e2d670f56a42c635fd73b",
+        "revCount": 44,
+        "type": "git",
+        "url": "https://git.sr.ht/~earboxer/swipeGuess"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://git.sr.ht/~earboxer/swipeGuess"
+      }
+    },
     "sxmo-nix": {
       "flake": false,
       "locked": {
@@ -1183,16 +1200,16 @@
         "systems": "systems_3"
       },
       "locked": {
-        "lastModified": 1707408226,
-        "narHash": "sha256-vd8MItmpYBJWmcG5J/yVeLIFZj9fGTe3Pw14/RnDTAk=",
+        "lastModified": 1707580326,
+        "narHash": "sha256-gCEa0RvJG0HrePyMXv0WUUyRc4NkKk+RpBAZJNLrOLA=",
         "owner": "minego",
         "repo": "wvkbd",
-        "rev": "060b1229f198ff6d8e1ac020703b0efa6638808c",
+        "rev": "7840223b5f0b7b5e6e393660fc1450cd2db3b00d",
         "type": "github"
       },
       "original": {
         "owner": "minego",
-        "ref": "master",
+        "ref": "main",
         "repo": "wvkbd",
         "type": "github"
       }
