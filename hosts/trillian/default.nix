@@ -29,7 +29,9 @@ lib.nixosSystem {
 			networking.networkmanager.enable	= true;
 			programs.nm-applet.enable			= true;
 
-			boot.loader.efi.canTouchEfiVariables	= true;
+			boot.loader.efi.canTouchEfiVariables= true;
+
+			services.tlp.enable					= true;
 
 			imports = [
 				../../modules/common.nix
