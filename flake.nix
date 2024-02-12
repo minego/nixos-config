@@ -84,6 +84,9 @@
 
 			# Steam Deck
 			wonko		= import ./hosts/wonko		{ inherit inputs overlays linuxOverlays; };
+
+			# Pixel Slate Tablet
+			trillian	= import ./hosts/trillian	{ inherit inputs overlays linuxOverlays; };
 		};
 
 		darwinConfigurations = {
