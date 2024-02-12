@@ -42,6 +42,7 @@ with lib;
 			"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO6XNKufvADcA5zNAp5mYVBA2kQ2OIXIOq9enSyUmJsM m@marvin"
 			"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINpCf3ELP19jIwlrm9zMiPhzHUAQQ1shXgIrbrYmPpnj phone"
 			"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP6avo8bo4p2UsXer2yUPkS5s4E/m5fMkhX9WnzrffwJ m@wonko"
+			"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDJ7500iF9Quza4AIpfXulyqljvL70nR75cFbf2j4IUL m@trillian"
 		];
 	};
 
