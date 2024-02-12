@@ -13,7 +13,12 @@ lib.nixosSystem {
 			system.extraSystemBuilderCmds = "ln -s ${../../.} $out/flake";
 
 			nixpkgs.overlays = overlays ++ linuxOverlays ++ [
-				# Add host specific overlays here
+				# Patch DWL to enable scaling
+				(final: prev: {
+					dwl-unwrapped = inputs.dwl-minego-customized.packages.${system}.dwl-unwrapped.overrideAttrs(old: {
+						patches = [ ./dwl.patch ];
+					});
+				})
 			];
 
 			# Enable networking, with DHCP and a bridge device
