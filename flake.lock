@@ -20,6 +20,26 @@
         "type": "github"
       }
     },
+    "chrkbd": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1707699669,
+        "narHash": "sha256-hUDp6Fppg+yCwBfBd8eUFX+A8NL40VJcrhJdw5CIA5c=",
+        "owner": "minego",
+        "repo": "chrkbd",
+        "rev": "e99eb8eb60f8131646726e85597ceab57f0f4b37",
+        "type": "github"
+      },
+      "original": {
+        "owner": "minego",
+        "repo": "chrkbd",
+        "type": "github"
+      }
+    },
     "cmake-tools": {
       "flake": false,
       "locked": {
@@ -988,6 +1008,7 @@
     "root": {
       "inputs": {
         "apple-silicon": "apple-silicon",
+        "chrkbd": "chrkbd",
         "darwin": "darwin",
         "dwl-minego-customized": "dwl-minego-customized",
         "home-manager": "home-manager",

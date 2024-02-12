@@ -9,6 +9,7 @@
 		dwl-minego-customized	= { url = github:minego/dwl/main;						inputs.nixpkgs.follows = "nixpkgs"; };
 		mackeys					= { url = github:minego/mackeys;						inputs.nixpkgs.follows = "nixpkgs"; };
 		swapmods				= { url = github:minego/swapmods;						inputs.nixpkgs.follows = "nixpkgs"; };
+		chrkbd					= { url = github:minego/chrkbd;							inputs.nixpkgs.follows = "nixpkgs"; };
 
 		nixos-generators		= { url = github:nix-community/nixos-generators;		inputs.nixpkgs.follows = "nixpkgs"; };
 		apple-silicon.url		= "github:tpwrules/nixos-apple-silicon";
@@ -56,6 +57,7 @@
 			inputs.dwl-minego-customized.overlays.default
 			inputs.swapmods.overlay
 			inputs.mackeys.overlay
+			inputs.chrkbd.overlay
 			inputs.p81.overlays.default
 		];
 
