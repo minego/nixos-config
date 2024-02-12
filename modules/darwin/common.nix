@@ -16,7 +16,7 @@
 			openssl.dev
 			pkg-config
 
-			virt-viewer
+			# virt-viewer
 		];
 		pathsToLink				= [ "/Applications" ];
 
@@ -42,5 +42,10 @@
 
 	# Don't touch
 	system.stateVersion			= 4;
+
+	imports = [
+		./zsh.nix
+		./starship.nix
+	];
 }
 

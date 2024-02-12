@@ -8,6 +8,7 @@ in
 lib.darwinSystem rec {
 	modules = [
 		{
+			nixpkgs.hostPlatform = system;
 			nixpkgs.overlays = overlays ++ darwinOverlays;
 
 			# Modules

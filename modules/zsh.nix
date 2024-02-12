@@ -10,6 +10,7 @@ with lib;
 
 		eza
 		fzf
+		direnv
 	];
 
 	programs.starship = {
@@ -182,8 +183,4 @@ with lib;
 
 	# Needed for auto completion to work for zsh
 	environment.pathsToLink = [ "/share/zsh" ];
-
-	programs.direnv = {
-		enable				= true;
-	};
 }
