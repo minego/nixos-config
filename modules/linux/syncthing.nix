@@ -12,13 +12,11 @@
 
 		settings = {
 			devices = {
-				"dent"		= { id = "L4KCXPG-5LK5DFR-I3RSZOD-T43RKOG-GKU7HTK-QSMRU33-TIQP3TX-EKO2YQN"; };
+				"dent"		= { id = "6FZOYPY-GJDXGSF-EXZCLND-W4HHXVG-XCIABQO-KXQ4YTB-XGMWF7A-K4WDGQE"; };
 				"zaphod2"	= { id = "HAS6HSV-BOM63S2-YJMIQNC-COLZMBU-F2BPIL7-ULY3AL7-CERGJEY-BHAXUQX"; };
-				"lord"		= { id = "GFOMJN4-SPH4YOO-36L2UQM-22FNFKN-AWFT5YT-C5AHAUK-7CGH4MF-Q3BA4QJ"; };
 				"pixel7"	= { id = "L4KCXPG-5LK5DFR-I3RSZOD-T43RKOG-GKU7HTK-QSMRU33-TIQP3TX-EKO2YQN"; };
 				"zem"		= { id = "TFBJXJ5-XKVNFHI-HVJ5X3N-ATR3XKF-EIKXFLQ-C6XX4K5-UDZUPS7-OJ2TXQF"; };
 				"random"	= { id = "OV3MXZG-LWYH4RW-D7SILOK-YFUVDLG-BXMHKNC-XFQHOKO-66DZL4Y-N6OPWQT"; };
-				"dent-mac"	= { id = "SFXJBV6-3IXWBLA-YCSHPWP-6AESK6Q-SA3SKAS-CXPVDTL-J5PRKEV-4IWVZQ5"; };
 				"wonko"		= { id = "FENARYZ-NAJAM4L-MK5BIUP-SUDBIJI-HGTSNBW-BVGPKTX-JS4UEAC-F534SQY"; };
 			};
 
@@ -27,14 +25,14 @@
 					enable	 = true;
 					id		= "notes";
 					path	= "/home/m/notes";
-					devices	= [ "dent" "lord" "pixel7" "zaphod2" "wonko" ];
+					devices	= [ "dent" "pixel7" "zaphod2" "wonko" ];
 				};
 
 				"Code" = {
 					enable	 = true;
 					id		= "code";
 					path	= "/home/m/src/shared";
-					devices	= [ "dent" "zaphod2" "zem" "random" "dent-mac" "wonko" ];
+					devices	= [ "dent" "zaphod2" "zem" "random" "wonko" ];
 				};
 			};
 		};
