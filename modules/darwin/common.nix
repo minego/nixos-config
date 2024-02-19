@@ -15,6 +15,7 @@
 			openssl
 			openssl.dev
 			pkg-config
+			doxygen
 
 			# virt-viewer
 		];
