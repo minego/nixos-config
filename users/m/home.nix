@@ -97,7 +97,7 @@ with lib;
 
 		includes = [
 			{
-				condition = "gitdir:~/src/vaas/";
+				condition = "gitdir:~/src/vaas/**";
 				contents.user = {
 					email = "micah.gorrell@venafi.com";
 					name = "Micah N Gorrell";
@@ -105,7 +105,7 @@ with lib;
 			}
 
 			{
-				condition = "gitdir:~/src/venafi/";
+				condition = "gitdir:~/src/venafi/**";
 				contents.user = {
 					email = "micah.gorrell@venafi.com";
 					name = "Micah N Gorrell";
