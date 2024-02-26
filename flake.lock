@@ -105,11 +105,11 @@
         "wvkbd-minego": "wvkbd-minego"
       },
       "locked": {
-        "lastModified": 1707668290,
-        "narHash": "sha256-3GR2EYvWmxK1pnoExMTujA6gMi2S4vHfyRG7/wSks9g=",
+        "lastModified": 1708972904,
+        "narHash": "sha256-vgRSKYr8OYdS1vw8YWusQOf14BRznKlDZ+BAVGVQbj4=",
         "owner": "minego",
         "repo": "dwl",
-        "rev": "2d124a246bd610a172afacee9af954b5854c8e24",
+        "rev": "19174958886825082cc236efba47c8c58b278d5c",
         "type": "github"
       },
       "original": {
@@ -798,11 +798,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1708965861,
-        "narHash": "sha256-5r+S5cqd6dqQCkkuW8GNSWNcd82zpZAcA+XjTg6zCSc=",
+        "lastModified": 1708971962,
+        "narHash": "sha256-ITVtpvlL8iWqHhcoaP5KiUIpZ9rf6tLlJVOoY/ZokP4=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "053ea69d454c1f9a72f0b0250dc98f42e5a02ea1",
+        "rev": "bac24373cde80987b895dc80da7b22262a715c0d",
         "type": "github"
       },
       "original": {
