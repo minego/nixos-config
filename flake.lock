@@ -98,17 +98,16 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "swaylock-plugin": "swaylock-plugin",
         "swipeguess": "swipeguess",
         "systems": "systems",
         "wvkbd-minego": "wvkbd-minego"
       },
       "locked": {
-        "lastModified": 1708981735,
-        "narHash": "sha256-BJy351KYRzqlVWG2X4oFBdp4nYU8o9TgIfXS3+bP9jI=",
+        "lastModified": 1708983093,
+        "narHash": "sha256-W8wSa4w30+I6UOEPtJ7duTf2zHW3ViLSpf3rPcHzwdo=",
         "owner": "minego",
         "repo": "dwl",
-        "rev": "a11eb18ca64838aa59d8f39273a7912689a8d70b",
+        "rev": "b3cdea52f36c6c756e481b4ec91771277e579005",
         "type": "github"
       },
       "original": {
@@ -775,11 +774,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1708979125,
-        "narHash": "sha256-HcVmPfbckeO4nMMiLm9ZTzY63Qjzg+7s6deC6Xm6Seg=",
+        "lastModified": 1708982902,
+        "narHash": "sha256-CNxJLv3uoHH645JCwwVH1jUVLJZJRk9OQQE5abu2peA=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "6ec9b716040e4a3701ac1e0807e450ede7606177",
+        "rev": "facd37dc8ed65a8bda15f8bff223c6bbc8265628",
         "type": "github"
       },
       "original": {
@@ -1038,22 +1037,6 @@
       "original": {
         "owner": "minego",
         "repo": "swapmods",
-        "type": "github"
-      }
-    },
-    "swaylock-plugin": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1708732707,
-        "narHash": "sha256-xWyDDT8sXAL58HtA9ifzCenKMmOZquzXZaz3ttGGJuY=",
-        "owner": "mstoeckl",
-        "repo": "swaylock-plugin",
-        "rev": "1dd15b6ecbe91be7a3dc4a0fa9514fb166fb2e07",
-        "type": "github"
-      },
-      "original": {
-        "owner": "mstoeckl",
-        "repo": "swaylock-plugin",
         "type": "github"
       }
     },
