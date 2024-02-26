@@ -26,7 +26,7 @@ with lib;
 
 	environment.systemPackages = with pkgs; [
 		clinfo
-		blender-hip
+		# blender-hip
 		rocmPackages.clr
 	];
 
