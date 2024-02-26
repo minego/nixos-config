@@ -26,7 +26,7 @@ lib.nixosSystem {
 			networking.useDHCP						= false;
 
 			# Setup a bridge to be used with libvirt
-			networking.interfaces.enp42s0.useDHCP	= true;
+			networking.interfaces.enp42s0.useDHCP	= false;
 			networking.interfaces.br0.useDHCP		= true;
 			networking.bridges.br0.interfaces		= [ "enp42s0" ];
 
