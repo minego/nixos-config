@@ -90,6 +90,7 @@ with lib;
 			direnv
 
 			curl
+			httpie
 			stow
 			man-pages
 			man-pages-posix
