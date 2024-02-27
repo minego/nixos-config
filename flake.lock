@@ -530,11 +530,11 @@
         "nvim-xenon": "nvim-xenon"
       },
       "locked": {
-        "lastModified": 1709069114,
-        "narHash": "sha256-roK1X32KJ9i4ToQ3vt53v47gAI0hOMvpTUTfyapCD90=",
+        "lastModified": 1709069917,
+        "narHash": "sha256-a81Tzb9N4v6zdGj10oHauxQ6S9eJ31gHWbh8IwrWBJs=",
         "owner": "minego",
         "repo": "nixvim",
-        "rev": "2a65725c6754d048ab01b88c13ded9f9007bea80",
+        "rev": "bc96844523fc47856087596902798eabccc93b70",
         "type": "github"
       },
       "original": {
