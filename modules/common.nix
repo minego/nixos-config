@@ -107,6 +107,13 @@ with lib;
                 export REPORT_FILE="$TODO_DIR/report.txt"
                 exec ${pkgs.todo-txt-cli}/bin/todo.sh $@
                 '')
+
+			(pkgs.writeShellScriptBin "," ''
+				package=$1
+				shift
+
+				nix run nixpkgs#$package -- $@
+				'')
 		];
 
 		home-manager = {
