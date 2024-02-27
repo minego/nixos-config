@@ -17,6 +17,7 @@ bind J tabnext
 
 " New tabs go at the end of the tab list
 set tabopenpos last
+set tabclosepinned false
 
 " make d take you to the left (I find it much less confusing)
 bind d composite tabprev; tabclose #
