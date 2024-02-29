@@ -11,7 +11,7 @@ endif
 
 # Using the "replace" mode with tpwrules/nixos-apple-silicon doesn't work
 # in "pure" mode. The "overlay" option works as well, but rebuilds the world.
-ARGS		:= --impure
+ARGS		:= --impure -v
 
 all:
 	@echo "Cowardly refusing to run. Try again with 'switch' or 'test'"

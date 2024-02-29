@@ -31,7 +31,6 @@ lib.nixosSystem {
 			# Turn on the asahi GPU driver
 			hardware = {
 				asahi = {
-					addEdgeKernelConfig			= true;
 					peripheralFirmwareDirectory	= ./firmware;
 					useExperimentalGPUDriver	= true;
 					experimentalGPUInstallMode	= "replace";
