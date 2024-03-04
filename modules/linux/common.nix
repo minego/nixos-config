@@ -65,7 +65,6 @@ with lib;
 		services.fstrim.enable				= true;
 
 		# Enable sound with pipewire.
-		sound.enable						= true;
 		hardware.pulseaudio.enable			= mkForce false;
 		security.rtkit.enable				= true;
 		services.pipewire = {
