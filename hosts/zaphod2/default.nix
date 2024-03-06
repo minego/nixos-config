@@ -8,6 +8,8 @@ in
 lib.nixosSystem {
 	modules = [
 		{
+			nix.registry.nixpkgs.flake			= inputs.nixpkgs;
+
 			nixpkgs.overlays = overlays
 			++ linuxOverlays
 			++ [
