@@ -12,7 +12,10 @@ in
 lib.nixosSystem {
 	modules = [
 		{
-			nixpkgs.overlays = overlays ++ linuxOverlays;
+			nixpkgs.overlays					= overlays ++ linuxOverlays;
+
+			nix.registry.nixpkgs.flake			= inputs.nixpkgs;
+			nix.nixPath							= [ "nixpkgs=${inputs.nixpkgs}" ];
 
 			# Make a copy of the sources used to build the current running
 			# system so it can be accessed as `/run/current-system/flake`

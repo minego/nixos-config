@@ -10,8 +10,6 @@ lib.nixosSystem {
 		inputs.jovian-nixos.nixosModules.default
 
 		{
-			nix.registry.nixpkgs.flake			= inputs.nixpkgs;
-
 			# Disable the kernel options I normally use, so that jovian can
 			# set the kernel for the steam deck
 			kernel.latest							= false;
@@ -31,6 +29,9 @@ lib.nixosSystem {
 					});
 				})
 			];
+
+			nix.registry.nixpkgs.flake			= inputs.nixpkgs;
+			nix.nixPath							= [ "nixpkgs=${inputs.nixpkgs}" ];
 
 			# Enable networking, with DHCP and a bridge device
 			networking.hostName						= "wonko";

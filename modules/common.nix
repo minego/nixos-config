@@ -54,7 +54,7 @@ with lib;
 		time.timeZone = lib.mkDefault "America/Denver";
 
 		# Enable the nix command and flakes
-		nix.settings.experimental-features = [ "nix-command" "flakes" ];
+		nix.settings.experimental-features = [ "nix-command" "flakes" "repl-flake" ];
 
 		# Allow unfree packages
 		nixpkgs.config.allowUnfree = true;

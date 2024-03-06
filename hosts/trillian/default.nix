@@ -12,6 +12,9 @@ lib.nixosSystem {
 			# system so it can be accessed as `/run/current-system/flake`
 			system.extraSystemBuilderCmds = "ln -s ${../../.} $out/flake";
 
+			nix.registry.nixpkgs.flake			= inputs.nixpkgs;
+			nix.nixPath							= [ "nixpkgs=${inputs.nixpkgs}" ];
+
 			nixpkgs.overlays = overlays ++ linuxOverlays ++ [
 				# Patch DWL to enable scaling
 				(final: prev: {

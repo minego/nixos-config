@@ -8,8 +8,6 @@ in
 lib.nixosSystem {
 	modules = [
 		{
-			nix.registry.nixpkgs.flake			= inputs.nixpkgs;
-
 			nixpkgs.overlays = overlays ++ linuxOverlays ++ [
 				# Patch DWL to enable adaptive sync
 				(final: prev: {
@@ -18,6 +16,9 @@ lib.nixosSystem {
 					});
 				})
 			];
+
+			nix.registry.nixpkgs.flake			= inputs.nixpkgs;
+			nix.nixPath							= [ "nixpkgs=${inputs.nixpkgs}" ];
 
 			# Make a copy of the sources used to build the current running
 			# system so it can be accessed as `/run/current-system/flake`
