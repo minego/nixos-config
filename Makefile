@@ -60,3 +60,7 @@ rollback:
 
 gateway-vm:
 	$(TOOL) build-vm --flake ./#gateway-vm
+
+repl:
+	nixos-repl
+
