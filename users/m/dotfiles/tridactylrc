@@ -5,10 +5,6 @@ set allowautofocus false
 set incsearch true
 set editorcmd kitty -e nvim
 
-" Sometimes the status bar in the bottom left corner overlaps the Tridactyl
-" command line, so set an option to move the status bar to the right.
-guiset_quiet hoverlink right
-
 " " Binds
 
 " tridactyl gets J and K backwards... I'm used to qutebrowser's direction
