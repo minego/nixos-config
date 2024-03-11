@@ -12,7 +12,10 @@
 		chrkbd					= { url = github:minego/chrkbd;							inputs.nixpkgs.follows = "nixpkgs"; };
 
 		nixos-generators		= { url = github:nix-community/nixos-generators;		inputs.nixpkgs.follows = "nixpkgs"; };
-		apple-silicon			= { url = github:tpwrules/nixos-apple-silicon;			inputs.nixpkgs.follows = "nixpkgs"; };
+
+		# apple-silicon			= { url = github:tpwrules/nixos-apple-silicon;			inputs.nixpkgs.follows = "nixpkgs"; };
+		apple-silicon			= { url = github:bkchr/nixos-m1/bkchr-fix-latest-master;inputs.nixpkgs.follows = "nixpkgs"; };
+
 		mobile-nixos			= { url = github:NixOS/mobile-nixos;					flake = false; };
 		darwin					= { url = "github:LnL7/nix-darwin";						inputs.nixpkgs.follows = "nixpkgs"; };
 		jovian-nixos			= { url = github:Jovian-Experiments/Jovian-NixOS;		inputs.nixpkgs.follows = "nixpkgs"; };
