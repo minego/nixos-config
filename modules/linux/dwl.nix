@@ -17,6 +17,7 @@ with lib;
 
 		services.xserver.displayManager.sessionPackages = [
 			pkgs.dwl-unwrapped
+			pkgs.dwl-services
 		];
 
 		services.greetd = {

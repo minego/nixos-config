@@ -6,7 +6,8 @@
 		# nixpkgs-stable.url		= "github:nixos/nixpkgs/nixos-23.11";
 
 		neovim-minego			= { url = github:minego/nixvim;							inputs.nixpkgs.follows = "nixpkgs"; };
-		dwl-minego-customized	= { url = github:minego/dwl/main;						inputs.nixpkgs.follows = "nixpkgs"; };
+		dwl-minego-customized	= { url = github:minego/dwl/dwl-services;				inputs.nixpkgs.follows = "nixpkgs"; };
+		dwl-services			= { url = github:minego/dwl-services;					inputs.nixpkgs.follows = "nixpkgs"; };
 		mackeys					= { url = github:minego/mackeys;						inputs.nixpkgs.follows = "nixpkgs"; };
 		swapmods				= { url = github:minego/swapmods;						inputs.nixpkgs.follows = "nixpkgs"; };
 		chrkbd					= { url = github:minego/chrkbd;							inputs.nixpkgs.follows = "nixpkgs"; };
@@ -58,6 +59,7 @@
 
 		linuxOverlays = [
 			inputs.dwl-minego-customized.overlays.default
+			inputs.dwl-services.overlays.default
 			inputs.swapmods.overlay
 			inputs.mackeys.overlay
 			inputs.chrkbd.overlay
