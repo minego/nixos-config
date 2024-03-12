@@ -1,6 +1,8 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
-function findProjectRoot() {
+findProjectRoot() {
+	ORG="${PWD}"
+
 	while true; do
 		if [[ -d .git || -f .code-env ]]; then
 			echo "${PWD}"
@@ -9,7 +11,7 @@ function findProjectRoot() {
 
 		cd .. || exit #?
 		if [ "${PWD}" == "/" ]; then
-			echo "${PWD}"
+			echo "${ORG}"
 			return 0
 		fi
 	done
@@ -38,7 +40,7 @@ fi
 
 # Change to the root of the environment, because the env file may have paths
 # that are relative to that.
-cd ${PROJECT_ROOT}
+cd "${PROJECT_ROOT}" || exit
 
 SOCKET_DIR="${HOME}/.dtach-sockets/${PROJECT_ROOT}"
 mkdir -p "${SOCKET_DIR}"
