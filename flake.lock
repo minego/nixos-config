@@ -105,11 +105,11 @@
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1710205938,
-        "narHash": "sha256-4NQrDboz5ez6xRXAl5NIhD5CJloTqYk6hpiyvg9k4hQ=",
+        "lastModified": 1710208387,
+        "narHash": "sha256-dI9BeMzcQxhVTLneptmdDVzJa1YKcUBR3fN7vopdHEE=",
         "owner": "minego",
         "repo": "dwl",
-        "rev": "787f0d4462519790dfb4b12e59ec12bce121416b",
+        "rev": "c807c674a46c73aa0caa5727fb444c3650a992dc",
         "type": "github"
       },
       "original": {
