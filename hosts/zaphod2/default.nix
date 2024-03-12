@@ -80,6 +80,7 @@ lib.nixosSystem {
 
 				./hardware-configuration.nix
 				inputs.apple-silicon.nixosModules.apple-silicon-support
+				inputs.dwl-services.nixosModules.default
 			];
 
 			# Remote builders and binary cache

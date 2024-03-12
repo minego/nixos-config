@@ -97,7 +97,7 @@
     },
     "dwl-minego-customized": {
       "inputs": {
-        "dwl-session": "dwl-session",
+        "dwl-services": "dwl-services",
         "flake-utils": "flake-utils_2",
         "nixpkgs": [
           "nixpkgs"
@@ -105,11 +105,11 @@
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1710192478,
-        "narHash": "sha256-B2/cEn48ij5KCaDoXTA1CU23nzSyjTdipq0zvulHuBg=",
+        "lastModified": 1710205938,
+        "narHash": "sha256-4NQrDboz5ez6xRXAl5NIhD5CJloTqYk6hpiyvg9k4hQ=",
         "owner": "minego",
         "repo": "dwl",
-        "rev": "740be09644dea866930e8fd01b827ad64bb4cbff",
+        "rev": "787f0d4462519790dfb4b12e59ec12bce121416b",
         "type": "github"
       },
       "original": {
@@ -121,28 +121,6 @@
     },
     "dwl-services": {
       "inputs": {
-        "flake-utils": "flake-utils_3",
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "systems": "systems_2"
-      },
-      "locked": {
-        "lastModified": 1710192372,
-        "narHash": "sha256-NqUI1A/GU0xkugpb0I73gt5uwk27TFSPuBHBMItVf0c=",
-        "owner": "minego",
-        "repo": "dwl-services",
-        "rev": "3a2d61c8ade29355c6bb42c002e4a071b86fc583",
-        "type": "github"
-      },
-      "original": {
-        "owner": "minego",
-        "repo": "dwl-services",
-        "type": "github"
-      }
-    },
-    "dwl-session": {
-      "inputs": {
         "flake-utils": "flake-utils",
         "nixpkgs": "nixpkgs",
         "systems": [
@@ -151,11 +129,33 @@
         ]
       },
       "locked": {
-        "lastModified": 1710192372,
-        "narHash": "sha256-NqUI1A/GU0xkugpb0I73gt5uwk27TFSPuBHBMItVf0c=",
+        "lastModified": 1710203888,
+        "narHash": "sha256-pXzHoyWiJ3XmizAGw/JeNPSTNx2kD4JFrPBDnNrClJ4=",
         "owner": "minego",
         "repo": "dwl-services",
-        "rev": "3a2d61c8ade29355c6bb42c002e4a071b86fc583",
+        "rev": "22a53b5eec07705838a252c28f8ded10130be2f7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "minego",
+        "repo": "dwl-services",
+        "type": "github"
+      }
+    },
+    "dwl-services_2": {
+      "inputs": {
+        "flake-utils": "flake-utils_3",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "systems": "systems_2"
+      },
+      "locked": {
+        "lastModified": 1710204482,
+        "narHash": "sha256-sHeeg+IOnTEMctT/AUWsbcrD1LRT1ulfKX68JiatJSo=",
+        "owner": "minego",
+        "repo": "dwl-services",
+        "rev": "f34bf2399f145a4baf7a1d180eca64606262c00b",
         "type": "github"
       },
       "original": {
@@ -274,7 +274,7 @@
       "inputs": {
         "systems": [
           "dwl-minego-customized",
-          "dwl-session",
+          "dwl-services",
           "systems"
         ]
       },
@@ -841,11 +841,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1710192140,
-        "narHash": "sha256-SkXL3suPyLPmaAOc5YpcxL/4z3BhX1/vmM511sF4sg8=",
+        "lastModified": 1710197080,
+        "narHash": "sha256-OE9EhdJC0RBBojUOEdoBoad5ondDIUHD0wTy64kU908=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "5dfa15884c8d74d16e42124b48150461e25cf694",
+        "rev": "7056fa2747edbd5652bc570bc3ad913c9871ab4e",
         "type": "github"
       },
       "original": {
@@ -1054,7 +1054,7 @@
         "chrkbd": "chrkbd",
         "darwin": "darwin",
         "dwl-minego-customized": "dwl-minego-customized",
-        "dwl-services": "dwl-services",
+        "dwl-services": "dwl-services_2",
         "home-manager": "home-manager",
         "jovian-nixos": "jovian-nixos",
         "mackeys": "mackeys",
