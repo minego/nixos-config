@@ -6,15 +6,15 @@
 		# nixpkgs-stable.url		= "github:nixos/nixpkgs/nixos-23.11";
 
 		neovim-minego			= { url = github:minego/nixvim;							inputs.nixpkgs.follows = "nixpkgs"; };
-		dwl-minego-customized	= { url = github:minego/dwl/main;						inputs.nixpkgs.follows = "nixpkgs"; };
+		# dwl-minego-customized	= { url = github:minego/dwl/main;						inputs.nixpkgs.follows = "nixpkgs"; };
+		dwl-minego-customized	= { url = github:minego/dwl/dwl-status;						inputs.nixpkgs.follows = "nixpkgs"; };
 		mackeys					= { url = github:minego/mackeys;						inputs.nixpkgs.follows = "nixpkgs"; };
 		swapmods				= { url = github:minego/swapmods;						inputs.nixpkgs.follows = "nixpkgs"; };
 		chrkbd					= { url = github:minego/chrkbd;							inputs.nixpkgs.follows = "nixpkgs"; };
 
 		nixos-generators		= { url = github:nix-community/nixos-generators;		inputs.nixpkgs.follows = "nixpkgs"; };
 
-		# apple-silicon			= { url = github:tpwrules/nixos-apple-silicon;			inputs.nixpkgs.follows = "nixpkgs"; };
-		apple-silicon			= { url = github:bkchr/nixos-m1/bkchr-fix-latest-master;inputs.nixpkgs.follows = "nixpkgs"; };
+		apple-silicon			= { url = github:tpwrules/nixos-apple-silicon;			inputs.nixpkgs.follows = "nixpkgs"; };
 
 		mobile-nixos			= { url = github:NixOS/mobile-nixos;					flake = false; };
 		darwin					= { url = "github:LnL7/nix-darwin";						inputs.nixpkgs.follows = "nixpkgs"; };
