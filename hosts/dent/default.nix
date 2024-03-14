@@ -71,23 +71,5 @@ lib.nixosSystem {
 				modules								= [ "r8169" ];
 			};
 		}
-
-		# Build and start a macOS VM
-		inputs.nixtheplanet.nixosModules.macos-ventura {
-			services.macos-ventura = {
-				enable				= false;
-
-				openFirewall		= true;
-				vncListenAddr		= "0.0.0.0";
-				sshPort				= 2222;
-				vncDisplayNumber	= 1;
-				mem					= "12G";
-
-				# cores				= 16;
-				# sockets				= 2;
-
-				dataDir				= "/var/lib/nixtheplanet-macos-ventura";
-			};
-		}
 	];
 }

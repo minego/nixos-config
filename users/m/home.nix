@@ -61,7 +61,6 @@ with lib;
 	)) [
 		# These aren't available on aarch64 linux
 		spotify
-		spotify-tui
 		slack
 	] ++ lib.optionals osConfig.gui.enable [
 		freerdp
