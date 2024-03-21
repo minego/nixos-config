@@ -76,6 +76,6 @@ unbind --mode=ex <C-c>
 jsb browser.webRequest.onHeadersReceived.addListener(tri.request.clobberCSP,{urls:["<all_urls>"],types:["main_frame"]},["blocking","responseHeaders"])
 
 " Fix UI stuff - Don't cover the input area
-guiset_quiet hoverlink		top-right
-guiset_quiet statuspanel	top-right
+" guiset_quiet hoverlink		top-right
+" guiset_quiet statuspanel	top-right
 
