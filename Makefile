@@ -4,7 +4,7 @@ UNAME_M		:= $(shell uname -m)
 
 ifeq ($(UNAME_S),Linux)
 	# Temporary, work around issue with nixos-unstable
-	TOOL	:= sudo NIXPKGS_ALLOW_INSECURE=1 nixos-rebuild
+	TOOL	:= sudo nixos-rebuild
 endif
 ifeq ($(UNAME_S),Darwin)
 	TOOL	:= darwin-rebuild
