@@ -10,6 +10,7 @@
 
 	environment.systemPackages = with pkgs; [
 		mergerfs
+		mergerfs-tools
 	];
 
 	fileSystems."/" = {
@@ -70,7 +71,8 @@
 
 	# Mergerfs aggregate volume
 	fileSystems."/data" = {
-		device = "/mnt/media?";
+		# device = "/mnt/media?";
+		device = "/mnt/media0:/mnt/media1:/mnt/media2:/mnt/media3:/mnt/media4:/mnt/media5:/mnt/media6=RW,4G";
 		fsType = "fuse.mergerfs";
 		depends = [
 			"/"
