@@ -26,6 +26,11 @@ lib.nixosSystem {
 			networking.interfaces.br0.useDHCP		= true;
 			networking.bridges.br0.interfaces		= [ "eno1" ];
 
+			# A hostId is needed for zfs
+			# A new unique ID can be generated with:
+			#	`head -c4 /dev/urandom | od -A none -t x4`
+			networking.hostId						= "9d5bbde4";
+
 			# Disable TCPSegmentationOffload and GenericSegmentationOffload for
 			# the e1000 network card.
 			#
@@ -51,6 +56,11 @@ lib.nixosSystem {
 
 			# Rosetta for Linux
 			boot.binfmt.emulatedSystems				= [ "aarch64-linux" ];
+
+			# ZFS support
+			boot.supportedFilesystems				= [ "zfs" ];
+			boot.zfs.forceImportRoot				= false;
+			services.zfs.autoScrub.enable			= true;
 
 			# This machine acts as a tailscale exit node
 			services.tailscale = {

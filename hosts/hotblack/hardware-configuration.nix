@@ -69,10 +69,18 @@
 		options = [ "relatime" "nofail" ];
 	};
 
+	fileSystems."/mnt/zfs-media" = {
+		device = "zpool/media";
+		fsType = "zfs";
+		depends = [ "/" ];
+		options = [ "relatime" "nofail" ];
+	};
+
+
+
 	# Mergerfs aggregate volume
 	fileSystems."/data" = {
-		# device = "/mnt/media?";
-		device = "/mnt/media0:/mnt/media1:/mnt/media2:/mnt/media3:/mnt/media4:/mnt/media5:/mnt/media6=RW,4G";
+		device = "/mnt/media?";
 		fsType = "fuse.mergerfs";
 		depends = [
 			"/"

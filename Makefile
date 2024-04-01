@@ -26,6 +26,9 @@ build:
 switch:
 	$(TOOL) switch --flake ./#$(HOSTNAME) $(ARGS) --show-trace
 
+boot:
+	$(TOOL) boot --flake ./#$(HOSTNAME) $(ARGS) --show-trace
+
 testdwl:
 	$(TOOL) switch --flake ./#$(HOSTNAME) $(ARGS) --override-input dwl-minego-customized ../dwl/
 
