@@ -104,6 +104,17 @@ lib.nixosSystem {
 #					model = "HLL2390DW";
 #				}];
 			};
+
+			age.secrets = {
+				hotblack-dashboard-env = {
+					file							= ../../secrets/hotblack-dashboard-env.age;
+					owner							= "root";
+					group							= "users";
+					mode							= "400";
+				};
+			};
 		}
+
+		inputs.agenix.nixosModules.default
 	];
 }

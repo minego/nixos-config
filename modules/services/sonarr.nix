@@ -9,7 +9,7 @@
 	# Reverse proxy with subdir
 	services.nginx.virtualHosts."minego.net" = {
 		locations."/sonarr" = {
-			proxyPass = "http://127.0.0.1:8989/sonarr";
+			proxyPass = "http://127.0.0.1:8989";
 
 			extraConfig = ''
 				proxy_set_header   Host $proxy_host;
@@ -25,6 +25,9 @@
 
 		locations."/sonarr/api" = {
 			proxyPass = "http://127.0.0.1:8989";
+			extraConfig = ''
+                auth_basic off;
+			'';
 		};
 	};
 }

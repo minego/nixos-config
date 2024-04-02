@@ -6,6 +6,7 @@
 		./sabnzbd.nix
 		./sonarr.nix
 		./vaultwarden.nix
+		./homepage.nix
 	];
 }
 

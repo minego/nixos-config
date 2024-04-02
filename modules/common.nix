@@ -81,6 +81,7 @@ with lib;
 		environment.systemPackages = with pkgs; [
 			neovim
 
+			agenix
 			home-manager
 			nvd
 

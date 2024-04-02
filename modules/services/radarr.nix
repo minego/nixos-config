@@ -25,6 +25,9 @@
 
 		locations."/radarr/api" = {
 			proxyPass = "http://127.0.0.1:7878";
+			extraConfig = ''
+                auth_basic off;
+			'';
 		};
 	};
 

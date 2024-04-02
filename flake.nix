@@ -7,6 +7,9 @@
 		home-manager			= { url = github:nix-community/home-manager;			inputs.nixpkgs.follows = "nixpkgs"; };
 		nur.url					= github:nix-community/NUR;
 
+		# Secret management
+		agenix					= { url = github:ryantm/agenix;							inputs.nixpkgs.follows = "nixpkgs"; };
+
 		# Neovim, with my configuration, plugins and custommizations
 		neovim-minego			= { url = github:minego/nixvim;							inputs.nixpkgs.follows = "nixpkgs"; };
 
@@ -46,8 +49,9 @@
 
 		overlays = [
 			inputs.neovim-minego.overlays.default
-
 			inputs.nur.overlay
+			inputs.agenix.overlays.default
+
 			(import ./overlays/fonts.nix)
 
 			# Allow grabbing specific packages from the previous release to
