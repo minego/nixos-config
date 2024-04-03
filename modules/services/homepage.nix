@@ -30,12 +30,12 @@ with lib;
 					"Plex" = {
 						icon					= "plex.png";
 						description				= "Watch movies and TV shows";
-						href					= "http://plex.${config.services.nginx.hostname}";
-						siteMonitor				= "http://127.0.0.1:32400";
+						href					= config.services.plex.publicURL;
+						siteMonitor				= config.services.plex.internalURL;
 
 						widget = {
 							type				= "plex";
-							url					= "http://127.0.0.1:32400";
+							url					= config.services.plex.internalURL;
 							key					= "{{HOMEPAGE_VAR_PLEXKEY}}";
 						};
 					};
@@ -45,12 +45,12 @@ with lib;
 					"Ombi" = {
 						icon					= "ombi.png";
 						description				= "Manage requested TV shows and Movies";
-						href					= "http://${config.services.nginx.hostname}/ombi";
-						siteMonitor				= "http://127.0.0.1:5005";
+						href					= config.services.ombi.publicURL;
+						siteMonitor				= config.services.ombi.internalURL;
 
 						widget = {
 							type				= "ombi";
-							url					= "http://127.0.0.1:5005";
+							url					= config.services.ombi.internalURL;
 							enableQueue			= false;
 							key					= "{{HOMEPAGE_VAR_OMBI}}";
 						};
@@ -60,28 +60,27 @@ with lib;
 					"Sonarr" = {
 						icon					= "sonarr.png";
 						description				= "Manage monitored TV shows";
-						href					= "http://${config.services.nginx.hostname}/sonarr";
-						siteMonitor				= "http://127.0.0.1:8989";
+						href					= config.services.sonarr.publicURL;
+						siteMonitor				= config.services.sonarr.internalURL;
 
 						widget = {
 							type				= "sonarr";
-							url					= "http://127.0.0.1:8989";
+							url					= config.services.sonarr.internalURL;
 							enableQueue			= false;
 							key					= "{{HOMEPAGE_VAR_SONARRKEY}}";
 						};
 					};
 				}
-
 				{
 					"Radarr" = {
 						icon					= "radarr.png";
-						description				= "Manage monitored movies";
-						href					= "http://${config.services.nginx.hostname}/radarr";
-						siteMonitor				= "http://127.0.0.1:7878";
+						description				= "Manage monitored TV shows";
+						href					= config.services.radarr.publicURL;
+						siteMonitor				= config.services.radarr.internalURL;
 
 						widget = {
 							type				= "radarr";
-							url					= "http://127.0.0.1:7878";
+							url					= config.services.radarr.internalURL;
 							enableQueue			= false;
 							key					= "{{HOMEPAGE_VAR_RADARRKEY}}";
 						};
@@ -92,12 +91,12 @@ with lib;
 					"Sabnzbd" = {
 						icon					= "sabnzbd.png";
 						description				= "Manage downloads";
-						href					= "http://${config.services.nginx.hostname}/sabnzbd";
-						siteMonitor				= "http://127.0.0.1:8080";
+						href					= config.services.sabnzbd.publicURL;
+						siteMonitor				= config.services.sabnzbd.internalURL;
 
 						widget = {
 							type				= "sabnzbd";
-							url					= "http://127.0.0.1:8080";
+							url					= config.services.sabnzbd.internalURL;
 							key					= "{{HOMEPAGE_VAR_SABNZBDKEY}}";
 						};
 					};

@@ -6,12 +6,25 @@ with lib;
 		hostname = lib.mkOption {
 			type = lib.types.str;
 		};
+
+		sslCertificate = lib.mkOption {
+			type = lib.types.str;
+		};
+
+		sslCertificateKey = lib.mkOption {
+			type = lib.types.str;
+		};
 	};
 
 	config = {
 		services.nginx = rec {
-			enable					= true;
+			# Custom options, to be referenced in other parts of the config
 			hostname				= "minego.net";
+			sslCertificate			= "/var/lib/acme/${hostname}/fullchain.pem";
+			sslCertificateKey		= "/var/lib/acme/${hostname}/key.pem";
+
+			# Standard options
+			enable					= true;
 
 			recommendedProxySettings= true;
 			recommendedTlsSettings	= true;
@@ -41,8 +54,8 @@ with lib;
 					"www.micahgorrell.com"
 				];
 
-				sslCertificate		= "/var/lib/acme/${hostname}/fullchain.pem";
-				sslCertificateKey	= "/var/lib/acme/${hostname}/key.pem";
+				sslCertificate		= sslCertificate;
+				sslCertificateKey	= sslCertificateKey;
 			};
 		};
 

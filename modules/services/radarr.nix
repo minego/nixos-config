@@ -1,35 +1,36 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
+with lib;
+
 {
-	services.radarr = {
-		enable			= true;
-		openFirewall	= true;
-		group			= "plex";
+	options.services.radarr = {
+		port							= lib.mkOption { type = lib.types.port; };
+		publicURL						= lib.mkOption { type = lib.types.str;  };
+		internalURL						= lib.mkOption { type = lib.types.str;  };
 	};
 
-	# Reverse proxy with subdir
-    services.nginx.virtualHosts."${config.services.nginx.hostname}" = {
-		locations."/radarr" = {
-			proxyPass = "http://127.0.0.1:7878";
+	config = {
+		services.radarr = rec {
+			port						= 7878;
+			publicURL					= "https://radarr.${config.services.nginx.hostname}";
+			internalURL					= "http://127.0.0.1:${toString port}";
 
-			extraConfig = ''
-				proxy_set_header   Host $host;
-				proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
-				proxy_set_header   X-Forwarded-Host $host;
-				proxy_set_header   X-Forwarded-Proto $scheme;
-				proxy_redirect     off;
-				proxy_http_version 1.1;
-				proxy_set_header   Upgrade $http_upgrade;
-				proxy_set_header   Connection $http_connection;
-			'';
+			enable						= true;
+			openFirewall				= true;
+			group						= "plex";
 		};
 
-		locations."/radarr/api" = {
-			proxyPass = "http://127.0.0.1:7878";
-			extraConfig = ''
-                auth_basic off;
-			'';
+		services.nginx.virtualHosts."radarr.${config.services.nginx.hostname}" = {
+			forceSSL					= true;
+
+			locations."/" = {
+				proxyPass				= config.services.radarr.internalURL;
+				proxyWebsockets			= true;
+				extraConfig				= "proxy_pass_header Authorization;";
+			};
+
+			sslCertificate				= config.services.nginx.sslCertificate;
+			sslCertificateKey			= config.services.nginx.sslCertificateKey;
 		};
 	};
-
 }
 

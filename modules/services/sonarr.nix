@@ -1,33 +1,35 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
+with lib;
+
 {
-	services.sonarr = {
-		enable			= true;
-		openFirewall	= true;
-		group			= "plex";
+	options.services.sonarr = {
+		port							= lib.mkOption { type = lib.types.port; };
+		publicURL						= lib.mkOption { type = lib.types.str;  };
+		internalURL						= lib.mkOption { type = lib.types.str;  };
 	};
 
-	# Reverse proxy with subdir
-    services.nginx.virtualHosts."${config.services.nginx.hostname}" = {
-		locations."/sonarr" = {
-			proxyPass = "http://127.0.0.1:8989";
+	config = {
+		services.sonarr = rec {
+			port						= 8989;
+			publicURL					= "https://sonarr.${config.services.nginx.hostname}";
+			internalURL					= "http://127.0.0.1:${toString port}";
 
-			extraConfig = ''
-				proxy_set_header   Host $proxy_host;
-				proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
-				proxy_set_header   X-Forwarded-Host $host;
-				proxy_set_header   X-Forwarded-Proto $scheme;
-				proxy_redirect     off;
-				proxy_http_version 1.1;
-				proxy_set_header   Upgrade $http_upgrade;
-				proxy_set_header   Connection $http_connection;
-			'';
+			enable						= true;
+			openFirewall				= true;
+			group						= "plex";
 		};
 
-		locations."/sonarr/api" = {
-			proxyPass = "http://127.0.0.1:8989";
-			extraConfig = ''
-                auth_basic off;
-			'';
+		services.nginx.virtualHosts."sonarr.${config.services.nginx.hostname}" = {
+			forceSSL					= true;
+
+			locations."/" = {
+				proxyPass				= config.services.sonarr.internalURL;
+				proxyWebsockets			= true;
+				extraConfig				= "proxy_pass_header Authorization;";
+			};
+
+			sslCertificate				= config.services.nginx.sslCertificate;
+			sslCertificateKey			= config.services.nginx.sslCertificateKey;
 		};
 	};
 }
