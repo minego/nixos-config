@@ -8,6 +8,7 @@
 		./radarr.nix
 		./sonarr.nix
 		./jellyseerr.nix
+		./homeassistant.nix
 	];
 }
 
