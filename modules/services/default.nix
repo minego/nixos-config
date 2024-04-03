@@ -1,14 +1,13 @@
 { ... }: {
 	imports = [
 		./nginx.nix
-		./plex.nix
-		./radarr.nix
-		./sabnzbd.nix
-		./sonarr.nix
-		./vaultwarden.nix
 		./homepage.nix
-		./ombi.nix
-		./jellyseer.nix
+		./vaultwarden.nix
+		./plex.nix
+		./sabnzbd.nix
+		./radarr.nix
+		./sonarr.nix
+		./jellyseerr.nix
 	];
 }
 

@@ -11,11 +11,15 @@ with lib;
 			headerStyle							= "clean";
 
 			layout = {
-				Media = {
+				"Shows" = {
 					style						= "row";
 					columns						= 3;
 				};
-				Security = {
+				"Media" = {
+					style						= "row";
+					columns						= 3;
+				};
+				"Security" = {
 					style						= "row";
 					columns						= 3;
 				};
@@ -25,9 +29,25 @@ with lib;
 		environmentFile							= config.age.secrets.hotblack-dashboard-env.path;
 
 		services = [{
-			"Media" = [
+			"Shows" = [
 				{
-					"Plex" = {
+					"Request Shows" = {
+						icon					= "overseerr.png";
+						description				= "Manage requested TV shows and Movies";
+						href					= config.services.jellyseerr.publicURL;
+						siteMonitor				= config.services.jellyseerr.internalURL;
+
+						widget = {
+							type				= "jellyseerr";
+							url					= config.services.jellyseerr.internalURL;
+							enableQueue			= false;
+							key					= "{{HOMEPAGE_VAR_OVERSEERR}}";
+						};
+					};
+				}
+
+				{
+					"Watch Shows" = {
 						icon					= "plex.png";
 						description				= "Watch movies and TV shows";
 						href					= config.services.plex.publicURL;
@@ -42,22 +62,33 @@ with lib;
 				}
 
 				{
-					"Overseerr" = {
-						icon					= "overseerr.png";
-						description				= "Manage requested TV shows and Movies";
-						href					= config.services.jellyseerr.publicURL;
-						siteMonitor				= config.services.jellyseerr.internalURL;
+					"Calendar" = {
+						icon					= "calendar.png";
+						description				= "Calendar";
 
-						# widget = {
-						# 	type				= "overseerr";
-						# 	url					= config.services.jellyseerr.internalURL;
-						# 	enableQueue			= false;
-						# 	key					= "{{HOMEPAGE_VAR_OVERSEERR}}";
-						# };
+						widget = {
+							type				= "calendar";
+							view				= "agenda";
+							maxEvents			= 15;
+
+							integrations = [{
+								type			= "sonarr";
+								service_group	= "Media";
+								service_name	= "Manage TV Shows";
+							} {
+								type			= "radarr";
+								service_group	= "Media";
+								service_name	= "Manage Movies";
+							}];
+						};
+
 					};
 				}
+			];
+		} {
+			"Media" = [
 				{
-					"Sonarr" = {
+					"Manage TV Shows" = {
 						icon					= "sonarr.png";
 						description				= "Manage monitored TV shows";
 						href					= config.services.sonarr.publicURL;
@@ -72,9 +103,9 @@ with lib;
 					};
 				}
 				{
-					"Radarr" = {
+					"Manage Movies" = {
 						icon					= "radarr.png";
-						description				= "Manage monitored TV shows";
+						description				= "Manage monitored Movies";
 						href					= config.services.radarr.publicURL;
 						siteMonitor				= config.services.radarr.internalURL;
 
@@ -88,7 +119,7 @@ with lib;
 				}
 
 				{
-					"Sabnzbd" = {
+					"Downloads" = {
 						icon					= "sabnzbd.png";
 						description				= "Manage downloads";
 						href					= config.services.sabnzbd.publicURL;
@@ -110,49 +141,6 @@ with lib;
 						description				= "Manage secrets";
 						href					= "https://bitwarden.${config.services.nginx.hostname}/";
 						siteMonitor				= "http://127.0.0.1:8222";
-					};
-				}
-
-				{
-					"Tailscale" = {
-						icon					= "tailscale.png";
-						description				= "VPN";
-						href					= "https://tailscale.com";
-
-						widget = {
-							type				= "tailscale";
-							deviceid			= "nAmEwoA9mW11CNTRL"; # hotblack
-							key					= "{{HOMEPAGE_VAR_TAILSCALE_KEY}}";
-						};
-					};
-				}
-			];
-		} {
-			"Calendar" = [
-				{
-					"Calendar" = {
-						icon					= "calendar.png";
-						description				= "Calendar";
-
-						widget = {
-							type				= "calendar";
-							view				= "agenda";
-							maxEvents			= 30;
-
-							integrations = [
-								{
-									type				= "sonarr";
-									service_group		= "Media";
-									service_name		= "Sonarr";
-								}
-								{
-									type				= "radarr";
-									service_group		= "Media";
-									service_name		= "Radarr";
-								}
-							];
-						};
-
 					};
 				}
 			];
@@ -197,5 +185,39 @@ with lib;
 			}
 		];
 	};
+
+	services.nginx.virtualHosts."dashboard.${config.services.nginx.hostname}" = {
+		forceSSL								= true;
+
+		locations."/" = {
+			proxyPass							= "http://127.0.0.1:8082";
+			recommendedProxySettings			= true;
+			extraConfig							= ''
+				proxy_http_version 1.1;
+				proxy_set_header Upgrade $http_upgrade;
+				proxy_set_header Connection "upgrade";
+				'';
+		};
+
+		extraConfig = ''
+			ssl_session_cache builtin:1000;
+			ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+			ssl_prefer_server_ciphers on;
+			ssl_ciphers 'ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:ECDHE-RSA-DES-CBC3-SHA:ECDHE-ECDSA-DES-CBC3-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:AES:CAMELLIA:DES-CBC3-SHA:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!MD5:!PSK:!aECDH:!EDH-DSS-DES-CBC3-SHA:!EDH-RSA-DES-CBC3-SHA:!KRB5-DES-CBC3-SHA';
+			ssl_session_tickets off;
+			ssl_ecdh_curve secp384r1;
+			resolver_timeout 10s;
+			gzip on;
+			gzip_vary on;
+			gzip_min_length 1000;
+			gzip_proxied any;
+			gzip_types text/plain text/css text/xml application/xml text/javascript application/x-javascript image/svg+xml;
+			gzip_disable "MSIE [1-6]\.";
+			'';
+
+		sslCertificate							= config.services.nginx.sslCertificate;
+		sslCertificateKey						= config.services.nginx.sslCertificateKey;
+	};
+
 }
 
