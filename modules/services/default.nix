@@ -7,6 +7,7 @@
 		./sonarr.nix
 		./vaultwarden.nix
 		./homepage.nix
+		./ombi.nix
 	];
 }
 

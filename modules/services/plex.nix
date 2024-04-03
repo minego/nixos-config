@@ -9,7 +9,7 @@
 		dataDir						= "/var/lib/plex";
 	};
 
-	services.nginx.virtualHosts."plex.minego.net" = {
+    services.nginx.virtualHosts."plex.${config.services.nginx.hostname}" = {
 		forceSSL					= true;
 		http2						= true;
 

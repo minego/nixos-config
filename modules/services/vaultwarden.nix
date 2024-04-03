@@ -11,7 +11,7 @@
 		};
 	};
 
-	services.nginx.virtualHosts."bitwarden.minego.net" = {
+    services.nginx.virtualHosts."bitwarden.${config.services.nginx.hostname}" = {
 		forceSSL = true;
 
 		locations."/" = {

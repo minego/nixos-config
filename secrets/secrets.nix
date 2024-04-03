@@ -7,6 +7,8 @@ let
 in
 {
 	"hotblack-dashboard-env.age".publicKeys		= users ++ hosts;
+	"hotblack-cloudflare-user.age".publicKeys	= users ++ hosts;
+	"hotblack-cloudflare-key.age".publicKeys	= users ++ hosts;
 }
 
 

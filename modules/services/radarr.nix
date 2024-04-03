@@ -7,7 +7,7 @@
 	};
 
 	# Reverse proxy with subdir
-	services.nginx.virtualHosts."minego.net" = {
+    services.nginx.virtualHosts."${config.services.nginx.hostname}" = {
 		locations."/radarr" = {
 			proxyPass = "http://127.0.0.1:7878";
 

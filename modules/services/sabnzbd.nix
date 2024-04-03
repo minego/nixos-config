@@ -16,7 +16,7 @@
 	systemd.services.sabnzbd.after = [ "network.target" "nginx.service" ];
 
 	# Reverse proxy with subdir
-	services.nginx.virtualHosts."minego.net" = {
+    services.nginx.virtualHosts."${config.services.nginx.hostname}" = {
 		locations."/sabnzbd" = {
 			proxyPass = "http://127.0.0.1:8080";
 			proxyWebsockets = true;

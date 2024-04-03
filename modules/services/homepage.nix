@@ -30,7 +30,7 @@ with lib;
 					"Plex" = {
 						icon					= "plex.png";
 						description				= "Watch movies and TV shows";
-						href					= "http://plex.minego.net";
+						href					= "http://plex.${config.services.nginx.hostname}";
 						siteMonitor				= "http://127.0.0.1:32400";
 
 						widget = {
@@ -42,10 +42,25 @@ with lib;
 				}
 
 				{
+					"Ombi" = {
+						icon					= "ombi.png";
+						description				= "Manage requested TV shows and Movies";
+						href					= "http://${config.services.nginx.hostname}/ombi";
+						siteMonitor				= "http://127.0.0.1:5005";
+
+						widget = {
+							type				= "ombi";
+							url					= "http://127.0.0.1:5005";
+							enableQueue			= false;
+							key					= "{{HOMEPAGE_VAR_OMBI}}";
+						};
+					};
+				}
+				{
 					"Sonarr" = {
 						icon					= "sonarr.png";
 						description				= "Manage monitored TV shows";
-						href					= "http://minego.net/sonarr";
+						href					= "http://${config.services.nginx.hostname}/sonarr";
 						siteMonitor				= "http://127.0.0.1:8989";
 
 						widget = {
@@ -61,7 +76,7 @@ with lib;
 					"Radarr" = {
 						icon					= "radarr.png";
 						description				= "Manage monitored movies";
-						href					= "http://minego.net/radarr";
+						href					= "http://${config.services.nginx.hostname}/radarr";
 						siteMonitor				= "http://127.0.0.1:7878";
 
 						widget = {
@@ -77,7 +92,7 @@ with lib;
 					"Sabnzbd" = {
 						icon					= "sabnzbd.png";
 						description				= "Manage downloads";
-						href					= "http://minego.net/sabnzbd";
+						href					= "http://${config.services.nginx.hostname}/sabnzbd";
 						siteMonitor				= "http://127.0.0.1:8080";
 
 						widget = {
@@ -94,7 +109,7 @@ with lib;
 					"Vaultwarden" = {
 						icon					= "bitwarden.png";
 						description				= "Manage secrets";
-						href					= "https://bitwarden.minego.net/";
+						href					= "https://bitwarden.${config.services.nginx.hostname}/";
 						siteMonitor				= "http://127.0.0.1:8222";
 					};
 				}
