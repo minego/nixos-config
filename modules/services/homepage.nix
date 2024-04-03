@@ -42,18 +42,18 @@ with lib;
 				}
 
 				{
-					"Ombi" = {
-						icon					= "ombi.png";
+					"Overseerr" = {
+						icon					= "overseerr.png";
 						description				= "Manage requested TV shows and Movies";
-						href					= config.services.ombi.publicURL;
-						siteMonitor				= config.services.ombi.internalURL;
+						href					= config.services.jellyseerr.publicURL;
+						siteMonitor				= config.services.jellyseerr.internalURL;
 
-						widget = {
-							type				= "ombi";
-							url					= config.services.ombi.internalURL;
-							enableQueue			= false;
-							key					= "{{HOMEPAGE_VAR_OMBI}}";
-						};
+						# widget = {
+						# 	type				= "overseerr";
+						# 	url					= config.services.jellyseerr.internalURL;
+						# 	enableQueue			= false;
+						# 	key					= "{{HOMEPAGE_VAR_OVERSEERR}}";
+						# };
 					};
 				}
 				{
@@ -164,8 +164,22 @@ with lib;
 					label						= "system";
 					cpu							= true;
 					memory						= true;
+				};
+			}
+
+			{
+				resources = {
+					label						= "root";
 					disk = [
 						"/"
+					];
+				};
+			}
+
+			{
+				resources = {
+					label						= "data";
+					disk = [
 						"/mnt/data"
 					];
 				};

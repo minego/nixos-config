@@ -8,6 +8,7 @@
 		./vaultwarden.nix
 		./homepage.nix
 		./ombi.nix
+		./jellyseer.nix
 	];
 }
 

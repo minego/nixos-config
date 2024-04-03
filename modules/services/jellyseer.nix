@@ -2,27 +2,26 @@
 with lib;
 
 {
-	options.services.ombi = {
+	options.services.jellyseerr = {
 		publicURL						= lib.mkOption { type = lib.types.str;  };
 		internalURL						= lib.mkOption { type = lib.types.str;  };
 	};
 
 	config = {
-		services.ombi = rec {
-			port						= 5005;
-			publicURL					= "https://ombi.${config.services.nginx.hostname}";
+		services.jellyseerr = rec {
+			port						= 5055;
+			publicURL					= "https://overseerr.${config.services.nginx.hostname}";
 			internalURL					= "http://127.0.0.1:${toString port}";
 
 			enable						= true;
 			openFirewall				= true;
-			group						= "plex";
 		};
 
-		services.nginx.virtualHosts."ombi.${config.services.nginx.hostname}" = {
+		services.nginx.virtualHosts."overseerr.${config.services.nginx.hostname}" = {
 			forceSSL					= true;
 
 			locations."/" = {
-				proxyPass				= config.services.ombi.internalURL;
+				proxyPass				= config.services.jellyseerr.internalURL;
 				recommendedProxySettings= true;
 				extraConfig				= ''
                     proxy_http_version 1.1;
@@ -32,8 +31,6 @@ with lib;
 			};
 
 			extraConfig = ''
-                server_name ombi.*;
-                server_name ombi.minego.net;
                 ssl_session_cache builtin:1000;
                 ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
                 ssl_prefer_server_ciphers on;
