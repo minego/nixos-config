@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, inputs, ... }:
 with lib;
 
 {
@@ -49,7 +49,15 @@ with lib;
 				"tailscale"
 				"unifi"
 				"youtube"
+				"homekit"
+				"homekit_controller"
+				"foscam"
+				"tuya"
 			];
+
+			customComponents = with pkgs.home-assistant-custom-components; [
+			];
+
 			config = {
 				# Includes dependencies for a basic setup
 				# https://www.home-assistant.io/integrations/default_config/

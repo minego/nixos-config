@@ -1,4 +1,4 @@
-{ ... }: {
+{ inputs, ... }: {
 	imports = [
 		./nginx.nix
 		./homepage.nix
@@ -9,6 +9,8 @@
 		./sonarr.nix
 		./jellyseerr.nix
 		./homeassistant.nix
+		./wyzebridge.nix
+		./homebridge.nix
 	];
 }
 
