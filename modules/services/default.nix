@@ -30,6 +30,9 @@
 		# Home Assistant - Home automation, voice control, smart devices, etc
 		./homeassistant.nix
 
+		# MQTT broker
+		./mosquitto.nix
+
 		# Wyze Bridge is a video bridge and provides streaming RSTP camera streams 
 		./wyzebridge.nix
 
