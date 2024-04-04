@@ -53,15 +53,36 @@ with lib;
 				"homekit_controller"
 				"foscam"
 				"tuya"
+				"whisper"
+				"piper"
+				"nest"
+				"wyoming"
+				"ipp"
+				"spotify"
+				"androidtv_remote"
+				"unifiprotect"
 			];
 
 			customComponents = with pkgs.home-assistant-custom-components; [
+			];
+
+			customLovelaceModules = with pkgs.home-assistant-custom-lovelace-modules; [
+				mushroom
+				mini-media-player
+				mini-graph-card
+				light-entity-card
 			];
 
 			config = {
 				# Includes dependencies for a basic setup
 				# https://www.home-assistant.io/integrations/default_config/
 				default_config = {};
+
+				# Needed to use the custom modules
+				lovelace.mode = "yaml";
+
+				"automation manual"		= [];
+				"automation ui"			= "!include automations.yaml";
 			};
 		};
 		networking.firewall.allowedTCPPorts = [ config.services.home-assistant.config.http.server_port ];
