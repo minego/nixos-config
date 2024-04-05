@@ -64,6 +64,7 @@ with lib;
 			];
 
 			customComponents = with pkgs.home-assistant-custom-components; [
+				frigate
 			];
 
 			customLovelaceModules = with pkgs.home-assistant-custom-lovelace-modules; [
