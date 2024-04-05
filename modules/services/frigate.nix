@@ -16,7 +16,7 @@ with lib;
 			};
 
 			"/var/log" = {
-				hostPath			= "/var/log";
+				hostPath			= "/var/log/frigate";
 				isReadOnly			= false;
 			};
 		};
@@ -41,25 +41,37 @@ with lib;
 				hostname			= "frigate";
 
 				settings = {
-					# Note that frigate may also use these ports:
-					#		127.0.0.1:5001	api servers
-					#		127.0.0.1:5002	mqtt-ws servers
-					#		127.0.0.1:8082	jsmpeg
-					#		127.0.0.1:1984	go2rtc
-
 					mqtt = {
 						enabled		= true;
-						host		= "127.0.0.1";
+						host		= "hotblack.minego.net";
 						port		= 1883;
 					};
 
 					cameras = {
-						kitchen = {
-							ffmpeg.inputs = [{
-								path	= "rtsp://127.0.0.1:8554/living-room-cam";
-								roles	= [ "detect" "record" ];
-							}];
-						};
+						livingroom.ffmpeg.inputs = [{
+							path	= "rtsp://hotblack.minego.net:8554/living-room-cam";
+							roles	= [ "detect" "record" ];
+						}];
+						frontdoor.ffmpeg.inputs = [{
+							path	= "rtsp://hotblack.minego.net:8554/front-door";
+							roles	= [ "detect" "record" ];
+						}];
+						frontporch.ffmpeg.inputs = [{
+							path	= "rtsp://hotblack.minego.net:8554/front-porch";
+							roles	= [ "detect" "record" ];
+						}];
+						backyard.ffmpeg.inputs = [{
+							path	= "rtsp://hotblack.minego.net:8554/backyard";
+							roles	= [ "detect" "record" ];
+						}];
+						garagedoor.ffmpeg.inputs = [{
+							path	= "rtsp://hotblack.minego.net:8554/garage-door";
+							roles	= [ "detect" "record" ];
+						}];
+						printers.ffmpeg.inputs = [{
+							path	= "rtsp://hotblack.minego.net:8554/printers";
+							roles	= [ "detect" "record" ];
+						}];
 					};
 				};
 			};
@@ -80,33 +92,5 @@ with lib;
 		# Host ports
 		allowedTCPPorts				= [ 8125 ];
 	};
-
-	services.nginx.virtualHosts."frigate.${config.services.nginx.hostname}" = {
-		forceSSL					= true;
-
-		locations."/" = {
-			proxyPass				= "http://frigate/";
-			recommendedProxySettings= true;
-			extraConfig				= ''
-				proxy_http_version 1.1;
-				proxy_set_header Upgrade $http_upgrade;
-				proxy_set_header Connection "upgrade";
-				'';
-		};
-
-		extraConfig = ''
-			resolver_timeout 10s;
-			gzip on;
-			gzip_vary on;
-			gzip_min_length 1000;
-			gzip_proxied any;
-			gzip_types text/plain text/css text/xml application/xml text/javascript application/x-javascript image/svg+xml;
-			gzip_disable "MSIE [1-6]\.";
-			'';
-
-		sslCertificate				= config.services.nginx.sslCertificate;
-		sslCertificateKey			= config.services.nginx.sslCertificateKey;
-	};
-
 }
 
