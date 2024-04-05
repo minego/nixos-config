@@ -69,9 +69,25 @@ with lib;
 
 			customLovelaceModules = with pkgs.home-assistant-custom-lovelace-modules; [
 				mushroom
+				multiple-entity-row
 				mini-media-player
 				mini-graph-card
 				light-entity-card
+
+				(pkgs.stdenv.mkDerivation rec {
+					pname			= "frigate-hass-card";
+					version			= "v5.2.0";
+
+					src = pkgs.fetchzip {
+						url			= "https://github.com/dermotduffy/${pname}/releases/download/${version}/${pname}.zip";
+						hash		= "sha256-g8Rg6Y3KN1DLexqEPUt61PotpeBSCo3rD4iSz97ml+U=";
+					};
+
+					installPhase	= ''
+                        mkdir -p $out
+                        cp -v * $out
+                        '';
+				})
 			];
 
 			config = {

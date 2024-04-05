@@ -53,7 +53,14 @@ with lib;
 						port		= 1883;
 					};
 
-					cameras			= {};
+					cameras = {
+						kitchen = {
+							ffmpeg.inputs = [{
+								path	= "rtsp://127.0.0.1:8554/living-room-cam";
+								roles	= [ "detect" "record" ];
+							}];
+						};
+					};
 				};
 			};
 
