@@ -1,9 +1,13 @@
 { config, pkgs, lib, ... }:
 with lib;
 
-{
+rec {
 	services.homepage-dashboard = {
 		enable									= true;
+
+		# The default port of 8082 conflicts with frigate, and that isn't
+		# currently configurable.
+		listenPort								= 8282;
 
 		settings = {
 			title								= "minego";
@@ -190,7 +194,7 @@ with lib;
 		forceSSL								= true;
 
 		locations."/" = {
-			proxyPass							= "http://127.0.0.1:8082";
+			proxyPass							= "http://127.0.0.1:${toString config.services.homepage-dashboard.listenPort}";
 			recommendedProxySettings			= true;
 			extraConfig							= ''
 				proxy_http_version 1.1;

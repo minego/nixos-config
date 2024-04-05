@@ -46,6 +46,9 @@
 
 		# Whisper converts text into speech, used by home-assistant
 		./piper.nix
+
+		# Frigate network video recorder (NVR)
+		./frigate.nix
 	];
 }
 

@@ -71,6 +71,13 @@ lib.nixosSystem {
 				];
 			};
 
+			# Networking for NixOS containers
+			networking.nat = {
+				enable								= true;
+				internalInterfaces					= ["ve-+"];
+				externalInterface					= "br0";
+			};
+
 			imports = [
 				../../users/m/linux.nix
 

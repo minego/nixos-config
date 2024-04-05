@@ -15,13 +15,9 @@ with lib;
 			enable						= true;
 			listeners = [{
 				acl						= [ "pattern readwrite #" ];
-				# omitPasswordAuth		= true;
-				# settings.allow_anonymous= true;
-
-				users.root = {
-					acl					= [ "readwrite #" ];
-					hashedPassword		= "$7$101$APJzdO3OCXwsme7Z$/K7wIHgUJJjVcmELyHWSfaIJDw0+TmmSCAQ2F4rCTkORc0/IHgTfGSKRnJFIG+vexOhPJr6jMYz1sCIO+fyBQg==";
-				};
+				omitPasswordAuth		= true;
+				settings.allow_anonymous= true;
+				address					= "127.0.0.1";
 			}];
 		};
 

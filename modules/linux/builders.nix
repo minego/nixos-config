@@ -124,6 +124,8 @@ with lib;
 		services.nix-serve = mkIf (config.builders.cache) {
 			enable				= true;
 			secretKeyFile		= "/var/cache-priv-key.pem";
+
+			port				= 5005;
 		};
 
 		services.nginx = mkIf (config.builders.cache) {
