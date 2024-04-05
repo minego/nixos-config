@@ -133,6 +133,10 @@ lib.nixosSystem {
 					group							= "users";
 					mode							= "400";
 				};
+
+				foscam-password = {
+					file							= ../../secrets/foscam-password.age;
+				};
 			};
 		}
 

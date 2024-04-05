@@ -2,7 +2,7 @@
 with lib;
 
 {
-	containers.frigate = {
+	containers.frigate = rec {
 		autoStart					= true;
 		privateNetwork				= true;
 		hostAddress					= "192.168.1.1";
@@ -19,6 +19,12 @@ with lib;
 				hostPath			= "/var/log/frigate";
 				isReadOnly			= false;
 			};
+
+			# TODO: Why does this fail if I use the variable?
+			# "${config.age.secrets.foscam-password.path}" = {
+			"/run/agenix/foscam-password" = {
+				isReadOnly			= true;
+			};
 		};
 
 		forwardPorts = [{
@@ -33,6 +39,10 @@ with lib;
 		config = { config, pkgs, lib, ... }: {
 			system.stateVersion		= "23.05";
 
+			systemd.services.frigate.serviceConfig = {
+				EnvironmentFile = "/run/agenix/foscam-password";
+			};
+
 			services.frigate = rec {
 				enable				= true;
 
@@ -43,33 +53,46 @@ with lib;
 				settings = {
 					mqtt = {
 						enabled		= true;
-						host		= "hotblack.minego.net";
+						host		= "${hostAddress}";
 						port		= 1883;
 					};
 
-					cameras = {
+					cameras = rec {
+						kitchen = {
+							onvif = {
+								host	= "kitchen-camera.minego.net";
+								port	= 88;
+								user	= "minego";
+								password= "{FRIGATE_FOSCAM_PASS}";
+							};
+							ffmpeg.inputs = [{
+								path	= "rtsp://minego:{FRIGATE_FOSCAM_PASS}@kitchen-camera.minego.net:88/videoSub";
+								roles	= [ "detect" "record" ];
+							}];
+						};
+
 						livingroom.ffmpeg.inputs = [{
-							path	= "rtsp://hotblack.minego.net:8554/living-room-cam";
+							path	= "rtsp://${hostAddress}:8554/living-room-cam";
 							roles	= [ "detect" "record" ];
 						}];
 						frontdoor.ffmpeg.inputs = [{
-							path	= "rtsp://hotblack.minego.net:8554/front-door";
+							path	= "rtsp://${hostAddress}:8554/front-door";
 							roles	= [ "detect" "record" ];
 						}];
 						frontporch.ffmpeg.inputs = [{
-							path	= "rtsp://hotblack.minego.net:8554/front-porch";
+							path	= "rtsp://${hostAddress}:8554/front-porch";
 							roles	= [ "detect" "record" ];
 						}];
 						backyard.ffmpeg.inputs = [{
-							path	= "rtsp://hotblack.minego.net:8554/backyard";
+							path	= "rtsp://${hostAddress}:8554/backyard";
 							roles	= [ "detect" "record" ];
 						}];
 						garagedoor.ffmpeg.inputs = [{
-							path	= "rtsp://hotblack.minego.net:8554/garage-door";
+							path	= "rtsp://${hostAddress}:8554/garage-door";
 							roles	= [ "detect" "record" ];
 						}];
 						printers.ffmpeg.inputs = [{
-							path	= "rtsp://hotblack.minego.net:8554/printers";
+							path	= "rtsp://${hostAddress}:8554/printers";
 							roles	= [ "detect" "record" ];
 						}];
 					};
