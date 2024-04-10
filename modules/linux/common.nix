@@ -95,6 +95,9 @@ with lib;
 			serviceConfig.ExecStart			= "${pkgs.bluez}/bin/mpris-proxy";
 		};
 
+		# Prevent failig to do a switch because networkmanager takes too long
+		systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
+
 		# Select internationalisation properties.
 		i18n.defaultLocale					= "en_US.UTF-8";
 

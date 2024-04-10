@@ -51,9 +51,6 @@ with lib;
 	];
 
 	config = {
-		# Prevent failig to do a switch because networkmanager takes too long
-		systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
-
 		time.timeZone = lib.mkDefault "America/Denver";
 
 		# Enable the nix command and flakes
