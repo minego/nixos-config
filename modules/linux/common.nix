@@ -100,7 +100,10 @@ with lib;
 		# Prevent failig to do a switch because networkmanager takes too long
 		systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
 
-		hardware.keyboard.zsa.enable		= true;
+		hardware.keyboard = {
+			qmk.enable						= true;
+			zsa.enable						= true;
+		};
 
 		# Select internationalisation properties.
 		i18n.defaultLocale					= "en_US.UTF-8";
