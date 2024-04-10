@@ -22,7 +22,7 @@ with lib;
 		boot.kernelPackages = mkOverride 500 pkgs.linuxPackages_zen;
 	})
 	{
-			environment.systemPackages = with pkgs; [
+		environment.systemPackages = with pkgs; [
 			psmisc
 			usbutils
 			hwinfo
@@ -35,6 +35,8 @@ with lib;
 			glxinfo
 			foot
 			xterm
+
+			wally-cli # Firmware for the ZSA moonlander keyboard
 
 			# I don't love having these installed, but they make development
 			# easier since I don't have to install them for every little thing
@@ -97,6 +99,8 @@ with lib;
 
 		# Prevent failig to do a switch because networkmanager takes too long
 		systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
+
+		hardware.keyboard.zsa.enable		= true;
 
 		# Select internationalisation properties.
 		i18n.defaultLocale					= "en_US.UTF-8";
