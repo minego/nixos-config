@@ -18,6 +18,7 @@
 				"zem"		= { id = "TFBJXJ5-XKVNFHI-HVJ5X3N-ATR3XKF-EIKXFLQ-C6XX4K5-UDZUPS7-OJ2TXQF"; };
 				"random"	= { id = "OV3MXZG-LWYH4RW-D7SILOK-YFUVDLG-BXMHKNC-XFQHOKO-66DZL4Y-N6OPWQT"; };
 				"wonko"		= { id = "FENARYZ-NAJAM4L-MK5BIUP-SUDBIJI-HGTSNBW-BVGPKTX-JS4UEAC-F534SQY"; };
+				"oneplus12r"= { id = "L4KCXPG-5LK5DFR-I3RSZOD-T43RKOG-GKU7HTK-QSMRU33-TIQP3TX-EKO2YQN"; };
 			};
 
 			folders = {
@@ -25,7 +26,7 @@
 					enable	 = true;
 					id		= "notes";
 					path	= "/home/m/notes";
-					devices	= [ "dent" "pixel7" "zaphod2" "wonko" ];
+					devices	= [ "dent" "pixel7" "zaphod2" "wonko" "oneplus12r" ];
 				};
 
 				"Code" = {
