@@ -15,7 +15,7 @@ with lib;
 			kitty
 		];
 
-		services.xserver.displayManager.sessionPackages = [
+		services.displayManager.sessionPackages = [
 			pkgs.dwl-unwrapped
 		];
 
