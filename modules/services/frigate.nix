@@ -10,6 +10,11 @@ with lib;
 
 		ephemeral					= true;
 		bindMounts = {
+			"/etc/resolv.conf" = {
+				hostPath			= "/etc/resolv.conf";
+				isReadOnly			= true;
+			};  
+
 			"/var/lib/frigate" = {
 				hostPath			= "/var/lib/frigate";
 				isReadOnly			= false;
@@ -61,7 +66,7 @@ with lib;
 						kitchen = {
 							onvif = {
 								host	= "kitchen-camera.minego.net";
-								port	= 88;
+								port	= 888;
 								user	= "minego";
 								password= "{FRIGATE_FOSCAM_PASS}";
 							};
@@ -71,30 +76,30 @@ with lib;
 							}];
 						};
 
-						livingroom.ffmpeg.inputs = [{
-							path	= "rtsp://${hostAddress}:8554/living-room-cam";
-							roles	= [ "detect" "record" ];
-						}];
-						frontdoor.ffmpeg.inputs = [{
-							path	= "rtsp://${hostAddress}:8554/front-door";
-							roles	= [ "detect" "record" ];
-						}];
-						frontporch.ffmpeg.inputs = [{
-							path	= "rtsp://${hostAddress}:8554/front-porch";
-							roles	= [ "detect" "record" ];
-						}];
-						backyard.ffmpeg.inputs = [{
-							path	= "rtsp://${hostAddress}:8554/backyard";
-							roles	= [ "detect" "record" ];
-						}];
-						garagedoor.ffmpeg.inputs = [{
-							path	= "rtsp://${hostAddress}:8554/garage-door";
-							roles	= [ "detect" "record" ];
-						}];
-						printers.ffmpeg.inputs = [{
-							path	= "rtsp://${hostAddress}:8554/printers";
-							roles	= [ "detect" "record" ];
-						}];
+						# livingroom.ffmpeg.inputs = [{
+						# 	path	= "rtsp://${hostAddress}:8554/living-room-cam";
+						# 	roles	= [ "detect" "record" ];
+						# }];
+						# frontdoor.ffmpeg.inputs = [{
+						# 	path	= "rtsp://${hostAddress}:8554/front-door";
+						# 	roles	= [ "detect" "record" ];
+						# }];
+						# frontporch.ffmpeg.inputs = [{
+						# 	path	= "rtsp://${hostAddress}:8554/front-porch";
+						# 	roles	= [ "detect" "record" ];
+						# }];
+						# backyard.ffmpeg.inputs = [{
+						# 	path	= "rtsp://${hostAddress}:8554/backyard";
+						# 	roles	= [ "detect" "record" ];
+						# }];
+						# garagedoor.ffmpeg.inputs = [{
+						# 	path	= "rtsp://${hostAddress}:8554/garage-door";
+						# 	roles	= [ "detect" "record" ];
+						# }];
+						# printers.ffmpeg.inputs = [{
+						# 	path	= "rtsp://${hostAddress}:8554/printers";
+						# 	roles	= [ "detect" "record" ];
+						# }];
 					};
 				};
 			};
@@ -104,9 +109,11 @@ with lib;
                 SUBSYSTEM=="usb",ATTRS{idVendor}=="18d1",GROUP="frigate"
                 '';
 
-			networking.firewall = {
-				# Container ports
-				allowedTCPPorts		= [ 80 ];
+			networking = {
+				firewall = {
+					# Container ports
+					allowedTCPPorts		= [ 80 ];
+				};
 			};
 		};
 	};

@@ -61,6 +61,8 @@ with lib;
 				"spotify"
 				"androidtv_remote"
 				"unifiprotect"
+				"glances"
+				"onvif"
 			];
 
 			customComponents = with pkgs.home-assistant-custom-components; [
