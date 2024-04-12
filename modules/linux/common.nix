@@ -26,6 +26,7 @@ with lib;
 			psmisc
 			usbutils
 			hwinfo
+			ethtool
 			inotify-tools
 			polkit
 			polkit_gnome
@@ -35,6 +36,7 @@ with lib;
 			glxinfo
 			foot
 			xterm
+			glances
 
 			wally-cli # Firmware for the ZSA moonlander keyboard
 
