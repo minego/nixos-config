@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ inputs, config, pkgs, lib, ... }:
 with lib;
 
 {
@@ -50,6 +50,11 @@ with lib;
 
 			services.frigate = rec {
 				enable				= true;
+
+				# Override to get the fix for the onvif wsdl shit
+				package = pkgs.frigate.overrideDerivation(oldAttrs: {
+					patches = oldAttrs.patches ++ [ ./frigate-onvif.patch ];
+				});
 
 				# Frigate upstream itself sets up nginx with a reverse proxy, and
 				# uses the hostname specified here.

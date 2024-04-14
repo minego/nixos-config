@@ -1,0 +1,42 @@
+From b65656fa8733c1c2f3d944f716d2e9493ae7c99f Mon Sep 17 00:00:00 2001
+From: Martin Weinelt <mweinelt@users.noreply.github.com>
+Date: Sat, 13 Apr 2024 19:25:58 +0200
+Subject: [PATCH] Make wsdl_dir path resolving more robust (#10967)
+
+Relying on importlib to resolve the path to the wsdl directory is more
+robust, since it traverses all site-packages directories, that are part
+of the PYTHONPATH.
+---
+ frigate/ptz/onvif.py | 8 +++-----
+ 1 file changed, 3 insertions(+), 5 deletions(-)
+
+diff --git a/frigate/ptz/onvif.py b/frigate/ptz/onvif.py
+index 335e2ee2..2cd90370 100644
+--- a/frigate/ptz/onvif.py
++++ b/frigate/ptz/onvif.py
+@@ -1,8 +1,9 @@
+ """Configure and control camera via onvif."""
+ 
+ import logging
+-import site
+ from enum import Enum
++from importlib.util import find_spec
++from pathlib import Path
+ 
+ import numpy
+ from onvif import ONVIFCamera, ONVIFError
+@@ -50,10 +51,7 @@ class OnvifController:
+                             cam.onvif.port,
+                             cam.onvif.user,
+                             cam.onvif.password,
+-                            wsdl_dir=site.getsitepackages()[0].replace(
+-                                "dist-packages", "site-packages"
+-                            )
+-                            + "/wsdl",
++                            wsdl_dir=Path(find_spec("onvif").origin).parent / "../wsdl",
+                         ),
+                         "init": False,
+                         "active": False,
+-- 
+2.44.0
+
