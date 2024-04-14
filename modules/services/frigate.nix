@@ -58,6 +58,8 @@ with lib;
 				usbutils
 				hwinfo
 				glances
+
+				edgetpu-compiler
 			];
 
 			services.frigate = rec {
