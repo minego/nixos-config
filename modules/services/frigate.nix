@@ -1,18 +1,6 @@
 { inputs, config, pkgs, lib, ... }:
 with lib;
 
-let
-	frigate-patched = pkgs.frigate.overrideDerivation(oldAttrs: {
-			patches = oldAttrs.patches ++ [
-				(pkgs.fetchpatch2 {
-					# https://github.com/blakeblackshear/frigate/pull/10967
-					name = "frigate-wsdl-path.patch";
-					url = "https://github.com/blakeblackshear/frigate/commit/b65656fa8733c1c2f3d944f716d2e9493ae7c99f.patch";
-					hash = "sha256-taPWFV4PldBGUKAwFMKag4W/3TLMSGdKLYG8bj1Y5mU=";
-				})
-			];
-		});
-in
 {
 	containers.frigate = rec {
 		autoStart					= true;
@@ -61,14 +49,19 @@ in
 			};
 
 			environment.systemPackages = with pkgs; [
-				frigate-patched
+				neovim
+
+				pciutils
+				lsof
+				file
+				psmisc
+				usbutils
+				hwinfo
+				glances
 			];
 
 			services.frigate = rec {
 				enable				= true;
-
-				# Override to get the fix for the onvif wsdl shit
-				package				= frigate-patched;
 
 				# Frigate upstream itself sets up nginx with a reverse proxy, and
 				# uses the hostname specified here.
@@ -79,6 +72,12 @@ in
 						enabled		= true;
 						host		= "${hostAddress}";
 						port		= 1883;
+					};
+
+					detectors = {
+						coral = {
+							type	= "edgetpu";
+						};
 					};
 
 					cameras = rec {
@@ -99,6 +98,8 @@ in
 							onvif = {
 								host	= "garage-camera.minego.net";
 								port	= 80;
+								user	= "minego";
+								password= "{FRIGATE_FOSCAM_PASS}";
 							};
 							ffmpeg.inputs = [{
 								path	= "rtsp://minego:{FRIGATE_FOSCAM_PASS}@garage-camera.minego.net/stream1";

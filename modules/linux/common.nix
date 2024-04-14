@@ -156,6 +156,11 @@ with lib;
 		programs.ssh.startAgent					= true;
 		programs.mosh.enable					= true;
 
+		# Driver needed for the EdgeTPU Coral dev board
+		boot.extraModulePackages = with config.boot.kernelPackages; [
+			gasket
+		];
+
 		# This value determines the NixOS release from which the default
 		# settings for stateful data, like file locations and database versions
 		# on your system were taken. It‘s perfectly fine and recommended to leave
