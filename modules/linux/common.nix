@@ -161,6 +161,13 @@ with lib;
 			gasket
 		];
 
+		# Allow access to the esp home m5 atom echo devices for setting up
+		# their firmware with esphome (through chrome)
+		services.udev.extraRules				= ''
+			SUBSYSTEMS=="usb", ATTRS{idVendor}=="303a", ATTRS{idProduct}=="00??", GROUP="plugdev", MODE="0666"
+			SUBSYSTEMS=="usb", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="????", GROUP="plugdev", MODE="0666"
+		'';
+
 		# This value determines the NixOS release from which the default
 		# settings for stateful data, like file locations and database versions
 		# on your system were taken. It‘s perfectly fine and recommended to leave
