@@ -679,10 +679,8 @@
         "type": "github"
       },
       "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
+        "type": "git",
+        "url": "file:///home/m/src/nix/nixpkgs"
       }
     },
     "nixvim": {

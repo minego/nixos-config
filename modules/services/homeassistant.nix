@@ -106,6 +106,20 @@ with lib;
 		};
 		networking.firewall.allowedTCPPorts = [ config.services.home-assistant.config.http.server_port ];
 
+		services.wyoming.openwakeword = {
+			enable						= true;
+			customModelsDirectories		= [ /var/lib/openwakeword ];
+			uri							= "tcp://0.0.0.0:10400";
+		};
+
+		services.esphome = {
+			enable						= true;
+			# usePing						= true;
+			port						= 6052;
+			address						= "0.0.0.0";
+			openFirewall				= true;
+		};
+
 		# I hate this, but it seems to be required for many home assistant
 		# modules...
 		# https://nixos.wiki/wiki/Home_Assistant

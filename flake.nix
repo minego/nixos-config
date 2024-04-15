@@ -2,7 +2,8 @@
 	description = "minego's NixOS Configuration";
 
 	inputs = {
-		nixpkgs.url				= "github:NixOS/nixpkgs/nixos-unstable";
+		# nixpkgs.url				= "github:NixOS/nixpkgs/nixos-unstable";
+		nixpkgs.url				= "git+file:///home/m/src/nix/nixpkgs";
 
 		home-manager			= { url = github:nix-community/home-manager;			inputs.nixpkgs.follows = "nixpkgs"; };
 		nur.url					= github:nix-community/NUR;
