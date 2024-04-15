@@ -4,6 +4,7 @@ with lib;
 {
 	imports = [
 		./firefox.nix
+		./chromium.nix
 	];
 
 	# Importing this module should automatically turn this option on
