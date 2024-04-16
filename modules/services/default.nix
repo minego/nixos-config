@@ -34,6 +34,8 @@
 		# hoas itself runs as a full vm in libvirt
 		./haos.nix
 
+		# Frigate network video recorder (NVR)
+		./frigate.nix
 
 
 
@@ -56,7 +58,7 @@
 		# ./piper.nix
 
 		# Frigate network video recorder (NVR)
-		# ./frigate.nix
+		# ./frigate-nix.nix
 	];
 }
 

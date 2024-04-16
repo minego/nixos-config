@@ -102,7 +102,7 @@ lib.nixosSystem {
 			builders.hotblack						= false;
 			builders.zaphod							= false;
 
-			# The printer physicall connected to this host.
+			# The printer physically connected to this host.
 			hardware.printers = {
 #				ensurePrinters = [{
 #					name = "Brother_HL-L2390DW";
@@ -111,6 +111,9 @@ lib.nixosSystem {
 #					model = "HLL2390DW";
 #				}];
 			};
+
+			# When using containers, give them access to the nvidia quatro card
+			virtualisation.containers.cdi.dynamic.nvidia.enable = true;
 
 			age.secrets = {
 				hotblack-dashboard-env = {
