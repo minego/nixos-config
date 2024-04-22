@@ -28,25 +28,111 @@ in
 				};
 			};
 
-			in listToAttrs [
-				(extension "oled-borderless-pitch-black"	"{47400ad1-545d-449a-85f6-f9edfc7e590a}")
-				(extension "dark"							"firefox-compact-dark@mozilla.org")
-				(extension "tridactyl-vim"					"tridactyl.vim@cmcaine.co.uk")
-				(extension "ublock-origin"					"uBlock0@raymondhill.net")
-				(extension "bitwarden-password-manager"		"{446900e4-71c2-419f-a6a7-df9c091e268b}")
-				(extension "simple-tab-groups"				"simple-tab-groups@drive4ik")
-				(extension "okta-browser-plugin"			"plugin@okta.com")
-				(extension "protondb-for-steam"				"{30280527-c46c-4e03-bb16-2e3ed94fa57c}")
-				(extension "i-dont-care-about-cookies"		"jid1-KKzOGWgsW3Ao4Q@jetpack")
-				(extension "gitlab-notify"					"{dfc14507-bc0e-4d1b-899e-ba09a445acab}")
-				(extension "sponsorblock"					"sponsorBlocker@ajay.app")
-				(extension "container-proxy"				"contaner-proxy@bekh-ivanov.me")
-			];
+			# TODO
+			#	- Automate configuration of extensions, such as surfing keys
+			#	- Automate ui settings, such as pinned extensions, and hiding the side bar
+			#	- Update default applications so it calls a script that we can
+			#	use to look at the URL and decide which profile to use
 
-			# To find the UUID, install the extension manually and then visit
+			in listToAttrs ([
+				(extension "bitwarden-password-manager"			"{446900e4-71c2-419f-a6a7-df9c091e268b}")
+				(extension "ublock-origin"						"uBlock0@raymondhill.net")
+				(extension "protondb-for-steam"					"{30280527-c46c-4e03-bb16-2e3ed94fa57c}")
+				(extension "i-dont-care-about-cookies"			"jid1-KKzOGWgsW3Ao4Q@jetpack")
+				(extension "sponsorblock"						"sponsorBlocker@ajay.app")
+
+				(extension "oled-borderless-pitch-black"		"{47400ad1-545d-449a-85f6-f9edfc7e590a}")
+
+				(extension "okta-browser-plugin"				"plugin@okta.com")
+
+				(extension "surfingkeys_ff"						"{a8332c60-5b6d-41ee-bfc8-e9bb331d34ad}")
+				(extension "multi-account-containers"			"@testpilot-containers")
+
+
+#				(extension "tridactyl-vim"						"tridactyl.vim@cmcaine.co.uk")
+#				(extension "container-proxy"					"contaner-proxy@bekh-ivanov.me")
+#				(extension "simple-tab-groups"					"simple-tab-groups@drive4ik")
+			]);
+
+			# To find the `shortId` and `uuid` arguments for the `extension()`
+			# function:
+			#
+			#	`shortId` is the value used in the URL to the addon. For
+			#	example, the "Firefox Multi-Account Containers" addon's URL is
+			#	and the shortId is `multi-account-containers`
+			#		https://addons.mozilla.org/en-US/firefox/addon/multi-account-containers/
+			#
+			#	`uuid` can be found by installing the extension manually and
+			#	looking for the `Extension ID` value from this page:
 			#		about:debugging#/runtime/this-firefox
+			#
+			# Check for errors by visiting:
+			#		about:policies#errors
 		} // {
 			# Add any other policies here
+
+			# Bitwarden
+			"3rdparty".extensions = {
+				"{446900e4-71c2-419f-a6a7-df9c091e268b}" = {
+					environment.base			= "https://bitwarden.minego.net";
+				};
+			};
+
+			AppAutoUpdate							= false;
+			BackgroundAppUpdate						= false;
+			DisableFirefoxStudies					= true;
+			DisableProfileImport					= true;
+
+			DisableSetDesktopBackground				= true;
+			DisplayMenuBar							= "default-off";
+			DisablePocket							= true;
+			DisableTelemetry						= true;
+			OfferToSaveLogins						= false;
+			EnableTrackingProtection = {
+				Value								= true;
+				Locked								= true;
+				Cryptomining						= true;
+				Fingerprinting						= true;
+				EmailTracking						= true;
+				# Exceptions = ["https://example.com"]
+			};
+			EncryptedMediaExtensions = {
+				Enabled = true;
+				Locked = true;
+			};
+
+			FirefoxHome = {
+				Search								= false;
+				TopSites							= false;
+				SponsoredTopSites					= false;
+				Highlights							= false;
+				Pocket								= false;
+				SponsoredPocket						= false;
+				Snippets							= false;
+				Locked								= true;
+			};
+
+			FirefoxSuggest = {
+				WebSuggestions						= false;
+				SponsoredSuggestions				= false;
+				ImproveSuggest						= false;
+				Locked								= true;
+			};
+
+			PasswordManagerEnabled					= false;
+			ShowHomeButton							= false;
+
+			UserMessaging = {
+				ExtensionRecommendations			= false;
+				FeatureRecommendations				= false;
+				MoreFromMozilla						= false;
+				SkipOnboarding						= true;
+				UrlbarInterventions					= false;
+				WhatsNew							= false;
+				Locked								= true;
+			};
+			UseSystemPrintDialog = true;
+
 		};
 
 		preferences = {
@@ -55,14 +141,12 @@ in
 
 			"browser.uitour.enabled"				= false;
 			"signon.rememberSignons"				= false;
-			"services.sync.engine.passwords"		= false;
 			"app.update.auto"						= false;
 			"browser.aboutConfig.showWarning"		= false;
 			"browser.warnOnQuit"					= false;
 			"browser.quitShortcut.disabled"			= false;
 
 			"browser.theme.dark-private-windows"	= true;
-			"browser.toolbars.bookmarks.visibility"	= false;
 
 			# Restore previous session
 			"browser.startup.page"					= 3;
@@ -70,22 +154,15 @@ in
 			# Make new tabs blank
 			"browser.newtabpage.enabled"			= false;
 
-			# Disable welcome splash
-			"trailhead.firstrun.didSeeAboutWelcome" = true;
-
 			# Enable hardware video acceleration
 			"media.ffmpeg.vaapi.enabled"			= true;
 
 			"dom.forms.autocomplete.formautofill"	= false;
 			"dom.payments.defaults.saveAddress"		= false;
 			"ui.systemUsesDarkTheme"				= true;
-			"cookiebanners.ui.desktop.enabled"		= true;
-			"devtools.command-button-screenshot.enabled" = true;
 
-			# Don't stop me from using tridactyl on mozilla pages!
+			# Don't stop me from using extensions on mozilla pages!
 			"extensions.webextensions.restrictedDomains" = "";
-
-			"svg.context-properties.content.enabled"= true;
 		};
 	};
 
@@ -114,3 +191,4 @@ in
 		MALLOC_CHECK_	= "2";	# stupid linux malloc
 	};
 }
+
