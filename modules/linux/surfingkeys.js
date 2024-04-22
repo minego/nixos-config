@@ -156,3 +156,4 @@ addSearchAlias('st',	'steam',		'https://store.steampowered.com/search/?term=', '
 addSearchAlias('wiki',	'wikipedia',	'https://en.wikipedia.org/wiki/Special:Search/', 's');
 addSearchAlias('y',		'yt',			'https://invidious.snopyta.org/search?q=', 's');
 
+

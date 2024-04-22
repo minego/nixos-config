@@ -10,6 +10,8 @@ with lib;
 	programs.chromium = {
 		enable									= true;
 
+		# View details about chrome policies by visiting:
+		#		chrome://policy/
 		extraOpts = {
 			BrowserSignin						= 0;
 			SyncDisabled						= true;
@@ -49,6 +51,7 @@ with lib;
 			"nngceckbapebfimnlniiiahkandclblb" # Bitwarden
 			"gcbommkclmclpchllfjekcdonpmejbdp" # https everywhere
 			"cjpalhdlnbpafiamejdnhcphjbkeiagm" # ublock origin
+			"dofmpfndepckmehaaoplniohdibnplmg" # Tab Group Focus (Open new tabs in the current tab group)
 		];
 	};
 
