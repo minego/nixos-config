@@ -12,9 +12,9 @@ in
 		enable = true;
 
 		# NOTE: This depends on placing the tridactylrc file with home-manager
-		nativeMessagingHosts.packages = [
-			pkgs.tridactyl-native
-		];
+#		nativeMessagingHosts.packages = [
+#			pkgs.tridactyl-native
+#		];
 		package = ff;
 
 		policies = {
@@ -45,13 +45,11 @@ in
 
 				(extension "okta-browser-plugin"				"plugin@okta.com")
 
-				(extension "surfingkeys_ff"						"{a8332c60-5b6d-41ee-bfc8-e9bb331d34ad}")
 				(extension "multi-account-containers"			"@testpilot-containers")
 
-
-#				(extension "tridactyl-vim"						"tridactyl.vim@cmcaine.co.uk")
-#				(extension "container-proxy"					"contaner-proxy@bekh-ivanov.me")
-#				(extension "simple-tab-groups"					"simple-tab-groups@drive4ik")
+				# (extension "tridactyl-vim"						"tridactyl.vim@cmcaine.co.uk")
+				(extension "surfingkeys_ff"						"{a8332c60-5b6d-41ee-bfc8-e9bb331d34ad}")
+				(extension "simple-tab-groups"					"simple-tab-groups@drive4ik")
 			]);
 
 			# To find the `shortId` and `uuid` arguments for the `extension()`
