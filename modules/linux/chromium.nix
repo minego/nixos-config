@@ -59,17 +59,17 @@ with lib;
 	xdg.mime = {
 		enable = true;
 
-#		defaultApplications = {
-#			"text/html"					= "chromium.desktop";
-#			"x-scheme-handler/http"		= "chromium.desktop";
-#			"x-scheme-handler/https"	= "chromium.desktop";
-#			"x-scheme-handler/about"	= "chromium.desktop";
-#			"x-scheme-handler/unknown"	= "chromium.desktop";
-#		};
+		defaultApplications = {
+			"text/html"					= "chromium.desktop";
+			"x-scheme-handler/http"		= "chromium.desktop";
+			"x-scheme-handler/https"	= "chromium.desktop";
+			"x-scheme-handler/about"	= "chromium.desktop";
+			"x-scheme-handler/unknown"	= "chromium.desktop";
+		};
 	};
 
-#	environment.sessionVariables = {
-#		BROWSER			= "${pkgs.firefox}/bin/firefox";
-#		DEFAULT_BROWSER	= "${pkgs.firefox}/bin/firefox";
-#	};
+	environment.sessionVariables = {
+		BROWSER			= "${pkgs.firefox}/bin/firefox";
+		DEFAULT_BROWSER	= "${pkgs.firefox}/bin/firefox";
+	};
 }

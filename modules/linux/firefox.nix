@@ -167,25 +167,24 @@ in
 	xdg.mime = {
 		enable = true;
 
-		defaultApplications = {
-			"text/html"					= "firefox.desktop";
-			"x-scheme-handler/http"		= "firefox.desktop";
-			"x-scheme-handler/https"	= "firefox.desktop";
-			"x-scheme-handler/about"	= "firefox.desktop";
-			"x-scheme-handler/unknown"	= "firefox.desktop";
-		};
+#		defaultApplications = {
+#			"text/html"					= "firefox.desktop";
+#			"x-scheme-handler/http"		= "firefox.desktop";
+#			"x-scheme-handler/https"	= "firefox.desktop";
+#			"x-scheme-handler/about"	= "firefox.desktop";
+#			"x-scheme-handler/unknown"	= "firefox.desktop";
+#		};
 	};
 
 	# Enable xinput2 in firefox
 	environment.sessionVariables = {
 		MOZ_USE_XINPUT2 = "1";
 
-		BROWSER			= "${pkgs.firefox}/bin/firefox";
-		DEFAULT_BROWSER	= "${pkgs.firefox}/bin/firefox";
+#		BROWSER			= "${pkgs.firefox}/bin/firefox";
+#		DEFAULT_BROWSER	= "${pkgs.firefox}/bin/firefox";
 
 		# Make wayland applications behave
 		NIXOS_OZONE_WL	= "1";
-
 		MALLOC_CHECK_	= "2";	# stupid linux malloc
 	};
 }
