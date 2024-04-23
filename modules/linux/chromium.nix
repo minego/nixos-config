@@ -53,6 +53,7 @@ with lib;
 			"cjpalhdlnbpafiamejdnhcphjbkeiagm" # ublock origin
 			"dofmpfndepckmehaaoplniohdibnplmg" # Tab Group Focus (Open new tabs in the current tab group)
 			"glnpjglilkicbckjpbgcfkogebgllemb" # Okta
+			"faeadnfmdfamenfhaipofoffijhlnkif" # Black theme for OLED
 		];
 	};
 
