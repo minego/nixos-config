@@ -35,7 +35,10 @@
 		./haos.nix
 
 		# Frigate network video recorder (NVR)
-		./frigate.nix
+		# ./frigate.nix
+
+		# Shinobi network video recorder (NVR)
+		# ./shinobi.nix
 
 
 
