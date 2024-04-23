@@ -52,6 +52,7 @@ with lib;
 			"gcbommkclmclpchllfjekcdonpmejbdp" # https everywhere
 			"cjpalhdlnbpafiamejdnhcphjbkeiagm" # ublock origin
 			"dofmpfndepckmehaaoplniohdibnplmg" # Tab Group Focus (Open new tabs in the current tab group)
+			"glnpjglilkicbckjpbgcfkogebgllemb" # Okta
 		];
 	};
 
