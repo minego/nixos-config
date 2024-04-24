@@ -82,6 +82,7 @@ with lib;
 			"ebboehhiijjcihmopcggopfgchnfepkn" # CHROLED - Borderless, pure black theme
 			"padekgcemlokbadohgkifijomclgjgif" # Proxy SwitchyOmega
 			"fnaicdffflnofjppbagibeoednhnbjhg" # floccus (bookmark and tab sync)
+			"fihnjjcciajhdojfnbdddfaoknhalnja" # I don't care about cookies
 		];
 	};
 
