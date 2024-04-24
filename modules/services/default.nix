@@ -35,16 +35,15 @@
 		./haos.nix
 
 		# Frigate network video recorder (NVR)
-		# ./frigate.nix
+		./frigate.nix
 
-		# Shinobi network video recorder (NVR)
-		# ./shinobi.nix
+
+
+
 
 
 
 		# TODO Cleanup
-
-
 
 		# Home Assistant - Home automation, voice control, smart devices, etc
 		# ./homeassistant.nix

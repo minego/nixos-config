@@ -29,10 +29,10 @@ with lib;
 
 					extraOptions		= [
 						"--device=/dev/apex_0"			# PCIe Coral
-						"--device=/dev/dri/renderD128"	# intel hwaccel
+						"--device=/dev/dri"				# intel hwaccel
 						"--shm-size=512m"
 
-						"--gpus=all"					# Let frigate use the quatro
+						# "--gpus=all"					# Let frigate use the quatro
 					];
 
 					ports				= [
