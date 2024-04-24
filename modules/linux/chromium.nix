@@ -81,6 +81,7 @@ with lib;
 			"epmieacohbnladjdcjinfajhepbfaakl" # Blackout
 			"ebboehhiijjcihmopcggopfgchnfepkn" # CHROLED - Borderless, pure black theme
 			"padekgcemlokbadohgkifijomclgjgif" # Proxy SwitchyOmega
+			"fnaicdffflnofjppbagibeoednhnbjhg" # floccus (bookmark and tab sync)
 		];
 	};
 
