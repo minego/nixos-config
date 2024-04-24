@@ -88,6 +88,17 @@ lib.nixosSystem {
 			builders.dent						= true;
 			builders.hotblack					= true;
 			builders.zaphod						= false;
+
+			age.secrets = {
+				chromium-sync-oauth = {
+					file							= ../../secrets/chromium-sync-oauth.age;
+					owner							= "root";
+					group							= "users";
+					mode							= "440";
+				};
+			};
 		}
+
+		inputs.agenix.nixosModules.default
 	];
 }
