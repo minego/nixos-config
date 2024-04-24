@@ -70,6 +70,17 @@ lib.nixosSystem {
 				enable								= true;
 				modules								= [ "r8169" ];
 			};
+
+			age.secrets = {
+				chromium-sync-oauth = {
+					file							= ../../secrets/chromium-sync-oauth.age;
+					owner							= "root";
+					group							= "users";
+					mode							= "440";
+				};
+			};
 		}
+
+		inputs.agenix.nixosModules.default
 	];
 }

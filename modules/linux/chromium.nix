@@ -2,8 +2,29 @@
 with lib;
 
 {
-	# I guess `programs.chromium.enable` doesn't add the package? Weird...
+	# Enabling sync for chromium:
+	#	https://www.learningtopi.com/sbc/chromium-sync/
+	#
+	#	NOTE: Each google account used for sync MUST be a member of both groups
+	#	listed on that page. Read the instructions carefully when adding a new
+	#	account.
+	#
+	#	The wrapper below reads the secrets from the .age file and sets them
+	#	as environment variables before starting chromium.
 	environment.systemPackages = with pkgs; [
+		(pkgs.symlinkJoin {
+			name								= "chromium";
+			paths = [
+				(pkgs.writeShellScriptBin "chromium" ''
+					. ${config.age.secrets.chromium-sync-oauth.path}
+
+					exec ${pkgs.chromium}/bin/chromium $@
+					'')
+
+				chromium
+			];
+		})
+
 		chromium
 	];
 
@@ -13,11 +34,11 @@ with lib;
 		# View details about chrome policies by visiting:
 		#		chrome://policy/
 		extraOpts = {
-			BrowserSignin						= 0;
-			SyncDisabled						= true;
+			# BrowserSignin						= 0;
+			SyncDisabled						= false;
 			PasswordManagerEnabled				= false;
-			BuiltInDnsClientEnabled				= false;
-			MetricsReportingEnabled				= true;
+			BuiltInDnsClientEnabled				= true;
+			MetricsReportingEnabled				= false;
 			SpellcheckEnabled					= true;
 			SpellcheckLanguage					= [ "en-US" ];
 
@@ -53,7 +74,8 @@ with lib;
 			"cjpalhdlnbpafiamejdnhcphjbkeiagm" # ublock origin
 			"dofmpfndepckmehaaoplniohdibnplmg" # Tab Group Focus (Open new tabs in the current tab group)
 			"glnpjglilkicbckjpbgcfkogebgllemb" # Okta
-			"faeadnfmdfamenfhaipofoffijhlnkif" # Black theme for OLED
+			"epmieacohbnladjdcjinfajhepbfaakl" # Blackout
+			"ebboehhiijjcihmopcggopfgchnfepkn" # CHROLED - Borderless, pure black theme
 		];
 	};
 
