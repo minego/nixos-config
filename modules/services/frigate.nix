@@ -19,6 +19,10 @@ with lib;
 					environment.TZ		= "US/Mountain";
 					image				= "ghcr.io/blakeblackshear/frigate:stable";
 
+					environmentFiles	= [
+						"/run/agenix/frigateplus-key"
+					];
+
 					volumes				= [
 						"/var/lib/frigate:/config"
 						"/data/NVR:/media/frigate"

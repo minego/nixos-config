@@ -35,7 +35,7 @@ in
 	"hotblack-cloudflare-user.age".publicKeys	= [ hotblack m_hotblack ];
 	"hotblack-cloudflare-key.age".publicKeys	= [ hotblack m_hotblack ];
 	"foscam-password.age".publicKeys			= [ hotblack m_hotblack ];
-
+	"frigateplus-key.age".publicKeys			= [ hotblack m_hotblack ];
 
 	"chromium-sync-oauth.age".publicKeys		= users ++ hosts;
 }

@@ -140,6 +140,9 @@ lib.nixosSystem {
 				foscam-password = {
 					file							= ../../secrets/foscam-password.age;
 				};
+				frigateplus-key = {
+					file							= ../../secrets/frigateplus-key.age;
+				};
 			};
 		}
 
