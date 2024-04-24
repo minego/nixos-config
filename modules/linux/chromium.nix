@@ -42,6 +42,10 @@ with lib;
 			SpellcheckEnabled					= true;
 			SpellcheckLanguage					= [ "en-US" ];
 
+			FullRestoreEnabled                  = true;
+			FullRestoreMode                     = 1; # Always restore the last session
+			RestoreOnStartup                    = 1; # Restore the last session
+
 			"3rdparty".extensions = {
 				# Bitwarden
 				"nngceckbapebfimnlniiiahkandclblb" = {
