@@ -80,6 +80,7 @@ with lib;
 			"glnpjglilkicbckjpbgcfkogebgllemb" # Okta
 			"epmieacohbnladjdcjinfajhepbfaakl" # Blackout
 			"ebboehhiijjcihmopcggopfgchnfepkn" # CHROLED - Borderless, pure black theme
+			"padekgcemlokbadohgkifijomclgjgif" # Proxy SwitchyOmega
 		];
 	};
 
