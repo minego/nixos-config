@@ -3,7 +3,7 @@ with lib;
 
 {
 	config = {
-		services.xserver.displayManager.autoLogin = {
+		services.displayManager.autoLogin = {
 			enable								= true;
 			user								= config.me.user;
 		};
