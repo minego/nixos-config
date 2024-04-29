@@ -156,11 +156,6 @@ with lib;
 		programs.ssh.startAgent					= true;
 		programs.mosh.enable					= true;
 
-		# Driver needed for the EdgeTPU Coral dev board
-		boot.extraModulePackages = with config.boot.kernelPackages; [
-			gasket
-		];
-
 		# Allow access to the esp home m5 atom echo devices for setting up
 		# their firmware with esphome (through chrome)
 		services.udev.extraRules				= ''

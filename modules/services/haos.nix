@@ -38,6 +38,10 @@ with lib;
 			sslCertificateKey			= config.services.nginx.sslCertificateKey;
 		};
 
+		# Driver needed for the EdgeTPU Coral dev board
+		boot.extraModulePackages = with config.boot.kernelPackages; [
+			gasket
+		];
 	};
 }
 
