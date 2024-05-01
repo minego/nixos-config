@@ -37,6 +37,7 @@ in
 	"foscam-password.age".publicKeys			= [ hotblack m_hotblack ];
 	"frigateplus-key.age".publicKeys			= [ hotblack m_hotblack ];
 
+	"mosquitto.age".publicKeys					= users ++ hosts;
 	"chromium-sync-oauth.age".publicKeys		= users ++ hosts;
 }
 

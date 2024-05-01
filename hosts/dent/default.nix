@@ -79,6 +79,12 @@ lib.nixosSystem {
 					group							= "users";
 					mode							= "440";
 				};
+				mosquitto = {
+					file							= ../../secrets/mosquitto.age;
+					owner							= "root";
+					group							= "users";
+					mode							= "440";
+				};
 			};
 		}
 

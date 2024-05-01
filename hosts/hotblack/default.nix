@@ -143,6 +143,13 @@ lib.nixosSystem {
 				frigateplus-key = {
 					file							= ../../secrets/frigateplus-key.age;
 				};
+				mosquitto = {
+					file							= ../../secrets/mosquitto.age;
+					owner							= "root";
+					group							= "users";
+					mode							= "440";
+				};
+
 			};
 		}
 

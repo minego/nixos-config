@@ -15,9 +15,12 @@ with lib;
 			enable						= true;
 			listeners = [{
 				acl						= [ "pattern readwrite #" ];
-				omitPasswordAuth		= true;
-				settings.allow_anonymous= true;
 				address					= "0.0.0.0";
+
+				users.m = {
+					acl					= [ "readwrite #" ];
+					passwordFile		= config.age.secrets.mosquitto.path;
+				};
 			}];
 		};
 
