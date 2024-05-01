@@ -25,7 +25,8 @@ with lib;
 
 					volumes				= [
 						"/var/lib/frigate:/config"
-						"/data/NVR:/media/frigate"
+						# "/data/NVR:/media/frigate"
+						"/mnt/nvr:/media/frigate"
 						"/etc/localtime:/etc/localtime:ro"
 						"/etc/resolv.conf:/etc/resolv.conf:ro"
 						"/run/agenix/foscam-password:/run/agenix/foscam-password:ro"

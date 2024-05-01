@@ -26,6 +26,16 @@
 		options = [ "relatime" "nofail" ];
 	};
 
+	# ZFS pool for NVR storage
+	fileSystems."/mnt/nvr" = {
+		device = "nvr";
+		fsType = "zfs";
+		depends = [ "/" ];
+		options = [ "relatime" "nofail" ];
+	};
+
+
+
 	# Internal media storage drives
 #	fileSystems."/mnt/media0" = {
 #		device = "/dev/disk/by-uuid/a3cb324b-1f64-40e5-8d89-5d21ca6885b6";
