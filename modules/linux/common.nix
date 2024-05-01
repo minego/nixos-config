@@ -125,6 +125,7 @@ with lib;
 
 		networking.firewall.allowedTCPPorts = [
 			53317	# Used by local send
+			57621	# Used by spotify
 		];
 		networking.firewall.allowedUDPPorts = [
 			53317	# Used by local send
