@@ -134,12 +134,6 @@ with lib;
 		programs.git = {
 			enable								= true;
 			lfs.enable							= true;
-
-			extraConfig = {
-				init.defaultBranch				= "main";
-				pull.rebase						= true;
-				push.autoSetupRemote			= true;
-			};
 		};
 
 		services.avahi = {

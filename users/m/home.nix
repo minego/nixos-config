@@ -89,9 +89,10 @@ with lib;
 		userName		= "Micah N Gorrell";
 
 		extraConfig = {
-			url."git@gitlab.com:".insteadOf = [ "https://gitlab.com" ];
-			init.defaultBranch = "main";
-			pull.rebase	= true;
+			url."git@gitlab.com:".insteadOf	= [ "https://gitlab.com" ];
+			init.defaultBranch				= "main";
+			pull.rebase						= true;
+			push.autoSetupRemote			= true;
 		};
 
 		includes = [
