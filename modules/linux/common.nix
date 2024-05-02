@@ -1,4 +1,4 @@
-{ config, pkgs, lib, inputs, ... }:
+{ config, pkgs, lib, ... }:
 with lib;
 
 {
@@ -134,6 +134,12 @@ with lib;
 		programs.git = {
 			enable								= true;
 			lfs.enable							= true;
+
+			extraConfig = {
+				init.defaultBranch				= "main";
+				pull.rebase						= true;
+				push.autoSetupRemote			= true;
+			};
 		};
 
 		services.avahi = {
@@ -156,6 +162,13 @@ with lib;
 		};
 		programs.ssh.startAgent					= true;
 		programs.mosh.enable					= true;
+
+
+		# Allow mounting webdav volumes
+		services.davfs2 = {
+			enable								= true;
+			davGroup							= "wheel";
+		};
 
 		# Allow access to the esp home m5 atom echo devices for setting up
 		# their firmware with esphome (through chrome)
