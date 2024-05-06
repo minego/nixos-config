@@ -77,6 +77,8 @@ lib.nixosSystem {
 				../../modules/linux/syncthing.nix
 				../../modules/linux/laptop.nix
 
+				../../modules/services/glances.nix
+
 				inputs.home-manager.nixosModules.home-manager
 
 				./hardware-configuration.nix
