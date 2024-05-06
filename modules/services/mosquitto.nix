@@ -7,8 +7,8 @@ with lib;
 		internalURL						= lib.mkOption { type = lib.types.str;  };
 	};
 
-	config = {
-		services.mosquitto = rec {
+	config = rec {
+		services.mosquitto = {
 			port						= 1883;
 			internalURL					= "http://127.0.0.1:${toString port}";
 
@@ -16,6 +16,7 @@ with lib;
 			listeners = [{
 				acl						= [ "pattern readwrite #" ];
 				address					= "0.0.0.0";
+				port					= config.services.mosquitto.port;
 
 				users.m = {
 					acl					= [ "readwrite #" ];
@@ -25,7 +26,7 @@ with lib;
 		};
 
 		networking.firewall = {
-			allowedTCPPorts				= [ 1883 ];
+			allowedTCPPorts				= [ config.services.mosquitto.port ];
 		};
 	};
 }

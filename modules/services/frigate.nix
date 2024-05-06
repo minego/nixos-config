@@ -43,6 +43,7 @@ with lib;
 					ports				= [
 						"8125:5000"
 						"5000:5000"
+						"1984:1984"
 						"8556:8554" # RTSP feeds
 						"8555:8555/tcp" # WebRTC over tcp
 						"8555:8555/udp" # WebRTC over udp
