@@ -10,7 +10,11 @@ rec {
 		wantedBy				= [ "multi-user.target" ];
 
 		script = with pkgs; ''
-			${glances}/bin/glances -s
+			${glances}/bin/glances -s -p 61209
 		'';
+	};
+
+	networking.firewall = {
+		allowedTCPPorts				= [ 61209 ];
 	};
 }
