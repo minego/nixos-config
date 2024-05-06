@@ -90,6 +90,7 @@ lib.nixosSystem {
 				../../modules/linux/nvidia.nix
 				../../modules/linux/builders.nix
 
+				../../modules/services/glances.nix
 				../../modules/services
 				./hardware-configuration.nix
 				inputs.home-manager.nixosModules.home-manager

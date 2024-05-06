@@ -56,6 +56,7 @@ lib.nixosSystem {
 				../../modules/linux/builders.nix
 				../../modules/linux/luks-ssh.nix
 				../../modules/linux/syncthing.nix
+				../../modules/services/glances.nix
 
 				./hardware-configuration.nix
 				inputs.home-manager.nixosModules.home-manager
