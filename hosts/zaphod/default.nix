@@ -3,9 +3,9 @@
 let
 	lib		= inputs.darwin.lib;
 	system	= "aarch64-darwin";
-	pkgs	= inputs.nixpkgs.legacyPackages.${system};
+	# pkgs	= inputs.nixpkgs.legacyPackages.${system};
 in
-lib.darwinSystem rec {
+lib.darwinSystem {
 	modules = [
 		{
 			nixpkgs.hostPlatform = system;

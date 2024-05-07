@@ -1,25 +1,29 @@
 { config, pkgs, lib, ... }:
-with lib;
 
 {
 	options.kernel = {
-		latest = mkEnableOption {
+		latest = lib.mkEnableOption {
 			default			= true;
 			description		= "Default to installking pkgs.linuxPackages_latest";
 		};
 
-		zen = mkEnableOption {
+		zen = lib.mkEnableOption {
 			default			= false;
 			description		= "Default to installking pkgs.linuxPackages_zen";
 		};
 	};
 
-	config = mkMerge [
-	(mkIf config.kernel.latest {
-		boot.kernelPackages = mkOverride 500 pkgs.linuxPackages_latest;
+	config = lib.mkMerge [
+	(lib.mkIf config.kernel.latest {
+		boot.kernelPackages = lib.mkOverride 500 pkgs.linuxPackages_latest;
 	})
-	(mkIf config.kernel.zen {
-		boot.kernelPackages = mkOverride 500 pkgs.linuxPackages_zen;
+	(lib.mkIf config.kernel.zen {
+		boot.kernelPackages = lib.mkOverride 500 pkgs.linuxPackages_zen;
+	})
+	(lib.mkIf config.networking.networkmanager.enable {
+		environment.systemPackages = with pkgs; [
+			networkmanagerapplet
+		];
 	})
 	{
 		environment.systemPackages = with pkgs; [
@@ -54,7 +58,7 @@ with lib;
 		system.autoUpgrade.allowReboot		= false;
 
 		# Bootloader.
-		boot.loader.systemd-boot.enable		= mkDefault true;
+		boot.loader.systemd-boot.enable		= lib.mkDefault true;
 
 		boot.tmp.cleanOnBoot				= true;
 
@@ -69,10 +73,10 @@ with lib;
 		services.fstrim.enable				= true;
 
 		# Enable sound with pipewire.
-		hardware.pulseaudio.enable			= mkForce false;
+		hardware.pulseaudio.enable			= lib.mkForce false;
 		security.rtkit.enable				= true;
 		services.pipewire = {
-			enable							= mkForce true;
+			enable							= lib.mkForce true;
 			alsa.enable						= true;
 			alsa.support32Bit				= true;
 			pulse.enable					= true;

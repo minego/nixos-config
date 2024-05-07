@@ -3,7 +3,7 @@
 let
 	lib		= inputs.nixpkgs.lib;
 	system	= "aarch64-linux";
-	pkgs	= inputs.nixpkgs.legacyPackages.${system};
+	# pkgs	= inputs.nixpkgs.legacyPackages.${system};
 in
 lib.nixosSystem {
 	modules = [
