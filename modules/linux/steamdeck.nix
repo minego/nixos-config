@@ -1,5 +1,4 @@
 { pkgs, config, lib, ... }:
-with lib;
 
 {
 	config = {
@@ -9,26 +8,26 @@ with lib;
 		};
 
 		# Disable regreet - Jovian uses greetd, but with its own greeter
-		programs.regreet.enable					= mkForce false;
+		programs.regreet.enable					= lib.mkForce false;
 
 		jovian.decky-loader.user				= config.me.user;
 
 		jovian = {
 			steam = {
-				enable							= mkDefault true;
-				autoStart						= mkDefault true;
+				enable							= lib.mkDefault true;
+				autoStart						= lib.mkDefault true;
 				user							= config.me.user;
 
 				desktopSession					= "dwl";
 			};
 
 			devices.steamdeck = {
-				enable							= mkDefault true;
-				autoUpdate						= mkDefault true;
-				enableKernelPatches				= mkDefault true;
+				enable							= lib.mkDefault true;
+				autoUpdate						= lib.mkDefault true;
+				enableKernelPatches				= lib.mkDefault true;
 			};
 
-			steamos.useSteamOSConfig			= mkDefault true;
+			steamos.useSteamOSConfig			= lib.mkDefault true;
 		};
 
 		# The Steam Deck UI integrates with NetworkManager
@@ -40,6 +39,7 @@ with lib;
 			mangohud
 			steamdeck-firmware
 			jupiter-dock-updater-bin
+			chiaki4deck
 		];
 	};
 }
