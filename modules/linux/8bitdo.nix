@@ -21,7 +21,7 @@
 			unitConfig.Description = "8BitDo Ultimate Controller XInput mode xboxdrv daemon";
 			serviceConfig = {
 				Type = "simple";
-				ExecStart = "${pkgs.xboxdrv}/bin/xboxdrv --mimic-xpad --silent --type xbox360 --device-by-id %I --force-feedback";
+				ExecStart = "${pkgs.xboxdrv}/bin/xboxdrv --mimic-xpad --silent --type xbox360 --device-by-id %I --force-feedback --detach-kernel-driver";
 			};
 		};
 	};
