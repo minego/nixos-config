@@ -15,8 +15,10 @@
 	environment.systemPackages = with pkgs; [
 		steam-run
 		steam-tui
+		protonup-qt
 	];
 
 	programs.gamemode.enable			= true;
+	programs.gamescope.enable			= true;
 }
 
