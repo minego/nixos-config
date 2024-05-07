@@ -1,13 +1,12 @@
 { pkgs, config, lib, ... }:
-with lib;
 
 rec {
 	services.tailscale = {
-		enable					= mkDefault true;
+		enable					= lib.mkDefault true;
 		openFirewall			= true;
 
 		# Set to "server" or "both" with mkForce if needed for specific machines
-		useRoutingFeatures		= mkDefault "client";
+		useRoutingFeatures		= lib.mkDefault "client";
 	};
 
 	systemd.services.tailscale-autoconnect = {
@@ -22,12 +21,12 @@ rec {
 		# set this service as a oneshot job
 		serviceConfig.Type		= "oneshot";
 
-		script = with pkgs; ''
+		script = ''
             # wait for tailscaled to settle
             sleep 2
             
             # check if we are already authenticated to tailscale
-            status="$(${tailscale}/bin/tailscale status -json | ${jq}/bin/jq -r .BackendState)"
+            status="$(${pkgs.tailscale}/bin/tailscale status -json | ${pkgs.jq}/bin/jq -r .BackendState)"
             if [ "$status" = "Running" ]; then
 				echo "Already connected"
                 exit 0
@@ -38,7 +37,7 @@ rec {
                 exit 0
             fi
             
-            ${tailscale}/bin/tailscale up ${escapeShellArgs config.services.tailscale.extraUpFlags}
+            ${pkgs.tailscale}/bin/tailscale up ${lib.escapeShellArgs config.services.tailscale.extraUpFlags}
             '';
 	};
 

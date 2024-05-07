@@ -4,49 +4,47 @@
 	inputs = {
 		nixpkgs.url				= "github:NixOS/nixpkgs/nixos-unstable";
 
-		home-manager			= { url = github:nix-community/home-manager;			inputs.nixpkgs.follows = "nixpkgs"; };
-		nur.url					= github:nix-community/NUR;
+		home-manager			= { url = "github:nix-community/home-manager";			inputs.nixpkgs.follows = "nixpkgs"; };
+		nur.url					= "github:nix-community/NUR";
 
 		# Secret management
-		agenix					= { url = github:ryantm/agenix;							inputs.nixpkgs.follows = "nixpkgs"; };
+		agenix					= { url = "github:ryantm/agenix";						inputs.nixpkgs.follows = "nixpkgs"; };
 
 		# Neovim, with my configuration, plugins and custommizations
-		neovim-minego			= { url = github:minego/nixvim;							inputs.nixpkgs.follows = "nixpkgs"; };
+		neovim-minego			= { url = "github:minego/nixvim";						inputs.nixpkgs.follows = "nixpkgs"; };
 
 		# DWL, with my patches etc
-		dwl-minego-customized	= { url = github:minego/dwl/main;						inputs.nixpkgs.follows = "nixpkgs"; };
+		dwl-minego-customized	= { url = "github:minego/dwl/main";						inputs.nixpkgs.follows = "nixpkgs"; };
 
 		# My plugins for interception-tools
-		mackeys					= { url = github:minego/mackeys;						inputs.nixpkgs.follows = "nixpkgs"; };
-		swapmods				= { url = github:minego/swapmods;						inputs.nixpkgs.follows = "nixpkgs"; };
-		chrkbd					= { url = github:minego/chrkbd;							inputs.nixpkgs.follows = "nixpkgs"; };
+		mackeys					= { url = "github:minego/mackeys";						inputs.nixpkgs.follows = "nixpkgs"; };
+		swapmods				= { url = "github:minego/swapmods";						inputs.nixpkgs.follows = "nixpkgs"; };
+		chrkbd					= { url = "github:minego/chrkbd";						inputs.nixpkgs.follows = "nixpkgs"; };
 
 		# NixOS generators allow outputting to formats like an iso, image, etc
-		nixos-generators		= { url = github:nix-community/nixos-generators;		inputs.nixpkgs.follows = "nixpkgs"; };
+		nixos-generators		= { url = "github:nix-community/nixos-generators";		inputs.nixpkgs.follows = "nixpkgs"; };
 
 		# Support for Avahi, ie Linux on Apple Silicon
-		apple-silicon			= { url = github:tpwrules/nixos-apple-silicon;			inputs.nixpkgs.follows = "nixpkgs"; };
+		apple-silicon			= { url = "github:tpwrules/nixos-apple-silicon";		inputs.nixpkgs.follows = "nixpkgs"; };
 
 		# Support for phones, including my PinePhone Pro
-		mobile-nixos			= { url = github:NixOS/mobile-nixos;					flake = false; };
-		sxmo-nix				= { url = github:chuangzhu/nixpkgs-sxmo;				flake = false; };
+		mobile-nixos			= { url = "github:NixOS/mobile-nixos";					flake = false; };
+		sxmo-nix				= { url = "github:chuangzhu/nixpkgs-sxmo";				flake = false; };
 
 		# Support for nix on macOS
 		darwin					= { url = "github:LnL7/nix-darwin";						inputs.nixpkgs.follows = "nixpkgs"; };
-        nixpkgs-firefox-darwin	= { url = github:bandithedoge/nixpkgs-firefox-darwin;	inputs.nixpkgs.follows = "nixpkgs"; };
+        nixpkgs-firefox-darwin	= { url = "github:bandithedoge/nixpkgs-firefox-darwin";	inputs.nixpkgs.follows = "nixpkgs"; };
 
 		# Support for nixos on the Steam Deck (and similar devices)
-		jovian-nixos			= { url = github:Jovian-Experiments/Jovian-NixOS;		inputs.nixpkgs.follows = "nixpkgs"; };
+		jovian-nixos			= { url = "github:Jovian-Experiments/Jovian-NixOS";		inputs.nixpkgs.follows = "nixpkgs"; };
 
-		zsh-vi-mode				= { url = github:jeffreytse/zsh-vi-mode;				flake = false; };
-		# nixtheplanet			= { url = github:matthewcroughan/nixtheplanet;			inputs.nixpkgs.follows = "nixpkgs"; };
-		p81						= { url = github:devusb/p81.nix;						inputs.nixpkgs.follows = "nixpkgs"; };
+		zsh-vi-mode				= { url = "github:jeffreytse/zsh-vi-mode";				flake = false; };
+		# nixtheplanet			= { url = "github:matthewcroughan/nixtheplanet";		inputs.nixpkgs.follows = "nixpkgs"; };
+		p81						= { url = "github:devusb/p81.nix";						inputs.nixpkgs.follows = "nixpkgs"; };
 	};
 
 	outputs = { nixpkgs, ... }@inputs:
 	let
-		inherit (nixpkgs) lib;
-
 		overlays = [
 			inputs.neovim-minego.overlays.default
 			inputs.nur.overlay
@@ -136,7 +134,7 @@
 
 		devShells.x86_64-linux.default = let
 			pkgs = nixpkgs.legacyPackages.x86_64-linux;
-		in pkgs.mkShell rec {
+		in pkgs.mkShell {
 			name		= "minego-nixos-config";
 			packages	= with pkgs; [
 				nvd gnumake
@@ -145,7 +143,7 @@
 
 		devShells.aarch64-linux.default = let
 			pkgs = nixpkgs.legacyPackages.aarch64-linux;
-		in pkgs.mkShell rec {
+		in pkgs.mkShell {
 			name		= "minego-nixos-config";
 			packages	= with pkgs; [
 				nvd gnumake
