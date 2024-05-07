@@ -1,12 +1,11 @@
-{ pkgs, config, lib, ... }:
-with lib;
+{ pkgs, lib, ... }:
 
 {
-	config = mkIf pkgs.stdenv.isLinux {
+	config = lib.mkIf pkgs.stdenv.isLinux {
 		# Fix for using Xinput mode on 8bitdo Ultimate C controller
 		# Inspired by https://aur.archlinux.org/packages/8bitdo-ultimate-controller-udev
 
-		environment.systemPackages = [pkgs.xboxdrv];
+		environment.systemPackages				= [ pkgs.xboxdrv ];
 
 		# Udev rules to start or stop systemd service when controller is connected or disconnected
 		services.udev.extraRules = ''

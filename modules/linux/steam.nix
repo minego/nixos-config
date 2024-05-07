@@ -1,5 +1,4 @@
-{ pkgs, config, lib, ... }:
-with lib;
+{ pkgs, ... }:
 
 {
 	hardware.steam-hardware.enable = true;
@@ -12,5 +11,11 @@ with lib;
 
 		gamescopeSession.enable			= true;
 	};
+
+	environment.systemPackages = with pkgs; [
+		steam-run
+	];
+
+	programs.gamemode.enable			= true;
 }
 
