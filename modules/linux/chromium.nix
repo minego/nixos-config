@@ -1,5 +1,4 @@
-{ pkgs, config, lib, ... }:
-with lib;
+{ pkgs, config, ... }:
 
 {
 	# Enabling sync for chromium:
@@ -11,7 +10,7 @@ with lib;
 	#
 	#	The wrapper below reads the secrets from the .age file and sets them
 	#	as environment variables before starting chromium.
-	environment.systemPackages = with pkgs; [
+	environment.systemPackages = [
 		(pkgs.symlinkJoin {
 			name								= "chromium";
 			paths = [
@@ -21,11 +20,11 @@ with lib;
 					exec ${pkgs.chromium}/bin/chromium $@
 					'')
 
-				chromium
+				pkgs.chromium
 			];
 		})
 
-		chromium
+		pkgs.chromium
 	];
 
 	programs.chromium = {
@@ -79,7 +78,7 @@ with lib;
 			"dofmpfndepckmehaaoplniohdibnplmg" # Tab Group Focus (Open new tabs in the current tab group)
 			"glnpjglilkicbckjpbgcfkogebgllemb" # Okta
 			"epmieacohbnladjdcjinfajhepbfaakl" # Blackout
-			"ebboehhiijjcihmopcggopfgchnfepkn" # CHROLED - Borderless, pure black theme
+			# "ebboehhiijjcihmopcggopfgchnfepkn" # CHROLED - Borderless, pure black theme
 			"padekgcemlokbadohgkifijomclgjgif" # Proxy SwitchyOmega
 			"fnaicdffflnofjppbagibeoednhnbjhg" # floccus (bookmark and tab sync)
 			"fihnjjcciajhdojfnbdddfaoknhalnja" # I don't care about cookies
