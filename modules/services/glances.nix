@@ -1,7 +1,6 @@
-{ pkgs, config, lib, ... }:
-with lib;
+{ pkgs, ... }:
 
-rec {
+{
 	systemd.services.glances = {
 		enable					= true;
 		description				= "Glances Server";
@@ -9,8 +8,8 @@ rec {
 		after					= [ "network-pre.target" ];
 		wantedBy				= [ "multi-user.target" ];
 
-		script = with pkgs; ''
-			${glances}/bin/glances -s -p 61209
+		script = ''
+			${pkgs.glances}/bin/glances -s -p 61209
 		'';
 	};
 
