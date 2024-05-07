@@ -9,7 +9,10 @@
 		remotePlay.openFirewall			= true;
 		dedicatedServer.openFirewall	= true;
 
-		gamescopeSession.enable			= true;
+		gamescopeSession = {
+			enable						= true;
+			# args						= [ "--fullscreen" "--max-scale" "1" ];
+		};
 	};
 
 	environment.systemPackages = with pkgs; [

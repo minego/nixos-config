@@ -64,6 +64,9 @@ lib.nixosSystem {
 				inputs.home-manager.nixosModules.home-manager
 			];
 
+			# Make steam-gamescope handle my 4k display better
+			programs.steam.gamescopeSession.args	= [ "-W" "3840" "-H" "2160" "-f" ];
+
 			# Remote builders and binary cache
 			builders.enable							= true;
 			builders.cache							= true;
