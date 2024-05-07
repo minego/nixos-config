@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-	systemd.services.glances = {
+	systemd.services.glances-server = {
 		enable					= true;
 		description				= "Glances Server";
 
@@ -13,7 +13,20 @@
 		'';
 	};
 
+	systemd.services.glances-web = {
+		enable					= true;
+		description				= "Glances Web";
+
+		after					= [ "network-pre.target" ];
+		wantedBy				= [ "multi-user.target" ];
+
+		# The web server listens on 61208
+		script = ''
+			${pkgs.glances}/bin/glances -w
+		'';
+	};
+
 	networking.firewall = {
-		allowedTCPPorts				= [ 61209 ];
+		allowedTCPPorts				= [ 61208 61209 ];
 	};
 }
