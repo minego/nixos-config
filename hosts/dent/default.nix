@@ -38,6 +38,8 @@ lib.nixosSystem {
 			# Rosetta for Linux
 			boot.binfmt.emulatedSystems				= [ "aarch64-linux" ];
 
+			boot.kernelParams						= [ "video=DP-1:2560x1440@144" ];
+
 			imports = [
 				../../users/m/linux.nix
 
