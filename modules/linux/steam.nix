@@ -14,6 +14,7 @@
 
 	environment.systemPackages = with pkgs; [
 		steam-run
+		steam-tui
 	];
 
 	programs.gamemode.enable			= true;
