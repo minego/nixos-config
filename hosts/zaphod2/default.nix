@@ -55,6 +55,8 @@ lib.nixosSystem {
 			boot = {
 				extraModprobeConfig				= "options hid_apple iso_layout=0 swap_fn_leftctrl=1 fnmode=2";
 				# kernelParams					= [ "apple_dcp.show_notch=1" ];
+
+				tmp.useTmpfs					= true;
 			};
 
 			services.tlp.enable					= true;

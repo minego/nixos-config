@@ -61,6 +61,7 @@ lib.nixosSystem {
 			boot.supportedFilesystems				= [ "zfs" ];
 			boot.zfs.forceImportRoot				= false;
 			services.zfs.autoScrub.enable			= true;
+			boot.tmp.useTmpfs						= true;
 
 			# This machine acts as a tailscale exit node
 			services.tailscale = {
